@@ -1,0 +1,158 @@
+
+// STD includes
+#include <string.h>
+
+namespace gea {
+namespace mth {
+
+// ------------------------------------------------------------------------- //
+// matrix3                                                                   //
+// ------------------------------------------------------------------------- //
+// constructors
+inline matrix3::matrix3() {
+    m[0][0] = m[0][1] = m[0][2] = 0.0f;
+    m[1][0] = m[1][1] = m[1][2] = 0.0f;
+    m[2][0] = m[2][1] = m[2][2] = 0.0f;
+}
+inline matrix3::matrix3(float xx, float yy, float zz) {
+    m[0][0] = xx; m[1][1] = yy; m[2][2] = zz;
+    m[0][1] = m[0][2] = m[1][0] = m[1][2] = m[2][0] = m[2][1] = 0.0f;
+}
+inline matrix3::matrix3(float xx, float yx, float zx,
+                 float xy, float yy, float zy,
+                 float xz, float yz, float zz) {
+    m[0][0] = xx; m[0][1] = yx; m[0][2] = zx;
+    m[1][0] = xy; m[1][1] = yy; m[1][2] = zy;
+    m[2][0] = xz; m[2][1] = yz; m[2][2] = zz;
+}
+inline matrix3::matrix3(skip_initialization) {}
+inline matrix3::matrix3(const matrix3 &o) {
+    memcpy(&m, &o.m, sizeof(m));
+}
+inline matrix3::matrix3(const quaternion &q) { from_quaternion(q); }
+
+// arithmetic
+inline matrix3 &matrix3::operator =(const matrix3 &o) {
+    memcpy(&m, &o.m, sizeof(m));
+    return (*this);
+}
+inline const matrix3 matrix3::operator- (const matrix3 &o) const {
+    return matrix3(m[0][0] - o.m[0][0], m[0][1] - o.m[0][1], m[0][2] - o.m[0][2],
+                   m[1][0] - o.m[1][0], m[1][1] - o.m[1][1], m[1][2] - o.m[1][2],
+                   m[2][0] - o.m[2][0], m[2][1] - o.m[2][1], m[2][2] - o.m[2][2]);
+}
+inline const matrix3 matrix3::operator+ (const matrix3 &o) const {
+    return matrix3(m[0][0] + o.m[0][0], m[0][1] + o.m[0][1], m[0][2] + o.m[0][2],
+                   m[1][0] + o.m[1][0], m[1][1] + o.m[1][1], m[1][2] + o.m[1][2],
+                   m[2][0] + o.m[2][0], m[2][1] + o.m[2][1], m[2][2] + o.m[2][2]);
+}
+inline const matrix3 matrix3::operator* (const matrix3 &o) const {
+    return matrix3(m[0][0]*o.m[0][0]+m[0][1]*o.m[1][0]+m[0][2]*o.m[2][0], m[0][0]*o.m[0][1]+m[0][1]*o.m[1][1]+m[0][2]*o.m[2][1], m[0][0]*o.m[0][2]+m[0][1]*o.m[1][2]+m[0][2]*o.m[2][2],
+                   m[1][0]*o.m[0][0]+m[1][1]*o.m[1][0]+m[1][2]*o.m[2][0], m[1][0]*o.m[0][1]+m[1][1]*o.m[1][1]+m[1][2]*o.m[2][1], m[1][0]*o.m[0][2]+m[1][1]*o.m[1][2]+m[1][2]*o.m[2][2],
+                   m[2][0]*o.m[0][0]+m[2][1]*o.m[1][0]+m[2][2]*o.m[2][0], m[2][0]*o.m[0][1]+m[2][1]*o.m[1][1]+m[2][2]*o.m[2][1], m[2][0]*o.m[0][2]+m[2][1]*o.m[1][2]+m[2][2]*o.m[2][2]);
+}
+inline const matrix3 matrix3::operator* (float s) const {
+    return matrix3(m[0][0]*s, m[0][1]*s, m[0][2]*s,
+                   m[1][0]*s, m[1][1]*s, m[1][2]*s,
+                   m[2][0]*s, m[2][1]*s, m[2][2]*s);
+}
+inline const matrix3 matrix3::operator/ (float s) const {
+    assert((s!=0.0f) && "divide by zero!");
+    float s_inv = 1.0f / s;
+    return matrix3(m[0][0]*s_inv, m[0][1]*s_inv, m[0][2]*s_inv,
+                   m[1][0]*s_inv, m[1][1]*s_inv, m[1][2]*s_inv,
+                   m[2][0]*s_inv, m[2][1]*s_inv, m[2][2]*s_inv);
+}
+inline const vector3 matrix3::operator* (const vector3 &v) const {
+    return vector3(m[0][0]*v.x+m[0][1]*v.y+m[0][2]*v.z,
+                   m[1][0]*v.x+m[1][1]*v.y+m[1][2]*v.z,
+                   m[2][0]*v.x+m[2][1]*v.y+m[2][2]*v.z);
+}
+// unary arithmetic
+inline const matrix3 matrix3::operator+ () const { return (*this); }
+inline const matrix3 matrix3::operator- () const {
+    return matrix3(-m[0][0], -m[0][1], -m[0][2],
+                   -m[1][0], -m[1][1], -m[1][2],
+                   -m[2][0], -m[2][1], -m[2][2]);
+}
+
+// member access
+inline const float matrix3::operator () (int32_t i, int32_t j) const {
+    assert(mth::range(i, 0, 2) && mth::range(j, 0, 2) && "index out of bounds!");
+    return m[i][j];
+}
+inline const vector3 matrix3::get_row(int32_t row) const {
+    assert(mth::range(row, 0, 2) && "index out of bounds!");
+    return vector3(m[row][0], m[row][1], m[row][2]);
+}
+inline const vector3 matrix3::get_column(int32_t col) const {
+    assert(mth::range(col, 0, 2) && "index out of bounds!");
+    return vector3(m[0][col], m[1][col], m[2][col]);
+}
+
+// linear algebra
+inline const matrix3 matrix3::transpose() const {
+    return matrix3(m[0][0], m[1][0], m[2][0],
+                   m[0][1], m[1][1], m[2][1],
+                   m[0][2], m[1][2], m[2][2]);
+}
+inline const float matrix3::trace() const {
+    return m[0][0] + m[1][1] + m[2][2];
+}
+inline const float matrix3::determinant() const {
+    return m[1][1]*m[2][2]*m[3][3] + m[1][2]*m[2][3]*m[3][1] + m[1][3]*m[2][1]*m[3][2] -
+           m[1][1]*m[2][3]*m[3][2] - m[1][2]*m[2][1]*m[3][3] - m[1][3]*m[2][2]*m[3][1];
+}
+
+
+// ------------------------------------------------------------------------- //
+// global functions                                                          //
+// ------------------------------------------------------------------------- //
+// arithmetic
+inline const matrix3 operator* (float s, const matrix3 &m) {
+    return (m*s);
+}
+
+// ------------------------------------------------------------------------- //
+// helper functions                                                          //
+// ------------------------------------------------------------------------- //
+// approximative comparison
+inline bool approx_eq(const matrix3 &m1, const matrix3 &m2, float e) {
+    return approx_eq(m1(0,0),m2(0,0), e) && approx_eq(m1(0,1),m2(0,1), e) && approx_eq(m1(0,2),m2(0,2), e) &&
+           approx_eq(m1(1,0),m2(1,0), e) && approx_eq(m1(1,1),m2(1,1), e) && approx_eq(m1(1,2),m2(1,2), e) &&
+           approx_eq(m1(2,0),m2(2,0), e) && approx_eq(m1(2,1),m2(2,1), e) && approx_eq(m1(2,2),m2(2,2), e);
+}
+inline bool approx_ne(const matrix3 &m1, const matrix3 &m2, float e) {
+    return approx_ne(m1(0,0),m2(0,0), e) || approx_ne(m1(0,1),m2(0,1), e) || approx_ne(m1(0,2),m2(0,2), e) ||
+           approx_ne(m1(1,0),m2(1,0), e) || approx_ne(m1(1,1),m2(1,1), e) || approx_ne(m1(1,2),m2(1,2), e) ||
+           approx_ne(m1(2,0),m2(2,0), e) || approx_ne(m1(2,1),m2(2,1), e) || approx_ne(m1(2,2),m2(2,2), e);
+}
+// nice matrix3
+inline bool nice(const matrix3 &m) {
+    return nice(m(0,0)) && nice(m(0,1)) && nice(m(0,2)) &&
+           nice(m(1,0)) && nice(m(1,1)) && nice(m(1,2)) &&
+           nice(m(2,0)) && nice(m(2,1)) && nice(m(2,2));
+}
+
+// finite matrix3
+inline bool finite(const matrix3 &m) {
+    return finite(m(0,0)) && finite(m(0,1)) && finite(m(0,2)) &&
+           finite(m(1,0)) && finite(m(1,1)) && finite(m(1,2)) &&
+           finite(m(2,0)) && finite(m(2,1)) && finite(m(2,2));
+}
+
+// ------------------------------------------------------------------------- //
+// debug functions                                                           //
+// ------------------------------------------------------------------------- //
+#if defined(DEBUG) || defined(PRODUCTION)
+inline std::ostream &operator <<(std::ostream &os, const matrix3 &m) {
+    return os << "m:[" <<
+        "[" << m.m[0][0] << ","<< m.m[0][1] << ","<< m.m[0][2] << "]" <<
+        "[" << m.m[1][0] << ","<< m.m[1][1] << ","<< m.m[1][2] << "]" <<
+        "[" << m.m[2][0] << ","<< m.m[2][1] << ","<< m.m[2][2] << "]" <<
+        "]";
+}
+#endif
+
+} // namespace mth //
+} // namespace gea //

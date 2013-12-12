@@ -1,0 +1,21 @@
+#ifndef __GEA_BMTH_INTRINSIC_H__
+#define __GEA_BMTH_INTRINSIC_H__
+
+// ------------------------------------------------------------------------- //
+// x86 intrinsic functions                                                   //
+// ------------------------------------------------------------------------- //
+
+namespace gea {
+namespace mth {
+// ------------------------------------------------------------------------- //
+// math functions                                                            //
+// ------------------------------------------------------------------------- //
+// trigonometry
+inline void i_fsincos(float angle, float &sin, float &cos);
+
+} // namespace mth //
+} // namespace gea //
+
+#include "intrinsic.inl"
+
+#endif // __GEA_BMTH_INTRINSIC_H__ //

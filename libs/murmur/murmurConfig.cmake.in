@@ -1,0 +1,18 @@
+# - Config file for the murmur package
+# It defines the following variables
+#  MURMUR_INCLUDE_DIRS - include directories for murmur
+#  MURMUR_LIBRARIES    - libraries to link against
+#  MURMUR_EXECUTABLE   - executables
+ 
+# Compute paths
+get_filename_component(MURMUR_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+set(MURMUR_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+ 
+# Our library dependencies (contains definitions for IMPORTED targets)
+if(NOT TARGET murmur AND NOT @PROJECT_NAME@_BINARY_DIR)
+  include("${MURMUR_CMAKE_DIR}/@PROJECT_NAME@Targets.cmake")
+endif()
+ 
+# These are IMPORTED targets created by murmurTargets.cmake
+set(MURMUR_LIBRARIES @BUILD_TARGETS@)
+set(MURMUR_EXECUTABLE)
