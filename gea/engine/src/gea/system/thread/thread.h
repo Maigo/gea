@@ -1,8 +1,8 @@
 #ifndef __GEA_THREAD_H__
 #define __GEA_THREAD_H__
 
-#include <gea/engine/system/thread/parallel.h>
-#include <gea/engine/utility/state.h>
+#include <gea/system/thread/parallel.h>
+#include <gea/utility/state.h>
 
 namespace gea {
 namespace prl {

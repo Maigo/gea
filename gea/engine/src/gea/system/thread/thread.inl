@@ -1,5 +1,5 @@
 
-#include <gea/engine/utility/assert.h>
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace prl {

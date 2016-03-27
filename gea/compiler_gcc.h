@@ -8,14 +8,14 @@
     ( (__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min) )
 // ------------------------------------------------------------------------- //
 
-#define force_inline    __forceinline
+#define gea_force_inline    __forceinline
 
-#define alignof(x)      __alignof(x)
-#define alignment(x)    //TODO: alignment?
+#define gea_alignof(x)      __alignof(x)
+#define gea_alignment(x)    //TODO: alignment?
 #error alignment is not implemented yet!
 
-#define likely(c)   __builtin_expect(c,1)
-#define unlikely(c) __builtin_expect(c,0)
+#define gea_likely(c)   __builtin_expect(c,1)
+#define gea_unlikely(c) __builtin_expect(c,0)
 
 //#define __LINE__ __LINE__
 //#define __FILE__ __FILE__

@@ -35,7 +35,7 @@ void *page_allocator::allocate(size_t size, size_t align) {
 }
 void page_allocator::deallocate(void *p) {
     // early out
-    if(unlikely(p == NULL)) return;
+	if (gea_unlikely(p == NULL)) return;
 
     // deallocate
     header *h = ((header *) p) - 1;

@@ -2,7 +2,7 @@
 #define __GEA_ALLOCATOR_PROXY_H__
 
 // gea includes
-#include <core/memory/allocator.h>
+#include <gea/core/memory/allocator.h>
 
 namespace gea {
 

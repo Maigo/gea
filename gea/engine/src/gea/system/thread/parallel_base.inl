@@ -1,6 +1,6 @@
 
 // gea mth includes
-#include <bits.h>
+#include <gea/bmth/bits.h>
 
 // gea engine includes
 #include <gea/system/memory.h>
@@ -39,7 +39,7 @@ inline bool base_affinity_mask::operator ==(const base_affinity_mask& o) const {
 }
 // attributes
 inline uint32_t base_affinity_mask::num_bits_set() const {
-    return bits::ones(m_affinity_mask);
+	return gea::mth::bit::ones(m_affinity_mask);
 }
 inline uint32_t base_affinity_mask::size() const {
     return 8 * sizeof(m_affinity_mask); // = 32

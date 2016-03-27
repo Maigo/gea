@@ -12,7 +12,7 @@ void hash32(const void *data, int len, uint32_t seed, void *out) {
     MurmurHash3_x86_32(data, len, seed, out);
 }
 void hash64(const void *data, int len, uint32_t seed, void *out) {
-    hash32_t alignment(16) _hash[4];
+    hash32_t gea_alignment(16) _hash[4];
     MurmurHash3_x86_128(data, len, seed, _hash);
 
     ( (hash32_t*) out)[0] = _hash[0];

@@ -10,7 +10,7 @@
 #include <gea/system/thread/parallel.h>
 
 // gea stl includes
-#include <gea/core/collection/vector.h>
+//#include <gea/core/collection/vector.h>
 
 namespace gea {
 namespace cpu {

@@ -2,8 +2,8 @@
 #define __GEA_TASK_MANAGER_H__
 
 // gea includes
-#include <core/parallel/task.h>
-#include <core/pattern/singleton.h>
+#include <gea/core/parallel/task.h>
+#include <gea/core/pattern/singleton.h>
 
 #include <gea/system/thread/parallel.h>
 #include <gea/system/thread/thread.h>

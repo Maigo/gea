@@ -6,6 +6,11 @@ set(LIB gea_engine)
 
 message(STATUS "Building ${LIB}")
 
+# List dependencies
+set(DEP_${LIB}
+	gea_math
+)
+
 # List source
 set(SRC_ENGINE_CORE_ERROR
 	src/gea/core/error/error_codes.h
@@ -36,10 +41,10 @@ set(SRC_ENGINE_CORE_MEMORY
 	src/gea/core/memory/memory.h
 )
 set(SRC_ENGINE_CORE_PARALLEL
-	src/gea/core/parallel/task.h
-	src/gea/core/parallel/task_manager.cpp
-	src/gea/core/parallel/task_manager.h
-	src/gea/core/parallel/task_manager.inl
+#	src/gea/core/parallel/task.h
+#	src/gea/core/parallel/task_manager.cpp
+#	src/gea/core/parallel/task_manager.h
+#	src/gea/core/parallel/task_manager.inl
 )
 set(SRC_ENGINE_CORE_PATTERN
 	src/gea/core/pattern/singleton.h
@@ -77,10 +82,15 @@ source_group("engine\\core"           FILES ${SRC_ENGINE_CORE})
 # Add library and include directory
 add_library(${LIB} STATIC ${SRC_${LIB}})
 include_directories(${PROJECT_SOURCE_DIR} src)
+target_include_directories(${LIB} PUBLIC src)
+
+# Add dependencies
+target_link_libraries(${LIB} ${DEP_${LIB}})
 
 # Organize lib into solution folder
 project_group(${LIB} "libs")
 
 # Clean-up
 unset(SRC_${LIB})
+unset(DEP_${LIB})
 unset(LIB)

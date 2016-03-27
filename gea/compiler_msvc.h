@@ -13,13 +13,14 @@
     ( (MSVC_MAJOR << 16) + MSVC_MINOR >= ((maj) << 16) + (min) )
 // ------------------------------------------------------------------------- //
 
-#define force_inline    __forceinline
+#define gea_force_inline    __forceinline
 
-#define alignof(x)      __alignof(x)
-#define alignment(x)    __declspec(align(x))
+#define gea_alignof(x)      __alignof(x)
 
-#define likely(c)       (c)
-#define unlikely(c)     (c)
+#define gea_alignment(x)    __declspec(align(x))
+
+#define gea_likely(c)       (c)
+#define gea_unlikely(c)     (c)
 
 //#define __LINE__ __LINE__
 //#define __FILE__ __FILE__
@@ -36,8 +37,8 @@ inline void byte_swap32(uint32_t &x) { x = _byteswap_ulong(x); }
 inline void byte_swap64(uint64_t &x) { x = _byteswap_uint64(x); }
 
 // system information
-#define has_cpuid()     ci_has_cpuid()
-#define cpuid(x,y)      ci_cpuid(x,y)
+#define gea_has_cpuid()     ci_has_cpuid()
+#define gea_cpuid(x,y)      ci_cpuid(x,y)
 //#define cpuid(x,y)      __cpuid(x,y)
 
 // ------------------------------------------------------------------------- //

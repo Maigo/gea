@@ -22,7 +22,7 @@ void *linked_allocator::allocate(size_t size, size_t align) {
 }
 void linked_allocator::deallocate(void *p) {
     // early out
-    if(unlikely(p == NULL)) return;
+	if (gea_unlikely(p == NULL)) return;
 
     // unlink
     header *h = (header *) p - 1;

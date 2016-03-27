@@ -2,7 +2,7 @@
 #define __GEA_APPLICATION_H__
 
 // gea includes
-#include <core/time_scheme.h>
+#include <gea/core/time_scheme.h>
 
 namespace gea {
 

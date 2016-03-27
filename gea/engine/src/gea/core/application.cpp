@@ -4,8 +4,8 @@
 // gea includes
 #include <gea/utility/timer.h>
 // * managers
-#include <gea/system/info/cpu.h>
-#include <gea/core/parallel/task_manager.h>
+//#include <gea/system/info/cpu.h>
+//#include <gea/core/parallel/task_manager.h>
 
 // header include
 #include "application.h"
@@ -23,9 +23,9 @@ void application::init_managers() {
     timer_manager::construct();
 
     // cpu manager
-    cpu::cpu_manager::construct();
+//    cpu::cpu_manager::construct();
     // task manager
-    prl::task_manager::construct();
+//    prl::task_manager::construct();
 }
 
 void application::run() {

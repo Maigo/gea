@@ -1,6 +1,7 @@
 #################################################
 # LIB: GEA MATH                                 #
 #################################################
+
 set(LIB gea_math)
 
 message(STATUS "Building ${LIB}")
@@ -102,6 +103,7 @@ source_group("source" FILES ${SRC_${LIB}} ${INL_${LIB}})
 # Add library and include directory
 add_library(${LIB} STATIC ${SRC_${LIB}} ${INL_${LIB}} ${INC_${LIB}})
 include_directories(${PROJECT_SOURCE_DIR} src)
+target_include_directories(${LIB} PUBLIC src)
 
 # Organize lib into solution folder
 project_group(${LIB} "libs")
