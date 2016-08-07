@@ -11,86 +11,86 @@ set(INC_${LIB} )
 set(INL_${LIB} )
 set(SRC_${LIB} )
 
-# base math
+# core math
 list(APPEND INC_${LIB}
-  src/gea/bmth/error/err_base.h
-  src/gea/bmth/type/half.h
-  src/gea/bmth/base.h
-  src/gea/bmth/bits.h
-  src/gea/bmth/endian_swap.h
-  src/gea/bmth/intrinsic.h
+  src/gea/mth_core/error/err_base.h
+  src/gea/mth_core/type/half.h
+  src/gea/mth_core/base.h
+  src/gea/mth_core/bits.h
+  src/gea/mth_core/endian_swap.h
+  src/gea/mth_core/intrinsic.h
 )
 list(APPEND INL_${LIB}
-  src/gea/bmth/error/err_base.inl
-  src/gea/bmth/type/half.inl
-  src/gea/bmth/base.inl
-  src/gea/bmth/bits.inl
-  src/gea/bmth/endian_swap.inl
-  src/gea/bmth/intrinsic.inl
+  src/gea/mth_core/error/err_base.inl
+  src/gea/mth_core/type/half.inl
+  src/gea/mth_core/base.inl
+  src/gea/mth_core/bits.inl
+  src/gea/mth_core/endian_swap.inl
+  src/gea/mth_core/intrinsic.inl
 )
 list(APPEND SRC_${LIB}
-  src/gea/bmth/type/half.cpp
+  src/gea/mth_core/type/half.cpp
 )
 
 # geometry math
 list(APPEND INC_${LIB}
-  src/gea/gmth/aabb.h
-  src/gea/gmth/line.h
-  src/gea/gmth/polygon.h
-  src/gea/gmth/rectangle.h
-  src/gea/gmth/triangle.h
+  src/gea/mth_geometry/aabb.h
+  src/gea/mth_geometry/line.h
+  src/gea/mth_geometry/polygon.h
+  src/gea/mth_geometry/rectangle.h
+  src/gea/mth_geometry/triangle.h
 )
 list(APPEND INL_${LIB}
-  src/gea/gmth/aabb.inl
+  src/gea/mth_geometry/aabb.inl
 )
 list(APPEND SRC_${LIB}
 )
 
 # vector math
 list(APPEND INC_${LIB}
-  src/gea/vmth/compression/comp_quaternion.h
-  src/gea/vmth/compression/comp_vector3.h
-  src/gea/vmth/compression/quantitizer.h
-  src/gea/vmth/error/err_matrix3.h
-  src/gea/vmth/error/err_quaternion.h
-  src/gea/vmth/error/err_vector3.h
-  src/gea/vmth/endian_swap.h
-  src/gea/vmth/matrix3.h
-  src/gea/vmth/point2.h
-  src/gea/vmth/point3.h
-  src/gea/vmth/polar2.h
-  src/gea/vmth/polar3.h
-  src/gea/vmth/quaternion.h
-  src/gea/vmth/random.h
-  src/gea/vmth/vector2.h
-  src/gea/vmth/vector3.h
+  src/gea/mth_vector/compression/comp_quaternion.h
+  src/gea/mth_vector/compression/comp_vector3.h
+  src/gea/mth_vector/compression/quantitizer.h
+  src/gea/mth_vector/error/err_matrix3.h
+  src/gea/mth_vector/error/err_quaternion.h
+  src/gea/mth_vector/error/err_vector3.h
+  src/gea/mth_vector/endian_swap.h
+  src/gea/mth_vector/matrix3.h
+  src/gea/mth_vector/point2.h
+  src/gea/mth_vector/point3.h
+  src/gea/mth_vector/polar2.h
+  src/gea/mth_vector/polar3.h
+  src/gea/mth_vector/quaternion.h
+  src/gea/mth_vector/random.h
+  src/gea/mth_vector/vector2.h
+  src/gea/mth_vector/vector3.h
 )
 list(APPEND INL_${LIB}
-  src/gea/vmth/compression/comp_vector3.inl
-  src/gea/vmth/error/err_quaternion.inl
-  src/gea/vmth/error/err_vector3.inl
-  src/gea/vmth/endian_swap.inl
-  src/gea/vmth/matrix3.inl
-  src/gea/vmth/point2.inl
-  src/gea/vmth/point3.inl
-  src/gea/vmth/polar2.inl
-  src/gea/vmth/polar3.inl
-  src/gea/vmth/quaternion.inl
-  src/gea/vmth/random.inl
-  src/gea/vmth/vector2.inl
-  src/gea/vmth/vector3.inl
+  src/gea/mth_vector/compression/comp_vector3.inl
+  src/gea/mth_vector/error/err_quaternion.inl
+  src/gea/mth_vector/error/err_vector3.inl
+  src/gea/mth_vector/endian_swap.inl
+  src/gea/mth_vector/matrix3.inl
+  src/gea/mth_vector/point2.inl
+  src/gea/mth_vector/point3.inl
+  src/gea/mth_vector/polar2.inl
+  src/gea/mth_vector/polar3.inl
+  src/gea/mth_vector/quaternion.inl
+  src/gea/mth_vector/random.inl
+  src/gea/mth_vector/vector2.inl
+  src/gea/mth_vector/vector3.inl
 )
 list(APPEND SRC_${LIB}
-  src/gea/vmth/compression/comp_quaternion.cpp
-  src/gea/vmth/compression/comp_vector3.cpp
-  src/gea/vmth/matrix3.cpp
-  src/gea/vmth/point2.cpp
-  src/gea/vmth/point3.cpp
-  src/gea/vmth/polar2.cpp
-  src/gea/vmth/polar3.cpp
-  src/gea/vmth/quaternion.cpp
-  src/gea/vmth/vector2.cpp
-  src/gea/vmth/vector3.cpp
+  src/gea/mth_vector/compression/comp_quaternion.cpp
+  src/gea/mth_vector/compression/comp_vector3.cpp
+  src/gea/mth_vector/matrix3.cpp
+  src/gea/mth_vector/point2.cpp
+  src/gea/mth_vector/point3.cpp
+  src/gea/mth_vector/polar2.cpp
+  src/gea/mth_vector/polar3.cpp
+  src/gea/mth_vector/quaternion.cpp
+  src/gea/mth_vector/vector2.cpp
+  src/gea/mth_vector/vector3.cpp
 )
 
 # Force include of global header
