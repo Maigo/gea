@@ -34,6 +34,12 @@ private:
 // run-time light assert                                                     //
 // ------------------------------------------------------------------------- //
 
+#define l_error_msg( msg )                                              \
+    do {                                                                \
+        capture_assertion_error( "error", msg, ASSERT_CONTEXT() );      \
+        gea::system_break();                                            \
+    } while (0)
+
 #define l_assert( expr )                                                \
     if ( expr ) {}                                                      \
     else {                                                              \
@@ -54,6 +60,10 @@ inline void capture_assertion_error(const char *expr, const context &cont) {
 inline void capture_assertion_error(const char *expr, const char *msg, const context &cont) {
     printf("%s -- (%s:%i): %s -- %s\n", cont.file(), cont.func(), cont.line(), expr, msg);
 }
+
+// ------------------------------------------------------------------------- //
+
+#define l_assert_implement l_error_msg( "This feature is not implemeneted!" )
 
 // ------------------------------------------------------------------------- //
 // compile-time assert                                                       //

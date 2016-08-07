@@ -4,7 +4,7 @@
 // mth includes
 #include <gea/bmth/endian_swap.h>
 #include <gea/vmth/matrix3.h>
-#include <gea/vmth/polar.h>
+#include <gea/vmth/polar3.h>
 #include <gea/vmth/quaternion.h>
 #include <gea/vmth/vector3.h>
 
@@ -19,7 +19,7 @@ template <> inline void endian_swap<matrix3>(matrix3 &m);
 // ------------------------------------------------------------------------- //
 // polar                                                                     //
 // ------------------------------------------------------------------------- //
-template <> inline void endian_swap<polar>(polar &p);
+template <> inline void endian_swap<polar3>(polar3 &p);
 
 // ------------------------------------------------------------------------- //
 // quaternion                                                                //

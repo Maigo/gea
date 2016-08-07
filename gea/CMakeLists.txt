@@ -49,8 +49,11 @@ add_subdirectory(external/random)
 
 # gea math
 add_subdirectory(libs/gea_math)
+add_subdirectory(libs/gea_math_graph)
 # gea binpack
 #add_subdirectory(libs/gea_binpack)
+# gea eastl
+add_subdirectory(libs/gea_eastl)
 
 # engine
 add_subdirectory(engine)

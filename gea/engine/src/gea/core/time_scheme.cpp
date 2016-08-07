@@ -1,6 +1,7 @@
 
 // gea includes
-//#include <gea/utility/math.h>
+#include <gea/utility/assert.h>
+#include <gea/utility/math.h>
 
 // header include
 #include "time_scheme.h"
@@ -18,20 +19,21 @@ const uint32_t time_scheme::FRAMERATE_WINDOW_SIZE_DEFAULT =    10;
 const uint32_t time_scheme::FRAMERATE_WINDOW_SIZE_DISABLE =     0;
 
 time32_t time_scheme::update(time32_t raw_delta_time) {
-//    l_assert_msg(raw_delta_time > 0.0, "Negatime time step!\n"); // can this really happen?
+    l_assert_msg(raw_delta_time > 0.0, "Negatime time step!\n"); // can this really happen?
 
     time32_t delta_time = raw_delta_time;
 
     // cap time step
     if ( is_mode(FRAMERATE_MIN) ) {
-        if (delta_time > m_dt_max) delta_time = m_dt_max;
+        delta_time = math::max(delta_time, m_dt_max);
     }
 
     // smooth frame rate
 //    m_window.push_head(delta_time);
     if ( is_mode(SMOOTH_FRAMERATES) ) {
         //TODO: fix broken!
-//        delta_time = math::mean( m_window.begin(), m_window.end() , (time32_t) 0.0f );
+        l_assert_implement;
+//      delta_time = math::mean( m_window.begin(), m_window.end() , (time32_t) 0.0f );
     }
 
     // cap framerate

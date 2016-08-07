@@ -20,7 +20,7 @@ namespace mth {
 // ------------------------------------------------------------------------- //
 class point2 {
 public:
-	float x,y;
+    float x,y;
 
     // constructors
     inline point2();
@@ -33,12 +33,11 @@ public:
     inline const point2 operator+ (const vector2 &v) const;
     inline const point2 operator- (const vector2 &v) const;
 
-
     // compound assignment
     inline point2 &operator+= (const vector2 &v);
     inline point2 &operator-= (const vector2 &v);
 
-	// comparative
+    // comparative
     inline bool operator== (const point2 &o) const;
     inline bool operator!= (const point2 &o) const;
     inline bool operator<  (const point2 &o) const;
@@ -49,6 +48,9 @@ public:
     // member access
     inline       float &operator[] (int32_t i);
     inline const float &operator[] (int32_t i) const;
+
+    // linear algebra
+    inline const vector2 to(const point2 &o) const;
 
     // attributes
     inline bool is_zero() const;

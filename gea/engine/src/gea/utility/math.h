@@ -11,6 +11,12 @@ template <class V, class S>
 inline V lerp(const V& v1, const V& v2, S s);
 
 template <typename T>
+inline const T& min(const T& a, const T& b);
+
+template <typename T>
+inline const T& max(const T& a, const T& b);
+
+template <typename T>
 inline const T& clamp(const T& x, const T& low, const T& high);
 
 // ------------------------------------------------------------------------- //
