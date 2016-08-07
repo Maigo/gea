@@ -5,7 +5,7 @@
 #include <assert.h>
 
 // mth includes
-#include <gea/vmth/vector3.h>
+#include <gea/mth_vector/vector3.h>
 
 namespace gea {
 namespace mth {

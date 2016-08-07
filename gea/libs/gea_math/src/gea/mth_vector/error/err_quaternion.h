@@ -2,8 +2,8 @@
 #define __GEA_VMTH_ERR_QUAT_H__
 
 // mth includes
-#include <gea/bmth/error/err_base.h>
-#include <gea/vmth/quaternion.h>
+#include <gea/mth_core/error/err_base.h>
+#include <gea/mth_vector/quaternion.h>
 
 namespace gea {
 namespace mth {

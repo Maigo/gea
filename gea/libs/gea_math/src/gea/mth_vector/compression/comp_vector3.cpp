@@ -1,6 +1,6 @@
 
 // mth includes
-#include <gea/bmth/type/half.h>
+#include <gea/mth_core/type/half.h>
 
 // header include
 #include "comp_vector3.h"

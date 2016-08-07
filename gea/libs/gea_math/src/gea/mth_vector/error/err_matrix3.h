@@ -2,8 +2,8 @@
 #define __GEA_VMTH_ERR_MATRIX3_H__
 
 // mth includes
-#include <gea/bmth/error/err_base.h>
-#include <gea/vmth/matrix3.h>
+#include <gea/mth_core/error/err_base.h>
+#include <gea/mth_vector/matrix3.h>
 
 namespace gea {
 namespace mth {

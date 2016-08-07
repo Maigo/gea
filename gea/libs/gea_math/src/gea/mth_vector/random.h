@@ -5,10 +5,10 @@
 #include <gea/random/random.h>
 
 // mth includes
-#include <gea/vmth/matrix3.h>
-#include <gea/vmth/polar3.h>
-#include <gea/vmth/quaternion.h>
-#include <gea/vmth/vector3.h>
+#include <gea/mth_vector/matrix3.h>
+#include <gea/mth_vector/polar3.h>
+#include <gea/mth_vector/quaternion.h>
+#include <gea/mth_vector/vector3.h>
 
 namespace gea {
 namespace mth {

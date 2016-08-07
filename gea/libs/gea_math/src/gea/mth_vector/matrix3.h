@@ -2,8 +2,8 @@
 #define __GEA_VMTH_MATRIX3_H__
 
 // mth includes
-#include <gea/bmth/base.h>
-#include <gea/vmth/vector3.h>
+#include <gea/mth_core/base.h>
+#include <gea/mth_vector/vector3.h>
 
 #if defined(DEBUG) || defined(PRODUCTION)
     #include <ostream>

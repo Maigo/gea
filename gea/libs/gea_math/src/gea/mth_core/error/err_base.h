@@ -2,7 +2,7 @@
 #define __GEA_BMTH_ERR_BASE_H__
 
 // mth includes
-#include <gea/bmth/base.h>
+#include <gea/mth_core/base.h>
 
 namespace gea {
 namespace mth {

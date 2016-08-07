@@ -1,6 +1,6 @@
 
 // mth includes
-#include <gea/vmth/vector3.h>
+#include <gea/mth_vector/vector3.h>
 
 // header include
 #include "polar3.h"

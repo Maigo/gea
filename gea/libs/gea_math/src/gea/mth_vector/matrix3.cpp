@@ -1,6 +1,6 @@
 
 // mth includes
-#include <gea/vmth/quaternion.h>
+#include <gea/mth_vector/quaternion.h>
 
 // header include
 #include "matrix3.h"

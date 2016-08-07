@@ -1,6 +1,6 @@
 
 // mth includes
-#include <gea/vmth/polar3.h>
+#include <gea/mth_vector/polar3.h>
 
 // header include
 #include "comp_quaternion.h"

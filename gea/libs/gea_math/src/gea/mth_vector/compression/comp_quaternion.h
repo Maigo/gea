@@ -2,7 +2,7 @@
 #define __GEA_VMTH_COMP_QUATERNION_H__
 
 // mth includes
-#include <gea/vmth/quaternion.h>
+#include <gea/mth_vector/quaternion.h>
 
 namespace gea {
 namespace mth {

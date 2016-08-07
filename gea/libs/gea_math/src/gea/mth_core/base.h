@@ -6,7 +6,7 @@
 #include <math.h>
 
 // mth includes
-#include <gea/bmth/intrinsic.h>
+#include <gea/mth_core/intrinsic.h>
 
 #ifndef M_E
 #   define M_E          1.44269504088896340736

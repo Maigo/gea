@@ -2,11 +2,11 @@
 #define __GEA_VMTH_ENDIAN_SWAP_H__
 
 // mth includes
-#include <gea/bmth/endian_swap.h>
-#include <gea/vmth/matrix3.h>
-#include <gea/vmth/polar3.h>
-#include <gea/vmth/quaternion.h>
-#include <gea/vmth/vector3.h>
+#include <gea/mth_core/endian_swap.h>
+#include <gea/mth_vector/matrix3.h>
+#include <gea/mth_vector/polar3.h>
+#include <gea/mth_vector/quaternion.h>
+#include <gea/mth_vector/vector3.h>
 
 namespace gea {
 namespace mth {

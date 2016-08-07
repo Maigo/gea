@@ -6,8 +6,8 @@
 #include <vector>
 
 // mth includes
-#include <gea/bmth/base.h>
-#include <gea/vmth/point2.h>
+#include <gea/mth_core/base.h>
+#include <gea/mth_vector/point2.h>
 
 namespace gea {
 namespace mth {
