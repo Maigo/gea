@@ -1,13 +1,8 @@
-cmake_minimum_required(VERSION 2.8.9)
-project(gea CXX)
+cmake_minimum_required(VERSION 3.5.0)
+project(gea VERSION 0.0.0 LANGUAGES CXX)
 
 # set(LICENSE_FILE "LICENSE.md")
 set(README_FILE "README.md")
-
-set(PROJECT_VERSION_MAJOR "0")
-set(PROJECT_VERSION_MINOR "0")
-set(PROJECT_VERSION_PATCH "0")
-set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
 
 #################################################
 # EXTENSIONS                                    #
@@ -28,7 +23,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 ## PROJECT DEPENDENCIES                     ##
 
 # OpenGL
-find_package(OPENGL REQUIRED)
+find_package(OPENGL MODULE REQUIRED)
 find_package_check(OPENGL REQUIRED)
 
 # Lua 5.1
@@ -40,27 +35,21 @@ find_package_check(OPENGL REQUIRED)
 # set up include-directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-# external hash
+# external libraries
+add_subdirectory(external/sdl)
 add_subdirectory(external/hash)
-# external random
 add_subdirectory(external/random)
-# external static (compile time) hash
 #add_subdirectory(external/static_hash)
 
-# gea math
+# gea libraries
 add_subdirectory(libs/gea_math)
 add_subdirectory(libs/gea_math_graph)
-# gea binpack
 #add_subdirectory(libs/gea_binpack)
-# gea eastl
 add_subdirectory(libs/gea_eastl)
 
-# engine
+# gea engine
 add_subdirectory(engine)
+
 
 ## ######################################## ##
 ## BUILD                                    ##
-
-# if (WIN32)
-#   add_executable(${PROJECT_NAME} WIN32 main.cpp ${QT_RESOURCES} )
-# endif (WIN32)
