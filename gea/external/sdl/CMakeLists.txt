@@ -9,6 +9,8 @@ message(STATUS "Building ${LIB}")
 
 set(SDL2_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 
+set(SDL_BUILDING_LIBRARY ON)
+
 ExternalProject_Add(SDL2
     # DEPENDS
     PREFIX         ${SDL2_PREFIX}
@@ -17,6 +19,7 @@ ExternalProject_Add(SDL2
     #--Download step--------------
 	DOWNLOAD_DIR   ${SDL2_PREFIX}/download
 	URL https://www.libsdl.org/release/SDL2-2.0.4.tar.gz
+	URL_MD5 44fc4a023349933e7f5d7a582f7b886e
     #--Update/Patch step----------
     UPDATE_COMMAND ""
     #--Configure step-------------
@@ -37,9 +40,16 @@ ExternalProject_Add(SDL2
 # Organize lib into solution folder
 project_group(SDL2 "external")
 
+# Make sure include directory exists
+file(MAKE_DIRECTORY ${SDL2_PREFIX}/install/include/SDL2/)
+
 # Add library and include directory
-add_library(${LIB} STATIC IMPORTED GLOBAL)
-set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION ${SDL2_PREFIX}/install/lib/SDL2.lib)
+add_library(${LIB} SHARED IMPORTED GLOBAL)
+set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION ${SDL2_PREFIX}/install/bin/${CMAKE_SHARED_LIBRARY_PREFIX}SDL2${CMAKE_SHARED_LIBRARY_SUFFIX})
+set_property(TARGET ${LIB} PROPERTY IMPORTED_IMPLIB ${SDL2_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2${CMAKE_STATIC_LIBRARY_SUFFIX})
+set_property(TARGET ${LIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${SDL2_PREFIX}/install/include/SDL2/)
+set_property(TARGET ${LIB} PROPERTY INTERFACE_LINK_LIBRARIES ${SDL2_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2main${CMAKE_STATIC_LIBRARY_SUFFIX})
+
 add_dependencies(${LIB} SDL2)
 
 # Clean-up

@@ -53,3 +53,6 @@ add_subdirectory(engine)
 
 ## ######################################## ##
 ## BUILD                                    ##
+
+# test
+add_subdirectory(test/sdl_simple)
