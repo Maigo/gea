@@ -37,6 +37,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # external libraries
 add_subdirectory(external/sdl)
+add_subdirectory(external/glfw)
+
 add_subdirectory(external/hash)
 add_subdirectory(external/random)
 #add_subdirectory(external/static_hash)
