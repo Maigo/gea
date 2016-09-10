@@ -12,15 +12,15 @@ set(SRC_${LIB} )
 
 # random
 list(APPEND INC_${LIB}
-	src/gea/random/random.h
+    src/gea/random/random.h
 )
 list(APPEND INL_${LIB}
-	src/gea/random/random.inl
+    src/gea/random/random.inl
 )
 list(APPEND SRC_${LIB}
-	src/gea/random/random.cpp
-	src/gea/random/random_sfmt.cpp
-  src/gea/random/SFMT.c
+    src/gea/random/random.cpp
+    src/gea/random/random_sfmt.cpp
+    src/gea/random/SFMT.c
 )
 
 # Force include of global header
@@ -33,6 +33,7 @@ source_group("source" FILES ${SRC_${LIB}} ${INL_${LIB}})
 # Add library and include directory
 add_library(${LIB} STATIC ${SRC_${LIB}} ${INL_${LIB}} ${INC_${LIB}})
 include_directories(${PROJECT_SOURCE_DIR} src)
+target_include_directories(${LIB} PUBLIC src)
 
 # Organize lib into solution folder
 project_group(${LIB} "libs")
