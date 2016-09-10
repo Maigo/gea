@@ -60,6 +60,11 @@ inline const float &point3::operator[] (int32_t i) const {
     return (&x)[i];
 }
 
+// linear algebra
+inline const vector3 point3::to(const point3 &o) const {
+    return vector3(o.x - x, o.y - y, o.z - z);
+}
+
 // attributes
 inline bool point3::is_zero() const { return (*this) == point3::ORIGIN; }
 

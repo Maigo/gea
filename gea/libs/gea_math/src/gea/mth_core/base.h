@@ -66,27 +66,30 @@ enum skip_initialization { SKIP_INITIALIZATION };
 // trigonometry functions                                                    //
 // ------------------------------------------------------------------------- //
 // conversion functions
-inline const float degrees_to_radians(float deg);
-inline const float radians_to_degrees(float rad);
+inline const float degrees_to_radians(const float deg);
+inline const float radians_to_degrees(const float rad);
 // optimized sin & cos method
-inline void fsincos(float angle, float &sin, float &cos);
+inline void fsincos(const float angle, float &out_sin, float &out_cos);
 
 // ------------------------------------------------------------------------- //
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
 // approximative comparison
 static const float APPROX_EPSILON = 1.0e-4f;
-inline bool approx_eq(float f1, float f2, float e = APPROX_EPSILON);
-inline bool approx_ne(float f1, float f2, float e = APPROX_EPSILON);
+inline const bool approx_eq(const float f0, const float f1, const float e = APPROX_EPSILON);
+inline const bool approx_ne(const float f0, const float f1, const float e = APPROX_EPSILON);
+
+inline const bool approx_leq(const float f0, const float f1, const float e = APPROX_EPSILON);
+inline const bool approx_geq(const float f0, const float f1, const float e = APPROX_EPSILON);
 
 // approximative scalar
-inline float upb(float f, float e = APPROX_EPSILON); // upper bound
-inline float lwb(float f, float e = APPROX_EPSILON); // lower bound
+inline const float upb(const float f, const float e = APPROX_EPSILON); // upper bound
+inline const float lwb(const float f, const float e = APPROX_EPSILON); // lower bound
 
 // nice scalar
-inline bool nice(float number);
+inline const bool nice(const float number);
 // finite scalar
-inline bool finite(float number);
+inline const bool finite(const float number);
 
 // ------------------------------------------------------------------------- //
 // template functions                                                        //
@@ -109,7 +112,7 @@ template <typename T> inline const uint32_t lrgst(const T &a, const T &b, const 
 template <typename T> inline const T clamp(const T &t, const T &min, const T &max);
 
 // range
-template <typename T> inline bool range(const T &t, const T &min, const T &max);
+template <typename T> inline const bool range(const T &t, const T &min, const T &max);
 
 } // namespace mth //
 } // namespace gea //

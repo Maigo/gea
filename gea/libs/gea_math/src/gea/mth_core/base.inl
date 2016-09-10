@@ -6,27 +6,30 @@ namespace mth {
 // trigonometry functions                                                    //
 // ------------------------------------------------------------------------- //
 // conversion functions
-inline const float degrees_to_radians(float deg) { return deg * PI / 180.0f; }
-inline const float radians_to_degrees(float rad) { return rad * 180.0f / PI; }
+inline const float degrees_to_radians(const float deg) { return deg * PI / 180.0f; }
+inline const float radians_to_degrees(const float rad) { return rad * 180.0f / PI; }
 
 // ------------------------------------------------------------------------- //
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
 // approximative comparison
-inline bool approx_eq(float f1, float f2, float e) { return (fabs(f1-f2) <= e); }
-inline bool approx_ne(float f1, float f2, float e) { return (fabs(f1-f2)  > e); }
+inline const bool approx_eq(const float f0, const float f1, const float e) { return (fabs(f0 - f1) <= e); }
+inline const bool approx_ne(const float f0, const float f1, const float e) { return (fabs(f0 - f1)  > e); }
+
+inline const bool approx_leq(const float f0, const float f1, const float e) { return (f0 < (f1 + e)); }
+inline const bool approx_geq(const float f0, const float f1, const float e) { return (f0 > (f1 - e)); }
 
 // approximative scalar
-inline float upb(float f, float e) { return (f+e); }
-inline float lwb(float f, float e) { return (f-e); }
+inline const float upb(const float f, const float e) { return (f + e); }
+inline const float lwb(const float f, const float e) { return (f - e); }
 
 // nice scalar
-inline bool nice(float number) { return _finite(number) && !_isnan(number); }
+inline const bool nice(const float number) { return _finite(number) && !_isnan(number); }
 // finite scalar
-inline bool finite(float number) { return _finite(number) != 0; }
+inline const bool finite(const float number) { return _finite(number) != 0; }
 // optimized sin & cos method
-inline void fsincos(float angle, float &sin, float &cos) {
-    return i_fsincos(angle, sin, cos);
+inline void fsincos(const float angle, float &out_sin, float &out_cos) {
+    return i_fsincos(angle, out_sin, out_cos);
 }
 
 // ------------------------------------------------------------------------- //
@@ -57,7 +60,7 @@ inline const T clamp(const T &t, const T &min, const T &max) {
 }
 
 // range
-template <typename T> inline bool range(const T &t, const T &min, const T &max) {
+template <typename T> inline const bool range(const T &t, const T &min, const T &max) {
     return min <= t && t <= max;
 }
 

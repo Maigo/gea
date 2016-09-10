@@ -54,6 +54,8 @@ list(APPEND INC_${LIB}
   src/gea/mth_vector/error/err_matrix3.h
   src/gea/mth_vector/error/err_quaternion.h
   src/gea/mth_vector/error/err_vector3.h
+  src/gea/mth_vector/algorithm2.h
+  src/gea/mth_vector/algorithm3.h
   src/gea/mth_vector/endian_swap.h
   src/gea/mth_vector/matrix3.h
   src/gea/mth_vector/point2.h
@@ -69,6 +71,8 @@ list(APPEND INL_${LIB}
   src/gea/mth_vector/compression/comp_vector3.inl
   src/gea/mth_vector/error/err_quaternion.inl
   src/gea/mth_vector/error/err_vector3.inl
+  src/gea/mth_vector/algorithm2.inl
+  src/gea/mth_vector/algorithm3.inl
   src/gea/mth_vector/endian_swap.inl
   src/gea/mth_vector/matrix3.inl
   src/gea/mth_vector/point2.inl

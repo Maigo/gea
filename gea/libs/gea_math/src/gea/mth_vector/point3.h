@@ -33,7 +33,6 @@ public:
     inline const point3 operator+ (const vector3 &v) const;
     inline const point3 operator- (const vector3 &v) const;
 
-
     // compound assignment
     inline point3 &operator+= (const vector3 &v);
     inline point3 &operator-= (const vector3 &v);
@@ -49,6 +48,9 @@ public:
     // member access
     inline       float &operator[] (int32_t i);
     inline const float &operator[] (int32_t i) const;
+
+    // linear algebra
+    inline const vector3 to(const point3 &o) const;
 
     // attributes
     inline bool is_zero() const;

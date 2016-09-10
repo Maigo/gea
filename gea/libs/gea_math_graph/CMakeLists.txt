@@ -19,12 +19,15 @@ set(SRC_${LIB} )
 # base math
 list(APPEND INC_${LIB}
   src/gea/mth_graph/algorithm/point_reduce_rdp.h
+  src/gea/mth_graph/algorithm/sampler.h
 )
 list(APPEND INL_${LIB}
   src/gea/mth_graph/algorithm/point_reduce_rdp.inl
+  src/gea/mth_graph/algorithm/sampler.inl
 )
 list(APPEND SRC_${LIB}
   src/gea/mth_graph/algorithm/point_reduce_rdp.cpp
+  src/gea/mth_graph/algorithm/sampler.cpp
 )
 
 # Force include of global header
