@@ -22,11 +22,11 @@ class polar3;
 // ------------------------------------------------------------------------- //
 class vector3 {
 public:
-    float x,y,z;
+    float x, y, z;
 
     // constructors
     inline vector3();
-    inline vector3(float x, float y, float z);
+    inline vector3(const float x, const float y, const float z);
     inline explicit vector3(skip_initialization);
     inline vector3(const vector3 &o);
     inline explicit vector3(const polar3 &p);
@@ -37,10 +37,10 @@ public:
     inline const vector3 operator- (const vector3 &o) const;
     inline const vector3 operator* (const vector3 &o) const;
     inline const vector3 operator/ (const vector3 &o) const;
-    inline const vector3 operator* (float s) const;
-    inline const vector3 operator+ (float s) const;
-    inline const vector3 operator- (float s) const;
-    inline const vector3 operator/ (float s) const;
+    inline const vector3 operator* (const float s) const;
+    inline const vector3 operator+ (const float s) const;
+    inline const vector3 operator- (const float s) const;
+    inline const vector3 operator/ (const float s) const;
 
     // unary arithmetic
     inline const vector3 operator+ () const;
@@ -49,22 +49,22 @@ public:
     // compound assignment
     inline vector3 &operator+= (const vector3 &o);
     inline vector3 &operator-= (const vector3 &o);
-    inline vector3 &operator+= (float s);
-    inline vector3 &operator-= (float s);
-    inline vector3 &operator*= (float s);
-    inline vector3 &operator/= (float s);
+    inline vector3 &operator+= (const float s);
+    inline vector3 &operator-= (const float s);
+    inline vector3 &operator*= (const float s);
+    inline vector3 &operator/= (const float s);
 
     // comparative
-    inline bool operator== (const vector3 &o) const;
-    inline bool operator!= (const vector3 &o) const;
-    inline bool operator<  (const vector3 &o) const;
-    inline bool operator<= (const vector3 &o) const;
-    inline bool operator>  (const vector3 &o) const;
-    inline bool operator>= (const vector3 &o) const;
+    inline const bool operator== (const vector3 &o) const;
+    inline const bool operator!= (const vector3 &o) const;
+    inline const bool operator<  (const vector3 &o) const;
+    inline const bool operator<= (const vector3 &o) const;
+    inline const bool operator>  (const vector3 &o) const;
+    inline const bool operator>= (const vector3 &o) const;
 
     // member access
-    inline       float &operator[] (int32_t i);
-    inline const float &operator[] (int32_t i) const;
+    inline       float &operator[] (const int32_t i);
+    inline const float &operator[] (const int32_t i) const;
 
     // linear algebra
     inline const float length()    const;
@@ -77,11 +77,11 @@ public:
     inline const float angle(const vector3 &o) const;
 
     // attributes
-    inline bool is_zero() const;
+    inline const bool is_zero() const;
 
     // conversion
     void from_polar(const polar3 &p); //note: should be called spherical
-    void to_polar(polar3 &p) const;
+    void to_polar(polar3 &out_p) const;
 
     // static constants
     static const vector3 ZERO;
@@ -94,7 +94,7 @@ public:
 // global functions                                                          //
 // ------------------------------------------------------------------------- //
 // arithmetic
-inline const vector3 operator* (float s, const vector3 &v);
+inline const vector3 operator* (const float s, const vector3 &v);
 
 // linear algebra - convenience functions
 inline const float dot_product(const vector3 &v1, const vector3 &v2);
@@ -102,25 +102,25 @@ inline const vector3 cross_product(const vector3 &v1, const vector3 &v2);
 inline const float angle(const vector3 &v1, const vector3 &v2);
 
 // interpolation
-inline const vector3  lerp(const vector3 &from, const vector3 &to, float t);
-inline const vector3 nlerp(const vector3 &from, const vector3 &to, float t);
+inline const vector3  lerp(const vector3 &from, const vector3 &to, const float t);
+inline const vector3 nlerp(const vector3 &from, const vector3 &to, const float t);
 
 // ------------------------------------------------------------------------- //
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
 // approximative comparison
-inline bool approx_eq(const vector3 &v1, const vector3 &v2, float e = APPROX_EPSILON);
-inline bool approx_ne(const vector3 &v1, const vector3 &v2, float e = APPROX_EPSILON);
+inline const bool approx_eq(const vector3 &v1, const vector3 &v2, const float e = APPROX_EPSILON);
+inline const bool approx_ne(const vector3 &v1, const vector3 &v2, const float e = APPROX_EPSILON);
 // nice vector3
-inline bool nice(const vector3 &v);
+inline const bool nice(const vector3 &v);
 // finite vector3
-inline bool finite(const vector3 &v);
+inline const bool finite(const vector3 &v);
 
 // ------------------------------------------------------------------------- //
 // debug functions                                                           //
 // ------------------------------------------------------------------------- //
 #if defined(DEBUG) || defined(PRODUCTION)
-inline std::ostream &operator <<(std::ostream &os, const vector3 &v);
+inline std::ostream &operator<< (std::ostream &os, const vector3 &v);
 #endif
 
 } // namespace mth //

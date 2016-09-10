@@ -16,8 +16,8 @@ void polar2::from_vector(const vector2 &v) {
     r = v.length();
     theta = (r != 0.0f) ? (float(M_PI) + atan2f(v.y, v.x)) : 0.0f;
 }
-void polar2::to_vector(vector2 &v) const {
-    v.from_polar((*this));
+void polar2::to_vector(vector2 &out_v) const {
+    out_v.from_polar((*this));
 }
 
 } // namespace mth //

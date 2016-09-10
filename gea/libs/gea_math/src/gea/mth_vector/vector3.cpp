@@ -27,7 +27,7 @@ void vector3::from_polar(const polar3 &p) {
     y = p.r * sin_theta * sin_phi;
     z = p.r * cos_theta;
 }
-void vector3::to_polar(polar3 &p) const { p.from_vector((*this)); }
+void vector3::to_polar(polar3 &out_p) const { out_p.from_vector((*this)); }
 
 } // namespace mth //
 } // namespace gea //

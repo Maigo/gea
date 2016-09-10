@@ -15,14 +15,14 @@ namespace mth {
 void polar3::from_vector(const vector3 &v) {
     r = v.length();
     if (r != 0.0f) {
-        theta = acosf(mth::clamp(v.z/r, -1.0f, 1.0f));
+        theta = acosf(mth::clamp(v.z / r, -1.0f, 1.0f));
         phi   = atan2f(v.y, v.x);
     } else {
         theta = phi = 0.0f;
     }
 }
-void polar3::to_vector(vector3 &v) const {
-    v.from_polar((*this));
+void polar3::to_vector(vector3 &out_v) const {
+    out_v.from_polar((*this));
 }
 
 } // namespace mth //

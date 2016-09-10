@@ -11,7 +11,7 @@ namespace mth {
 // math functions                                                            //
 // ------------------------------------------------------------------------- //
 // trigonometry
-inline void i_fsincos(float angle, float &sin, float &cos);
+inline void i_fsincos(float angle, float &out_sin, float &out_cos);
 
 } // namespace mth //
 } // namespace gea //

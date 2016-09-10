@@ -20,8 +20,8 @@ struct vector3_c48 {
 // ------------------------------------------------------------------------- //
 // half precision encoding                                                   //
 // ------------------------------------------------------------------------- //
-void encode_half(const vector3 &v, vector3_c48 &cv);
-void decode_half(const vector3_c48 &cv, vector3 &v);
+void encode_half(const vector3 &v, vector3_c48 &out_cv);
+void decode_half(const vector3_c48 &cv, vector3 &out_v);
 
 // ------------------------------------------------------------------------- //
 // fix precision encoding                                                    //
@@ -36,9 +36,9 @@ struct default_range {
 } // namespace fix //
 
 template <typename RANGE>
-void encode_fix(const vector3 &v, vector3_c48 &cv);
+void encode_fix(const vector3 &v, vector3_c48 &out_cv);
 template <typename RANGE>
-void decode_fix(const vector3_c48 &cv, vector3 &v);
+void decode_fix(const vector3_c48 &cv, vector3 &out_v);
 
 } // namespace mth //
 } // namespace gea //

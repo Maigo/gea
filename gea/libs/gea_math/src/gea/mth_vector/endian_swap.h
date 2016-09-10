@@ -14,22 +14,22 @@ namespace mth {
 // ------------------------------------------------------------------------- //
 // matrix3                                                                   //
 // ------------------------------------------------------------------------- //
-template <> inline void endian_swap<matrix3>(matrix3 &m);
+template <> inline void endian_swap<matrix3>(matrix3 &out_m);
 
 // ------------------------------------------------------------------------- //
 // polar                                                                     //
 // ------------------------------------------------------------------------- //
-template <> inline void endian_swap<polar3>(polar3 &p);
+template <> inline void endian_swap<polar3>(polar3 &out_p);
 
 // ------------------------------------------------------------------------- //
 // quaternion                                                                //
 // ------------------------------------------------------------------------- //
-template <> inline void endian_swap<quaternion>(quaternion &q);
+template <> inline void endian_swap<quaternion>(quaternion &out_q);
 
 // ------------------------------------------------------------------------- //
 // vector3                                                                   //
 // ------------------------------------------------------------------------- //
-template <> inline void endian_swap<vector3>(vector3 &v);
+template <> inline void endian_swap<vector3>(vector3 &out_v);
 
 } // namespace mth //
 } // namespace gea //

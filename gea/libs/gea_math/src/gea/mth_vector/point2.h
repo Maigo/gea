@@ -20,11 +20,11 @@ namespace mth {
 // ------------------------------------------------------------------------- //
 class point2 {
 public:
-    float x,y;
+    float x, y;
 
     // constructors
     inline point2();
-    inline point2(float x, float y);
+    inline point2(const float x, const float y);
     inline explicit point2(skip_initialization);
     inline point2(const point2 &o);
 
@@ -46,14 +46,14 @@ public:
     inline bool operator>= (const point2 &o) const;
 
     // member access
-    inline       float &operator[] (int32_t i);
-    inline const float &operator[] (int32_t i) const;
+    inline       float &operator[] (const int32_t i);
+    inline const float &operator[] (const int32_t i) const;
 
     // linear algebra
     inline const vector2 to(const point2 &o) const;
 
     // attributes
-    inline bool is_zero() const;
+    inline const bool is_zero() const;
 
     // static constants
     static const point2 ORIGIN;
@@ -67,18 +67,18 @@ public:
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
 // approximative comparison
-inline bool approx_eq(const point2 &p0, const point2 &p1, float e = APPROX_EPSILON);
-inline bool approx_ne(const point2 &p0, const point2 &p1, float e = APPROX_EPSILON);
+inline const bool approx_eq(const point2 &p0, const point2 &p1, const float e = APPROX_EPSILON);
+inline const bool approx_ne(const point2 &p0, const point2 &p1, const float e = APPROX_EPSILON);
 // nice point2
-inline bool nice(const point2 &p);
+inline const bool nice(const point2 &p);
 // finite point2
-inline bool finite(const point2 &p);
+inline const bool finite(const point2 &p);
 
 // ------------------------------------------------------------------------- //
 // debug functions                                                           //
 // ------------------------------------------------------------------------- //
 #if defined(DEBUG) || defined(PRODUCTION)
-inline std::ostream &operator <<(std::ostream &os, const point2 &p);
+inline std::ostream &operator<< (std::ostream &os, const point2 &p);
 #endif
 
 } // namespace mth //

@@ -21,7 +21,7 @@ void vector2::from_polar(const polar2 &p) {
     //TODO implement
     assert(false && "implement");
 }
-void vector2::to_polar(polar2 &p) const { p.from_vector((*this)); }
+void vector2::to_polar(polar2 &out_p) const { out_p.from_vector((*this)); }
 
 } // namespace mth //
 } // namespace gea //

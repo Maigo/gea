@@ -22,8 +22,8 @@ typedef quaternion_c64 quat_c64;
 // ------------------------------------------------------------------------- //
 // smalles three encode                                                      //
 // ------------------------------------------------------------------------- //
-void encode_s3(const quaternion &q, quaternion_c32 &eq);
-void decode_s3(const quaternion_c32 &eq, quaternion &q);
+void encode_s3(const quaternion &q, quaternion_c32 &out_eq);
+void decode_s3(const quaternion_c32 &eq, quaternion &out_q);
 
 // ------------------------------------------------------------------------- //
 // polar                                                                     //
@@ -31,8 +31,8 @@ void decode_s3(const quaternion_c32 &eq, quaternion &q);
 // note: Implementation of Mark Zarb-Adami's algorithm as published in Game  //
 //       Programming Gems 3.                                                 //
 // ------------------------------------------------------------------------- //
-void encode_polar(const quaternion &q, quaternion_c32 &cq);
-void decode_polar(const quaternion_c32 &cq, quaternion &q);
+void encode_polar(const quaternion &q, quaternion_c32 &out_cq);
+void decode_polar(const quaternion_c32 &cq, quaternion &out_q);
 
 // ------------------------------------------------------------------------- //
 // polar adaptive                                                            //
@@ -40,8 +40,8 @@ void decode_polar(const quaternion_c32 &cq, quaternion &q);
 // note: Implementation of Mark Zarb-Adami's algorithm as published in Game  //
 //       Programming Gems 3.                                                 //
 // ------------------------------------------------------------------------- //
-void encode_polar_adaptive(const quaternion &q, quaternion_c32 &cq);
-void decode_polar_adaptive(const quaternion_c32 &cq, quaternion &q);
+void encode_polar_adaptive(const quaternion &q, quaternion_c32 &out_cq);
+void decode_polar_adaptive(const quaternion_c32 &cq, quaternion &out_q);
 
 } // namespace mth //
 } // namespace gea //

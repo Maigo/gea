@@ -1,6 +1,8 @@
 #ifndef __GEA_MTH_AABB_H__
 #define __GEA_MTH_AABB_H__
 
+#include <gea/mth_core/base.h>
+
 namespace gea {
 namespace mth {
 
