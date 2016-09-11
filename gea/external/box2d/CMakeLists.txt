@@ -9,8 +9,8 @@ message(STATUS "Building ${LIB}")
 
 set(BOX2D_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 
-set(BOX2D_BUILD_SHARED ON)
-set(BOX2D_BUILD_STATIC ON)
+set(BOX2D_BUILD_SHARED   ON)
+set(BOX2D_BUILD_STATIC   ON)
 set(BOX2D_BUILD_EXAMPLES OFF)
 
 ExternalProject_Add(BOX2D
@@ -46,7 +46,7 @@ ExternalProject_Add(BOX2D
 )
 
 # Organize lib into solution folder
-project_group(BOX2D "external")
+project_group(BOX2D "__external")
 
 # Make sure include directory exists
 #file(MAKE_DIRECTORY ${BOX2D_PREFIX}/install/include/BOX2D/)

@@ -9,6 +9,11 @@ namespace mth {
 inline const float degrees_to_radians(const float deg) { return deg * PI / 180.0f; }
 inline const float radians_to_degrees(const float rad) { return rad * 180.0f / PI; }
 
+// optimized sin & cos method
+inline void fsincos(const float angle, float &out_sin, float &out_cos) {
+    return i_fsincos(angle, out_sin, out_cos);
+}
+
 // ------------------------------------------------------------------------- //
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
@@ -25,12 +30,9 @@ inline const float lwb(const float f, const float e) { return (f - e); }
 
 // nice scalar
 inline const bool nice(const float number) { return _finite(number) && !_isnan(number); }
+
 // finite scalar
 inline const bool finite(const float number) { return _finite(number) != 0; }
-// optimized sin & cos method
-inline void fsincos(const float angle, float &out_sin, float &out_cos) {
-    return i_fsincos(angle, out_sin, out_cos);
-}
 
 // ------------------------------------------------------------------------- //
 // Template Functions                                                        //

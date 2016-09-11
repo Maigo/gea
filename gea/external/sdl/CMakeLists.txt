@@ -38,7 +38,7 @@ ExternalProject_Add(SDL2
 )
 
 # Organize lib into solution folder
-project_group(SDL2 "external")
+project_group(SDL2 "__external")
 
 # Make sure include directory exists
 file(MAKE_DIRECTORY ${SDL2_PREFIX}/install/include/SDL2/)

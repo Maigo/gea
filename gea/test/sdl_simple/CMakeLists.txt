@@ -1,56 +1,56 @@
 #################################################
-# TEST: SDL SIMPLE                              #
+# DEMO: SDL SIMPLE                              #
 #################################################
 cmake_minimum_required(VERSION 3.5.0)
 
-set(TEST sdl_simple)
+set(DEMO sdl_simple)
 
-message(STATUS "Building ${TEST}")
+message(STATUS "Building ${DEMO}")
 
-#project (${TEST} VERSION 0.0.0)
+#project (${DEMO} VERSION 0.0.0)
 
-# List dependencies
-set(DEP_${TEST}
-	gea_math
-	gea_math_graph
-	ext_sdl
+# list dependencies
+set(DEP_${DEMO}
+    gea_math
+    gea_math_graph
+    ext_sdl
 )
 
 message(STATUS "[WARNING] Building using win32 libraries!")
-set(DEP_WIN_${TEST}
-	winmm.lib
-	version.lib
-	imm32.lib
+list(APPEND DEP_${DEMO}
+    winmm.lib
+    version.lib
+    imm32.lib
 )
 
 # source build variables
-set(INC_${TEST})
-set(INL_${TEST})
-set(SRC_${TEST})
+set(INC_${DEMO}) # include
+set(INL_${DEMO}) # inline
+set(SRC_${DEMO}) # source
 
-list(APPEND SRC_${TEST}
-  src/main.cpp
+# core
+list(APPEND SRC_${DEMO}
+    src/main.cpp
 )
 
-# Force include of global header
+# force include of global header
 force_include_header(global.h)
 
-# Organize source folders
-source_group("include" FILES ${INC_${TEST}})
-source_group("source" FILES ${SRC_${TEST}} ${INL_${TEST}})
+# organize source folders
+source_group("include" FILES ${INC_${DEMO}})
+source_group("source" FILES ${SRC_${DEMO}} ${INL_${DEMO}})
 
-# Add the executable
-add_executable(${TEST} ${SRC_${TEST}})
+# add target
+add_executable(${DEMO} ${SRC_${DEMO}})
 include_directories(${PROJECT_SOURCE_DIR} src ${ext_sdl_INCLUDE_DIR})
 
-# Add dependencies
-target_link_libraries(${TEST} ${DEP_${TEST}} ${DEP_WIN_${TEST}})
+# add dependencies
+target_link_libraries(${DEMO} ${DEP_${DEMO}} ${DEP_WIN_${DEMO}})
 
-# Organize test into solution folder
-project_group(${TEST} "tests")
+# organize test into solution folder
+project_group(${DEMO} "demos")
 
-# Clean-up
-unset(INC_${TEST})
-unset(INL_${TEST})
-unset(SRC_${TEST})
-unset(TEST)
+# clean-up
+unset(INC_${DEMO})
+unset(INL_${DEMO})
+unset(SRC_${DEMO})
