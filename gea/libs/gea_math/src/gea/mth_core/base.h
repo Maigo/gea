@@ -72,6 +72,12 @@ inline const float radians_to_degrees(const float rad);
 inline void fsincos(const float angle, float &out_sin, float &out_cos);
 
 // ------------------------------------------------------------------------- //
+// arithmetic functions                                                      //
+// ------------------------------------------------------------------------- //
+// modulo
+inline const float arithmetic_mod(const float value, const float mod);
+
+// ------------------------------------------------------------------------- //
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
 // approximative comparison

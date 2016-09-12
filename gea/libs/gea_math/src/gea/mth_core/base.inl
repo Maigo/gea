@@ -1,4 +1,6 @@
 
+#include <math.h>
+
 namespace gea {
 namespace mth {
 
@@ -12,6 +14,16 @@ inline const float radians_to_degrees(const float rad) { return rad * 180.0f / P
 // optimized sin & cos method
 inline void fsincos(const float angle, float &out_sin, float &out_cos) {
     return i_fsincos(angle, out_sin, out_cos);
+}
+
+// ------------------------------------------------------------------------- //
+// arithmetic functions                                                      //
+// ------------------------------------------------------------------------- //
+// modulo
+inline const float arithmetic_mod(const float value, const float mod)
+{
+    float value_mod = fmod(value, mod);
+    return (value_mod < 0.0) ? value_mod + mod : value_mod;
 }
 
 // ------------------------------------------------------------------------- //

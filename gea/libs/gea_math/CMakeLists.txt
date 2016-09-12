@@ -24,6 +24,7 @@ list(APPEND INC_${LIB}
     src/gea/mth_core/bits.h
     src/gea/mth_core/endian_swap.h
     src/gea/mth_core/intrinsic.h
+    src/gea/mth_core/limits.h
 )
 list(APPEND INL_${LIB}
     src/gea/mth_core/error/err_base.inl
@@ -32,12 +33,10 @@ list(APPEND INL_${LIB}
     src/gea/mth_core/bits.inl
     src/gea/mth_core/endian_swap.inl
     src/gea/mth_core/intrinsic.inl
+    src/gea/mth_core/limits.inl
 )
 list(APPEND SRC_${LIB}
     src/gea/mth_core/type/half.cpp
-)
-list(APPEND SRC_${LIB}_TEST
-    test/gea/mth_core/test_base.cpp
 )
 
 # geometry math
