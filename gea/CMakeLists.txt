@@ -49,6 +49,7 @@ add_subdirectory(external/gtest)
 # gea libraries
 add_subdirectory(libs/gea_math)
 add_subdirectory(libs/gea_math_graph)
+add_subdirectory(libs/gea_template)
 #add_subdirectory(libs/gea_binpack)
 add_subdirectory(libs/gea_eastl)
 
