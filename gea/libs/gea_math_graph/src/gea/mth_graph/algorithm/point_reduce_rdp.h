@@ -8,6 +8,7 @@
 // mth includes
 #include <gea/mth_core/base.h>
 #include <gea/mth_vector/point2.h>
+#include <gea/mth_geometry/line.h>
 
 namespace gea {
 namespace mth {
@@ -19,6 +20,8 @@ class point_reduce_rdp {
 public:
     static void point_reduce(const std::vector<point2> &points, const float epsilon, std::vector<point2> &out_points);
     static void point_reduce(const std::vector<point2> &points, const float epsilon, std::vector<uint32_t> &out_indicies);
+
+    static void point_reduce(const line2 &line, const float epsilon, line2 &out_line);
 
 private:
     static void find_furthest_point(const std::vector<point2> &points, const uint32_t from, const uint32_t to, float &out_distance, uint32_t &out_index);

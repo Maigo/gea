@@ -18,16 +18,19 @@ set(SRC_${LIB} ) # source
 
 # graph math
 list(APPEND INC_${LIB}
-  src/gea/mth_graph/algorithm/point_reduce_rdp.h
-  src/gea/mth_graph/algorithm/sampler.h
+    src/gea/mth_graph/algorithm/algorithm.h
+    src/gea/mth_graph/algorithm/point_reduce_rdp.h
+    src/gea/mth_graph/algorithm/sampler.h
 )
 list(APPEND INL_${LIB}
-  src/gea/mth_graph/algorithm/point_reduce_rdp.inl
-  src/gea/mth_graph/algorithm/sampler.inl
+    src/gea/mth_graph/algorithm/algorithm.inl
+    src/gea/mth_graph/algorithm/point_reduce_rdp.inl
+    src/gea/mth_graph/algorithm/sampler.inl
 )
 list(APPEND SRC_${LIB}
-  src/gea/mth_graph/algorithm/point_reduce_rdp.cpp
-  src/gea/mth_graph/algorithm/sampler.cpp
+    src/gea/mth_graph/algorithm/algorithm.cpp
+    src/gea/mth_graph/algorithm/point_reduce_rdp.cpp
+    src/gea/mth_graph/algorithm/sampler.cpp
 )
 
 # force include of global header
@@ -74,6 +77,7 @@ set(SRC_${LIB} ) # source
 
 # core math
 list(APPEND SRC_${LIB_TEST}
+    test/gea/mth_graph/algorithm/test_algorithm.cpp
     test/gea/mth_graph/algorithm/test_point_reduce_rdp.cpp
     test/gea/mth_graph/algorithm/test_sampler.cpp
 )
