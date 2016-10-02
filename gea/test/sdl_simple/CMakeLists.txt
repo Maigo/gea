@@ -11,17 +11,19 @@ message(STATUS "Building ${DEMO}")
 
 # list dependencies
 set(DEP_${DEMO}
+    gea_demo_sdl
     gea_math
     gea_math_graph
     ext_sdl
 )
 
-message(STATUS "[WARNING] Building using win32 libraries!")
-list(APPEND DEP_${DEMO}
-    winmm.lib
-    version.lib
-    imm32.lib
-)
+if (WIN32)
+    list(APPEND DEP_${DEMO}
+        winmm.lib
+        version.lib
+        imm32.lib
+    )
+endif (WIN32)
 
 # source build variables
 set(INC_${DEMO}) # include
@@ -29,7 +31,13 @@ set(INL_${DEMO}) # inline
 set(SRC_${DEMO}) # source
 
 # core
+list(APPEND INC_${DEMO}
+    src/gea/demo/sdl_simple/application.h
+)
+list(APPEND INL_${DEMO}
+)
 list(APPEND SRC_${DEMO}
+    src/gea/demo/sdl_simple/application.cpp
     src/main.cpp
 )
 
