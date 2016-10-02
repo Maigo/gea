@@ -20,6 +20,7 @@ set(SRC_${LIB} ) # source
 list(APPEND INC_${LIB}
     src/gea/mth_core/error/err_base.h
     src/gea/mth_core/type/half.h
+    src/gea/mth_core/sort/binary_search.h
     src/gea/mth_core/base.h
     src/gea/mth_core/bits.h
     src/gea/mth_core/endian_swap.h
@@ -29,6 +30,7 @@ list(APPEND INC_${LIB}
 list(APPEND INL_${LIB}
     src/gea/mth_core/error/err_base.inl
     src/gea/mth_core/type/half.inl
+    src/gea/mth_core/sort/binary_search.inl
     src/gea/mth_core/base.inl
     src/gea/mth_core/bits.inl
     src/gea/mth_core/endian_swap.inl
@@ -64,6 +66,8 @@ list(APPEND INC_${LIB}
     src/gea/mth_vector/algorithm2.h
     src/gea/mth_vector/algorithm3.h
     src/gea/mth_vector/endian_swap.h
+    src/gea/mth_vector/linear_transform2.h
+    src/gea/mth_vector/matrix2.h
     src/gea/mth_vector/matrix3.h
     src/gea/mth_vector/point2.h
     src/gea/mth_vector/point3.h
@@ -81,6 +85,8 @@ list(APPEND INL_${LIB}
     src/gea/mth_vector/algorithm2.inl
     src/gea/mth_vector/algorithm3.inl
     src/gea/mth_vector/endian_swap.inl
+    src/gea/mth_vector/linear_transform2.inl
+    src/gea/mth_vector/matrix2.inl
     src/gea/mth_vector/matrix3.inl
     src/gea/mth_vector/point2.inl
     src/gea/mth_vector/point3.inl
@@ -94,6 +100,7 @@ list(APPEND INL_${LIB}
 list(APPEND SRC_${LIB}
     src/gea/mth_vector/compression/comp_quaternion.cpp
     src/gea/mth_vector/compression/comp_vector3.cpp
+    src/gea/mth_vector/matrix2.cpp
     src/gea/mth_vector/matrix3.cpp
     src/gea/mth_vector/point2.cpp
     src/gea/mth_vector/point3.cpp
@@ -144,19 +151,21 @@ set(DEP_${LIB_TEST}
 )
 
 # source build variables
-set(SRC_${LIB} ) # source
+set(SRC_${LIB_TEST} ) # source
 
 # core math
 list(APPEND SRC_${LIB_TEST}
+    test/gea/mth_core/sort/test_binary_search.cpp
     test/gea/mth_core/test_base.cpp
 )
 
 # geometry math
-list(APPEND SRC_${LIB}
+list(APPEND SRC_${LIB_TEST}
+    test/gea/mth_geometry/test_line2.cpp
 )
 
 # vector math
-list(APPEND SRC_${LIB}
+list(APPEND SRC_${LIB_TEST}
 )
 
 # force include of global header

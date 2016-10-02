@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_VECTOR3_H__
-#define __GEA_VMTH_VECTOR3_H__
+#ifndef __GEA_VMTH_VECTOR2_H__
+#define __GEA_VMTH_VECTOR2_H__
 
 // stl includes
 #include <assert.h>
@@ -22,7 +22,7 @@ class polar2;
 // ------------------------------------------------------------------------- //
 class vector2 {
 public:
-    float x, y, z;
+    float x, y;
 
     // constructors
     inline vector2();
@@ -125,4 +125,4 @@ inline std::ostream &operator<< (std::ostream &os, const vector2 &v);
 
 #include "vector2.inl"
 
-#endif // __GEA_VMTH_VECTOR3_H__ //
+#endif // __GEA_VMTH_VECTOR2_H__ //

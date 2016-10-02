@@ -3,6 +3,7 @@
 
 // mth includes
 #include <gea/mth_core/base.h>
+#include <gea/mth_vector/point3.h>
 #include <gea/mth_vector/vector3.h>
 
 #if defined(DEBUG) || defined(PRODUCTION)
@@ -41,6 +42,7 @@ public:
     inline const matrix3 operator* (const float s) const;
     inline const matrix3 operator/ (const float s) const;
     inline const vector3 operator* (const vector3 &v) const;
+    inline const point3  operator* (const point3  &p) const;
     // unary arithmetic
     inline const matrix3 operator+ () const;
     inline const matrix3 operator- () const;

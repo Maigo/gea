@@ -68,6 +68,11 @@ inline const vector3 matrix3::operator* (const vector3 &v) const {
                    m[1][0] * v.x + m[1][1] * v.y + m[1][2] * v.z,
                    m[2][0] * v.x + m[2][1] * v.y + m[2][2] * v.z);
 }
+inline const point3 matrix3::operator* (const point3 &p) const {
+    return point3(m[0][0] * p.x + m[0][1] * p.y + m[0][2] * p.z,
+        m[1][0] * p.x + m[1][1] * p.y + m[1][2] * p.z,
+        m[2][0] * p.x + m[2][1] * p.y + m[2][2] * p.z);
+}
 // unary arithmetic
 inline const matrix3 matrix3::operator+ () const { return (*this); }
 inline const matrix3 matrix3::operator- () const {
@@ -100,8 +105,8 @@ inline const float matrix3::trace() const {
     return m[0][0] + m[1][1] + m[2][2];
 }
 inline const float matrix3::determinant() const {
-    return m[1][1] * m[2][2] * m[3][3] + m[1][2] * m[2][3] * m[3][1] + m[1][3] * m[2][1] * m[3][2] -
-           m[1][1] * m[2][3] * m[3][2] - m[1][2] * m[2][1] * m[3][3] - m[1][3] * m[2][2] * m[3][1];
+    return m[0][0] * m[1][1] * m[2][2] + m[0][1] * m[1][2] * m[2][0] + m[0][2] * m[1][0] * m[2][1] -
+           m[0][0] * m[1][2] * m[2][1] - m[0][1] * m[1][0] * m[2][2] - m[0][2] * m[1][1] * m[2][0];
 }
 
 
