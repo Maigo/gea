@@ -53,6 +53,10 @@ add_subdirectory(libs/gea_template)
 #add_subdirectory(libs/gea_binpack)
 add_subdirectory(libs/gea_eastl)
 
+# gea demo libraries
+add_subdirectory(libs/gea_demo_core)
+add_subdirectory(libs/gea_demo_sdl)
+
 # gea engine
 add_subdirectory(engine)
 
