@@ -51,6 +51,7 @@ list(APPEND INC_${LIB}
 )
 list(APPEND INL_${LIB}
     src/gea/mth_geometry/aabb.inl
+    src/gea/mth_geometry/line.inl
 )
 list(APPEND SRC_${LIB}
 )
@@ -166,6 +167,8 @@ list(APPEND SRC_${LIB_TEST}
 
 # vector math
 list(APPEND SRC_${LIB_TEST}
+    test/gea/mth_vector/test_algorithm2.cpp
+    test/gea/mth_vector/test_point2.cpp
 )
 
 # force include of global header

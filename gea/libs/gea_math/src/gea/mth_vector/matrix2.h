@@ -25,7 +25,7 @@ public:
     inline matrix2(const float xx, const float yy);
     inline matrix2(const float xx, const float yx,
                    const float xy, const float yy);
-    inline matrix2(skip_initialization);
+    inline explicit matrix2(skip_initialization);
     inline matrix2(const matrix2 &o);
 
     // arithmetic
@@ -84,7 +84,7 @@ inline const bool finite(const matrix2 &m);
 // debug functions                                                           //
 // ------------------------------------------------------------------------- //
 #if defined(DEBUG) || defined(PRODUCTION)
-inline std::ostream &operator<< (std::ostream &lhs, const matrix2 &rhs);
+    inline std::ostream &operator<< (std::ostream &lhs, const matrix2 &rhs);
 #endif
 
 } // namespace mth //

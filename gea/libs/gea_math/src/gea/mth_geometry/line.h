@@ -15,36 +15,44 @@ namespace mth {
 
 class line2 {
 public:
-    typedef std::vector<point2> points_type;
-    typedef points_type::size_type size_type;
+    // ------------------------------------------------------------------------- //
+
+    class modify_t {
+    public:
+        typedef std::vector<point2> points_type;
+        typedef points_type::size_type size_type;
+
+        inline void reserve(const size_type count);
+
+        inline void add_point(const point2 &p);
+        inline void add_point(const vector2 &v);
+
+    private:
+        friend class line2;
+        inline modify_t() {}
+
+        points_type m_points;
+    };
+
+    // ------------------------------------------------------------------------- //
+
+    typedef modify_t::points_type points_type;
+    typedef modify_t::size_type size_type;
 
     inline line2();
 
+    inline modify_t &modify();
+    inline const modify_t &modify() const;
+
     inline const size_type size() const;
+    inline const bool empty() const;
+
     inline const float length() const;
 
     inline const points_type &points() const;
 
 private:
-    friend class line2_builder;
-    points_type m_points;
-};
-
-// ------------------------------------------------------------------------- //
-// line2_builder                                                             //
-// ------------------------------------------------------------------------- //
-
-class line2_builder
-{
-public:
-    inline line2_builder(line2 &line);
-
-    inline line2_builder &reserve(const line2::size_type count);
-
-    inline line2_builder &at_point(const point2 &p);
-    inline line2_builder &to_point(const vector2 &v);
-private:
-    line2 &m_line;
+    modify_t m_container;
 };
 
 // ------------------------------------------------------------------------- //

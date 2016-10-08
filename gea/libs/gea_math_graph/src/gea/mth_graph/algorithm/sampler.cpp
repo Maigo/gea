@@ -32,14 +32,14 @@ void sampler::sample(const float min, const float max, const float step, graph_f
 
     const uint32_t size = uint32_t(ceil((max - min) / step));
 
-    line2_builder builder(out_line);
-    builder.reserve(size);
+    line2::modify_t &modify_line = out_line.modify();
+    modify_line.reserve(size);
 
     for (float i = min; approx_leq(i, max); i += step)
     {
         const float x = i;
         const float y = function(x);
-        builder.at_point(point2(x, y));
+        modify_line.add_point(point2(x, y));
     }
 }
 

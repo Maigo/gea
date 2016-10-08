@@ -90,7 +90,43 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
 
 void point_reduce_rdp::point_reduce(const line2 &line, const float epsilon, line2 &out_line)
 {
+    assert((epsilon > 0) && "invalid parameters");
 
+    const line2::points_type &points = line.points();
+    line2::modify_t &modify_line = out_line.modify();
+
+    // early out
+    if (points.empty()) {
+        return;
+    }
+
+    point_reduce_stack stack;
+    stack.push_back({ 0u, points.size() - 1u });
+
+    // iterative recursion
+    while (!stack.empty())
+    {
+        const point_reduce_arg args = stack.back();
+        stack.pop_back();
+
+        float distance = 0.0f;
+        uint32_t index = 0;
+        find_furthest_point(points, args.from, args.to, distance, index);
+
+        if (distance > epsilon)
+        {
+            stack.push_back({ index, args.to });
+            stack.push_back({ args.from, index });
+        }
+        else
+        {
+            // include start point
+            modify_line.add_point(points[args.from]);
+        }
+    }
+
+    // include end point
+    modify_line.add_point(points[points.size() - 1]);
 }
 
 // ------------------------------------------------------------------------- //

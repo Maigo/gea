@@ -10,9 +10,10 @@ inline const float distance_to_line(const point2 &line_p0, const point2 &line_p1
 {
     const vector2 v0 = line_p0.to(line_p1);
     const vector2 v1 = line_p0.to(p);
+    assert(approx_ne(v0, vector2::ZERO) && "invalid line!");
 
     const float dot = v1.dot_product(v0);
-    const vector2 v2 = v1 - dot * v0;
+    const vector2 v2 = v1 - (dot * v0) / v0.length_sq();
 
     return v2.length();
 }
