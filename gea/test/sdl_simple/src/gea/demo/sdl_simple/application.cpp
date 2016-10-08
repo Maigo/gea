@@ -37,7 +37,7 @@ void application::initialize() {
     }
 
     // Create window
-    m_window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    m_window = SDL_CreateWindow("demo: sdl_simple", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (m_window == nullptr) {
         printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
         return;
