@@ -13,10 +13,11 @@ namespace mth {
 
 void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const float epsilon, std::vector<point2> &out_points)
 {
-    assert((epsilon > 0) && "invalid parameters");
+    assert((epsilon > 0) && "invalid parameters!");
 
     // early out
-    if (points.empty()) {
+    if (points.empty())
+    {
         return;
     }
 
@@ -38,7 +39,8 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
             stack.push_back({ index, args.to });
             stack.push_back({ args.from, index });
         }
-        else {
+        else
+        {
             // include start point
             out_points.push_back(points[args.from]);
         }
@@ -52,10 +54,11 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
 
 void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const float epsilon, std::vector<uint32_t> &out_indicies)
 {
-    assert((epsilon > 0) && "invalid parameters");
+    assert((epsilon > 0) && "invalid parameters!");
 
     // early out
-    if (points.empty()) {
+    if (points.empty())
+    {
         return;
     }
 
@@ -76,7 +79,9 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
         {
             stack.push_back({ index, args.to });
             stack.push_back({ args.from, index });
-        } else {
+        }
+        else
+        {
             // include start point
             out_indicies.push_back(args.from);
         }
@@ -90,13 +95,14 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
 
 void point_reduce_rdp::point_reduce(const line2 &line, const float epsilon, line2 &out_line)
 {
-    assert((epsilon > 0) && "invalid parameters");
+    assert((epsilon > 0) && "invalid parameters!");
 
     const line2::points_type &points = line.points();
     line2::modify_t &modify_line = out_line.modify();
 
     // early out
-    if (points.empty()) {
+    if (points.empty())
+    {
         return;
     }
 
