@@ -43,14 +43,12 @@ list(APPEND SRC_${LIB}
 
 # geometry math
 list(APPEND INC_${LIB}
-    src/gea/mth_geometry/aabb.h
     src/gea/mth_geometry/line.h
     src/gea/mth_geometry/polygon.h
     src/gea/mth_geometry/rectangle.h
     src/gea/mth_geometry/triangle.h
 )
 list(APPEND INL_${LIB}
-    src/gea/mth_geometry/aabb.inl
     src/gea/mth_geometry/line.inl
 )
 list(APPEND SRC_${LIB}
