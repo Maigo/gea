@@ -50,8 +50,11 @@ list(APPEND INC_${LIB}
 )
 list(APPEND INL_${LIB}
     src/gea/mth_geometry/line.inl
+    src/gea/mth_geometry/polygon.inl
 )
 list(APPEND SRC_${LIB}
+    src/gea/mth_geometry/line2.cpp
+    src/gea/mth_geometry/polygon2.cpp
 )
 
 # vector math
@@ -161,6 +164,7 @@ list(APPEND SRC_${LIB_TEST}
 # geometry math
 list(APPEND SRC_${LIB_TEST}
     test/gea/mth_geometry/test_line2.cpp
+    test/gea/mth_geometry/test_polygon2.cpp
 )
 
 # vector math

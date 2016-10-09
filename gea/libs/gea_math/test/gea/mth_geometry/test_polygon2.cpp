@@ -1,30 +1,31 @@
 
 #include <gtest/gtest.h>
 
-#include <gea/mth_geometry/line.h>
+#include <gea/mth_geometry/polygon.h>
 
 namespace gea {
 namespace mth {
 
 // ------------------------------------------------------------------------- //
-// line2                                                                     //
+// polygon2                                                                  //
 // ------------------------------------------------------------------------- //
 
-TEST(gea_math, line2)
+TEST(gea_math, polygon2)
 {
     // conversion functions
     {
         const point2 data_set[] = { { 0, 0 }, { 0, 2 }, { 2, 2 }, { 2, 0 } };
 
-        line2 line;
-        line.modify().reserve(sizeof(data_set) / sizeof(point2));
+        polygon2 polygon;
+        polygon.modify().reserve(sizeof(data_set) / sizeof(point2));
 
         for (const point2 &point : data_set) {
-            line.modify().add_point(point);
+            polygon.modify().add_point(point);
         }
 
-        EXPECT_EQ(line.size(), 4);
-        EXPECT_FLOAT_EQ(line.length(), 6.0f);
+        EXPECT_EQ(polygon.size(), 4);
+        EXPECT_FLOAT_EQ(polygon.circumference(), 8.0f);
+        EXPECT_FLOAT_EQ(polygon.area(), 4.0f);
     }
 }
 

@@ -15,8 +15,7 @@ namespace mth {
 
 class line2 {
 public:
-    // ------------------------------------------------------------------------- //
-
+// ------------------------------------------------------------------------- //
     class modify_t {
     public:
         typedef std::vector<point2> points_type;
@@ -33,8 +32,7 @@ public:
 
         points_type m_points;
     };
-
-    // ------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------- //
 
     typedef modify_t::points_type points_type;
     typedef modify_t::size_type size_type;
@@ -47,8 +45,9 @@ public:
     inline const size_type size() const;
     inline const bool empty() const;
 
-    inline const float length() const;
+    const float length() const;
 
+    inline const point2 &operator [](const size_type i) const;
     inline const points_type &points() const;
 
 private:
