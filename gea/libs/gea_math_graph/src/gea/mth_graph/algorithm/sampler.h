@@ -8,7 +8,7 @@
 // mth includes
 #include <gea/mth_core/base.h>
 #include <gea/mth_vector/point2.h>
-#include <gea/mth_geometry/line.h>
+#include <gea/mth_geometry/line2.h>
 
 namespace gea {
 namespace mth {

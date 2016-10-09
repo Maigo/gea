@@ -1,6 +1,6 @@
 
 // header include
-#include "line.h"
+#include "line2.h"
 
 namespace gea {
 namespace mth {

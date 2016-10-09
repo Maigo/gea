@@ -1,7 +1,7 @@
 
 #include <gtest/gtest.h>
 
-#include <gea/mth_geometry/line.h>
+#include <gea/mth_geometry/line2.h>
 
 namespace gea {
 namespace mth {
