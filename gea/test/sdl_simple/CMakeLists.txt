@@ -45,8 +45,8 @@ list(APPEND SRC_${DEMO}
 force_include_header(global.h)
 
 # organize source folders
-source_group("include" FILES ${INC_${DEMO}})
-source_group("source" FILES ${SRC_${DEMO}} ${INL_${DEMO}})
+source_group_ext(PREFIX "include" UNPREFIX "src" FILES ${INC_${DEMO}})
+source_group_ext(PREFIX "source"  UNPREFIX "src" FILES ${SRC_${DEMO}} ${INL_${DEMO}})
 
 # add target
 add_executable(${DEMO} ${SRC_${DEMO}})

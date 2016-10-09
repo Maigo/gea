@@ -26,8 +26,8 @@ list(APPEND SRC_${LIB}
 force_include_header(global.h)
 
 # organize source folders
-source_group("include" FILES ${INC_${LIB}})
-source_group("source" FILES ${SRC_${LIB}} ${INL_${LIB}})
+source_group_ext(PREFIX "include" UNPREFIX "src" FILES ${INC_${LIB}})
+source_group_ext(PREFIX "source"  UNPREFIX "src" FILES ${SRC_${LIB}} ${INL_${LIB}})
 
 # add library and include directory
 add_library(${LIB} STATIC ${SRC_${LIB}} ${INL_${LIB}} ${INC_${LIB}})
@@ -77,7 +77,7 @@ list(APPEND SRC_${LIB}
 force_include_header(global.h)
 
 # organize source folders
-source_group("source" FILES ${SRC_${LIB_TEST}})
+source_group_ext(PREFIX "source" UNPREFIX "test" FILES ${SRC_${LIB_TEST}})
 
 # add target and test
 add_executable(${LIB_TEST} ${SRC_${LIB_TEST}})

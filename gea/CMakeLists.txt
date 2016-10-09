@@ -9,6 +9,7 @@ set(README_FILE "README.md")
 #################################################
 # add cmake extensions
 include(${CMAKE_SOURCE_DIR}/cmake/extensions.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/extensions_gea.cmake)
 
 # add cmake module path
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
