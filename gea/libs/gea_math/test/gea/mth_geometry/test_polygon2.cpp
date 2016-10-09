@@ -1,7 +1,7 @@
 
 #include <gtest/gtest.h>
 
-#include <gea/mth_geometry/polygon.h>
+#include <gea/mth_geometry/polygon2.h>
 
 namespace gea {
 namespace mth {

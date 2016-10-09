@@ -1,6 +1,6 @@
 
 // header include
-#include "polygon.h"
+#include "polygon2.h"
 
 namespace gea {
 namespace mth {

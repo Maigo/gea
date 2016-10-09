@@ -4,7 +4,7 @@
 // gea includes
 #include <gea\demo\sdl\sdl_application.h>
 
-#include <gea\mth_geometry\line.h>
+#include <gea\mth_geometry\line2.h>
 
 struct SDL_Window;
 struct SDL_Renderer;

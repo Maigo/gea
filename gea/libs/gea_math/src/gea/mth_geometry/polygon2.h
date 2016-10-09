@@ -60,6 +60,6 @@ private:
 } // namespace mth //
 } // namespace gea //
 
-#include "polygon.inl"
+#include "polygon2.inl"
 
 #endif // __GEA_MATH_GEOMETRY_POLYGON2_h__ //

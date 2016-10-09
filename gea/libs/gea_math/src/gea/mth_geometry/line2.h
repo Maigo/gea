@@ -59,6 +59,6 @@ private:
 } // namespace mth //
 } // namespace gea //
 
-#include "line.inl"
+#include "line2.inl"
 
 #endif // __GEA_MTH_GEOMETRY_LINE2_H__ //
