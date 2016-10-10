@@ -98,7 +98,6 @@ void point_reduce_rdp::point_reduce(const line2 &line, const float epsilon, line
     assert((epsilon > 0) && "invalid parameters!");
 
     const line2::points_type &points = line.points();
-    line2::modify_t &modify_line = out_line.modify();
 
     // early out
     if (points.empty())
@@ -127,12 +126,12 @@ void point_reduce_rdp::point_reduce(const line2 &line, const float epsilon, line
         else
         {
             // include start point
-            modify_line.add_point(points[args.from]);
+            out_line.modify().add_point(points[args.from]);
         }
     }
 
     // include end point
-    modify_line.add_point(points[points.size() - 1]);
+    out_line.modify().add_point(points[points.size() - 1]);
 }
 
 // ------------------------------------------------------------------------- //

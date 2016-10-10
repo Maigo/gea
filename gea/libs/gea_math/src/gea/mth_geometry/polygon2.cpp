@@ -23,7 +23,7 @@ static const float determinant(const point2 &c0, const point2 &c1) {
 
 const float polygon2::circumference() const
 {
-    const modify_t::points_type &points = m_container.m_points;
+    const points_type &points = m_container.m_points;
 
     float circumference = 0.0f;
     for (int i = 0, e = points.size(); i < e; ++i) {
@@ -36,7 +36,7 @@ const float polygon2::circumference() const
 
 const float polygon2::area() const
 {
-    const modify_t::points_type &points = m_container.m_points;
+    const points_type &points = m_container.m_points;
 
     float area = 0.0f;
     for (int i = 0, e = points.size(); i < e; ++i) {
