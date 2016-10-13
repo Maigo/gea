@@ -44,11 +44,11 @@ private:
 // ------------------------------------------------------------------------- //
 // global functions                                                          //
 // ------------------------------------------------------------------------- //
-extern void     random_init(uint32_t seed);
-extern float    random_float();
-extern double   random_double();
-extern uint32_t random_uint32_t();
-extern uint64_t random_uint64_t();
+extern void           random_init(uint32_t seed);
+extern const float    random_float();
+extern const double   random_double();
+extern const uint32_t random_uint32_t();
+extern const uint64_t random_uint64_t();
 
 // ------------------------------------------------------------------------- //
 // global instance                                                           //

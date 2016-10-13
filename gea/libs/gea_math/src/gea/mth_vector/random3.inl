@@ -13,8 +13,8 @@ namespace mth {
 // polar3                                                                    //
 // ------------------------------------------------------------------------- //
 inline const polar3 rand_polar3() {
-    const float r1 = g_random.rfloat(), r2 = g_random.rfloat();
-    return polar3(1.0f, 2.0f*PI*r1, PI*r2);
+    const float r0 = g_random.rfloat(), r1 = g_random.rfloat();
+    return polar3(1.0f, 2.0f * PI * r0, PI * r1);
 }
 
 // ------------------------------------------------------------------------- //
@@ -27,11 +27,15 @@ inline const quaternion rand_quaternion() {
 }
 
 // ------------------------------------------------------------------------- //
+// point3                                                                    //
+// ------------------------------------------------------------------------- //
+
+// ------------------------------------------------------------------------- //
 // vector3                                                                   //
 // ------------------------------------------------------------------------- //
-inline const vector3 rand_vector3(const float max, const float min) {
-    vector3 v(rand_polar3());
-    return ((max - min) * v) + min;
+inline const vector3 rand_vector3(const float max_length, const float min_length) {
+    const vector3 v(rand_polar3());
+    return ((max_length - min_length) * v) + min_length;
 }
 
 } // namespace mth //

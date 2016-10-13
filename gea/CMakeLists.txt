@@ -42,7 +42,7 @@ add_subdirectory(external/sdl)
 add_subdirectory(external/glfw)
 
 add_subdirectory(external/hash)
-add_subdirectory(external/random)
+add_subdirectory(external/sfmt)
 #add_subdirectory(external/static_hash)
 
 add_subdirectory(external/gtest)
@@ -52,6 +52,7 @@ add_subdirectory(libs/gea_math)
 add_subdirectory(libs/gea_math_graph)
 #add_subdirectory(libs/gea_binpack)
 add_subdirectory(libs/gea_eastl)
+add_subdirectory(libs/gea_random)
 
 # gea demo libraries
 add_subdirectory(libs/gea_demo_core)

@@ -46,11 +46,13 @@ list(APPEND INC_${LIB}
     src/gea/mth_geometry/internal/modify2.h
     src/gea/mth_geometry/line2.h
     src/gea/mth_geometry/polygon2.h
+    src/gea/mth_geometry/rectangle2.h
 )
 list(APPEND INL_${LIB}
     src/gea/mth_geometry/internal/modify2.inl
     src/gea/mth_geometry/line2.inl
     src/gea/mth_geometry/polygon2.inl
+    src/gea/mth_geometry/rectangle2.inl
 )
 list(APPEND SRC_${LIB}
     src/gea/mth_geometry/line2.cpp
@@ -76,7 +78,8 @@ list(APPEND INC_${LIB}
     src/gea/mth_vector/polar2.h
     src/gea/mth_vector/polar3.h
     src/gea/mth_vector/quaternion.h
-    src/gea/mth_vector/random.h
+    src/gea/mth_vector/random2.h
+    src/gea/mth_vector/random3.h
     src/gea/mth_vector/vector2.h
     src/gea/mth_vector/vector3.h
 )
@@ -95,7 +98,8 @@ list(APPEND INL_${LIB}
     src/gea/mth_vector/polar2.inl
     src/gea/mth_vector/polar3.inl
     src/gea/mth_vector/quaternion.inl
-    src/gea/mth_vector/random.inl
+    src/gea/mth_vector/random2.inl
+    src/gea/mth_vector/random3.inl
     src/gea/mth_vector/vector2.inl
     src/gea/mth_vector/vector3.inl
 )
