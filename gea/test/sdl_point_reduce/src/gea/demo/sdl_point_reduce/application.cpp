@@ -30,20 +30,20 @@ application::~application() {}
 void application::initialize() {
     super_t::initialize();
 
-    // Initialize SDL
+    // initialize sdl
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
         return;
     }
 
-    // Create window
-    m_window = SDL_CreateWindow("demo: sdl_simple", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    // create window
+    m_window = SDL_CreateWindow("demo: sdl_point_reduce", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (m_window == nullptr) {
         printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
         return;
     }
 
-    // Get window renderer
+    // get window renderer
     m_renderer = SDL_CreateRenderer(m_window, -1, 0);
 
     // sample line
@@ -66,7 +66,7 @@ void application::deinitialize() {
         m_window = nullptr;
     }
 
-    // Quit SDL subsystems
+    // quit sdl subsystems
     SDL_Quit();
 
     super_t::deinitialize();
@@ -99,7 +99,7 @@ static void drawPoints(SDL_Renderer* renderer, const mth::line2 &line, const mth
 // ------------------------------------------------------------------------- //
 
 void application::render(const render_context &context) {
-    // Fill buffer with white
+    // fill buffer with white
     SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(m_renderer);
 
@@ -107,11 +107,11 @@ void application::render(const render_context &context) {
     {
         mth::linear_transform2 move_up(mth::matrix2::IDENTITY, mth::vector2(0, -20));
 
-        // Draw lines
+        // draw lines
         SDL_SetRenderDrawColor(m_renderer, 0x00, 0x00, 0xFF, SDL_ALPHA_OPAQUE);
         drawLine(m_renderer, m_line, move_up);
 
-        // Draw points
+        // draw points
         SDL_SetRenderDrawColor(m_renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
         drawPoints(m_renderer, m_line, move_up);
     }
@@ -120,16 +120,16 @@ void application::render(const render_context &context) {
     {
         mth::linear_transform2 move_down(mth::matrix2::IDENTITY, mth::vector2(0, 20));
 
-        // Draw lines
+        // draw lines
         SDL_SetRenderDrawColor(m_renderer, 0x00, 0x00, 0xFF, SDL_ALPHA_OPAQUE);
         drawLine(m_renderer, m_reducedLine, move_down);
 
-        // Draw points
+        // draw points
         SDL_SetRenderDrawColor(m_renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
         drawPoints(m_renderer, m_reducedLine, move_down);
     }
 
-    // Swap buffers
+    // swap buffers
     SDL_RenderPresent(m_renderer);
 }
 

@@ -1,9 +1,9 @@
 #################################################
-# DEMO: SDL SIMPLE                              #
+# DEMO: SDL POINT REDUCE                        #
 #################################################
 cmake_minimum_required(VERSION 3.5.0)
 
-set(DEMO sdl_simple)
+set(DEMO sdl_point_reduce)
 
 message(STATUS "Building ${DEMO}")
 
@@ -32,12 +32,12 @@ set(SRC_${DEMO}) # source
 
 # core
 list(APPEND INC_${DEMO}
-    src/gea/demo/sdl_simple/application.h
+    src/gea/demo/sdl_point_reduce/application.h
 )
 list(APPEND INL_${DEMO}
 )
 list(APPEND SRC_${DEMO}
-    src/gea/demo/sdl_simple/application.cpp
+    src/gea/demo/sdl_point_reduce/application.cpp
     src/main.cpp
 )
 
