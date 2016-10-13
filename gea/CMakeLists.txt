@@ -41,17 +41,17 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_subdirectory(external/sdl)
 add_subdirectory(external/glfw)
 
-add_subdirectory(external/hash)
+add_subdirectory(external/murmur)
 add_subdirectory(external/sfmt)
-#add_subdirectory(external/static_hash)
 
 add_subdirectory(external/gtest)
 
 # gea libraries
-add_subdirectory(libs/gea_math)
-add_subdirectory(libs/gea_math_graph)
 #add_subdirectory(libs/gea_binpack)
 add_subdirectory(libs/gea_eastl)
+add_subdirectory(libs/gea_hash)
+add_subdirectory(libs/gea_math)
+add_subdirectory(libs/gea_math_graph)
 add_subdirectory(libs/gea_random)
 
 # gea demo libraries

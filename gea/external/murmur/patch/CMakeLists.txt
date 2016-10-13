@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 
 #################################################
-# EXTERNAL: SFMT (patch)                        #
+# EXTERNAL: MURMUR (patch)                      #
 #################################################
 
-set(LIB SFMT)
+set(LIB MURMUR)
 
 # source build variables
 set(INC_${LIB}) # include
@@ -12,25 +12,14 @@ set(SRC_${LIB}) # source
 
 # sfmt source
 list(APPEND INC_${LIB}
-    SFMT-alti.h
-    SFMT-common.h
-    SFMT-params.h
-    SFMT-params11213.h
-    SFMT-params1279.h
-    SFMT-params132049.h
-    SFMT-params19937.h
-    SFMT-params216091.h
-    SFMT-params2281.h
-    SFMT-params4253.h
-    SFMT-params44497.h
-    SFMT-params607.h
-    SFMT-params86243.h
-    SFMT-sse2-msc.h
-    SFMT-sse2.h
-    SFMT.h
+    src/MurMurHash1.h
+    src/MurMurHash2.h
+    src/MurMurHash3.h
 )
 list(APPEND SRC_${LIB}
-    SFMT.c
+    src/MurMurHash1.cpp
+    src/MurMurHash2.cpp
+    src/MurMurHash3.cpp
 )
 
 # organize source folders
