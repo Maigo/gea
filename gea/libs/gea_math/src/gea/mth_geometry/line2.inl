@@ -35,7 +35,7 @@ inline const point2 &line2::operator [](const size_type i) const {
 
 // ------------------------------------------------------------------------- //
 
-inline const line2::points_type &line2::points() const { return m_container.m_points; }
+inline const line2::pointset_type &line2::points() const { return m_container.m_points; }
 
 } // namespace mth //
 } // namespace gea //

@@ -1,3 +1,5 @@
+
+// gea includes
 #include <gea/mth_vector/vector2.h>
 
 namespace gea {
@@ -17,6 +19,16 @@ inline const float distance_to_line(const point2 &line_p0, const point2 &line_p1
 
     return v2.length();
 }
+
+// ------------------------------------------------------------------------- //
+
+inline const winding_type winding(const point2 &p0, const point2 &p1, const point2 &p2)
+{
+    const float value = (p2.y - p0.y) * (p1.x - p2.x) - (p2.x - p0.x) * (p1.y - p2.y);
+    return static_cast<winding_type>(sign(value));
+}
+
+// ------------------------------------------------------------------------- //
 
 } // namespace mth //
 } // namespace gea //

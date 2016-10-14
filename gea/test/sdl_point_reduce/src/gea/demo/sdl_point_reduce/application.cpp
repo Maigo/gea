@@ -10,7 +10,7 @@
 
 // gea includes
 #include <gea\mth_vector\linear_transform2.h>
-#include <gea\mth_graph\algorithm\point_reduce_rdp.h>
+#include <gea\mth_graph\algorithm\point_reduce.h>
 #include <gea\mth_graph\algorithm\sampler.h>
 
 namespace gea {
@@ -50,7 +50,7 @@ void application::initialize() {
     mth::sampler::sample(100.0f, 540.0f, 10.0f, [](const float x)->const float{ return 140.0f * sinf(x / 100.0f) + 240.0f; }, m_line);
 
     // reduce line
-    mth::point_reduce_rdp::point_reduce(m_line, 5.0f, m_reducedLine);
+    mth::point_reduce::point_reduce(m_line, 5.0f, m_reducedLine);
 }
 
 // ------------------------------------------------------------------------- //
@@ -75,7 +75,7 @@ void application::deinitialize() {
 // ------------------------------------------------------------------------- //
 
 static void drawLine(SDL_Renderer* renderer, const mth::line2 &line, const mth::linear_transform2 &transform) {
-    const mth::line2::points_type &points = line.points();
+    const mth::line2::pointset_type &points = line.points();
     for (int i = 1, e = points.size(); i < e; ++i) {
         const mth::point2 a = transform * points[i - 1];
         const mth::point2 b = transform * points[i];
@@ -87,7 +87,7 @@ static void drawLine(SDL_Renderer* renderer, const mth::line2 &line, const mth::
 // ------------------------------------------------------------------------- //
 
 static void drawPoints(SDL_Renderer* renderer, const mth::line2 &line, const mth::linear_transform2 &transform) {
-    const mth::line2::points_type &points = line.points();
+    const mth::line2::pointset_type &points = line.points();
     for (int i = 0, e = points.size(); i < e; ++i) {
         const mth::point2 a = transform * points[i];
 

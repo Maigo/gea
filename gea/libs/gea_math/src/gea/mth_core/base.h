@@ -120,6 +120,9 @@ template <typename T> inline const T clamp(const T &t, const T &min, const T &ma
 // range
 template <typename T> inline const bool range(const T &t, const T &min, const T &max);
 
+// sign
+template <typename T> inline const int sign(const T x);
+
 } // namespace mth //
 } // namespace gea //
 

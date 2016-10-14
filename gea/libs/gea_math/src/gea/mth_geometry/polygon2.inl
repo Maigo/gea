@@ -32,7 +32,7 @@ inline const point2 &polygon2::operator [](const size_type i) const {
 
 // ------------------------------------------------------------------------- //
 
-inline const polygon2::points_type &polygon2::points() const { return m_container.m_points; }
+inline const polygon2::pointset_type &polygon2::points() const { return m_container.m_points; }
 
 } // namespace mth //
 } // namespace gea //

@@ -12,8 +12,8 @@ namespace mth {
 
 class polygon2 {
 public:
-    typedef internal::modify2::points_type points_type;
-    typedef internal::modify2::size_type   size_type;
+    typedef internal::modify2::pointset_type    pointset_type;
+    typedef internal::modify2::size_type        size_type;
 
     inline polygon2();
 
@@ -27,7 +27,7 @@ public:
     const float area() const;
 
     inline const point2 &operator [](const size_type i) const;
-    inline const points_type &points() const;
+    inline const pointset_type &points() const;
 
 private:
     internal::modify2 m_container;

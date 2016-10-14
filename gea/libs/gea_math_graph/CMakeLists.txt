@@ -19,17 +19,20 @@ set(SRC_${LIB} ) # source
 # graph math
 list(APPEND INC_${LIB}
     src/gea/mth_graph/algorithm/algorithm.h
-    src/gea/mth_graph/algorithm/point_reduce_rdp.h
+    src/gea/mth_graph/algorithm/convex_hull.h
+    src/gea/mth_graph/algorithm/point_reduce.h
     src/gea/mth_graph/algorithm/sampler.h
 )
 list(APPEND INL_${LIB}
     src/gea/mth_graph/algorithm/algorithm.inl
-    src/gea/mth_graph/algorithm/point_reduce_rdp.inl
+    src/gea/mth_graph/algorithm/convex_hull.inl
+    src/gea/mth_graph/algorithm/point_reduce.inl
     src/gea/mth_graph/algorithm/sampler.inl
 )
 list(APPEND SRC_${LIB}
     src/gea/mth_graph/algorithm/algorithm.cpp
-    src/gea/mth_graph/algorithm/point_reduce_rdp.cpp
+    src/gea/mth_graph/algorithm/convex_hull.cpp
+    src/gea/mth_graph/algorithm/point_reduce.cpp
     src/gea/mth_graph/algorithm/sampler.cpp
 )
 

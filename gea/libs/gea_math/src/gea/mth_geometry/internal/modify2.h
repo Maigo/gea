@@ -20,13 +20,16 @@ namespace internal {
 
 class modify2 {
 public:
-    typedef std::vector<point2> points_type;
-    typedef points_type::size_type size_type;
+    typedef std::vector<point2>         pointset_type;
+    typedef pointset_type::size_type    size_type;
 
     inline void reserve(const size_type count);
 
     inline void add_point(const point2 &p);
     inline void add_point(const vector2 &v);
+
+    inline       pointset_type &points();
+    inline const pointset_type &points() const;
 
 private:
     friend class ::gea::mth::line2;
@@ -34,7 +37,7 @@ private:
 
     inline modify2() {}
 
-    points_type m_points;
+    pointset_type m_points;
 };
 
 // ------------------------------------------------------------------------- //

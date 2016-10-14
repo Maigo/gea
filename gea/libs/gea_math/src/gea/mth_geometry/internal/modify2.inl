@@ -31,6 +31,14 @@ inline void modify2::add_point(const vector2 &v)
 
 // ------------------------------------------------------------------------- //
 
+inline modify2::pointset_type &modify2::points() { return m_points; }
+
+// ------------------------------------------------------------------------- //
+
+inline const modify2::pointset_type &modify2::points() const { return m_points; }
+
+// ------------------------------------------------------------------------- //
+
 } // namespace internal //
 } // namespace mth //
 } // namespace gea //

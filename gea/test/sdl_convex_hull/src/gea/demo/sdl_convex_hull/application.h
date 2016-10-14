@@ -32,9 +32,8 @@ protected:
     virtual void render(const render_context &context) override;
 
 private:
-    typedef mth::polygon2::points_type points_type;
-    mth::polygon2   m_polygon;
-    points_type     m_points;
+    mth::polygon2                   m_polygon;
+    mth::polygon2::pointset_type    m_points;
 
     SDL_Window*     m_window;
     SDL_Renderer*   m_renderer;

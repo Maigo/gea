@@ -11,7 +11,7 @@ namespace mth {
 
 const float line2::length() const
 {
-    const points_type &points = m_container.m_points;
+    const pointset_type &points = m_container.m_points;
 
     float length = 0.0f;
     for (int i = 1, e = points.size(); i < e; ++i) {

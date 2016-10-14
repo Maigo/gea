@@ -1,6 +1,8 @@
 
 #include <math.h>
 
+#include <type_traits>
+
 namespace gea {
 namespace mth {
 
@@ -77,6 +79,14 @@ inline const T clamp(const T &t, const T &min, const T &max) {
 template <typename T> inline const bool range(const T &t, const T &min, const T &max) {
     return min <= t && t <= max;
 }
+
+// sign
+namespace internal {
+template <typename T> inline const int sign(T x, const std::false_type is_unsigned) { return T(0) < x; }
+template <typename T> inline const int sign(T x, const std::true_type  is_signed) { return (T(0) < x) - (x < T(0)); }
+} // namespace internal //
+
+template <typename T> inline const int sign(const T x) { return internal::sign(x, std::is_signed<T>()); }
 
 } // namespace mth //
 } // namespace gea //
