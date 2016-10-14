@@ -8,6 +8,7 @@ message(STATUS "Building ${LIB}")
 
 # list dependencies
 set(DEP_${LIB}
+    gea_math
     gea_demo_core
     ext_sdl
 )
@@ -20,9 +21,11 @@ set(SRC_${LIB} ) # source
 # core
 list(APPEND INC_${LIB}
     src/gea/demo/sdl/event/sdl_system_event_pump.h
+    src/gea/demo/sdl/render/sdl_immediate_renderer.h
     src/gea/demo/sdl/sdl_application.h
 )
 list(APPEND INL_${LIB}
+    src/gea/demo/sdl/render/sdl_immediate_renderer.inl
 )
 list(APPEND SRC_${LIB}
     src/gea/demo/sdl/event/sdl_system_event_pump.cpp

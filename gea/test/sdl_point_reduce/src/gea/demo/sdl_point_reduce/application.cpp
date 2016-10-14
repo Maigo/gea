@@ -13,6 +13,8 @@
 #include <gea\mth_graph\algorithm\point_reduce.h>
 #include <gea\mth_graph\algorithm\sampler.h>
 
+#include <gea/demo/sdl/render/sdl_immediate_renderer.h>
+
 namespace gea {
 
 // ------------------------------------------------------------------------- //
@@ -74,63 +76,47 @@ void application::deinitialize() {
 
 // ------------------------------------------------------------------------- //
 
-static void drawLine(SDL_Renderer* renderer, const mth::line2 &line, const mth::linear_transform2 &transform) {
-    const mth::line2::pointset_type &points = line.points();
-    for (int i = 1, e = points.size(); i < e; ++i) {
-        const mth::point2 a = transform * points[i - 1];
-        const mth::point2 b = transform * points[i];
-
-        SDL_RenderDrawLine(renderer, int(a.x), int(a.y), int(b.x), int(b.y));
-    }
-}
-
-// ------------------------------------------------------------------------- //
-
-static void drawPoints(SDL_Renderer* renderer, const mth::line2 &line, const mth::linear_transform2 &transform) {
-    const mth::line2::pointset_type &points = line.points();
-    for (int i = 0, e = points.size(); i < e; ++i) {
-        const mth::point2 a = transform * points[i];
-
-        SDL_Rect rect = { int(a.x) - 2, int(a.y) - 2, 4, 4 };
-        SDL_RenderFillRect(renderer, &rect);
-    }
-}
-
-// ------------------------------------------------------------------------- //
-
 void application::render(const render_context &context) {
+    sdl_immediate_renderer renderer(m_renderer);
+    
     // fill buffer with white
-    SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(m_renderer);
+    renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0xFF, 0xFF, 0xFF));
+    renderer.clear();
 
     // draw full line
     {
         mth::linear_transform2 move_up(mth::matrix2::IDENTITY, mth::vector2(0, -20));
+        renderer.push_transform(move_up);
 
         // draw lines
-        SDL_SetRenderDrawColor(m_renderer, 0x00, 0x00, 0xFF, SDL_ALPHA_OPAQUE);
-        drawLine(m_renderer, m_line, move_up);
+        renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0x00, 0x00, 0xFF));
+        renderer.draw_line(m_line);
 
         // draw points
-        SDL_SetRenderDrawColor(m_renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-        drawPoints(m_renderer, m_line, move_up);
+        renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0xFF, 0x0, 0x00));
+        renderer.draw_point(m_line.points());
+
+        renderer.pop_transform();
     }
 
     // draw reduced line
     {
         mth::linear_transform2 move_down(mth::matrix2::IDENTITY, mth::vector2(0, 20));
+        renderer.push_transform(move_down);
 
         // draw lines
-        SDL_SetRenderDrawColor(m_renderer, 0x00, 0x00, 0xFF, SDL_ALPHA_OPAQUE);
-        drawLine(m_renderer, m_reducedLine, move_down);
+        renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0x00, 0x00, 0xFF));
+        renderer.draw_line(m_reducedLine);
 
         // draw points
-        SDL_SetRenderDrawColor(m_renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-        drawPoints(m_renderer, m_reducedLine, move_down);
+        renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0xFF, 0x0, 0x00));
+        renderer.draw_point(m_reducedLine.points());
+
+        renderer.pop_transform();
     }
 
     // swap buffers
-    SDL_RenderPresent(m_renderer);
+    renderer.present();
 }
 
 // ------------------------------------------------------------------------- //

@@ -10,8 +10,10 @@
 
 // gea includes
 #include <gea/mth_geometry/rectangle2.h>
-#include <gea/mth_vector/random2.h>
 #include <gea/mth_graph/algorithm/convex_hull.h>
+#include <gea/mth_vector/random2.h>
+
+#include <gea/demo/sdl/render/sdl_immediate_renderer.h>
 
 namespace gea {
 
@@ -85,47 +87,26 @@ void application::deinitialize() {
 
 // ------------------------------------------------------------------------- //
 
-static void drawPolygon(SDL_Renderer* renderer, const mth::polygon2 &polygon) {
-    const mth::polygon2::pointset_type &points = polygon.points();
-    for (int i = 0, e = points.size(); i < e; ++i) {
-        const mth::point2 &a = points[i];
-        const mth::point2 &b = points[(i + 1) % e];
-
-        SDL_RenderDrawLine(renderer, int(a.x), int(a.y), int(b.x), int(b.y));
-    }
-}
-
-// ------------------------------------------------------------------------- //
-
-static void drawPoints(SDL_Renderer* renderer, const mth::polygon2::pointset_type &points) {
-    for (int i = 0, e = points.size(); i < e; ++i) {
-        const mth::point2 &a = points[i];
-
-        SDL_Rect rect = { int(a.x) - 2, int(a.y) - 2, 4, 4 };
-        SDL_RenderFillRect(renderer, &rect);
-    }
-}
-
-// ------------------------------------------------------------------------- //
-
 void application::render(const render_context &context) {
+    sdl_immediate_renderer renderer(m_renderer);
+
     // fill buffer with white
-    SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(m_renderer);
+    renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0xFF, 0xFF, 0xFF));
+    renderer.clear();
 
     // draw convex hull
     {
         // draw lines
-        SDL_SetRenderDrawColor(m_renderer, 0x00, 0x00, 0xFF, SDL_ALPHA_OPAQUE);
-        drawPolygon(m_renderer, m_polygon);
+        renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0x00, 0x00, 0xFF));
+        renderer.draw_polygon(m_polygon);
 
         // draw points
-        SDL_SetRenderDrawColor(m_renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-        drawPoints(m_renderer, m_points);
+        renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0xFF, 0x00, 0x00));
+        renderer.draw_point(m_points);
     }
 
     // swap buffers
-    SDL_RenderPresent(m_renderer);
+    renderer.present();
 }
 
 // ------------------------------------------------------------------------- //
