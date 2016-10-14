@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_ALGORITHM2_H__
-#define __GEA_VMTH_ALGORITHM2_H__
+#ifndef __GEA_MTH_VECTOR_ALGORITHM2_H__
+#define __GEA_MTH_VECTOR_ALGORITHM2_H__
 
 #include <gea/mth_vector/point2.h>
 
@@ -24,4 +24,4 @@ inline const winding_type winding(const point2 &p0, const point2 &p1, const poin
 
 #include "algorithm2.inl"
 
-#endif // __GEA_VMTH_ALGORITHM2_H__ //
+#endif // __GEA_MTH_VECTOR_ALGORITHM2_H__ //

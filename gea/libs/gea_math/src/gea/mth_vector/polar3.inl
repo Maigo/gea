@@ -10,6 +10,7 @@ namespace mth {
 inline polar3::polar3() : r(0.0f), theta(0.0f), phi(0.0f) {}
 inline polar3::polar3(const float r, const float theta, const float phi) : r(r), theta(theta), phi(phi) {}
 inline polar3::polar3(skip_initialization) {}
+inline polar3::polar3(zero_initialization) : r(0.0f), theta(0.0f), phi(0.0f) {}
 inline polar3::polar3(const polar3 &o) : r(o.r), theta(o.theta), phi(o.phi) {}
 inline polar3::polar3(const vector3 &v) { from_vector(v); }
 

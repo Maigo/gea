@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_ENDIAN_SWAP_H__
-#define __GEA_VMTH_ENDIAN_SWAP_H__
+#ifndef __GEA_MTH_VECTOR_ENDIAN_SWAP_H__
+#define __GEA_MTH_VECTOR_ENDIAN_SWAP_H__
 
 // mth includes
 #include <gea/mth_core/endian_swap.h>
@@ -36,4 +36,4 @@ template <> inline void endian_swap<vector3>(vector3 &out_v);
 
 #include "endian_swap.inl"
 
-#endif // __GEA_VMTH_ENDIAN_SWAP_H__ //
+#endif // __GEA_MTH_VECTOR_ENDIAN_SWAP_H__ //

@@ -10,6 +10,8 @@ inline quaternion::quaternion() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) {}
 inline quaternion::quaternion(const float x, const float y, const float z, const float w) : x(x), y(y), z(z), w(w) {}
 inline quaternion::quaternion(const float angle, const vector3 &axis) { from_axis(angle, axis); }
 inline quaternion::quaternion(skip_initialization) {}
+inline quaternion::quaternion(identity_initialization) : x(0.0f), y(0.0f), z(0.0f), w(1.0f) {}
+inline quaternion::quaternion(zero_initialization) : x(0.0f), y(0.0f), z(0.0f), w(0.0f) {}
 inline quaternion::quaternion(const quaternion &o) : x(o.x), y(o.y), z(o.z), w(o.w) {}
 inline quaternion::quaternion(const matrix3 &m) { from_matrix(m); }
 inline quaternion::quaternion(const float heading, const float attitude, const float bank) { from_euler(heading, attitude, bank); }

@@ -6,8 +6,10 @@ namespace mth {
 // linear_transform2                                                         //
 // ------------------------------------------------------------------------- //
 // constructors
-inline linear_transform2::linear_transform2() : m_transform(), m_translation() {}
+inline linear_transform2::linear_transform2() : m_transform(ZERO_INITIALIZATION), m_translation(ZERO_INITIALIZATION) {}
 inline linear_transform2::linear_transform2(skip_initialization) : m_transform(SKIP_INITIALIZATION), m_translation(SKIP_INITIALIZATION) {}
+inline linear_transform2::linear_transform2(identity_initialization) : m_transform(IDENTITY_INITIALIZATION), m_translation(ZERO_INITIALIZATION) {}
+inline linear_transform2::linear_transform2(zero_initialization) : m_transform(ZERO_INITIALIZATION), m_translation(ZERO_INITIALIZATION) {}
 inline linear_transform2::linear_transform2(const matrix2 &transform, const vector2 &translation)
     : m_transform(transform), m_translation(translation) {}
 
@@ -15,14 +17,19 @@ inline linear_transform2::linear_transform2(const matrix2 &transform, const vect
 inline linear_transform2 &linear_transform2::operator= (const linear_transform2 &o) {
     m_transform = o.get_transform();
     m_translation = o.get_translation();
+    return *this;
+}
+inline const linear_transform2 linear_transform2::operator* (const linear_transform2 &o) const {
+    return linear_transform2(
+        m_transform * o.m_transform,
+        m_transform * o.m_translation + m_translation
+    );
 }
 inline const vector2 linear_transform2::operator* (const vector2 &v) const {
     return m_transform * v + m_translation;
 }
 inline const point2  linear_transform2::operator* (const point2  &p) const {
-    const mth::point2 result = m_transform * p;
-    return result + m_translation;
-//    return m_transform * p + m_translation;
+    return m_transform * p + m_translation;
 }
 
 // member access

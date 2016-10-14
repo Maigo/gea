@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_VECTOR3_H__
-#define __GEA_VMTH_VECTOR3_H__
+#ifndef __GEA_MTH_VECTOR_VECTOR3_H__
+#define __GEA_MTH_VECTOR_VECTOR3_H__
 
 // stl includes
 #include <assert.h>
@@ -28,6 +28,7 @@ public:
     inline vector3();
     inline vector3(const float x, const float y, const float z);
     inline explicit vector3(skip_initialization);
+    inline explicit vector3(zero_initialization);
     inline vector3(const vector3 &o);
     inline explicit vector3(const polar3 &p);
 
@@ -128,4 +129,4 @@ inline std::ostream &operator<< (std::ostream &os, const vector3 &v);
 
 #include "vector3.inl"
 
-#endif // __GEA_VMTH_VECTOR3_H__ //
+#endif // __GEA_MTH_VECTOR_VECTOR3_H__ //

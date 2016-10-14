@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_ERR_VECTOR3_H__
-#define __GEA_VMTH_ERR_VECTOR3_H__
+#ifndef __GEA_MTH_VECTOR_ERR_VECTOR3_H__
+#define __GEA_MTH_VECTOR_ERR_VECTOR3_H__
 
 // mth includes
 #include <gea/mth_core/error/err_base.h>
@@ -25,4 +25,4 @@ inline const float error_relative(const vector3 &v, const vector3 &vh);
 
 #include "err_vector3.inl"
 
-#endif // __GEA_VMTH_ERR_VECTOR3_H__ //
+#endif // __GEA_MTH_VECTOR_ERR_VECTOR3_H__ //

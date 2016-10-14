@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_QUANTITIZER_H__
-#define __GEA_VMTH_QUANTITIZER_H__
+#ifndef __GEA_MTH_VECTOR_QUANTITIZER_H__
+#define __GEA_MTH_VECTOR_QUANTITIZER_H__
 
 // mth includes
 #include <gea/mth_core/base.h>
@@ -127,4 +127,4 @@ private:
 } // namespace mth //
 } // namespace gea //
 
-#endif // __GEA_VMTH_QUANTITIZER_H__ //
+#endif // __GEA_MTH_VECTOR_QUANTITIZER_H__ //

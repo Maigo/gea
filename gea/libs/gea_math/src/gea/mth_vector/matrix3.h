@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_MATRIX3_H__
-#define __GEA_VMTH_MATRIX3_H__
+#ifndef __GEA_MTH_VECTOR_MATRIX3_H__
+#define __GEA_MTH_VECTOR_MATRIX3_H__
 
 // mth includes
 #include <gea/mth_core/base.h>
@@ -29,7 +29,9 @@ public:
     inline matrix3(const float xx, const float yx, const float zx,
                    const float xy, const float yy, const float zy,
                    const float xz, const float yz, const float zz);
-    inline matrix3(skip_initialization);
+    inline explicit matrix3(skip_initialization);
+    inline explicit matrix3(identity_initialization);
+    inline explicit matrix3(zero_initialization);
     inline matrix3(const matrix3 &o);
     inline explicit matrix3(const quaternion &q);
 //    inline matrix3(const float heading, const float attitude, const float bank);
@@ -100,4 +102,4 @@ inline std::ostream &operator<< (std::ostream &lhs, const matrix3 &rhs);
 
 #include "matrix3.inl"
 
-#endif // __GEA_VMTH_MATRIX3_H__ //
+#endif // __GEA_MTH_VECTOR_MATRIX3_H__ //

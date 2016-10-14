@@ -23,6 +23,14 @@ inline matrix2::matrix2(const float xx, const float yx,
     m[1][0] = xy; m[1][1] = yy;
 }
 inline matrix2::matrix2(skip_initialization) {}
+inline matrix2::matrix2(identity_initialization) {
+    m[0][0] = m[1][1] = 1.0f;
+    m[0][1] = m[1][0] = 0.0f;
+}
+inline matrix2::matrix2(zero_initialization) {
+    m[0][0] = m[0][1] = 0.0f;
+    m[1][0] = m[1][1] = 0.0f;
+}
 inline matrix2::matrix2(const matrix2 &o) {
     memcpy(&m, &o.m, sizeof(m));
 }

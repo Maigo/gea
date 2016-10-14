@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_COMP_QUATERNION_H__
-#define __GEA_VMTH_COMP_QUATERNION_H__
+#ifndef __GEA_MTH_VECTOR_COMP_QUATERNION_H__
+#define __GEA_MTH_VECTOR_COMP_QUATERNION_H__
 
 // mth includes
 #include <gea/mth_vector/quaternion.h>
@@ -46,4 +46,4 @@ void decode_polar_adaptive(const quaternion_c32 &cq, quaternion &out_q);
 } // namespace mth //
 } // namespace gea //
 
-#endif // __GEA_VMTH_COMP_QUATERNION_H__ //
+#endif // __GEA_MTH_VECTOR_COMP_QUATERNION_H__ //

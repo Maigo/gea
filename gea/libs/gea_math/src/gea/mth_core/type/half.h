@@ -1,6 +1,6 @@
 
-#ifndef __GEA_BMTH_HALF_H__
-#define __GEA_BMTH_HALF_H__
+#ifndef __GEA_MTH_CORE_HALF_H__
+#define __GEA_MTH_CORE_HALF_H__
 
 namespace gea {
 namespace mth {
@@ -79,4 +79,4 @@ private:
 
 #include "half.inl"
 
-#endif // __GEA_VMTH_HALF_H__ //
+#endif // __GEA_MTH_VECTOR_HALF_H__ //

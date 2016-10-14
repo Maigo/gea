@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_POLAR2_H__
-#define __GEA_VMTH_POLAR2_H__
+#ifndef __GEA_MTH_VECTOR_POLAR2_H__
+#define __GEA_MTH_VECTOR_POLAR2_H__
 
 // stl includes
 #include <assert.h>
@@ -28,6 +28,7 @@ public:
     inline polar2();
     inline polar2(const float r, const float theta);
     inline explicit polar2(skip_initialization);
+    inline explicit polar2(zero_initialization);
     inline polar2(const polar2 &o);
     inline explicit polar2(const vector2 &v);
 
@@ -69,4 +70,4 @@ inline std::ostream &operator<< (std::ostream &lhs, const polar2 &rhs);
 
 #include "polar2.inl"
 
-#endif // __GEA_VMTH_POLAR2_H__ //
+#endif // __GEA_MTH_VECTOR_POLAR2_H__ //

@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_POLAR3_H__
-#define __GEA_VMTH_POLAR3_H__
+#ifndef __GEA_MTH_VECTOR_POLAR3_H__
+#define __GEA_MTH_VECTOR_POLAR3_H__
 
 // stl includes
 #include <assert.h>
@@ -28,6 +28,7 @@ public:
     inline polar3();
     inline polar3(const float r, const float theta, const float phi);
     inline explicit polar3(skip_initialization);
+    inline explicit polar3(zero_initialization);
     inline polar3(const polar3 &o);
     inline explicit polar3(const vector3 &v);
 
@@ -69,4 +70,4 @@ inline std::ostream &operator<< (std::ostream &lhs, const polar3 &rhs);
 
 #include "polar3.inl"
 
-#endif // __GEA_VMTH_POLAR3_H__ //
+#endif // __GEA_MTH_VECTOR_POLAR3_H__ //

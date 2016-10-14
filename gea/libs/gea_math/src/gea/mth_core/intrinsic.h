@@ -1,5 +1,5 @@
-#ifndef __GEA_BMTH_INTRINSIC_H__
-#define __GEA_BMTH_INTRINSIC_H__
+#ifndef __GEA_MTH_CORE_INTRINSIC_H__
+#define __GEA_MTH_CORE_INTRINSIC_H__
 
 // ------------------------------------------------------------------------- //
 // x86 intrinsic functions                                                   //
@@ -18,4 +18,4 @@ inline void i_fsincos(float angle, float &out_sin, float &out_cos);
 
 #include "intrinsic.inl"
 
-#endif // __GEA_BMTH_INTRINSIC_H__ //
+#endif // __GEA_MTH_CORE_INTRINSIC_H__ //

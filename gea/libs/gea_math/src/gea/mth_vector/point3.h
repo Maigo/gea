@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_POINT3_H__
-#define __GEA_VMTH_POINT3_H__
+#ifndef __GEA_MTH_VECTOR_POINT3_H__
+#define __GEA_MTH_VECTOR_POINT3_H__
 
 // stl includes
 #include <assert.h>
@@ -26,6 +26,7 @@ public:
     inline point3();
     inline point3(const float x, const float y, const float z);
     inline explicit point3(skip_initialization);
+    inline explicit point3(zero_initialization);
     inline point3(const point3 &o);
 
     // arithmetic
@@ -86,4 +87,4 @@ inline std::ostream &operator<< (std::ostream &os, const point3 &p);
 
 #include "point3.inl"
 
-#endif // __GEA_VMTH_POINT3_H__ //
+#endif // __GEA_MTH_VECTOR_POINT3_H__ //

@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_VECTOR2_H__
-#define __GEA_VMTH_VECTOR2_H__
+#ifndef __GEA_MTH_VECTOR_VECTOR2_H__
+#define __GEA_MTH_VECTOR_VECTOR2_H__
 
 // stl includes
 #include <assert.h>
@@ -28,6 +28,7 @@ public:
     inline vector2();
     inline vector2(const float x, const float y);
     inline explicit vector2(skip_initialization);
+    inline explicit vector2(zero_initialization);
     inline vector2(const vector2 &o);
     inline explicit vector2(const polar2 &p);
 
@@ -125,4 +126,4 @@ inline std::ostream &operator<< (std::ostream &os, const vector2 &v);
 
 #include "vector2.inl"
 
-#endif // __GEA_VMTH_VECTOR2_H__ //
+#endif // __GEA_MTH_VECTOR_VECTOR2_H__ //

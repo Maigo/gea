@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_QUATERNION_H__
-#define __GEA_VMTH_QUATERNION_H__
+#ifndef __GEA_MTH_VECTOR_QUATERNION_H__
+#define __GEA_MTH_VECTOR_QUATERNION_H__
 
 // mth includes
 #include <gea/mth_core/base.h>
@@ -27,6 +27,8 @@ public:
     inline quaternion(const float x, const float y, const float z, const float w);
     inline quaternion(const float angle, const vector3 &axis);
     inline explicit quaternion(skip_initialization);
+    inline explicit quaternion(identity_initialization);
+    inline explicit quaternion(zero_initialization);
     inline quaternion(const quaternion &o);
     inline explicit quaternion(const matrix3 &m);
     inline quaternion(const float heading, const float attitude, const float bank);
@@ -114,4 +116,4 @@ inline std::ostream &operator<< (std::ostream &lhs, const quaternion &rhs);
 
 #include "quaternion.inl"
 
-#endif // __GEA_VMTH_QUATERNION_H__ //
+#endif // __GEA_MTH_VECTOR_QUATERNION_H__ //

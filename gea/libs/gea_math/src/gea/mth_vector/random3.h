@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_RANDOM3_H__
-#define __GEA_VMTH_RANDOM3_H__
+#ifndef __GEA_MTH_VECTOR_RANDOM3_H__
+#define __GEA_MTH_VECTOR_RANDOM3_H__
 
 // mth includes
 #include <gea/mth_vector/matrix3.h>
@@ -39,4 +39,4 @@ inline const vector3 rand_vector3(const float max_length, const float min_length
 
 #include "random3.inl"
 
-#endif // __GEA_VMTH_RANDOM3_H__ //
+#endif // __GEA_MTH_VECTOR_RANDOM3_H__ //

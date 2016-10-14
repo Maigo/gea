@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_COMP_VECTOR3_H__
-#define __GEA_VMTH_COMP_VECTOR3_H__
+#ifndef __GEA_MTH_VECTOR_COMP_VECTOR3_H__
+#define __GEA_MTH_VECTOR_COMP_VECTOR3_H__
 
 // stl includes
 #include <assert.h>
@@ -45,4 +45,4 @@ void decode_fix(const vector3_c48 &cv, vector3 &out_v);
 
 #include "comp_vector3.inl"
 
-#endif // __GEA_VMTH_COMP_VECTOR3_H__ //
+#endif // __GEA_MTH_VECTOR_COMP_VECTOR3_H__ //

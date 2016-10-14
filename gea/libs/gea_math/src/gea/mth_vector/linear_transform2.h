@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_LINEAR_TRANSFORM2_H__
-#define __GEA_VMTH_LINEAR_TRANSFORM2_H__
+#ifndef __GEA_MTH_VECTOR_LINEAR_TRANSFORM2_H__
+#define __GEA_MTH_VECTOR_LINEAR_TRANSFORM2_H__
 
 // mth includes
 #include <gea/mth_core/base.h>
@@ -20,10 +20,13 @@ public:
     // constructors
     inline linear_transform2();
     inline explicit linear_transform2(skip_initialization);
+    inline explicit linear_transform2(identity_initialization);
+    inline explicit linear_transform2(zero_initialization);
     inline linear_transform2(const matrix2 &transform, const vector2 &translation);
 
     // arithmetic
     inline linear_transform2 &operator =(const linear_transform2 &o);
+    inline const linear_transform2 operator* (const linear_transform2 &o) const;
     inline const vector2 operator* (const vector2 &v) const;
     inline const point2  operator* (const point2  &p) const;
 
@@ -69,4 +72,4 @@ inline const bool finite(const linear_transform2 &m);
 
 #include "linear_transform2.inl"
 
-#endif // __GEA_VMTH_LINEAR_TRANSFORM2_H__ //
+#endif // __GEA_MTH_VECTOR_LINEAR_TRANSFORM2_H__ //

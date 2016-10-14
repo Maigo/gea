@@ -1,5 +1,5 @@
-#ifndef __GEA_BMTH_BITS_H__
-#define __GEA_BMTH_BITS_H__
+#ifndef __GEA_MTH_CORE_BITS_H__
+#define __GEA_MTH_CORE_BITS_H__
 
 namespace gea {
 namespace mth {
@@ -63,4 +63,4 @@ inline const uint32_t mask(uint32_t x);
 
 #include "bits.inl"
 
-#endif // __GEA_BMTH_BITS_H__ //
+#endif // __GEA_MTH_CORE_BITS_H__ //

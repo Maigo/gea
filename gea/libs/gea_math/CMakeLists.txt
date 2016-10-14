@@ -117,6 +117,17 @@ list(APPEND SRC_${LIB}
     src/gea/mth_vector/vector3.cpp
 )
 
+# visual math
+list(APPEND INC_${LIB}
+    src/gea/mth_visual/color.h
+)
+list(APPEND INL_${LIB}
+    src/gea/mth_visual/color.inl
+)
+list(APPEND SRC_${LIB}
+    src/gea/mth_visual/color.cpp
+)
+
 # force include of global header
 force_include_header(global.h)
 

@@ -1,5 +1,5 @@
-#ifndef __GEA_BMTH_ERR_BASE_H__
-#define __GEA_BMTH_ERR_BASE_H__
+#ifndef __GEA_MTH_CORE_ERR_BASE_H__
+#define __GEA_MTH_CORE_ERR_BASE_H__
 
 // mth includes
 #include <gea/mth_core/base.h>
@@ -22,4 +22,4 @@ inline const float error_relative(const float &f, const float &fh);
 
 #include "err_base.inl"
 
-#endif // __GEA_BMTH_ERR_BASE_H__ //
+#endif // __GEA_MTH_CORE_ERR_BASE_H__ //

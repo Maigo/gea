@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_ALGORITHM3_H__
-#define __GEA_VMTH_ALGORITHM3_H__
+#ifndef __GEA_MTH_VECTOR_ALGORITHM3_H__
+#define __GEA_MTH_VECTOR_ALGORITHM3_H__
 
 #include <gea/mth_vector/point3.h>
 
@@ -17,4 +17,4 @@ inline const float distance_to_line(const point3 &line_p0, const point3 &line_p1
 
 #include "algorithm3.inl"
 
-#endif // __GEA_VMTH_ALGORITHM3_H__ //
+#endif // __GEA_MTH_VECTOR_ALGORITHM3_H__ //

@@ -9,6 +9,7 @@ namespace mth {
 inline point2::point2() : x(0.0f), y(0.0f) {}
 inline point2::point2(const float x, const float y) : x(x), y(y) {}
 inline point2::point2(skip_initialization) {}
+inline point2::point2(zero_initialization) : x(0.0f), y(0.0f) {}
 inline point2::point2(const point2 &o) : x(o.x), y(o.y) {}
 
 // arithmetic

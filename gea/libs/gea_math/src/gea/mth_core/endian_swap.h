@@ -1,5 +1,5 @@
-#ifndef __GEA_BMTH_ENDIAN_SWAP_H__
-#define __GEA_BMTH_ENDIAN_SWAP_H__
+#ifndef __GEA_MTH_CORE_ENDIAN_SWAP_H__
+#define __GEA_MTH_CORE_ENDIAN_SWAP_H__
 
 namespace gea {
 namespace mth {
@@ -30,4 +30,4 @@ template <> inline void endian_swap<double>  (double   &out_t);
 
 #include "endian_swap.inl"
 
-#endif // __GEA_BMTH_ENDIAN_SWAP_H__ //
+#endif // __GEA_MTH_CORE_ENDIAN_SWAP_H__ //

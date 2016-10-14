@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_MATRIX2_H__
-#define __GEA_VMTH_MATRIX2_H__
+#ifndef __GEA_MTH_VECTOR_MATRIX2_H__
+#define __GEA_MTH_VECTOR_MATRIX2_H__
 
 // mth includes
 #include <gea/mth_core/base.h>
@@ -26,6 +26,8 @@ public:
     inline matrix2(const float xx, const float yx,
                    const float xy, const float yy);
     inline explicit matrix2(skip_initialization);
+    inline explicit matrix2(identity_initialization);
+    inline explicit matrix2(zero_initialization);
     inline matrix2(const matrix2 &o);
 
     // arithmetic
@@ -92,4 +94,4 @@ inline const bool finite(const matrix2 &m);
 
 #include "matrix2.inl"
 
-#endif // __GEA_VMTH_MATRIX2_H__ //
+#endif // __GEA_MTH_VECTOR_MATRIX2_H__ //

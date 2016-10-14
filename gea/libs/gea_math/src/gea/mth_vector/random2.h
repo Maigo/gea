@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_RANDOM2_H__
-#define __GEA_VMTH_RANDOM2_H__
+#ifndef __GEA_MTH_VECTOR_RANDOM2_H__
+#define __GEA_MTH_VECTOR_RANDOM2_H__
 
 // mth includes
 #include <gea/mth_vector/matrix2.h>
@@ -34,4 +34,4 @@ inline const vector2 rand_vector2(const float max_length, const float min_length
 
 #include "random2.inl"
 
-#endif // __GEA_VMTH_RANDOM2_H__ //
+#endif // __GEA_MTH_VECTOR_RANDOM2_H__ //

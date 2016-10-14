@@ -1,5 +1,5 @@
-#ifndef __GEA_BMTH_BASE_H__
-#define __GEA_BMTH_BASE_H__
+#ifndef __GEA_MTH_CORE_BASE_H__
+#define __GEA_MTH_CORE_BASE_H__
 
 // std includes
 #include <float.h>
@@ -59,8 +59,10 @@ static const float SQRT_2      = 1.4142135623730950488016887242097f;
 static const float SQRT_2_INV  = 1.0f / SQRT_2;
 static const float E           = 2.7182818284590452353602874713527f;
 
-// omit initialization marker
-enum skip_initialization { SKIP_INITIALIZATION };
+// initialization markers
+enum skip_initialization     { SKIP_INITIALIZATION };
+enum identity_initialization { IDENTITY_INITIALIZATION };
+enum zero_initialization     { ZERO_INITIALIZATION };
 
 // ------------------------------------------------------------------------- //
 // trigonometry functions                                                    //
@@ -128,4 +130,4 @@ template <typename T> inline const int sign(const T x);
 
 #include "base.inl"
 
-#endif // __GEA_BMTH_BASE_H__ //
+#endif // __GEA_MTH_CORE_BASE_H__ //

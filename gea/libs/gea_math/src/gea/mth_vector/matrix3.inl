@@ -26,6 +26,15 @@ inline matrix3::matrix3(const float xx, const float yx, const float zx,
     m[2][0] = xz; m[2][1] = yz; m[2][2] = zz;
 }
 inline matrix3::matrix3(skip_initialization) {}
+inline matrix3::matrix3(identity_initialization) {
+    m[0][0] = m[1][1] = m[2][2] = 1.0f;
+    m[0][1] = m[0][2] = m[1][0] = m[1][2] = m[2][0] = m[2][1] = 0.0f;
+}
+inline matrix3::matrix3(zero_initialization) {
+    m[0][0] = m[0][1] = m[0][2] = 0.0f;
+    m[1][0] = m[1][1] = m[1][2] = 0.0f;
+    m[2][0] = m[2][1] = m[2][2] = 0.0f;
+}
 inline matrix3::matrix3(const matrix3 &o) {
     memcpy(&m, &o.m, sizeof(m));
 }

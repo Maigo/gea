@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_ERR_QUAT_H__
-#define __GEA_VMTH_ERR_QUAT_H__
+#ifndef __GEA_MTH_VECTOR_ERR_QUAT_H__
+#define __GEA_MTH_VECTOR_ERR_QUAT_H__
 
 // mth includes
 #include <gea/mth_core/error/err_base.h>
@@ -25,4 +25,4 @@ inline const float error_relative(const quaternion &q, const quaternion &qh);
 
 #include "err_quaternion.inl"
 
-#endif // __GEA_VMTH_ERR_QUAT_H__ //
+#endif // __GEA_MTH_VECTOR_ERR_QUAT_H__ //

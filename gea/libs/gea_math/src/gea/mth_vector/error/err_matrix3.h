@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_ERR_MATRIX3_H__
-#define __GEA_VMTH_ERR_MATRIX3_H__
+#ifndef __GEA_MTH_VECTOR_ERR_MATRIX3_H__
+#define __GEA_MTH_VECTOR_ERR_MATRIX3_H__
 
 // mth includes
 #include <gea/mth_core/error/err_base.h>
@@ -26,4 +26,4 @@ inline const float norm_inf(const matrix3 &m);
 
 #include "err_matrix3.inl"
 
-#endif // __GEA_VMTH_ERR_MATRIX3_H__ //
+#endif // __GEA_MTH_VECTOR_ERR_MATRIX3_H__ //

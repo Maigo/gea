@@ -1,5 +1,5 @@
-#ifndef __GEA_VMTH_POINT2_H__
-#define __GEA_VMTH_POINT2_H__
+#ifndef __GEA_MTH_VECTOR_POINT2_H__
+#define __GEA_MTH_VECTOR_POINT2_H__
 
 // stl includes
 #include <assert.h>
@@ -26,6 +26,7 @@ public:
     inline point2();
     inline point2(const float x, const float y);
     inline explicit point2(skip_initialization);
+    inline explicit point2(zero_initialization);
     inline point2(const point2 &o);
 
     // arithmetic
@@ -86,4 +87,4 @@ inline std::ostream &operator<< (std::ostream &os, const point2 &p);
 
 #include "point2.inl"
 
-#endif // __GEA_VMTH_POINT2_H__ //
+#endif // __GEA_MTH_VECTOR_POINT2_H__ //

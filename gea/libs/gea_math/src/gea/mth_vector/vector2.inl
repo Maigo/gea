@@ -9,6 +9,7 @@ namespace mth {
 inline vector2::vector2() : x(0.0f), y(0.0f) {}
 inline vector2::vector2(const float x, const float y) : x(x), y(y) {}
 inline vector2::vector2(skip_initialization) {}
+inline vector2::vector2(zero_initialization) : x(0.0f), y(0.0f) {}
 inline vector2::vector2(const vector2 &o) : x(o.x), y(o.y) {}
 inline vector2::vector2(const polar2 &p) { from_polar(p); }
 
