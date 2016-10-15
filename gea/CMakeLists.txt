@@ -39,6 +39,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # external libraries
 #add_subdirectory(external/box2d)
 add_subdirectory(external/sdl)
+add_subdirectory(external/freetype)
 add_subdirectory(external/glfw)
 
 add_subdirectory(external/murmur)
