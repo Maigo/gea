@@ -11,13 +11,13 @@ sdl_immediate_renderer::sdl_immediate_renderer(SDL_Renderer* renderer)
 
 // ------------------------------------------------------------------------- //
 
-void sdl_immediate_renderer::push_transform(const mth::linear_transform2 &transform) {
+inline void sdl_immediate_renderer::push_transform(const mth::linear_transform2 &transform) {
     m_transform_stack.push_back(transform * peek_transform());
 }
 
 // ------------------------------------------------------------------------- //
 
-void sdl_immediate_renderer::pop_transform() {
+inline void sdl_immediate_renderer::pop_transform() {
     assert(m_transform_stack.size() > 1 && "unable to pop transform from empty stack!");
     if (m_transform_stack.size() > 1) {
         m_transform_stack.pop_back();
@@ -26,7 +26,7 @@ void sdl_immediate_renderer::pop_transform() {
 
 // ------------------------------------------------------------------------- //
 
-const mth::linear_transform2 &sdl_immediate_renderer::peek_transform() const {
+inline const mth::linear_transform2 &sdl_immediate_renderer::peek_transform() const {
     return m_transform_stack.back();
 }
 
@@ -43,7 +43,7 @@ inline void sdl_immediate_renderer::draw_point(const mth::point2 &point) {
 
     const mth::point2 a = transform * point;
     SDL_Rect rect = { int(a.x) - 2, int(a.y) - 2, 4, 4 };
-    SDL_RenderFillRect(m_renderer, &rect);
+    SDL_RenderDrawRect(m_renderer, &rect);
 }
 
 // ------------------------------------------------------------------------- //
@@ -70,7 +70,7 @@ inline void sdl_immediate_renderer::draw_line(const mth::line2 &line) {
 
 // ------------------------------------------------------------------------- //
 
-void sdl_immediate_renderer::draw_line(const std::vector<mth::line2> &lines) {
+inline void sdl_immediate_renderer::draw_line(const std::vector<mth::line2> &lines) {
     for (const mth::line2 &line: lines) {
         draw_line(line);
     }
@@ -92,9 +92,27 @@ inline void sdl_immediate_renderer::draw_polygon(const mth::polygon2 &polygon) {
 
 // ------------------------------------------------------------------------- //
 
-void sdl_immediate_renderer::draw_polygon(const std::vector<mth::polygon2> &polygons) {
+inline void sdl_immediate_renderer::draw_polygon(const std::vector<mth::polygon2> &polygons) {
     for (const mth::polygon2 &polygon : polygons) {
         draw_polygon(polygon);
+    }
+}
+
+// ------------------------------------------------------------------------- //
+
+inline void sdl_immediate_renderer::fill_point(const mth::point2 &point) {
+    const mth::linear_transform2 &transform = peek_transform();
+
+    const mth::point2 a = transform * point;
+    SDL_Rect rect = { int(a.x) - 2, int(a.y) - 2, 4, 4 };
+    SDL_RenderFillRect(m_renderer, &rect);
+}
+
+// ------------------------------------------------------------------------- //
+
+inline void sdl_immediate_renderer::fill_point(const std::vector<mth::point2> &points) {
+    for (const mth::point2 &point : points) {
+        fill_point(point);
     }
 }
 

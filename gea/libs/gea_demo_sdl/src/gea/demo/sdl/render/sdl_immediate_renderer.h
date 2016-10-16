@@ -6,6 +6,7 @@
 
 // sdl includes
 #include <SDL.h>
+//#include <SDL_ttf.h>
 
 // gea includes
 #include <gea/mth_geometry/line2.h>
@@ -24,22 +25,25 @@ class sdl_immediate_renderer {
 public:
     sdl_immediate_renderer(SDL_Renderer* renderer);
 
-    void push_transform(const mth::linear_transform2 &transform);
-    void pop_transform();
-    const mth::linear_transform2 &peek_transform() const;
+    inline void push_transform(const mth::linear_transform2 &transform);
+    inline void pop_transform();
+    inline const mth::linear_transform2 &peek_transform() const;
 
-    void draw_color(const mth::color &c);
+    inline void draw_color(const mth::color &c);
 
-    void draw_point(const mth::point2 &point);
-    void draw_point(const std::vector<mth::point2> &points);
-    void draw_line(const mth::line2 &line);
-    void draw_line(const std::vector<mth::line2> &lines);
-    void draw_polygon(const mth::polygon2 &polygon);
-    void draw_polygon(const std::vector<mth::polygon2> &polygons);
+    inline void draw_point(const mth::point2 &point);
+    inline void draw_point(const std::vector<mth::point2> &points);
+    inline void draw_line(const mth::line2 &line);
+    inline void draw_line(const std::vector<mth::line2> &lines);
+    inline void draw_polygon(const mth::polygon2 &polygon);
+    inline void draw_polygon(const std::vector<mth::polygon2> &polygons);
 
-    void clear();
+    inline void fill_point(const mth::point2 &point);
+    inline void fill_point(const std::vector<mth::point2> &points);
 
-    void present();
+    inline void clear();
+
+    inline void present();
 
 private:
     typedef std::vector<mth::linear_transform2> transform_stack;
