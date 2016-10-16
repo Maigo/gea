@@ -2,6 +2,9 @@
 // header include
 #include "convex_hull.h"
 
+// std includes
+#include <algorithm>
+
 // gea includes
 #include <gea/mth_vector/algorithm2.h>
 
@@ -31,7 +34,14 @@ void convex_hull_jm::convex_hull(const pointset_type &points, pointset_type &out
         // (starting with any point but the current)
         index_next = (index + 1) % size;
         for (uint32_t i = 0; i < size; ++i) {
-            if (winding(points[index], points[index_next], points[i]) == winding_type__clockwise) {
+            const point2 &p0 = points[index];
+            const point2 &p1 = points[index_next];
+            const point2 &p2 = points[i];
+
+            // note: in case of colinearity (3 points in a line), select the
+            // point furthest away.
+            const winding_type w = winding(p0, p1, p2);
+            if ((w == winding_type__clockwise) || ((w == winding_type__invalid) && distance_sq(p0, p2) > distance_sq(p0, p1))) {
                 index_next = i;
             }
         }
@@ -39,6 +49,41 @@ void convex_hull_jm::convex_hull(const pointset_type &points, pointset_type &out
         // set for next iteration, until hull is closed
         index = index_next;
     } while (index != index_start);
+}
+
+// ------------------------------------------------------------------------- //
+// convex_hull: gs (Graham Scan)                                             //
+// ------------------------------------------------------------------------- //
+
+void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out_points)
+{
+    assert((points.size() > 2) && "invalid parameters!");
+
+    // find a start point on the hull
+    uint32_t index_start = 0;
+    find_start_point(points, index_start);
+
+    // allocate array for sorting, put start point at head
+    pointset_type sort_points(points);
+    std::swap(*(sort_points.begin()), *(sort_points.begin() + index_start));
+
+    // sort array skipping start point
+    const point2 p0 = sort_points[0];
+    std::sort(sort_points.begin() + 1, sort_points.end(), [p0](const point2 &p1, const point2 &p2)->bool {
+        const winding_type w = winding(p0, p1, p2);
+        return (w == winding_type__counter_clockwise) || ((w == winding_type__invalid) && (p0.to(p1).length_sq() < p0.to(p2).length_sq()));
+    });
+
+    out_points.push_back(sort_points[0]);
+    out_points.push_back(sort_points[1]);
+    out_points.push_back(sort_points[2]);
+
+    for (uint32_t i = 3, e = sort_points.size(); i < e; ++i) {
+        while (winding(*(out_points.rbegin() + 1), *(out_points.rbegin()), sort_points[i]) != winding_type__counter_clockwise) {
+            out_points.pop_back();
+        }
+        out_points.push_back(sort_points[i]);
+    }
 }
 
 // ------------------------------------------------------------------------- //
