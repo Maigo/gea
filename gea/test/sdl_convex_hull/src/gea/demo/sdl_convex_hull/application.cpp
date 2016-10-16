@@ -32,7 +32,7 @@ application::~application() {}
 static void random_points(const mth::point2 &nw_corner, const mth::point2 &se_corner, const uint32_t count, mth::polygon2::pointset_type &out_points) {
     for (int i = 0, e = count; i < e; ++i) {
         const mth::point2 point = mth::rand_point2(nw_corner, se_corner);
-        out_points.push_back(point);
+        out_points.push_back(mth::round(point));
     }
 }
 
@@ -90,19 +90,30 @@ void application::deinitialize() {
 void application::render(const render_context &context) {
     sdl_immediate_renderer renderer(m_renderer);
 
+    static const mth::color color_white(SDL_ALPHA_OPAQUE, 0xFF, 0xFF, 0xFF);
+    static const mth::color color_red(SDL_ALPHA_OPAQUE, 0xFF, 0x00, 0x00);
+    static const mth::color color_blue(SDL_ALPHA_OPAQUE, 0x00, 0x00, 0xFF);
+
     // fill buffer with white
-    renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0xFF, 0xFF, 0xFF));
+    renderer.draw_color(color_white);
     renderer.clear();
+
+    // draw point set
+    {
+        // draw points
+        renderer.draw_color(color_red);
+        renderer.fill_point(m_points);
+    }
 
     // draw convex hull
     {
         // draw lines
-        renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0x00, 0x00, 0xFF));
+        renderer.draw_color(color_blue);
         renderer.draw_polygon(m_polygon);
 
         // draw points
-        renderer.draw_color(mth::color(SDL_ALPHA_OPAQUE, 0xFF, 0x00, 0x00));
-        renderer.draw_point(m_points);
+        renderer.draw_color(color_blue);
+        renderer.fill_point(m_polygon.points());
     }
 
     // swap buffers

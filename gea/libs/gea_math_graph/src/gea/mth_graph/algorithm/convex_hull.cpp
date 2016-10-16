@@ -18,6 +18,10 @@ namespace mth {
 void convex_hull_jm::convex_hull(const pointset_type &points, pointset_type &out_points)
 {
     assert((points.size() > 2) && "invalid parameters!");
+    if (points.size() < 3) {
+        out_points.assign(points.begin(), points.end());
+        return;
+    }
 
     // find a start point on the hull
     uint32_t index_start = 0;
@@ -58,33 +62,47 @@ void convex_hull_jm::convex_hull(const pointset_type &points, pointset_type &out
 void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out_points)
 {
     assert((points.size() > 2) && "invalid parameters!");
+    if (points.size() < 3) {
+        out_points.assign(points.begin(), points.end());
+        return;
+    }
 
     // find a start point on the hull
     uint32_t index_start = 0;
     find_start_point(points, index_start);
 
-    // allocate array for sorting, put start point at head
-    pointset_type sort_points(points);
-    std::swap(*(sort_points.begin()), *(sort_points.begin() + index_start));
+    // allocate array for sorting, exclude the start point
+    pointset_type sort_points;
+    sort_points.reserve(points.size());
+    sort_points.insert(sort_points.end(), points.begin(), points.begin() + index_start);
+    sort_points.insert(sort_points.end(), points.begin() + index_start + 1, points.end());
 
-    // sort array skipping start point
-    const point2 p0 = sort_points[0];
-    std::sort(sort_points.begin() + 1, sort_points.end(), [p0](const point2 &p1, const point2 &p2)->bool {
+    // sort array, adding start point to the end afterwards (avoid degenerate end point edge case)
+    const point2 p0 = points[index_start];
+    std::sort(sort_points.begin(), sort_points.end(), [p0](const point2 &p1, const point2 &p2)->bool {
         const winding_type w = winding(p0, p1, p2);
-        return (w == winding_type__counter_clockwise) || ((w == winding_type__invalid) && (p0.to(p1).length_sq() < p0.to(p2).length_sq()));
+        return (w == winding_type__counter_clockwise) || ((w == winding_type__invalid) && (distance_sq(p0, p1) < distance(p0, p2)));
     });
+    sort_points.push_back(p0);
 
-    out_points.push_back(sort_points[0]);
-    out_points.push_back(sort_points[1]);
-    out_points.push_back(sort_points[2]);
+    out_points.push_back(sort_points.back()); // start point
+    out_points.push_back(sort_points.front());
 
-    for (uint32_t i = 3, e = sort_points.size(); i < e; ++i) {
-        while (winding(*(out_points.rbegin() + 1), *(out_points.rbegin()), sort_points[i]) != winding_type__counter_clockwise) {
+    for (uint32_t i = 1, e = sort_points.size(); i < e; ++i) {
+        while ((out_points.size() > 1u) && winding(*(out_points.rbegin() + 1), *(out_points.rbegin()), sort_points[i]) != winding_type__counter_clockwise) {
             out_points.pop_back();
         }
+
         out_points.push_back(sort_points[i]);
     }
 }
+
+// ------------------------------------------------------------------------- //
+// convex_hull: mc (Monotone Chain)                                          //
+// ------------------------------------------------------------------------- //
+void convex_hull_mc::convex_hull(const pointset_type &points, pointset_type &out_points) {
+    assert(false && "not implemented!");
+};
 
 // ------------------------------------------------------------------------- //
 

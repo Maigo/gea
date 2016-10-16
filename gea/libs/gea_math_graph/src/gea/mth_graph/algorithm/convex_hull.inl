@@ -51,6 +51,15 @@ inline void convex_hull_gs::find_start_point(const pointset_type &points, uint32
 }
 
 // ------------------------------------------------------------------------- //
+// convex_hull: mc (Monotone Chain)                                          //
+// ------------------------------------------------------------------------- //
+
+inline void convex_hull_mc::convex_hull(const pointset_type &points, polygon2 &out_polygon)
+{
+    convex_hull(points, out_polygon.modify().points());
+}
+
+// ------------------------------------------------------------------------- //
 
 } // namespace mth //
 } // namespace gea //

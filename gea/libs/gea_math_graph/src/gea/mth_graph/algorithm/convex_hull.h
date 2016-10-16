@@ -42,9 +42,20 @@ private:
 };
 
 // ------------------------------------------------------------------------- //
+// convex_hull: mc (Monotone Chain)                                          //
+// ------------------------------------------------------------------------- //
+class convex_hull_mc {
+public:
+    typedef polygon2::pointset_type pointset_type;
+
+    static inline void convex_hull(const pointset_type &points, polygon2 &out_polygon);
+    static        void convex_hull(const pointset_type &points, pointset_type &out_points);
+};
+
+// ------------------------------------------------------------------------- //
 
 // set default algorithm
-typedef convex_hull_jm convex_hull;
+typedef convex_hull_gs convex_hull;
 
 // ------------------------------------------------------------------------- //
 
