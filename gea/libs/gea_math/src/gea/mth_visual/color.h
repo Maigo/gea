@@ -35,6 +35,10 @@ public:
     // comparative
     inline bool operator== (const color &o) const;
     inline bool operator!= (const color &o) const;
+
+    // conversion
+    void from_hsl(const float hue, const float saturation, const float lightness);
+    void to_hsl(float &out_hue, float &out_saturation, float &out_lightness) const;
 };
 
 // ------------------------------------------------------------------------- //

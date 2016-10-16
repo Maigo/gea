@@ -87,13 +87,22 @@ inline const bool approx_ne(const point3 &p0, const point3 &p1, const float e) {
            approx_ne(p0.y, p1.y, e) ||
            approx_ne(p0.z, p1.z, e);
 }
-// nice point3
+// attributes
 inline const bool nice(const point3 &p) {
     return nice(p.x) && nice(p.y) && nice(p.z);
 }
-// finite point3
 inline const bool finite(const point3 &p) {
     return finite(p.x) && finite(p.y) && finite(p.z);
+}
+// round
+inline const point3 round(const point3 &p) {
+    return point3(roundf(p.x), roundf(p.y), roundf(p.z));
+}
+inline const point3 ceil(const point3 &p) {
+    return point3(ceilf(p.x), ceilf(p.y), ceilf(p.z));
+}
+inline const point3 floor(const point3 &p) {
+    return point3(floorf(p.x), floorf(p.y), floorf(p.z));
 }
 
 // ------------------------------------------------------------------------- //

@@ -94,10 +94,14 @@ inline const bool approx_geq(const float f0, const float f1, const float e = APP
 inline const float upb(const float f, const float e = APPROX_EPSILON); // upper bound
 inline const float lwb(const float f, const float e = APPROX_EPSILON); // lower bound
 
-// nice scalar
+// attributes
 inline const bool nice(const float number);
-// finite scalar
 inline const bool finite(const float number);
+
+// round
+template <typename T> inline const T round(const T v);
+template <typename T> inline const T ceil(const T v);
+template <typename T> inline const T floor(const T v);
 
 // ------------------------------------------------------------------------- //
 // template functions                                                        //

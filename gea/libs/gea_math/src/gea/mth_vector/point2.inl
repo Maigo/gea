@@ -73,6 +73,13 @@ inline const bool point2::is_zero() const { return (*this) == point2::ORIGIN; }
 // global functions                                                          //
 // ------------------------------------------------------------------------- //
 
+inline const float distance(const point2 &p0, const point2 &p1) {
+    return p0.to(p1).length();
+}
+inline const float distance_sq(const point2 &p0, const point2 &p1) {
+    return p0.to(p1).length_sq();
+}
+
 // ------------------------------------------------------------------------- //
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
@@ -85,13 +92,22 @@ inline const bool approx_ne(const point2 &p0, const point2 &p1, const float e) {
     return approx_ne(p0.x, p1.x, e) ||
            approx_ne(p0.y, p1.y, e);
 }
-// nice point2
+// attributes
 inline const bool nice(const point2 &p) {
     return nice(p.x) && nice(p.y);
 }
-// finite point2
 inline const bool finite(const point2 &p) {
     return finite(p.x) && finite(p.y);
+}
+// round
+inline const point2 round(const point2 &p) {
+    return point2(roundf(p.x), roundf(p.y));
+}
+inline const point2 ceil(const point2 &p) {
+    return point2(ceilf(p.x), ceilf(p.y));
+}
+inline const point2 floor(const point2 &p) {
+    return point2(floorf(p.x), floorf(p.y));
 }
 
 // ------------------------------------------------------------------------- //

@@ -42,11 +42,17 @@ inline const bool approx_geq(const float f0, const float f1, const float e) { re
 inline const float upb(const float f, const float e) { return (f + e); }
 inline const float lwb(const float f, const float e) { return (f - e); }
 
-// nice scalar
+// attributes
 inline const bool nice(const float number) { return _finite(number) && !_isnan(number); }
-
-// finite scalar
 inline const bool finite(const float number) { return _finite(number) != 0; }
+
+// round
+template <> inline const double round(const double v) { return ::round(v); }
+template <> inline const double ceil(const double v) { return ::ceil(v); }
+template <> inline const double floor(const double v) { return ::floor(v); }
+template <> inline const float round(const float v) { return ::roundf(v); }
+template <> inline const float ceil(const float v) { return ::ceilf(v); }
+template <> inline const float floor(const float v) { return ::floorf(v); }
 
 // ------------------------------------------------------------------------- //
 // Template Functions                                                        //

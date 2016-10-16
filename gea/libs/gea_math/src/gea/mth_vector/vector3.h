@@ -112,10 +112,15 @@ inline const vector3 nlerp(const vector3 &from, const vector3 &to, const float t
 // approximative comparison
 inline const bool approx_eq(const vector3 &v1, const vector3 &v2, const float e = APPROX_EPSILON);
 inline const bool approx_ne(const vector3 &v1, const vector3 &v2, const float e = APPROX_EPSILON);
-// nice vector3
+
+// attributes
 inline const bool nice(const vector3 &v);
-// finite vector3
 inline const bool finite(const vector3 &v);
+
+// round
+inline const vector3 round(const vector3 &v);
+inline const vector3 ceil(const vector3 &v);
+inline const vector3 floor(const vector3 &v);
 
 // ------------------------------------------------------------------------- //
 // debug functions                                                           //

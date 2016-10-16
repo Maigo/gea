@@ -64,16 +64,24 @@ public:
 // global functions                                                          //
 // ------------------------------------------------------------------------- //
 
+inline const float distance(const point2 &p0, const point2 &p1);
+inline const float distance_sq(const point2 &p0, const point2 &p1);
+
 // ------------------------------------------------------------------------- //
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
 // approximative comparison
 inline const bool approx_eq(const point2 &p0, const point2 &p1, const float e = APPROX_EPSILON);
 inline const bool approx_ne(const point2 &p0, const point2 &p1, const float e = APPROX_EPSILON);
-// nice point2
+
+// attributes
 inline const bool nice(const point2 &p);
-// finite point2
 inline const bool finite(const point2 &p);
+
+// round
+inline const point2 round(const point2 &p);
+inline const point2 ceil(const point2 &p);
+inline const point2 floor(const point2 &p);
 
 // ------------------------------------------------------------------------- //
 // debug functions                                                           //

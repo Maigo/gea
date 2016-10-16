@@ -166,13 +166,22 @@ inline const bool approx_ne(const vector2 &v0, const vector2 &v1, const float e)
     return approx_ne(v0.x, v1.x, e) ||
            approx_ne(v0.y, v1.y, e);
 }
-// nice vector2
+// attributes
 inline const bool nice(const vector2 &v) {
     return nice(v.x) && nice(v.y);
 }
-// finite vector2
 inline const bool finite(const vector2 &v) {
     return finite(v.x) && finite(v.y);
+}
+// round
+inline const vector2 round(const vector2 &v) {
+    return vector2(roundf(v.x), roundf(v.y));
+}
+inline const vector2 ceil(const vector2 &v) {
+    return vector2(ceilf(v.x), ceilf(v.y));
+}
+inline const vector2 floor(const vector2 &v) {
+    return vector2(floorf(v.x), floorf(v.y));
 }
 
 // ------------------------------------------------------------------------- //

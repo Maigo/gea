@@ -70,10 +70,15 @@ public:
 // approximative comparison
 inline const bool approx_eq(const point3 &p0, const point3 &p1, const float e = APPROX_EPSILON);
 inline const bool approx_ne(const point3 &p0, const point3 &p1, const float e = APPROX_EPSILON);
-// nice point3
+
+// attributes
 inline const bool nice(const point3 &p);
-// finite point3
 inline const bool finite(const point3 &p);
+
+// round
+inline const point3 round(const point3 &p);
+inline const point3 ceil(const point3 &p);
+inline const point3 floor(const point3 &p);
 
 // ------------------------------------------------------------------------- //
 // debug functions                                                           //
