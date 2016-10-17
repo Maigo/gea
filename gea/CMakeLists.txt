@@ -41,6 +41,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_subdirectory(external/sdl)
 add_subdirectory(external/freetype)
 add_subdirectory(external/glfw)
+add_subdirectory(external/glad)
 
 add_subdirectory(external/murmur)
 add_subdirectory(external/sfmt)
@@ -66,6 +67,9 @@ add_subdirectory(engine)
 ## ######################################## ##
 ## BUILD                                    ##
 
-# test
+# sdl demos
 add_subdirectory(test/sdl_convex_hull)
 add_subdirectory(test/sdl_point_reduce)
+
+# glfw demos
+add_subdirectory(test/glfw_simple)
