@@ -71,19 +71,16 @@ void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out
     uint32_t index_start = 0;
     find_start_point(points, index_start);
 
-    // allocate array for sorting, exclude the start point
-    pointset_type sort_points;
-    sort_points.reserve(points.size() + 1);
-    sort_points.insert(sort_points.end(), points.begin(), points.begin() + index_start);
-    sort_points.insert(sort_points.end(), points.begin() + index_start + 1, points.end());
+    // allocate array for sorting, move start point to the end (avoid degenerate end point edge case)
+    pointset_type sort_points(points);
+    std::swap(sort_points[index_start], sort_points.back());
 
-    // sort array, adding start point to the end afterwards (avoid degenerate end point edge case)
-    const point2 p0 = points[index_start];
-    std::sort(sort_points.begin(), sort_points.end(), [p0](const point2 &p1, const point2 &p2)->bool {
+    // sort array, excluding start point
+    const point2 &p0 = sort_points.back();
+    std::sort(sort_points.begin(), sort_points.end() - 1, [p0](const point2 &p1, const point2 &p2)->bool {
         const winding_type w = winding(p0, p1, p2);
         return (w == winding_type__counter_clockwise) || ((w == winding_type__invalid) && (distance_sq(p0, p1) < distance(p0, p2)));
     });
-    sort_points.push_back(p0);
 
     out_points.push_back(sort_points.back()); // start point
     out_points.push_back(sort_points.front());
