@@ -73,7 +73,7 @@ void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out
 
     // allocate array for sorting, exclude the start point
     pointset_type sort_points;
-    sort_points.reserve(points.size());
+    sort_points.reserve(points.size() + 1);
     sort_points.insert(sort_points.end(), points.begin(), points.begin() + index_start);
     sort_points.insert(sort_points.end(), points.begin() + index_start + 1, points.end());
 
@@ -95,6 +95,10 @@ void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out
 
         out_points.push_back(sort_points[i]);
     }
+
+    // remove the duplicate end points, same as start point
+    assert(out_points.front() == out_points.back() && "something went wrong!");
+    out_points.pop_back();
 }
 
 // ------------------------------------------------------------------------- //
