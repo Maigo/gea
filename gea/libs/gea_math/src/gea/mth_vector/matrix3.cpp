@@ -1,12 +1,9 @@
-
 // header include
 #include "matrix3.h"
 
 // gea includes 
-#include <gea/utility/assert.h>
-
-// mth includes
 #include <gea/mth_vector/quaternion.h>
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {

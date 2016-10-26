@@ -1,4 +1,3 @@
-
 #ifndef __GEA_MTH_CORE_HALF_H__
 #define __GEA_MTH_CORE_HALF_H__
 

@@ -1,5 +1,4 @@
-
-// test includes
+// gtest includes
 #include <gtest/gtest.h>
 
 // gea includes

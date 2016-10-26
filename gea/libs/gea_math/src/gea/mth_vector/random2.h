@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_VECTOR_RANDOM2_H__
 #define __GEA_MTH_VECTOR_RANDOM2_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_vector/matrix2.h>
 #include <gea/mth_vector/polar2.h>
 #include <gea/mth_vector/point2.h>

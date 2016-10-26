@@ -1,9 +1,11 @@
-
+// gtest includes
 #include <gtest/gtest.h>
 
-#include <gea/mth_core/sort/binary_search.h>
-
+// std includes
 #include <algorithm>
+
+// gea includes
+#include <gea/mth_core/sort/binary_search.h>
 
 namespace gea {
 namespace mth {

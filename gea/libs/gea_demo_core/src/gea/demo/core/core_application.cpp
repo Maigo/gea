@@ -1,4 +1,3 @@
-
 // header include
 #include "core_application.h"
 

@@ -1,6 +1,7 @@
-
+// gtest includes
 #include <gtest/gtest.h>
 
+// gea includes
 #include <gea/mth_vector/algorithm2.h>
 
 namespace gea {

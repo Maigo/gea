@@ -1,4 +1,3 @@
-
 // header include
 #include "line2.h"
 

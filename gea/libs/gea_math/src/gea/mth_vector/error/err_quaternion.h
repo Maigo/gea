@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_VECTOR_ERR_QUAT_H__
 #define __GEA_MTH_VECTOR_ERR_QUAT_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_core/error/err_base.h>
 #include <gea/mth_vector/quaternion.h>
 

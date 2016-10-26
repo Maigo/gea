@@ -1,4 +1,3 @@
-
 // external includes
 #include <gea/random/random.h>
 

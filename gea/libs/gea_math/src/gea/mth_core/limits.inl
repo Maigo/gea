@@ -1,4 +1,3 @@
-
 // std includes
 #include <cfloat>
 #include <climits>

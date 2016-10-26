@@ -1,8 +1,7 @@
-
 // header include
 #include "comp_quaternion.h"
 
-// mth includes
+// gea includes
 #include <gea/mth_vector/polar3.h>
 #include <gea/utility/assert.h>
 

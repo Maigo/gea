@@ -1,9 +1,8 @@
-
-// mth includes
-#include <gea/mth_vector/vector3.h>
-
 // header include
 #include "polar3.h"
+
+// gea includes
+#include <gea/mth_vector/vector3.h>
 
 namespace gea {
 namespace mth {

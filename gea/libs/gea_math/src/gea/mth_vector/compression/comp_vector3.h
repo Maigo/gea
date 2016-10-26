@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_VECTOR_COMP_VECTOR3_H__
 #define __GEA_MTH_VECTOR_COMP_VECTOR3_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_vector/vector3.h>
 
 namespace gea {

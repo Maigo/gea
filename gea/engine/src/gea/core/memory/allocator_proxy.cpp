@@ -1,4 +1,3 @@
-
 // header include
 #include "allocator_proxy.h"
 

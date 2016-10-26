@@ -1,9 +1,8 @@
+// header include
+#include "hash.h"
 
 // murmur includes
 #include "MurmurHash3.h"
-
-// header include
-#include "hash.h"
 
 namespace gea {
 

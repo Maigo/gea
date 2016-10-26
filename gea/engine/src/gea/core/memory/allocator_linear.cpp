@@ -1,9 +1,8 @@
+// header include
+#include "allocator_linear.h"
 
 // gea includes
 #include <gea/utility/assert.h>
-
-// header include
-#include "allocator_linear.h"
 
 namespace gea {
 

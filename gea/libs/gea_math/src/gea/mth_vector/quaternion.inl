@@ -1,4 +1,3 @@
-
 // gea includes
 #include <gea/utility/assert.h>
 

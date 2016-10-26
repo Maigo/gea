@@ -1,10 +1,9 @@
+// header include
+#include "vector2.h"
 
 // gea includes
 #include <gea/mth_vector/polar2.h>
 #include <gea/utility/assert.h>
-
-// header include
-#include "vector2.h"
 
 namespace gea {
 namespace mth {

@@ -1,6 +1,7 @@
-
+// gtest includes
 #include <gtest/gtest.h>
 
+// gea includes
 #include <gea/mth_geometry/line2.h>
 
 namespace gea {

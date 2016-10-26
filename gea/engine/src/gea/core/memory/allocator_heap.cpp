@@ -1,12 +1,11 @@
+// header include
+#include "allocator_heap.h"
 
-// STD includes
+// std includes
 #include <stdio.h>
 
 // gea includes
 #include <gea/utility/assert.h>
-
-// header include
-#include "allocator_heap.h"
 
 namespace gea {
 

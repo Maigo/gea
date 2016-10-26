@@ -1,6 +1,7 @@
-
+// gtest includes
 #include <gtest/gtest.h>
 
+// gea includes
 #include <gea/random/random.h>
 
 namespace gea {

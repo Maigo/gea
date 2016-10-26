@@ -1,5 +1,4 @@
-
-// gea include
+// gea includes
 #include <gea\demo\sdl_point_reduce\application.h>
 
 int main (int argc, char *argv[])

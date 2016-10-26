@@ -1,10 +1,9 @@
+// header include
+#include "allocator_page.h"
 
 // gea includes
 #include <gea/system/memory_virtual.h>
 #include <gea/utility/assert.h>
-
-// header include
-#include "allocator_page.h"
 
 namespace gea {
 

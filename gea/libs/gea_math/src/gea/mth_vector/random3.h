@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_VECTOR_RANDOM3_H__
 #define __GEA_MTH_VECTOR_RANDOM3_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_vector/matrix3.h>
 #include <gea/mth_vector/polar3.h>
 #include <gea/mth_vector/quaternion.h>

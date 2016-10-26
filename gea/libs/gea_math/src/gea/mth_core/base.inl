@@ -1,6 +1,5 @@
-
+// std includes
 #include <math.h>
-
 #include <type_traits>
 
 namespace gea {

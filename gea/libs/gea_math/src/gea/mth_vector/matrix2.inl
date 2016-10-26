@@ -1,5 +1,4 @@
-
-// STD includes
+// std includes
 #include <string.h>
 
 // gea includes

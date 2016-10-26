@@ -1,4 +1,3 @@
-
 // header include 
 #include "sdl_application.h"
 

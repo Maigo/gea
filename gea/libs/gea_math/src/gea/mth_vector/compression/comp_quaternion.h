@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_VECTOR_COMP_QUATERNION_H__
 #define __GEA_MTH_VECTOR_COMP_QUATERNION_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_vector/quaternion.h>
 
 namespace gea {

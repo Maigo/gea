@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_VECTOR_MATRIX3_H__
 #define __GEA_MTH_VECTOR_MATRIX3_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_core/base.h>
 #include <gea/mth_vector/point3.h>
 #include <gea/mth_vector/vector3.h>

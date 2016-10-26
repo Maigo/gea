@@ -1,4 +1,3 @@
-
 namespace gea {
 namespace mth {
 

@@ -1,6 +1,7 @@
-
+// gtest includes
 #include <gtest/gtest.h>
 
+// gea includes
 #include <gea/mth_vector/point2.h>
 #include <gea/mth_vector/vector2.h>
 

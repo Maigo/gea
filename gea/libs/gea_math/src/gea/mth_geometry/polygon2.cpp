@@ -1,4 +1,3 @@
-
 // header include
 #include "polygon2.h"
 

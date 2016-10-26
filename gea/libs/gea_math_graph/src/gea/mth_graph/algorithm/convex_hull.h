@@ -4,7 +4,7 @@
 // stl includes
 #include <vector>
 
-// mth includes
+// gea includes
 #include <gea/mth_core/base.h>
 #include <gea/mth_vector/point2.h>
 #include <gea/mth_geometry/polygon2.h>

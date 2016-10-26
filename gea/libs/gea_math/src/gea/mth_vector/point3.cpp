@@ -1,4 +1,3 @@
-
 // header include
 #include "point3.h"
 

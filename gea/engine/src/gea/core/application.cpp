@@ -1,14 +1,15 @@
+// header include
+#include "application.h"
 
 // std includes
 #include <stdio.h>
+
 // gea includes
 #include <gea/utility/timer.h>
+
 // * managers
 //#include <gea/system/info/cpu.h>
 //#include <gea/core/parallel/task_manager.h>
-
-// header include
-#include "application.h"
 
 namespace gea {
 

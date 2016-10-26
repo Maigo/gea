@@ -1,10 +1,9 @@
+// header include
+#include "time_scheme.h"
 
 // gea includes
 #include <gea/utility/assert.h>
 #include <gea/utility/math.h>
-
-// header include
-#include "time_scheme.h"
 
 namespace gea {
 

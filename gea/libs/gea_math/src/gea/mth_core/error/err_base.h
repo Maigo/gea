@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_CORE_ERR_BASE_H__
 #define __GEA_MTH_CORE_ERR_BASE_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_core/base.h>
 
 namespace gea {

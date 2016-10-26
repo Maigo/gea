@@ -1,9 +1,8 @@
-
-// mth includes
-#include <gea/mth_core/type/half.h>
-
 // header include
 #include "comp_vector3.h"
+
+// gea includes
+#include <gea/mth_core/type/half.h>
 
 namespace gea {
 namespace mth {

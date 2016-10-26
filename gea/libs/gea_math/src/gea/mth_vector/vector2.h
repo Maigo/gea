@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_VECTOR_VECTOR2_H__
 #define __GEA_MTH_VECTOR_VECTOR2_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_core/base.h>
 
 #if defined(DEBUG) || defined(PRODUCTION)

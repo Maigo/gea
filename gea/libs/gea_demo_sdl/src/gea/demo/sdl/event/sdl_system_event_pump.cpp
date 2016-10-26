@@ -1,8 +1,7 @@
-
 // header include
 #include "sdl_system_event_pump.h"
 
-// sdl include
+// sdl includes
 #include <SDL.h>
 
 // gea includes

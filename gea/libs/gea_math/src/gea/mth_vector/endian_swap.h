@@ -1,7 +1,7 @@
 #ifndef __GEA_MTH_VECTOR_ENDIAN_SWAP_H__
 #define __GEA_MTH_VECTOR_ENDIAN_SWAP_H__
 
-// mth includes
+// gea includes
 #include <gea/mth_core/endian_swap.h>
 #include <gea/mth_vector/matrix3.h>
 #include <gea/mth_vector/polar3.h>
