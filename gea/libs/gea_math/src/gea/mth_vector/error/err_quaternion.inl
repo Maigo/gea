@@ -15,7 +15,7 @@ inline const float error_absolute(const quaternion &q, const quaternion &qh) {
     return norm_two(q - qh);
 }
 inline const float error_relative(const quaternion &q, const quaternion &qh) {
-    assert(!q.is_zero() && "divide by zero!");
+    l_assert_msg(!q.is_zero(), "divide by zero!");
     return error_absolute(q,qh) / norm_two(q);
 }
 

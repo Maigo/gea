@@ -1,9 +1,6 @@
 #ifndef __GEA_MTH_VECTOR_COMP_VECTOR3_H__
 #define __GEA_MTH_VECTOR_COMP_VECTOR3_H__
 
-// stl includes
-#include <assert.h>
-
 // mth includes
 #include <gea/mth_vector/vector3.h>
 

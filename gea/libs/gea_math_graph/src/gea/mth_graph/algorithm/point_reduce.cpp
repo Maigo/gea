@@ -1,9 +1,9 @@
-
 // header include
 #include "point_reduce.h"
 
 // gea includes
 #include <gea/mth_vector/algorithm2.h>
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -14,7 +14,7 @@ namespace mth {
 
 void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const float epsilon, std::vector<point2> &out_points)
 {
-    assert((points.size() > 2) && (epsilon > 0) && "invalid parameters!");
+    l_assert_msg((points.size() > 2) && (epsilon > 0), "invalid parameters!");
 
     stack stack;
     stack.push_back({ 0u, points.size() - 1u });
@@ -45,7 +45,7 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
 
 void point_reduce_rdp::find_furthest_point(const std::vector<point2> &points, const uint32_t from, const uint32_t to, float &out_distance, uint32_t &out_index)
 {
-    assert((0 <= from && to < points.size()) && "invalid parameters");
+    l_assert_msg((0 <= from && to < points.size()), "invalid parameters");
 
     float find_distance = 0.0f;
     uint32_t find_index = 0;

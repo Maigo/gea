@@ -8,6 +8,7 @@ message(STATUS "Building ${LIB}")
 
 # List dependencies
 set(DEP_${LIB}
+    gea_core
     gea_math
 )
 

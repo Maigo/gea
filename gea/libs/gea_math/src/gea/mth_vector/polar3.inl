@@ -1,4 +1,7 @@
 
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 namespace mth {
 
@@ -28,7 +31,7 @@ inline const polar3 polar3::operator* (const float s) const {
     return polar3(r * s, theta * s, phi * s);
 }
 inline const polar3 polar3::operator/ (const float s) const {
-    assert((s != 0.0f) && "divide by zero!");
+    l_assert_msg(s != 0.0f, "divide by zero!");
     const float s_inv = 1.0f / s;
     return polar3(r * s_inv, theta * s_inv, phi * s_inv);
 }
@@ -44,7 +47,7 @@ inline polar3 &polar3::operator*= (float s) {
     r *= s; theta *= s; phi *= s; return (*this);
 }
 inline polar3 &polar3::operator/= (float s) {
-    assert((s != 0.0f) && "divide by zero!");
+    l_assert_msg(s != 0.0f, "divide by zero!");
     const float s_inv = 1.0f / s;
     r *= s_inv; theta *= s_inv; phi *= s_inv; return (*this);
 }

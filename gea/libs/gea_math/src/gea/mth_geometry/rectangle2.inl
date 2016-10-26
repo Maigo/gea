@@ -1,6 +1,3 @@
-
-#include <assert.h>
-
 namespace gea {
 namespace mth {
 

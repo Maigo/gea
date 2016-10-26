@@ -1,4 +1,7 @@
 
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 
 // ------------------------------------------------------------------------- //
@@ -18,7 +21,7 @@ inline void sdl_immediate_renderer::push_transform(const mth::linear_transform2 
 // ------------------------------------------------------------------------- //
 
 inline void sdl_immediate_renderer::pop_transform() {
-    assert(m_transform_stack.size() > 1 && "unable to pop transform from empty stack!");
+    l_assert_msg(m_transform_stack.size() > 1, "unable to pop transform from empty stack!");
     if (m_transform_stack.size() > 1) {
         m_transform_stack.pop_back();
     }

@@ -44,7 +44,7 @@ private:
     if ( expr ) {}                                                      \
     else {                                                              \
         capture_assertion_error( #expr, ASSERT_CONTEXT() );             \
-        gea::platform::system_break();                                  \
+        gea::system_break();                                            \
     }
 #define l_assert_msg( expr, msg )                                       \
     if ( expr ) {}                                                      \

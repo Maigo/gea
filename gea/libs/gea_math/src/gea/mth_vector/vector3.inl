@@ -1,3 +1,5 @@
+// gea includes
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -27,7 +29,7 @@ inline const vector3 vector3::operator* (const vector3 &o) const {
     return vector3(x * o.x, y * o.y, z * o.z);
 }
 inline const vector3 vector3::operator/ (const vector3 &o) const {
-    assert((o.x != 0.0f) && (o.y != 0.0f) && (o.z != 0.0f) && "divide by zero!");
+    l_assert_msg((o.x != 0.0f) && (o.y != 0.0f) && (o.z != 0.0f), "divide by zero!");
     return vector3(x / o.x, y / o.y, z / o.z);
 }
 inline const vector3 vector3::operator+ (const float s) const {
@@ -40,7 +42,7 @@ inline const vector3 vector3::operator* (const float s) const {
     return vector3(x * s, y * s, z * s);
 }
 inline const vector3 vector3::operator/ (const float s) const {
-    assert((s != 0.0f) && "divide by zero!");
+    l_assert_msg(s != 0.0f, "divide by zero!");
     const float s_inv = 1.0f / s;
     return vector3(x * s_inv, y * s_inv, z * s_inv);
 }
@@ -67,7 +69,7 @@ inline vector3 &vector3::operator*= (const float s) {
     x *= s; y *= s; z *= s; return (*this);
 }
 inline vector3 &vector3::operator/= (const float s) {
-    assert((s != 0.0f) && "divide by zero!");
+    l_assert_msg(s != 0.0f, "divide by zero!");
     const float s_inv = 1.0f / s;
     x *= s_inv; y *= s_inv; z *= s_inv; return (*this);
 }
@@ -94,11 +96,11 @@ inline const bool vector3::operator>= (const vector3 &o) const {
 
 // member access
 inline float &vector3::operator[] (const int32_t i) {
-    assert(mth::range(i, 0, 2) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 2), "index out of bounds!");
     return (&x)[i];
 }
 inline const float &vector3::operator[] (const int32_t i) const {
-    assert(mth::range(i, 0, 2) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 2), "index out of bounds!");
     return (&x)[i];
 }
 
@@ -152,7 +154,7 @@ inline const float angle(const vector3 &v0, const vector3 &v1) {
 
 // interpolation
 inline const vector3 lerp(const vector3 &from, const vector3 &to, const float t) {
-    assert(mth::range(t, 0.0f, 1.0f) && "out of range!");
+    l_assert_msg(mth::range(t, 0.0f, 1.0f), "out of range!");
     return from + (to - from) * t;
 }
 inline const vector3 nlerp(const vector3 &from, const vector3 &to, const float t) {

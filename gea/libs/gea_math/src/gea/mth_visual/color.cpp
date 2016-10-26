@@ -1,6 +1,9 @@
 // header include
 #include "color.h"
 
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 namespace mth {
 
@@ -9,12 +12,10 @@ namespace mth {
 // ------------------------------------------------------------------------- //
 // conversion
 void color::from_hsl(const float hue, const float saturation, const float lightness) {
-    //TODO: implement
-    assert(false && "implement");
+    l_assert_implement;
 }
 void color::to_hsl(float &out_hue, float &out_saturation, float &out_lightness) const {
-    //TODO: implement
-    assert(false && "implement");
+    l_assert_implement;
 }
 
 } // namespace mth //

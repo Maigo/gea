@@ -1,9 +1,10 @@
 
-// mth includes
-#include <gea/mth_vector/polar3.h>
-
 // header include
 #include "comp_quaternion.h"
+
+// mth includes
+#include <gea/mth_vector/polar3.h>
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -123,7 +124,7 @@ void decode_polar(const quaternion_c32 &cq, quaternion &out_q) {
     float w = 1.0f - c3 * c3;
 
     // restore vector length
-    assert(!v.is_zero() && "zero vector!");
+    l_assert_msg(!v.is_zero(), "zero vector!");
     float r = sqrtf((1.0f - w * w) / (v.x * v.x + v.y * v.y + v.z * v.z));
 
     if (mm & 0x04) v.x = -v.x;
@@ -192,7 +193,7 @@ void decode_polar_adaptive(const quaternion_c32 &cq, quaternion &out_q) {
     if (mm & 0x01) v.z = -v.z;
 
     // restore vector length
-    assert(!v.is_zero() && "zero vector!");
+    l_assert_msg(!v.is_zero(), "zero vector!");
     float r = sqrtf((1.0f - w * w) / (v.x * v.x + v.y * v.y + v.z * v.z));
 
     out_q.x = r * v.x, out_q.y = r * v.y, out_q.z = r * v.z, out_q.w = w;

@@ -1,9 +1,6 @@
 #ifndef __GEA_MTH_VECTOR_POINT2_H__
 #define __GEA_MTH_VECTOR_POINT2_H__
 
-// stl includes
-#include <assert.h>
-
 // mth includes
 #include <gea/mth_core/base.h>
 #include <gea/mth_vector/vector2.h>

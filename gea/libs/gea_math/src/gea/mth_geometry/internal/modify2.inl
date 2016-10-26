@@ -1,5 +1,6 @@
 
-#include <assert.h>
+// gea includes
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -25,7 +26,7 @@ inline void modify2::add_point(const point2 &p)
 
 inline void modify2::add_point(const vector2 &v)
 {
-    assert(!m_points.empty() && "trying to line to empty line!");
+    l_assert_msg(!m_points.empty(), "trying to line to empty line!");
     m_points.push_back(m_points.back() + v);
 }
 

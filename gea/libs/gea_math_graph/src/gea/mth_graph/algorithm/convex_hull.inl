@@ -1,3 +1,5 @@
+// gea includes
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -15,7 +17,7 @@ inline void convex_hull_jm::convex_hull(const pointset_type &points, polygon2 &o
 
 inline void convex_hull_jm::find_start_point(const pointset_type &points, uint32_t &out_index)
 {
-    assert((points.size() > 0) && "invalid parameters!");
+    l_assert_msg(points.size() > 0,"invalid parameters!");
 
     uint32_t index = 0;
     for (uint32_t i = 1, e = points.size(); i < e; ++i) {
@@ -39,7 +41,7 @@ inline void convex_hull_gs::convex_hull(const pointset_type &points, polygon2 &o
 
 inline void convex_hull_gs::find_start_point(const pointset_type &points, uint32_t &out_index)
 {
-    assert((points.size() > 0) && "invalid parameters!");
+    l_assert_msg(points.size() > 0, "invalid parameters!");
 
     uint32_t index = 0;
     for (uint32_t i = 1, e = points.size(); i < e; ++i) {

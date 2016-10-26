@@ -2,8 +2,6 @@
 // header include
 #include "core_application.h"
 
-#include <assert.h>
-
 namespace gea {
 
 // ------------------------------------------------------------------------- //

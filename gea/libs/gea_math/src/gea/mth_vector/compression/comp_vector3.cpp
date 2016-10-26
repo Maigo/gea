@@ -13,7 +13,7 @@ namespace mth {
 // ------------------------------------------------------------------------- //
 void encode_half(const vector3 &v, vector3_c48 &out_cv) {
     // assert vector is encodable
-    assert(half::can_pack(v.x) && half::can_pack(v.y) && half::can_pack(v.z) && "out of bounds error!");
+    l_assert_msg(half::can_pack(v.x) && half::can_pack(v.y) && half::can_pack(v.z), "out of bounds error!");
 
     // encode float -> half
     out_cv.bits[0] = half(v.x).bits();

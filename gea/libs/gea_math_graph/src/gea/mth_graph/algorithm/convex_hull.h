@@ -2,7 +2,6 @@
 #define __GEA_MTH_GRAPH_CONVEX_HULL_H__
 
 // stl includes
-#include <assert.h>
 #include <vector>
 
 // mth includes

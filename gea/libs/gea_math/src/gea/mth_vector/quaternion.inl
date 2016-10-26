@@ -1,4 +1,7 @@
 
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 namespace mth {
 
@@ -36,7 +39,7 @@ inline const quaternion quaternion::operator* (const float s) const {
     return quaternion(x * s, y * s, z * s, w * s);
 }
 inline const quaternion quaternion::operator/ (const float s) const {
-    assert((s != 0.0f) && "divide by zero!");
+    l_assert_msg(s != 0.0f, "divide by zero!");
     const float s_inv = 1.0f / s;
     return quaternion(x * s_inv, y * s_inv, z * s_inv, w * s_inv);
 }
@@ -56,11 +59,11 @@ inline const bool quaternion::operator!= (const quaternion &o) const {
 
 // member access
 inline float &quaternion::operator[] (const int32_t i) {
-    assert(mth::range(i, 0, 3) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 3), "index out of bounds!");
     return (&x)[i];
 }
 inline const float &quaternion::operator[] (const int32_t i) const {
-    assert(mth::range(i, 0, 3) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 3), "index out of bounds!");
     return (&x)[i];
 }
 
@@ -106,7 +109,7 @@ inline const float dot_product(const quaternion &q1, const quaternion &q2) {
 
 // interpolation
 inline const quaternion lerp(const quaternion &from, const quaternion &to, const float t) {
-    assert(mth::range(t, 0.0f, 1.0f) && "out of range!");
+    l_assert_msg(mth::range(t, 0.0f, 1.0f), "out of range!");
     if (from.dot_product(to) < 0.0f) {
         return from + (((-to) - from) * t);
     } else {

@@ -1,6 +1,8 @@
-
 // header include
 #include "sampler.h"
+
+// gea includes
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -11,7 +13,7 @@ namespace mth {
 
 void sampler::sample(const float min, const float max, const float step, graph_func function, std::vector<point2> &out_points)
 {
-    assert((min <= max) && (step > 0) && (function != nullptr) && "invalid parameters");
+    l_assert_msg((min <= max) && (step > 0) && (function != nullptr), "invalid parameters");
 
     const uint32_t size = uint32_t(ceil((max - min) / step));
     out_points.reserve(size);
@@ -28,7 +30,7 @@ void sampler::sample(const float min, const float max, const float step, graph_f
 
 void sampler::sample(const float min, const float max, const float step, graph_func function, line2 &out_line)
 {
-    assert((min <= max) && (step > 0) && (function != nullptr) && "invalid parameters");
+    l_assert_msg((min <= max) && (step > 0) && (function != nullptr), "invalid parameters");
 
     const uint32_t size = uint32_t(ceil((max - min) / step));
     out_line.modify().reserve(size);

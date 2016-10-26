@@ -1,36 +1,36 @@
 #################################################
-# LIB: GEA DEMO SDL                             #
+# LIB: GEA CORE                                 #
 #################################################
-
-set(LIB gea_demo_sdl)
+set(LIB gea_core)
 
 message(STATUS "Building ${LIB}")
 
 # list dependencies
 set(DEP_${LIB}
-    gea_core
-    gea_math
-    gea_demo_core
-    ext_sdl
 )
 
 # source build variables
-set(INC_${LIB} ) # include
-set(INL_${LIB} ) # inline
-set(SRC_${LIB} ) # source
+set(INC_${LIB}) # include
+set(INL_${LIB}) # inline
+set(SRC_${LIB}) # source
 
-# core
+# list source
 list(APPEND INC_${LIB}
-    src/gea/demo/sdl/event/sdl_system_event_pump.h
-    src/gea/demo/sdl/render/sdl_immediate_renderer.h
-    src/gea/demo/sdl/sdl_application.h
+    src/gea/core/endian_base.h
+    src/gea/system/platform.h
+    src/gea/system/platform_win32.h
+    src/gea/system/platform_intrinsic.h
+    src/gea/utility/assert.h
 )
 list(APPEND INL_${LIB}
-    src/gea/demo/sdl/render/sdl_immediate_renderer.inl
+    src/gea/system/platform_intrinsic.inl
+    
+    src/gea/system/platform_win32.inl
+    
+    src/gea/utility/assert.inl
 )
 list(APPEND SRC_${LIB}
-    src/gea/demo/sdl/event/sdl_system_event_pump.cpp
-    src/gea/demo/sdl/sdl_application.cpp
+    src/module.cpp
 )
 
 # force include of global header
@@ -49,10 +49,10 @@ target_include_directories(${LIB} PUBLIC src)
 target_link_libraries(${LIB} ${DEP_${LIB}})
 
 # organize lib into solution folder
-project_group(${LIB} "libs//demo")
+project_group(${LIB} "libs")
 
 # clean-up
-unset(DEP_${LIB})
 unset(INC_${LIB})
 unset(INL_${LIB})
 unset(SRC_${LIB})
+unset(DEP_${LIB})

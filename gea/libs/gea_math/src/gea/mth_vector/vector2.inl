@@ -1,3 +1,5 @@
+// gea includes
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -27,7 +29,7 @@ inline const vector2 vector2::operator* (const vector2 &o) const {
     return vector2(x * o.x, y * o.y);
 }
 inline const vector2 vector2::operator/ (const vector2 &o) const {
-    assert((o.x != 0.0f) && (o.y != 0.0f) && "divide by zero!");
+    l_assert_msg((o.x != 0.0f) && (o.y != 0.0f), "divide by zero!");
     return vector2(x / o.x, y / o.y);
 }
 inline const vector2 vector2::operator+ (const float s) const {
@@ -40,7 +42,7 @@ inline const vector2 vector2::operator* (const float s) const {
     return vector2(x * s, y * s);
 }
 inline const vector2 vector2::operator/ (const float s) const {
-    assert((s != 0.0f) && "divide by zero!");
+    l_assert_msg(s != 0.0f, "divide by zero!");
     const float s_inv = 1.0f / s;
     return vector2(x * s_inv, y * s_inv);
 }
@@ -67,7 +69,7 @@ inline vector2 &vector2::operator*= (const float s) {
     x *= s; y *= s; return (*this);
 }
 inline vector2 &vector2::operator/= (const float s) {
-    assert((s != 0.0f) && "divide by zero!");
+    l_assert_msg(s != 0.0f, "divide by zero!");
     float s_inv = 1.0f / s;
     x *= s_inv; y *= s_inv; return (*this);
 }
@@ -94,11 +96,11 @@ inline const bool vector2::operator>= (const vector2 &o) const {
 
 // member access
 inline float &vector2::operator[] (const int32_t i) {
-    assert(mth::range(i, 0, 1) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 1), "index out of bounds!");
     return (&x)[i];
 }
 inline const float &vector2::operator[] (const int32_t i) const {
-    assert(mth::range(i, 0, 1) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 1), "index out of bounds!");
     return (&x)[i];
 }
 
@@ -145,7 +147,7 @@ inline const float angle(const vector2 &v0, const vector2 &v1) {
 
 // interpolation
 inline const vector2 lerp(const vector2 &from, const vector2 &to, const float t) {
-    assert(mth::range(t, 0.0f, 1.0f) && "out of range!");
+    l_assert_msg(mth::range(t, 0.0f, 1.0f), "out of range!");
     return from + (to - from) * t;
 }
 inline const vector2 nlerp(const vector2 &from, const vector2 &to, const float t) {

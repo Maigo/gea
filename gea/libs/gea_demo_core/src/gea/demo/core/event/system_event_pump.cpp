@@ -2,11 +2,9 @@
 //header include
 #include "system_event_pump.h"
 
-// std includes
-#include <assert.h>
-
 // gea includes
-#include <gea\demo\core\event\system_event.h>
+#include <gea/demo/core/event/system_event.h>
+#include <gea/utility/assert.h>
 
 namespace gea {
 
@@ -15,7 +13,7 @@ namespace gea {
 // ------------------------------------------------------------------------- //
 
 system_event_pump::system_event_pump(system_event_listener *listener) : m_listener(listener) {
-    assert((m_listener != nullptr) && "invalid event listener!");
+    l_assert_msg((m_listener != nullptr), "invalid event listener!");
 }
 
 // ------------------------------------------------------------------------- //

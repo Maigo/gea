@@ -1,4 +1,7 @@
 
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 namespace mth {
 
@@ -53,11 +56,11 @@ inline bool point3::operator>= (const point3 &o) const {
 
 // member access
 inline float &point3::operator[] (int32_t i) {
-    assert(mth::range(i, 0, 2) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 2), "index out of bounds!");
     return (&x)[i];
 }
 inline const float &point3::operator[] (int32_t i) const {
-    assert(mth::range(i, 0, 2) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 2), "index out of bounds!");
     return (&x)[i];
 }
 

@@ -1,4 +1,7 @@
 
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 namespace mth {
 
@@ -15,11 +18,12 @@ inline const float default_range::max() { return  1000.0f; }
 template <typename RANGE>
 void encode_fix(const vector3 &v, vector3_c48 &out_cv) {
     // assert valid parameters
-    assert((RANGE::min() < RANGE::max()) && "invalid parameters!");
+    c_assert_msg(RANGE::min() < RANGE::max(), "invalid parameters!");
     // assert vector is encodable
-    assert(mth::range(v.x, RANGE::min(), RANGE::max()) &&
-           mth::range(v.y, RANGE::min(), RANGE::max()) &&
-           mth::range(v.z, RANGE::min(), RANGE::max()) && "out of bounds!");
+    l_assert_msg(mth::range(v.x, RANGE::min(), RANGE::max()) &&
+                 mth::range(v.y, RANGE::min(), RANGE::max()) &&
+                 mth::range(v.z, RANGE::min(), RANGE::max()),
+                 "out of bounds!");
 
     static const float enc_max       = std::numeric_limits<uint16_t>::max();
     static const float enc_range_inv = 1.0f / (RANGE::max() - RANGE::min());

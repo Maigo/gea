@@ -8,13 +8,14 @@ message(STATUS "Building ${LIB}")
 
 # list dependencies
 set(DEP_${LIB}
+    gea_core
     gea_random
 )
 
 # source build variables
-set(INC_${LIB} ) # include
-set(INL_${LIB} ) # inline
-set(SRC_${LIB} ) # source
+set(INC_${LIB}) # include
+set(INL_${LIB}) # inline
+set(SRC_${LIB}) # source
 
 # core math
 list(APPEND INC_${LIB}

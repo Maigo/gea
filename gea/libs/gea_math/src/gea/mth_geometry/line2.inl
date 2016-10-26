@@ -1,6 +1,3 @@
-
-#include <assert.h>
-
 namespace gea {
 namespace mth {
 
@@ -29,7 +26,7 @@ inline const bool line2::empty() const { return m_container.m_points.empty(); }
 // ------------------------------------------------------------------------- //
 
 inline const point2 &line2::operator [](const size_type i) const {
-    assert(0 <= i && i < m_container.m_points.size() && "index out of bounds!");
+    l_assert_msg(0 <= i && i < m_container.m_points.size(), "index out of bounds!");
     return m_container.m_points[i];
 }
 

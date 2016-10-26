@@ -1,9 +1,12 @@
 
-// mth includes
-#include <gea/mth_vector/quaternion.h>
-
 // header include
 #include "matrix3.h"
+
+// gea includes 
+#include <gea/utility/assert.h>
+
+// mth includes
+#include <gea/mth_vector/quaternion.h>
 
 namespace gea {
 namespace mth {
@@ -19,7 +22,7 @@ const matrix3 matrix3::ZERO     = matrix3();
 //TODO: tidy up
 const matrix3 matrix3::inverse() const {
     float det = determinant();
-    assert((det > 0.0f) && "singular matrix!");
+    l_assert_msg(det > 0.0f, "singular matrix!");
 
     float det_inv = 1.0f / det;
     matrix3 inv(SKIP_INITIALIZATION);

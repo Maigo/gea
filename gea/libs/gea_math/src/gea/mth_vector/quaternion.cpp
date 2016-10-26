@@ -1,9 +1,9 @@
-
-// mth includes
-#include <gea/mth_vector/matrix3.h>
-
 // header include
 #include "quaternion.h"
+
+// gea includes
+#include <gea/mth_vector/matrix3.h>
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -53,7 +53,7 @@ void quaternion::from_euler(const float heading, const float attitude, const flo
     w = cos_heading * cos_attitude * cos_bank - sin_heading * sin_attitude * sin_bank;
 }
 void quaternion::to_euler(float &out_heading, float &out_attitude, float &out_bank) const {
-    assert(approx_eq(length(), 1.0f) && "non-normalised quaternion!");
+    l_assert_msg(approx_eq(length(), 1.0f), "non-normalised quaternion!");
 
     //TODO: tidy up
     float test = x * y + z * w;

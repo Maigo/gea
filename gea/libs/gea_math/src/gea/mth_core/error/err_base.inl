@@ -1,6 +1,6 @@
 
-// stl includes
-#include <assert.h>
+// gea includes
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -16,7 +16,7 @@ inline const float error_absolute(const float &f, const float &fh) {
     return fabs(f-fh);
 }
 inline const float error_relative(const float &f, const float &fh) {
-    assert((f != 0.0f) && "divide by zero!");
+    l_assert_msg(f != 0.0f, "divide by zero!");
     return fabs(1.0f - (fh / f));
 }
 

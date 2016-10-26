@@ -2,7 +2,6 @@
 #define __GEA_MTH_GRAPH_SAMPLER_H__
 
 // stl includes
-#include <assert.h>
 #include <vector>
 
 // mth includes

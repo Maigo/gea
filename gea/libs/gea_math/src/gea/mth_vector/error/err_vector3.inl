@@ -1,4 +1,7 @@
 
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 namespace mth {
 
@@ -15,7 +18,7 @@ inline const float error_absolute(const vector3 &v, const vector3 &vh) {
     return norm_two(v - vh);
 }
 inline const float error_relative(const vector3 &v, const vector3 &vh) {
-    assert(!v.is_zero() && "divide by zero!");
+    l_assert_msg(!v.is_zero(), "divide by zero!");
     return error_absolute(v, vh) / norm_two(v);
 }
 

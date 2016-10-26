@@ -2,6 +2,9 @@
 // STD includes
 #include <string.h>
 
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 namespace mth {
 
@@ -66,7 +69,7 @@ inline const matrix3 matrix3::operator* (const float s) const {
                    m[2][0] * s, m[2][1] * s, m[2][2] * s);
 }
 inline const matrix3 matrix3::operator/ (const float s) const {
-    assert((s != 0.0f) && "divide by zero!");
+    l_assert_msg(s != 0.0f, "divide by zero!");
     const float s_inv = 1.0f / s;
     return matrix3(m[0][0] * s_inv, m[0][1] * s_inv, m[0][2] * s_inv,
                    m[1][0] * s_inv, m[1][1] * s_inv, m[1][2] * s_inv,
@@ -92,15 +95,15 @@ inline const matrix3 matrix3::operator- () const {
 
 // member access
 inline const float matrix3::operator() (const int32_t i, const int32_t j) const {
-    assert(mth::range(i, 0, 2) && mth::range(j, 0, 2) && "index out of bounds!");
+    l_assert_msg(mth::range(i, 0, 2) && mth::range(j, 0, 2), "index out of bounds!");
     return m[i][j];
 }
 inline const vector3 matrix3::get_row(const int32_t row) const {
-    assert(mth::range(row, 0, 2) && "index out of bounds!");
+    l_assert_msg(mth::range(row, 0, 2), "index out of bounds!");
     return vector3(m[row][0], m[row][1], m[row][2]);
 }
 inline const vector3 matrix3::get_column(const int32_t col) const {
-    assert(mth::range(col, 0, 2) && "index out of bounds!");
+    l_assert_msg(mth::range(col, 0, 2), "index out of bounds!");
     return vector3(m[0][col], m[1][col], m[2][col]);
 }
 

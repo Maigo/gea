@@ -1,4 +1,3 @@
-
 // header include
 #include "convex_hull.h"
 
@@ -7,6 +6,7 @@
 
 // gea includes
 #include <gea/mth_vector/algorithm2.h>
+#include <gea/utility/assert.h>
 
 namespace gea {
 namespace mth {
@@ -17,7 +17,7 @@ namespace mth {
 
 void convex_hull_jm::convex_hull(const pointset_type &points, pointset_type &out_points)
 {
-    assert((points.size() > 2) && "invalid parameters!");
+    l_assert_msg(points.size() > 2, "invalid parameters!");
     if (points.size() < 3) {
         out_points.assign(points.begin(), points.end());
         return;
@@ -61,7 +61,7 @@ void convex_hull_jm::convex_hull(const pointset_type &points, pointset_type &out
 
 void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out_points)
 {
-    assert((points.size() > 2) && "invalid parameters!");
+    l_assert_msg(points.size() > 2, "invalid parameters!");
     if (points.size() < 3) {
         out_points.assign(points.begin(), points.end());
         return;
@@ -94,7 +94,7 @@ void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out
     }
 
     // remove the duplicate end points, same as start point
-    assert(out_points.front() == out_points.back() && "something went wrong!");
+    l_assert(out_points.front() == out_points.back());
     out_points.pop_back();
 }
 
@@ -102,7 +102,7 @@ void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out
 // convex_hull: mc (Monotone Chain)                                          //
 // ------------------------------------------------------------------------- //
 void convex_hull_mc::convex_hull(const pointset_type &points, pointset_type &out_points) {
-    assert(false && "not implemented!");
+    l_assert_implement;
 };
 
 // ------------------------------------------------------------------------- //
