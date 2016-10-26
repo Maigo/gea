@@ -1,3 +1,6 @@
+// gea includes
+#include <gea/utility/assert.h>
+
 namespace gea {
 namespace mth {
 
@@ -7,7 +10,7 @@ namespace mth {
 
 inline void point_reduce_rdp::point_reduce(const line2 &line, const float epsilon, line2 &out_line)
 {
-    assert((epsilon > 0) && "invalid parameters!");
+    l_assert_msg(epsilon > 0, "invalid parameters!");
     point_reduce(line.points(), epsilon, out_line.modify().points());
 }
 
