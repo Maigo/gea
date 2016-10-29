@@ -1,6 +1,10 @@
 namespace gea {
+namespace mth {
 namespace bit {
 
+// ------------------------------------------------------------------------- //
+// bit hacks                                                                 //
+// ------------------------------------------------------------------------- //
 // implemented using the SWAR population count algorithm
 inline const uint8_t ones(uint8_t x)  {
     static const uint8_t S[] = {1, 2, 4};
@@ -46,11 +50,13 @@ inline const uint8_t ones(uint32_t x)  {
 //    return static_cast<uint8_t>(x & 0x000000000000003F);
 //}
 
+// ------------------------------------------------------------------------- //
 inline const uint8_t zeros(const uint8_t  x) { return (8  - ones(x)); }
 inline const uint8_t zeros(const uint16_t x) { return (16 - ones(x)); }
 inline const uint8_t zeros(const uint32_t x) { return (32 - ones(x)); }
 //inline const uint8_t zeros(const uint64_t x) { return (64 - ones(x)); }
 
+// ------------------------------------------------------------------------- //
 inline const uint8_t lzc(uint8_t x) {
     x |= (x >> 1);
     x |= (x >> 2);
@@ -82,11 +88,39 @@ inline const uint8_t lzc(uint32_t x) {
 //    return zeros(x);
 //}
 
-inline const uint8_t tzc(const uint8_t  x) { return ones(~x & (x - 1u)); }
-inline const uint8_t tzc(const uint16_t x) { return ones(~x & (x - 1u)); }
-inline const uint8_t tzc(const uint32_t x) { return ones(~x & (x - 1u)); }
-//inline const uint8_t tzc(const uint64_t x) { return ones((x & -x) - 1u); }
+// ------------------------------------------------------------------------- //
+inline const uint8_t tzc(uint8_t  x) {
+    x |= (x << 1);
+    x |= (x << 2);
+    x |= (x << 4);
+    return zeros(x);
+}
+inline const uint8_t tzc(uint16_t x) {
+    x |= (x << 1);
+    x |= (x << 2);
+    x |= (x << 4);
+    x |= (x << 8);
+    return zeros(x);
+}
+inline const uint8_t tzc(uint32_t x) {
+    x |= (x << 1);
+    x |= (x << 2);
+    x |= (x << 4);
+    x |= (x << 8);
+    x |= (x << 16);
+    return zeros(x);
+}
+//inline const uint8_t tzc(uint64_t x) {
+//    x |= (x << 1);
+//    x |= (x << 2);
+//    x |= (x << 4);
+//    x |= (x << 8);
+//    x |= (x << 16);
+//    x |= (x << 32);
+//    return zeros(x);
+//}
 
+// ------------------------------------------------------------------------- //
 inline const uint8_t loc(uint8_t x) {
     x &= (x >> 1) | 0x80u;
     x &= (x >> 2) | 0xC0u;
@@ -118,16 +152,45 @@ inline const uint8_t loc(uint32_t x) {
 //    return ones(x);
 //}
 
-//TODO: implement
-//inline const uint8_t toc(const uint8_t  x) { return 0; }
-//inline const uint8_t toc(const uint16_t x) { return 0; }
-//inline const uint8_t toc(const uint32_t x) { return 0; }
-//inline const uint8_t tzc(const uint64_t x) { return 0; }
+// ------------------------------------------------------------------------- //
+inline const uint8_t toc(uint8_t  x) {
+    x &= (x << 1) | 0x01u;
+    x &= (x << 2) | 0x03u;
+    x &= (x << 4) | 0x0Fu;
+    return ones(x);
+}
+inline const uint8_t toc(uint16_t x) {
+    x &= (x << 1) | 0x0001u;
+    x &= (x << 2) | 0x0003u;
+    x &= (x << 4) | 0x000Fu;
+    x &= (x << 8) | 0x00FFu;
+    return ones(x);
+}
+inline const uint8_t toc(uint32_t x) {
+    x &= (x << 1)  | 0x00000001u;
+    x &= (x << 2)  | 0x00000003u;
+    x &= (x << 4)  | 0x0000000Fu;
+    x &= (x << 8)  | 0x000000FFu;
+    x &= (x << 16) | 0x0000FFFFu;
+    return ones(x);
+}
+//inline const uint8_t tzc(uint64_t x) {
+//    x &= (x << 1)  | 0x0000000000000001;
+//    x &= (x << 2)  | 0x0000000000000003;
+//    x &= (x << 4)  | 0x000000000000000F;
+//    x &= (x << 8)  | 0x00000000000000FF;
+//    x &= (x << 16) | 0x000000000000FFFF;
+//    x &= (x << 32) | 0x00000000FFFFFFFF;
+//    return ones(x);
+//}
 
-inline const uint8_t  lbs(const uint8_t  x) { return x & (~x+1); }
-inline const uint16_t lbs(const uint16_t x) { return x & (~x+1); }
-inline const uint32_t lbs(const uint32_t x) { return x & (~x+1); }
+// ------------------------------------------------------------------------- //
+inline const uint8_t  lbs(const uint8_t  x) { return x & (~x + 1); }
+inline const uint16_t lbs(const uint16_t x) { return x & (~x + 1); }
+inline const uint32_t lbs(const uint32_t x) { return x & (~x + 1); }
+//inline const uint64_t lbs(const uint64_t x) { return x & (~x + 1); }
 
+// ------------------------------------------------------------------------- //
 inline const uint8_t rpow2(uint8_t x) {
     --x;
     x |= (x >> 1);
@@ -152,7 +215,18 @@ inline const uint32_t rpow2(uint32_t x) {
     x |= (x >> 16);
     return ++x;
 }
+//inline const uint64_t rpow2(uint64_t x) {
+//    --x;
+//    x |= (x >> 1);
+//    x |= (x >> 2);
+//    x |= (x >> 4);
+//    x |= (x >> 8);
+//    x |= (x >> 16);
+//    x |= (x >> 32);
+//    return ++x;
+//}
 
+// ------------------------------------------------------------------------- //
 inline const uint8_t mask(uint8_t x) {
     x |= (x >> 1);
     x |= (x >> 2);
@@ -174,6 +248,18 @@ inline const uint32_t mask(uint32_t x) {
     x |= (x >> 16);
     return x;
 }
+//inline const uint64_t mask(uint64_t x) {
+//    x |= (x >> 1);
+//    x |= (x >> 2);
+//    x |= (x >> 4);
+//    x |= (x >> 8);
+//    x |= (x >> 16);
+//    x |= (x >> 32);
+//    return x;
+//}
+
+// ------------------------------------------------------------------------- //
 
 } // namespace bit //
+} // namespace mth //
 } // namespace gea //

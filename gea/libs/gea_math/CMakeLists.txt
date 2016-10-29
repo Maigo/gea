@@ -175,6 +175,7 @@ set(SRC_${LIB_TEST} ) # source
 list(APPEND SRC_${LIB_TEST}
     test/gea/mth_core/sort/test_binary_search.cpp
     test/gea/mth_core/test_base.cpp
+    test/gea/mth_core/test_bits.cpp
 )
 
 # geometry math
