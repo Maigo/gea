@@ -1,8 +1,11 @@
-#################################################
-# LIB: GEA MATH GRAPH                           #
-#################################################
+###############################################################################
+# LIB: GEA MATH CG                                                            #
+###############################################################################
+# Description:                                                                #
+# Extension to the core math library focusing on computational geometry.      #
+###############################################################################
 
-set(LIB gea_math_graph)
+set(LIB gea_math_cg)
 
 message(STATUS "Building ${LIB}")
 
@@ -36,6 +39,15 @@ list(APPEND SRC_${LIB}
     src/gea/mth_graph/algorithm/sampler.cpp
 )
 
+# binpack math
+list(APPEND INC_${LIB}
+    src/gea/mth_binpack/algorithm/common_defs.h
+)
+list(APPEND INL_${LIB}
+)
+list(APPEND SRC_${LIB}
+)
+
 # force include of global header
 force_include_header(global.h)
 
@@ -60,9 +72,9 @@ unset(INL_${LIB})
 unset(SRC_${LIB})
 unset(DEP_${LIB})
 
-#################################################
-# TEST: GEA MATH GRAPH                          #
-#################################################
+###############################################################################
+# TEST: GEA MATH CG                                                           #
+###############################################################################
 
 set(LIB_TEST test_${LIB})
 
@@ -78,11 +90,15 @@ set(DEP_${LIB_TEST}
 # source build variables
 set(SRC_${LIB} ) # source
 
-# core math
+# graph math
 list(APPEND SRC_${LIB_TEST}
     test/gea/mth_graph/algorithm/test_algorithm.cpp
     test/gea/mth_graph/algorithm/test_point_reduce_rdp.cpp
     test/gea/mth_graph/algorithm/test_sampler.cpp
+)
+
+# binpack math
+list(APPEND SRC_${LIB_TEST}
 )
 
 # force include of global header
@@ -104,3 +120,5 @@ project_group(${LIB_TEST} "tests")
 # clean-up
 unset(DEP_${LIB_TEST})
 unset(SRC_${LIB_TEST})
+
+###############################################################################
