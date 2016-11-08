@@ -19,6 +19,8 @@ public:
     inline explicit rectangle2(skip_initialization);
     inline rectangle2(const rectangle2 &o);
 
+    inline const float x() const;
+    inline const float y() const;
     inline const float width() const;
     inline const float height() const;
 

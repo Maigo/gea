@@ -90,6 +90,9 @@ static const float APPROX_EPSILON = 1.0e-4f;
 inline const bool approx_eq(const float f0, const float f1, const float e = APPROX_EPSILON);
 inline const bool approx_ne(const float f0, const float f1, const float e = APPROX_EPSILON);
 
+inline const bool approx_ls(const float f0, const float f1, const float e = APPROX_EPSILON);
+inline const bool approx_gt(const float f0, const float f1, const float e = APPROX_EPSILON);
+
 inline const bool approx_leq(const float f0, const float f1, const float e = APPROX_EPSILON);
 inline const bool approx_geq(const float f0, const float f1, const float e = APPROX_EPSILON);
 

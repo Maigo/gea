@@ -24,9 +24,7 @@ list(APPEND INC_${LIB}
 )
 list(APPEND INL_${LIB}
     src/gea/system/platform_intrinsic.inl
-    
     src/gea/system/platform_win32.inl
-    
     src/gea/utility/assert.inl
 )
 list(APPEND SRC_${LIB}

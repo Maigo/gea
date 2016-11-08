@@ -34,6 +34,9 @@ inline const float arithmetic_mod(const float value, const float mod)
 inline const bool approx_eq(const float f0, const float f1, const float e) { return (fabs(f0 - f1) <= e); }
 inline const bool approx_ne(const float f0, const float f1, const float e) { return (fabs(f0 - f1)  > e); }
 
+inline const bool approx_ls(const float f0, const float f1, const float e) { return (f0 < (f1 - e)); }
+inline const bool approx_gt(const float f0, const float f1, const float e) { return (f0 > (f1 + e)); }
+
 inline const bool approx_leq(const float f0, const float f1, const float e) { return (f0 < (f1 + e)); }
 inline const bool approx_geq(const float f0, const float f1, const float e) { return (f0 > (f1 - e)); }
 

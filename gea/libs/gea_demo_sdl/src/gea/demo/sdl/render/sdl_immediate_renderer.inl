@@ -80,6 +80,23 @@ inline void sdl_immediate_renderer::draw_line(const std::vector<mth::line2> &lin
 
 // ------------------------------------------------------------------------- //
 
+inline void sdl_immediate_renderer::draw_rectangle(const mth::rectangle2 &rectangle) {
+    const mth::linear_transform2 &transform = peek_transform();
+
+    const SDL_Rect rect = { int(rectangle.x()), int(rectangle.y()), int(rectangle.width()), int(rectangle.height()) };
+    SDL_RenderDrawRect(m_renderer, &rect);
+}
+
+// ------------------------------------------------------------------------- //
+
+inline void sdl_immediate_renderer::draw_rectangle(const std::vector<mth::rectangle2> &rectangles) {
+    for (const mth::rectangle2 &rectangle : rectangles) {
+        draw_rectangle(rectangle);
+    }
+}
+
+// ------------------------------------------------------------------------- //
+
 inline void sdl_immediate_renderer::draw_polygon(const mth::polygon2 &polygon) {
     const mth::linear_transform2 &transform = peek_transform();
 
@@ -115,6 +132,23 @@ inline void sdl_immediate_renderer::fill_point(const mth::point2 &point) {
 inline void sdl_immediate_renderer::fill_point(const std::vector<mth::point2> &points) {
     for (const mth::point2 &point : points) {
         fill_point(point);
+    }
+}
+
+// ------------------------------------------------------------------------- //
+
+inline void sdl_immediate_renderer::fill_rectangle(const mth::rectangle2 &rectangle) {
+    const mth::linear_transform2 &transform = peek_transform();
+
+    const SDL_Rect rect = { int(rectangle.x()), int(rectangle.y()), int(rectangle.width()), int(rectangle.height()) };
+    SDL_RenderFillRect(m_renderer, &rect);
+}
+
+// ------------------------------------------------------------------------- //
+
+inline void sdl_immediate_renderer::fill_rectangle(const std::vector<mth::rectangle2> &rectangles) {
+    for (const mth::rectangle2 &rectangle : rectangles) {
+        fill_rectangle(rectangle);
     }
 }
 

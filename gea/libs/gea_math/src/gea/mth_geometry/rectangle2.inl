@@ -35,6 +35,18 @@ inline rectangle2::rectangle2(const rectangle2 &o)
 
 // ------------------------------------------------------------------------- //
 
+inline const float rectangle2::x() const {
+    return m_nw_corner.x;
+}
+
+// ------------------------------------------------------------------------- //
+
+inline const float rectangle2::y() const {
+    return m_nw_corner.y;
+}
+
+// ------------------------------------------------------------------------- //
+
 inline const float rectangle2::width() const {
     return (m_se_corner.x - m_nw_corner.x);
 }
