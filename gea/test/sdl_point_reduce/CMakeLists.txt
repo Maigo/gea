@@ -13,7 +13,7 @@ message(STATUS "Building ${DEMO}")
 set(DEP_${DEMO}
     gea_demo_sdl
     gea_math
-    gea_math_graph
+    gea_math_cg
     ext_sdl
 )
 
