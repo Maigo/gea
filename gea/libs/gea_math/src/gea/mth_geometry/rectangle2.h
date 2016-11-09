@@ -13,24 +13,27 @@ namespace mth {
 
 class rectangle2 {
 public:
+    float x, y, width, height;
+
     inline rectangle2();
+    inline rectangle2(const float x, const float y, const float width, const float height);
     inline rectangle2(const point2 &nw_corner, const point2 &se_corner);
     inline rectangle2(const point2 &nw_corner, const vector2 &size);
     inline explicit rectangle2(skip_initialization);
     inline rectangle2(const rectangle2 &o);
 
-    inline const float x() const;
-    inline const float y() const;
-    inline const float width() const;
-    inline const float height() const;
+    inline const float circumference() const;
+    inline const float area() const;
 
-    inline const point2 &nw_corner() const;
-    inline const point2 &se_corner() const;
+    inline const bool contains(const rectangle2 &o, const bool translate = false) const;
 
-private:
-    point2 m_nw_corner;
-    point2 m_se_corner;
+    inline const point2 nw_corner() const;
+    inline const point2 se_corner() const;
 };
+
+// ------------------------------------------------------------------------- //
+
+typedef rectangle2 rect2;
 
 // ------------------------------------------------------------------------- //
 

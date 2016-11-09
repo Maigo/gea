@@ -77,6 +77,9 @@ public:
     static const quaternion ZERO;
     static const quaternion IDENTITY;
 };
+
+// ------------------------------------------------------------------------- //
+
 typedef quaternion quat;
 
 // ------------------------------------------------------------------------- //
