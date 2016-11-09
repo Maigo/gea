@@ -41,12 +41,6 @@ inline const float rectangle2::area() const {
 
 // ------------------------------------------------------------------------- //
 
-inline const bool rectangle2::contains(const rectangle2 &o, const bool translate) const {
-    return ((x <= o.x) && (y <= o.y) && ((x + width) >= (o.x + o.width)) && ((y + height) >= (o.y + o.height)));
-}
-
-// ------------------------------------------------------------------------- //
-
 inline const point2 rectangle2::nw_corner() const {
     return point2(x, y);
 }

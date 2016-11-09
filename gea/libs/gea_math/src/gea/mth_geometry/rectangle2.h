@@ -25,8 +25,6 @@ public:
     inline const float circumference() const;
     inline const float area() const;
 
-    inline const bool contains(const rectangle2 &o, const bool translate = false) const;
-
     inline const point2 nw_corner() const;
     inline const point2 se_corner() const;
 };
