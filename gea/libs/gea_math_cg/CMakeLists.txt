@@ -42,10 +42,13 @@ list(APPEND SRC_${LIB}
 # binpack math
 list(APPEND INC_${LIB}
     src/gea/mth_binpack/algorithm/common_defs.h
+    src/gea/mth_binpack/algorithm/bin_pack.h
 )
 list(APPEND INL_${LIB}
+    src/gea/mth_binpack/algorithm/bin_pack.inl
 )
 list(APPEND SRC_${LIB}
+    src/gea/mth_binpack/algorithm/bin_pack.cpp
 )
 
 # force include of global header

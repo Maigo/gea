@@ -45,12 +45,14 @@ list(APPEND SRC_${LIB}
 # geometry math
 list(APPEND INC_${LIB}
     src/gea/mth_geometry/internal/modify2.h
+    src/gea/mth_geometry/algorithm2.h
     src/gea/mth_geometry/line2.h
     src/gea/mth_geometry/polygon2.h
     src/gea/mth_geometry/rectangle2.h
 )
 list(APPEND INL_${LIB}
     src/gea/mth_geometry/internal/modify2.inl
+    src/gea/mth_geometry/algorithm2.inl
     src/gea/mth_geometry/line2.inl
     src/gea/mth_geometry/polygon2.inl
     src/gea/mth_geometry/rectangle2.inl

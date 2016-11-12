@@ -68,5 +68,6 @@ add_subdirectory(engine)
 ## BUILD                                    ##
 
 # test
+add_subdirectory(test/sdl_bin_pack)
 add_subdirectory(test/sdl_convex_hull)
 add_subdirectory(test/sdl_point_reduce)
