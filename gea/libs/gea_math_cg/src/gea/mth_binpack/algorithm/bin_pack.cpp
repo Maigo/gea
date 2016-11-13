@@ -11,83 +11,96 @@ namespace mth {
 // ------------------------------------------------------------------------- //
 // bin pack: ga (guillotine algorithm)                                       //
 // ------------------------------------------------------------------------- //
+// find bin: baf (best area fit)
+const size_t find_bin_baf::find_bin(const rectangle2 &rect, const std::vector<rectangle2> &bins) {
+    l_assert_msg(!bins.empty(), "invalid parameters!");
 
-const bool bin_pack_ga::bin_pack(rectangle2& rect)
-{
-    // early out
-    if (m_stack.empty()) {
-        return false;
-    }
+    int   min_i = -1;
+    float min_area = FLT_MAX;
 
-    const int bin_index = find_best_bin(rect);
-    if (bin_index < 0) {
-        return false;
-    }
+    for (int i = 0, e = bins.size(); i < e; ++i) {
+        const rectangle2& bin = bins[i];
 
-    //TODO: refactor pop_remove
-    const rectangle2 bin = m_stack[bin_index];
-    rect.x = bin.x;
-    rect.y = bin.y;
-
-    std::swap(m_stack[bin_index], m_stack.back());
-    m_stack.pop_back();
-
-    split_bin(bin, rect);
-    return true;
-}
-
-// ------------------------------------------------------------------------- //
-
-const int bin_pack_ga::find_best_bin(const rectangle2& rect)
-{
-    l_assert_msg(!m_stack.empty(), "invalid parameters!");
-
-    int index = -1;
-    float min_delta_area = FLT_MAX;
-
-    const float area_rect = rect.area();
-    for (int i = 0, e = m_stack.size(); i < e; ++i)
-    {
-        const rectangle2& bin = m_stack[i];
-        if (contains(bin, rect, ignore_position))
-        {
-            const float delta_area = bin.area() - area_rect;
-            if (delta_area < min_delta_area)
-            {
-                min_delta_area = delta_area;
-                index = i;
-            }
+        const float area = bin.area();
+        if ((area < min_area) && contains(bin, rect, ignore_position)) {
+            min_area = area;
+            min_i = i;
         }
     }
 
-    return index;
+    return min_i;
 }
 
 // ------------------------------------------------------------------------- //
+// find bin: bssf (best short side fit)
+const size_t find_bin_bssf::find_bin(const rectangle2 &rect, const std::vector<rectangle2> &bins) {
+    l_assert_msg(!bins.empty(), "invalid parameters!");
 
-void bin_pack_ga::split_bin(const rectangle2& bin, const rectangle2& rect) {
+    int   min_i = -1;
+    float min_short_side = FLT_MAX;
+
+    for (int i = 0, e = bins.size(); i < e; ++i) {
+        const rectangle2& bin = bins[i];
+
+        const float short_side = min(bin.width - rect.width, bin.height - rect.height);
+        if ((short_side < min_short_side) && contains(bin, rect, ignore_position)) {
+            min_short_side = short_side;
+            min_i = i;
+        }
+    }
+
+    return min_i;
+}
+
+// ------------------------------------------------------------------------- //
+// find bin: blsf (best long side fit)
+const size_t find_bin_blsf::find_bin(const rectangle2 &rect, const std::vector<rectangle2> &bins) {
+    l_assert_msg(!bins.empty(), "invalid parameters!");
+
+    int   min_i = -1;
+    float min_long_side = FLT_MAX;
+
+    for (int i = 0, e = bins.size(); i < e; ++i) {
+        const rectangle2& bin = bins[i];
+
+        const float long_side = max(bin.width - rect.width, bin.height - rect.height);
+        if ((long_side < min_long_side) && contains(bin, rect, ignore_position)) {
+            min_long_side = long_side;
+            min_i = i;
+        }
+    }
+
+    return min_i;
+}
+
+// ------------------------------------------------------------------------- //
+// split bin: ga (guillotine algorithm)
+const size_t split_bin_ga::split_bin(const rectangle2 &bin, const rectangle2 &rect, std::vector<rectangle2> &out_bins) {
     const float delta_width = bin.width - rect.width;
     const float delta_height = bin.height - rect.height;
 
     const bool split_width = (approx_gt(delta_width, 0.0f));
     const bool split_height = (approx_gt(delta_height, 0.0f));
 
+    const size_t size = out_bins.size();
     if (split_width && split_height) {
         if (delta_width > delta_height) {
-            m_stack.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, bin.height });
-            m_stack.push_back({ bin.x, bin.y + rect.height, rect.width, bin.height - rect.height });
+            out_bins.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, bin.height });
+            out_bins.push_back({ bin.x, bin.y + rect.height, rect.width, bin.height - rect.height });
         }
         else {
-            m_stack.push_back({ bin.x, bin.y + rect.height, bin.width, bin.height - rect.height });
-            m_stack.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, rect.height });
+            out_bins.push_back({ bin.x, bin.y + rect.height, bin.width, bin.height - rect.height });
+            out_bins.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, rect.height });
         }
     }
     else if (split_width) {
-        m_stack.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, bin.height });
+        out_bins.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, bin.height });
     }
     else if (split_height) {
-        m_stack.push_back({ bin.x, bin.y + rect.height, bin.width, bin.height - rect.height });
+        out_bins.push_back({ bin.x, bin.y + rect.height, bin.width, bin.height - rect.height });
     }
+
+    return (out_bins.size() - size);
 }
 
 // ------------------------------------------------------------------------- //
