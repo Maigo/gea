@@ -15,7 +15,7 @@ set(DEP_${DEMO}
     gea_math
     gea_math_cg
     gea_random
-    ext_sdl
+    gea_demo_sdl
 )
 
 if (WIN32)

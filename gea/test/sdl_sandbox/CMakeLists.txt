@@ -14,7 +14,7 @@ set(DEP_${DEMO}
     gea_demo_sdl
     gea_math
     gea_math_cg
-    ext_sdl
+    gea_demo_sdl
 )
 
 if (WIN32)
