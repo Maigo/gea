@@ -41,6 +41,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_subdirectory(external/sdl)
 add_subdirectory(external/freetype)
 add_subdirectory(external/glfw)
+add_subdirectory(external/glad)
 
 add_subdirectory(external/murmur)
 add_subdirectory(external/sfmt)
@@ -59,6 +60,7 @@ add_subdirectory(libs/gea_random)
 # gea demo libraries
 add_subdirectory(libs/gea_demo_core)
 add_subdirectory(libs/gea_demo_sdl)
+add_subdirectory(libs/gea_demo_glfw)
 
 # gea engine
 add_subdirectory(engine)
@@ -69,7 +71,10 @@ add_subdirectory(engine)
 
 # test
 add_subdirectory(test/sdl_sandbox)
+add_subdirectory(test/glfw_sandbox)
 
 add_subdirectory(test/sdl_bin_pack)
 add_subdirectory(test/sdl_convex_hull)
 add_subdirectory(test/sdl_point_reduce)
+
+#add_subdirectory(test/glfw_simple)
