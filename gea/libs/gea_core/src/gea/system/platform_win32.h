@@ -6,6 +6,7 @@
 //#define WIN32_EXTRA_LEAN
 #define NOMINMAX 
 #include <windows.h>
+#include <timeapi.h>
 
 #include "platform_intrinsic.h"
 
