@@ -22,11 +22,13 @@ set(SRC_${LIB} ) # source
 
 # core
 list(APPEND INC_${LIB}
+    src/gea/demo/glfw/callback/glfw_callback_handler.h
     src/gea/demo/glfw/glfw_application.h
 )
 list(APPEND INL_${LIB}
 )
 list(APPEND SRC_${LIB}
+    src/gea/demo/glfw/callback/glfw_callback_handler.cpp
     src/gea/demo/glfw/glfw_application.cpp
 )
 

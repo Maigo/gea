@@ -7,6 +7,9 @@
 // gea includes
 #include <gea/demo/glfw/glfw_application.h>
 
+// forward declarations
+struct GLFWwindow;
+
 namespace gea {
 
 // ------------------------------------------------------------------------- //
@@ -27,6 +30,7 @@ protected:
     virtual void initialize() override;
     virtual void deinitialize() override;
 
+    virtual void update() override;
     virtual void render(const render_context &context) override;
 };
 

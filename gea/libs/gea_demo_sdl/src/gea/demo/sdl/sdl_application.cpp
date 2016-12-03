@@ -43,7 +43,10 @@ void sdl_application::deinitialize() {
 
 void sdl_application::event(const system_event &event) {
     switch (event.type) {
-    case system_event_type__quit:
+    case system_event_type__window_focus:
+        // do something maybe
+        break;
+    case system_event_type__window_quit:
         m_quit = true;
         break;
     }

@@ -3,6 +3,10 @@
 
 // gea includes
 #include <gea/demo/core/core_application.h>
+#include <gea/demo/glfw/callback/glfw_callback_handler.h>
+
+// forward declarations
+struct GLFWwindow;
 
 namespace gea {
 
@@ -24,9 +28,17 @@ protected:
 
     virtual void event(const system_event &event) override;
 
+    virtual void update() = 0;
     virtual void render(const render_context &context) override = 0;
 
+    // glfw setup
+    void create_window(int width, int height, const char *title);
+    void destroy_window();
+
 private:
+    glfw_callback_handler   m_callbacks;
+
+    GLFWwindow*             m_window;
     bool                    m_quit;
 };
 
