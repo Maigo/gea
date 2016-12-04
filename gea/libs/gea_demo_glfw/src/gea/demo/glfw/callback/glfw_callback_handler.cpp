@@ -19,23 +19,51 @@ glfw_callback_handler::glfw_callback_handler(system_event_listener *listener) : 
 
 // ------------------------------------------------------------------------- //
 
-void glfw_callback_handler::callback_error(int error, const char* description) {
-    l_assert(false);
+void glfw_callback_handler::callback_error(const int error, const char* const description) {
+    l_assert_msg(false, description);
 }
 
 // ------------------------------------------------------------------------- //
 
-void glfw_callback_handler::callback_close(const GLFWwindow* window) {
+void glfw_callback_handler::callback_close(const GLFWwindow* const window) {
     system_event event = { system_event_type__window_quit };
     m_listener->event(event);
 }
 
 // ------------------------------------------------------------------------- //
 
-void glfw_callback_handler::callback_focus(const GLFWwindow* window, int focused) {
+void glfw_callback_handler::callback_focus(const GLFWwindow* const window, const int focused) {
     system_event event = { system_event_type__window_focus };
     event.window_focus.has_focus = (focused == GLFW_TRUE);
     m_listener->event(event);
+}
+
+// ------------------------------------------------------------------------- //
+
+void glfw_callback_handler::callback_key(const GLFWwindow* const window, const int key, const int scancode, const int action, const int mods) {
+    system_event event = { system_event_type__invalid };
+    switch (action)
+    {
+    case GLFW_PRESS:
+        event.type = system_event_type__key_down;
+        event.key_input = { uint32_t(key), uint32_t(scancode), uint16_t(mods) };
+        break;
+    case GLFW_RELEASE:
+        event.type = system_event_type__key_up;
+        event.key_input = { uint32_t(key), uint32_t(scancode), uint16_t(mods) };
+        break;
+    case GLFW_REPEAT:
+        event.type = system_event_type__key_repeat;
+        event.key_input = { uint32_t(key), uint32_t(scancode), uint16_t(mods) };
+        break;
+    default:
+        l_assert_msg(false, "invalid keyboard input action!");
+        return;
+    }
+
+    if (event.type != system_event_type__invalid) {
+        m_listener->event(event);
+    }
 }
 
 // ------------------------------------------------------------------------- //

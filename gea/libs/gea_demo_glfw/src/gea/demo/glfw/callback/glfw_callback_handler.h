@@ -17,9 +17,10 @@ public:
     glfw_callback_handler(system_event_listener* listener);
 
     // glfw callbacks
-    void callback_error(int error, const char* description);
-    void callback_close(const GLFWwindow* window);
-    void callback_focus(const GLFWwindow* window, int focused);
+    void callback_error(const int error, const char* const description);
+    void callback_close(const GLFWwindow* const window);
+    void callback_focus(const GLFWwindow* const window, const int focused);
+    void callback_key(const GLFWwindow* window, const int key, const int scancode, const int action, const int mods);
 
 private:
     system_event_listener* m_listener;

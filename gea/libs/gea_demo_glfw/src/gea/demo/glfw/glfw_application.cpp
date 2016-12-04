@@ -68,6 +68,11 @@ void glfw_application::deinitialize() {
 
 void glfw_application::event(const system_event &event) {
     switch (event.type) {
+    case system_event_type__key_up:
+    case system_event_type__key_repeat:
+    case system_event_type__key_down:
+        // do something maybe
+        break;
     case system_event_type__window_focus:
         // do something maybe
         break;
@@ -94,6 +99,7 @@ void glfw_application::create_window(int width, int height, const char *title) {
     glfwSetWindowUserPointer(m_window, &m_callbacks);
     glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window)->void { if (glfw_callback_handler* self = (glfw_callback_handler*)glfwGetWindowUserPointer(window)) { self->callback_close(window); }});
     glfwSetWindowFocusCallback(m_window, [](GLFWwindow* window, int focused)->void { if (glfw_callback_handler* self = (glfw_callback_handler*)glfwGetWindowUserPointer(window)) { self->callback_focus(window, focused); }});
+    glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)->void { if (glfw_callback_handler* self = (glfw_callback_handler*)glfwGetWindowUserPointer(window)) { self->callback_key(window, key, scancode, action, mods); }});
 
     // initialize extentions
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
