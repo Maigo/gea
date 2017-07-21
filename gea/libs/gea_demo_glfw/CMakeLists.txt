@@ -23,12 +23,20 @@ set(SRC_${LIB} ) # source
 # core
 list(APPEND INC_${LIB}
     src/gea/demo/glfw/callback/glfw_callback_handler.h
+    src/gea/demo/glfw/render/glfw_immediate_renderer.h
+    src/gea/demo/glfw/render/render_queue.h
+    src/gea/demo/glfw/render/render_primitives.h
+    src/gea/demo/glfw/render/render_types.h
     src/gea/demo/glfw/glfw_application.h
 )
 list(APPEND INL_${LIB}
+    src/gea/demo/glfw/render/glfw_immediate_renderer.inl
+    src/gea/demo/glfw/render/render_primitives.inl
+    src/gea/demo/glfw/render/render_queue.inl
 )
 list(APPEND SRC_${LIB}
     src/gea/demo/glfw/callback/glfw_callback_handler.cpp
+    src/gea/demo/glfw/render/glfw_immediate_renderer.cpp
     src/gea/demo/glfw/glfw_application.cpp
 )
 

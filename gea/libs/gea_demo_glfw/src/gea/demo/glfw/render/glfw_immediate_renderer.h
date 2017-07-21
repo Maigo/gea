@@ -4,9 +4,11 @@
 // std includes
 #include <vector>
 
-// sdl includes
-#include <SDL.h>
-//#include <SDL_ttf.h>
+// glfw includes
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
+#include <windows.h>
+#include <GLFW/glfw3.h>
 
 // gea includes
 #include <gea/mth_geometry/line2.h>
@@ -16,28 +18,10 @@
 #include <gea/mth_vector/linear_transform2.h>
 #include <gea/mth_visual/color.h>
 
+#include <gea/demo/glfw/render/render_primitives.h>
+#include <gea/demo/glfw/render/render_queue.h>
+
 namespace gea {
-
-namespace ren {
-
-struct gea_alignment(32) vec3 {
-    float x, y, z;
-};
-
-typedef uint32_t color32;
-
-struct vertex {
-    vec3 position;
-};
-
-struct vertex_color {
-    vec3    position;
-    color32 
-};
-
-struct 
-
-}
 
 // ------------------------------------------------------------------------- //
 // glfw_immediate_renderer                                                   //
@@ -69,19 +53,19 @@ public:
 
     inline void clear();
 
-    inline void present();
+    inline void flush();
 
 private:
-    typedef std::vector<mth::linear_transform2> transform_stack;
-    transform_stack         m_transform_stack;
+    mth::color m_color;
 
-    /*SDL_Renderer*/            *m_renderer;
+    std::vector<render_queue_op> m_render_ops;
+    std::vector<ren::vertex2_color> m_vertices;
 };
 
 // ------------------------------------------------------------------------- //
 
 } // namespace gea //
 
-//#include "glfw_immediate_renderer.inl"
+#include "glfw_immediate_renderer.inl"
 
 #endif // __GEA_DEMO_GLFW_IMMEDIATE_RENDERER_H__ //

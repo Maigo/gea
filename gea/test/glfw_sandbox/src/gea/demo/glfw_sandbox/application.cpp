@@ -19,6 +19,8 @@ void application::initialize() {
     super_t::initialize();
 
     create_window(SCREEN_WIDTH, SCREEN_HEIGHT, "demo: glfw_sandbox");
+
+    // get window renderer
 }
 
 // ------------------------------------------------------------------------- //
@@ -36,7 +38,9 @@ void application::update() {
 
 // ------------------------------------------------------------------------- //
 
-void application::render(const render_context &context) {}
+void application::render(const render_context &context) {
+    
+}
 
 // ------------------------------------------------------------------------- //
 

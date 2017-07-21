@@ -18,8 +18,8 @@ ExternalProject_Add(GLAD
     DOWNLOAD_DIR    ${GLAD_PREFIX}/download
 #   URL             https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip
 #   URL_MD5         824c99eea073bdd6d2fec76b538f79af
-    GIT_REPOSITORY  https://github.com/Maigo/glad.git #https://github.com/Dav1dde/glad.git
-    GIT_TAG         "cmake-install"
+    GIT_REPOSITORY  https://github.com/Dav1dde/glad.git #https://github.com/Maigo/glad.git
+    GIT_TAG         "v0.1.14a0" #"cmake-install"
     #--Update/Patch step----------
     UPDATE_COMMAND  ""
     #--Configure step-------------
@@ -27,6 +27,8 @@ ExternalProject_Add(GLAD
     CMAKE_ARGS      -DCMAKE_INSTALL_PREFIX:PATH=${GLAD_PREFIX}/install
                     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
                     -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS}
+                    -DGLAD_PROFILE="core"
+                    -DGLAD_API="gl=4.1"
                     -DGLAD_EXPORT=OFF
                     -DGLAD_INSTALL=ON
     #--Build step-----------------
