@@ -12,8 +12,8 @@ namespace mth {
 // matrix2                                                                   //
 // ------------------------------------------------------------------------- //
 // static constants
-const matrix2 matrix2::IDENTITY = matrix2(1.0f, 1.0f);
-const matrix2 matrix2::ZERO     = matrix2();
+const matrix2 matrix2::IDENTITY = matrix2(mth::IDENTITY_INITIALIZATION);
+const matrix2 matrix2::ZERO     = matrix2(mth::ZERO_INITIALIZATION);
 
 // linear algebra
 //TODO: tidy up

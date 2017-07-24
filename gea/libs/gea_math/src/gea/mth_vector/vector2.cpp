@@ -12,7 +12,7 @@ namespace mth {
 // vector2                                                                   //
 // ------------------------------------------------------------------------- //
 // static constants
-const vector2 vector2::ZERO   = vector2();
+const vector2 vector2::ZERO   = vector2(mth::ZERO_INITIALIZATION);
 const vector2 vector2::X_AXIS = vector2(1.0f, 0.0f);
 const vector2 vector2::Y_AXIS = vector2(0.0f, 1.0f);
 

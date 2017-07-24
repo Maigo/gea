@@ -12,8 +12,8 @@ namespace mth {
 // matrix3                                                                   //
 // ------------------------------------------------------------------------- //
 // static constants
-const matrix3 matrix3::IDENTITY = matrix3(1.0f, 1.0f, 1.0f);
-const matrix3 matrix3::ZERO     = matrix3();
+const matrix3 matrix3::IDENTITY = matrix3(mth::IDENTITY_INITIALIZATION);
+const matrix3 matrix3::ZERO     = matrix3(mth::ZERO_INITIALIZATION);
 
 // linear algebra
 //TODO: tidy up
@@ -23,15 +23,15 @@ const matrix3 matrix3::inverse() const {
 
     float det_inv = 1.0f / det;
     matrix3 inv(SKIP_INITIALIZATION);
-    inv.m[0][0] = (m[1][1] * m[2][2] - m[1][2] * m[2][1])*det_inv;
-    inv.m[0][1] = (m[0][2] * m[2][1] - m[0][1] * m[2][2])*det_inv;
-    inv.m[0][2] = (m[0][1] * m[1][2] - m[0][2] * m[1][1])*det_inv;
-    inv.m[1][0] = (m[1][2] * m[2][0] - m[1][0] * m[2][2])*det_inv;
-    inv.m[1][1] = (m[0][0] * m[2][2] - m[0][2] * m[2][0])*det_inv;
-    inv.m[1][2] = (m[0][2] * m[1][0] - m[0][0] * m[1][2])*det_inv;
-    inv.m[2][0] = (m[1][0] * m[2][1] - m[1][1] * m[2][0])*det_inv;
-    inv.m[2][1] = (m[0][1] * m[2][0] - m[0][0] * m[2][1])*det_inv;
-    inv.m[2][2] = (m[0][0] * m[1][1] - m[0][1] * m[1][0])*det_inv;
+    inv.m[0][0] = (m[1][1] * m[2][2] - m[1][2] * m[2][1]) * det_inv;
+    inv.m[0][1] = (m[0][2] * m[2][1] - m[0][1] * m[2][2]) * det_inv;
+    inv.m[0][2] = (m[0][1] * m[1][2] - m[0][2] * m[1][1]) * det_inv;
+    inv.m[1][0] = (m[1][2] * m[2][0] - m[1][0] * m[2][2]) * det_inv;
+    inv.m[1][1] = (m[0][0] * m[2][2] - m[0][2] * m[2][0]) * det_inv;
+    inv.m[1][2] = (m[0][2] * m[1][0] - m[0][0] * m[1][2]) * det_inv;
+    inv.m[2][0] = (m[1][0] * m[2][1] - m[1][1] * m[2][0]) * det_inv;
+    inv.m[2][1] = (m[0][1] * m[2][0] - m[0][0] * m[2][1]) * det_inv;
+    inv.m[2][2] = (m[0][0] * m[1][1] - m[0][1] * m[1][0]) * det_inv;
     return inv;
 }
 

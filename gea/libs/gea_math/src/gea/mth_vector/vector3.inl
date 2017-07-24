@@ -88,7 +88,7 @@ inline const bool vector3::operator<= (const vector3 &o) const {
     return ((*this) == o) || ((*this) < o);
 }
 inline const bool vector3::operator>  (const vector3 &o) const {
-    return (x != o.x) ? (x > o.x) : ((y != o.y) ? (y > o.y) : (z>o.z));
+    return (x != o.x) ? (x > o.x) : ((y != o.y) ? (y > o.y) : (z > o.z));
 }
 inline const bool vector3::operator>= (const vector3 &o) const {
     return ((*this) == o) || ((*this) > o);

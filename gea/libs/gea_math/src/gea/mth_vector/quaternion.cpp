@@ -12,8 +12,8 @@ namespace mth {
 // quaternion                                                                //
 // ------------------------------------------------------------------------- //
 // static constants
-const quaternion quaternion::ZERO     = quaternion(0.0f, 0.0f, 0.0f, 0.0f);
-const quaternion quaternion::IDENTITY = quaternion(0.0f, 0.0f, 0.0f, 1.0f);
+const quaternion quaternion::ZERO     = quaternion(mth::ZERO_INITIALIZATION);
+const quaternion quaternion::IDENTITY = quaternion(mth::IDENTITY_INITIALIZATION);
 
 // conversion
 void quaternion::from_axis(const float angle, const vector3 &axis) {

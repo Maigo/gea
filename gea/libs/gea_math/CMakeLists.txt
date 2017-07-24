@@ -76,6 +76,7 @@ list(APPEND INC_${LIB}
     src/gea/mth_vector/linear_transform2.h
     src/gea/mth_vector/matrix2.h
     src/gea/mth_vector/matrix3.h
+    src/gea/mth_vector/matrix4.h
     src/gea/mth_vector/point2.h
     src/gea/mth_vector/point3.h
     src/gea/mth_vector/polar2.h
@@ -85,6 +86,7 @@ list(APPEND INC_${LIB}
     src/gea/mth_vector/random3.h
     src/gea/mth_vector/vector2.h
     src/gea/mth_vector/vector3.h
+    src/gea/mth_vector/vector4.h
 )
 list(APPEND INL_${LIB}
     src/gea/mth_vector/compression/comp_vector3.inl
@@ -96,6 +98,7 @@ list(APPEND INL_${LIB}
     src/gea/mth_vector/linear_transform2.inl
     src/gea/mth_vector/matrix2.inl
     src/gea/mth_vector/matrix3.inl
+    src/gea/mth_vector/matrix4.inl
     src/gea/mth_vector/point2.inl
     src/gea/mth_vector/point3.inl
     src/gea/mth_vector/polar2.inl
@@ -105,12 +108,14 @@ list(APPEND INL_${LIB}
     src/gea/mth_vector/random3.inl
     src/gea/mth_vector/vector2.inl
     src/gea/mth_vector/vector3.inl
+    src/gea/mth_vector/vector4.inl
 )
 list(APPEND SRC_${LIB}
     src/gea/mth_vector/compression/comp_quaternion.cpp
     src/gea/mth_vector/compression/comp_vector3.cpp
     src/gea/mth_vector/matrix2.cpp
     src/gea/mth_vector/matrix3.cpp
+    src/gea/mth_vector/matrix4.cpp
     src/gea/mth_vector/point2.cpp
     src/gea/mth_vector/point3.cpp
     src/gea/mth_vector/polar2.cpp
@@ -118,6 +123,7 @@ list(APPEND SRC_${LIB}
     src/gea/mth_vector/quaternion.cpp
     src/gea/mth_vector/vector2.cpp
     src/gea/mth_vector/vector3.cpp
+    src/gea/mth_vector/vector4.cpp
 )
 
 # visual math

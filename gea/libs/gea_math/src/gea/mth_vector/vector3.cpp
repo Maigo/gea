@@ -11,7 +11,7 @@ namespace mth {
 // vector3                                                                   //
 // ------------------------------------------------------------------------- //
 // static constants
-const vector3 vector3::ZERO   = vector3();
+const vector3 vector3::ZERO   = vector3(mth::ZERO_INITIALIZATION);
 const vector3 vector3::X_AXIS = vector3(1.0f, 0.0f, 0.0f);
 const vector3 vector3::Y_AXIS = vector3(0.0f, 1.0f, 0.0f);
 const vector3 vector3::Z_AXIS = vector3(0.0f, 0.0f, 1.0f);
