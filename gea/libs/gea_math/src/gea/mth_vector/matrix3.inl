@@ -47,15 +47,15 @@ inline matrix3 &matrix3::operator =(const matrix3 &o) {
     memcpy(&m, &o.m, sizeof(m));
     return (*this);
 }
-inline const matrix3 matrix3::operator- (const matrix3 &o) const {
-    return matrix3(m[0][0] - o.m[0][0], m[0][1] - o.m[0][1], m[0][2] - o.m[0][2],
-                   m[1][0] - o.m[1][0], m[1][1] - o.m[1][1], m[1][2] - o.m[1][2],
-                   m[2][0] - o.m[2][0], m[2][1] - o.m[2][1], m[2][2] - o.m[2][2]);
-}
 inline const matrix3 matrix3::operator+ (const matrix3 &o) const {
     return matrix3(m[0][0] + o.m[0][0], m[0][1] + o.m[0][1], m[0][2] + o.m[0][2],
                    m[1][0] + o.m[1][0], m[1][1] + o.m[1][1], m[1][2] + o.m[1][2],
                    m[2][0] + o.m[2][0], m[2][1] + o.m[2][1], m[2][2] + o.m[2][2]);
+}
+inline const matrix3 matrix3::operator- (const matrix3 &o) const {
+    return matrix3(m[0][0] - o.m[0][0], m[0][1] - o.m[0][1], m[0][2] - o.m[0][2],
+                   m[1][0] - o.m[1][0], m[1][1] - o.m[1][1], m[1][2] - o.m[1][2],
+                   m[2][0] - o.m[2][0], m[2][1] - o.m[2][1], m[2][2] - o.m[2][2]);
 }
 inline const matrix3 matrix3::operator* (const matrix3 &o) const {
     return matrix3(m[0][0] * o.m[0][0] + m[0][1] * o.m[1][0] + m[0][2] * o.m[2][0], m[0][0] * o.m[0][1] + m[0][1] * o.m[1][1] + m[0][2] * o.m[2][1], m[0][0] * o.m[0][2] + m[0][1] * o.m[1][2] + m[0][2] * o.m[2][2],
@@ -81,15 +81,50 @@ inline const vector3 matrix3::operator* (const vector3 &v) const {
 }
 inline const point3 matrix3::operator* (const point3 &p) const {
     return point3(m[0][0] * p.x + m[0][1] * p.y + m[0][2] * p.z,
-        m[1][0] * p.x + m[1][1] * p.y + m[1][2] * p.z,
-        m[2][0] * p.x + m[2][1] * p.y + m[2][2] * p.z);
+                  m[1][0] * p.x + m[1][1] * p.y + m[1][2] * p.z,
+                  m[2][0] * p.x + m[2][1] * p.y + m[2][2] * p.z);
 }
+
 // unary arithmetic
 inline const matrix3 matrix3::operator+ () const { return (*this); }
 inline const matrix3 matrix3::operator- () const {
     return matrix3(-m[0][0], -m[0][1], -m[0][2],
                    -m[1][0], -m[1][1], -m[1][2],
                    -m[2][0], -m[2][1], -m[2][2]);
+}
+
+// compound assignment
+inline matrix3 &matrix3::operator+= (const matrix3 &o) {
+    m[0][0] += o.m[0][0]; m[0][1] += o.m[0][1]; m[0][2] += o.m[0][2];
+    m[1][0] += o.m[1][0]; m[1][1] += o.m[1][1]; m[1][2] += o.m[1][2];
+    m[2][0] += o.m[2][0]; m[2][1] += o.m[2][1]; m[2][2] += o.m[2][2];
+    return (*this);
+}
+inline matrix3 &matrix3::operator-= (const matrix3 &o) {
+    m[0][0] -= o.m[0][0]; m[0][1] -= o.m[0][1]; m[0][2] -= o.m[0][2];
+    m[1][0] -= o.m[1][0]; m[1][1] -= o.m[1][1]; m[1][2] -= o.m[1][2];
+    m[2][0] -= o.m[2][0]; m[2][1] -= o.m[2][1]; m[2][2] -= o.m[2][2];
+    return (*this);
+}
+inline matrix3 &matrix3::operator*= (const matrix3 &o) {
+    m[0][0] = m[0][0] * o.m[0][0] + m[0][1] * o.m[1][0] + m[0][2] * o.m[2][0]; m[0][1] = m[0][0] * o.m[0][1] + m[0][1] * o.m[1][1] + m[0][2] * o.m[2][1]; m[0][2] = m[0][0] * o.m[0][2] + m[0][1] * o.m[1][2] + m[0][2] * o.m[2][2];
+    m[1][0] = m[1][0] * o.m[0][0] + m[1][1] * o.m[1][0] + m[1][2] * o.m[2][0]; m[1][1] = m[1][0] * o.m[0][1] + m[1][1] * o.m[1][1] + m[1][2] * o.m[2][1]; m[1][2] = m[1][0] * o.m[0][2] + m[1][1] * o.m[1][2] + m[1][2] * o.m[2][2];
+    m[2][0] = m[2][0] * o.m[0][0] + m[2][1] * o.m[1][0] + m[2][2] * o.m[2][0]; m[2][1] = m[2][0] * o.m[0][1] + m[2][1] * o.m[1][1] + m[2][2] * o.m[2][1]; m[2][2] = m[2][0] * o.m[0][2] + m[2][1] * o.m[1][2] + m[2][2] * o.m[2][2];
+    return (*this);
+}
+inline matrix3 &matrix3::operator*= (const float s) {
+    m[0][0] *= s; m[0][1] *= s; m[0][2] *= s;
+    m[1][0] *= s; m[1][1] *= s; m[1][2] *= s;
+    m[2][0] *= s; m[2][1] *= s; m[2][2] *= s;
+    return (*this);
+}
+inline matrix3 &matrix3::operator/= (const float s) {
+    l_assert_msg(s != 0.0f, "divide by zero!");
+    const float s_inv = 1.0f / s;
+    m[0][0] *= s_inv; m[0][1] *= s_inv; m[0][2] *= s_inv;
+    m[1][0] *= s_inv; m[1][1] *= s_inv; m[1][2] *= s_inv;
+    m[2][0] *= s_inv; m[2][1] *= s_inv; m[2][2] *= s_inv;
+    return (*this);
 }
 
 // member access
@@ -119,7 +154,6 @@ inline const float matrix3::determinant() const {
     return m[0][0] * m[1][1] * m[2][2] + m[0][1] * m[1][2] * m[2][0] + m[0][2] * m[1][0] * m[2][1] -
            m[0][0] * m[1][2] * m[2][1] - m[0][1] * m[1][0] * m[2][2] - m[0][2] * m[1][1] * m[2][0];
 }
-
 
 // ------------------------------------------------------------------------- //
 // global functions                                                          //

@@ -40,9 +40,17 @@ public:
     inline const matrix4 operator/ (const float s) const;
     inline const vector4 operator* (const vector4 &v) const;
 //    inline const point4  operator* (const point4  &p) const;
+
     // unary arithmetic
     inline const matrix4 operator+ () const;
     inline const matrix4 operator- () const;
+
+    // compound assignment
+    inline matrix4 &operator+= (const matrix4 &o);
+    inline matrix4 &operator-= (const matrix4 &o);
+    inline matrix4 &operator*= (const matrix4 &o);
+    inline matrix4 &operator*= (const float s);
+    inline matrix4 &operator/= (const float s);
 
     // member access
     inline const float operator() (const int32_t i, const int32_t j) const;

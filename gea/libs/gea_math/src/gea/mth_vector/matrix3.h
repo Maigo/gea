@@ -45,9 +45,17 @@ public:
     inline const matrix3 operator/ (const float s) const;
     inline const vector3 operator* (const vector3 &v) const;
     inline const point3  operator* (const point3  &p) const;
+
     // unary arithmetic
     inline const matrix3 operator+ () const;
     inline const matrix3 operator- () const;
+
+    // compound assignment
+    inline matrix3 &operator+= (const matrix3 &o);
+    inline matrix3 &operator-= (const matrix3 &o);
+    inline matrix3 &operator*= (const matrix3 &o);
+    inline matrix3 &operator*= (const float s);
+    inline matrix3 &operator/= (const float s);
 
     // member access
     inline const float operator() (const int32_t i, const int32_t j) const;

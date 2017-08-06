@@ -39,9 +39,17 @@ public:
     inline const matrix2 operator/ (const float s) const;
     inline const vector2 operator* (const vector2 &v) const;
     inline const point2  operator* (const point2  &p) const;
+
     // unary arithmetic
     inline const matrix2 operator+ () const;
     inline const matrix2 operator- () const;
+
+    // compound assignment
+    inline matrix2 &operator+= (const matrix2 &o);
+    inline matrix2 &operator-= (const matrix2 &o);
+    inline matrix2 &operator*= (const matrix2 &o);
+    inline matrix2 &operator*= (const float s);
+    inline matrix2 &operator/= (const float s);
 
     // member access
     inline const float operator() (const int32_t i, const int32_t j) const;
