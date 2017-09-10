@@ -200,6 +200,8 @@ list(APPEND SRC_${LIB_TEST}
 # vector math
 list(APPEND SRC_${LIB_TEST}
     test/gea/mth_vector/test_algorithm2.cpp
+    test/gea/mth_vector/test_matrix2.cpp
+    test/gea/mth_vector/test_matrix3.cpp
     test/gea/mth_vector/test_point2.cpp
 )
 

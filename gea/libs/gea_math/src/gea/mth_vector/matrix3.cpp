@@ -62,7 +62,7 @@ void matrix3::from_euler(const float heading, const float attitude, const float 
     m[1][0] =  sin_attitude;               m[1][1] = cos_attitude * cos_bank;                                        m[1][2] =-cos_attitude * sin_bank;
     m[2][0] = -sin_heading * cos_attitude; m[2][1] = sin_heading * sin_attitude * cos_bank + cos_heading * sin_bank; m[2][2] =-sin_heading * sin_attitude * sin_bank + cos_heading * cos_bank;
 }
-void matrix3::to_euler(float &out_heading, float &out_attitude, float &out_bank) {
+void matrix3::to_euler(float &out_heading, float &out_attitude, float &out_bank) const {
     // m20 in [~-1,~1]
     if ((m[1][0] > mth::upb(-1.0f)) && (m[1][0] < mth::lwb(1.0f))) {
         out_heading = atan2f(-m[2][0], m[0][0]);

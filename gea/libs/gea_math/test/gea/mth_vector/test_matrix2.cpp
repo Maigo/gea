@@ -14,9 +14,9 @@ namespace mth {
 // matrix2                                                                   //
 // ------------------------------------------------------------------------- //
 
-TEST(gea_math, matrix2)
+TEST(mth_vector_matrix2, arithmetic)
 {
-    // arithmetic - addition
+    // addition
     {
         struct data_t {
             matrix2 m0, m1, res;
@@ -29,7 +29,8 @@ TEST(gea_math, matrix2)
             EXPECT_TRUE(approx_eq((data.m0 + data.m1), data.res));
         }
     }
-    // arithmetic - subtraction
+
+    // subtraction
     {
         struct data_t {
             matrix2 m0, m1, res;
@@ -42,7 +43,7 @@ TEST(gea_math, matrix2)
             EXPECT_TRUE(approx_eq((data.m0 - data.m1), data.res));
         }
     }
-    // arithmetic - multiplication
+    // multiplication
     {
         struct data_t {
             matrix2 m0, m1, res;
@@ -55,7 +56,7 @@ TEST(gea_math, matrix2)
             EXPECT_TRUE(approx_eq((data.m0 * data.m1), data.res));
         }
     }
-    // arithmetic - multiplication (scalar)
+    // multiplication (scalar)
     {
         struct data_t {
             matrix2 m;
@@ -70,7 +71,7 @@ TEST(gea_math, matrix2)
             EXPECT_TRUE(approx_eq((data.m * data.s), data.res));
         }
     }
-    // arithmetic - division (scalar)
+    // division (scalar)
     {
         struct data_t {
             matrix2 m;
@@ -85,7 +86,7 @@ TEST(gea_math, matrix2)
             EXPECT_TRUE(approx_eq((data.m / data.s), data.res));
         }
     }
-    // arithmetic - multiplication (vector)
+    // multiplication (vector)
     {
         struct data_t {
             matrix2 m;
@@ -93,14 +94,14 @@ TEST(gea_math, matrix2)
             vector2 res;
         };
         const data_t data_set[] = {
-            { { 1, 2, 3, 4 }, {2, 2}, { 6, 14 } },
+            { { 1, 2, 3, 4 }, { 2, 2 }, { 6, 14 } },
         };
 
         for (const data_t &data : data_set) {
             EXPECT_TRUE(approx_eq((data.m * data.v), data.res));
         }
     }
-    // arithmetic - multiplication (point)
+    // multiplication (point)
     {
         struct data_t {
             matrix2 m;
@@ -115,14 +116,17 @@ TEST(gea_math, matrix2)
             EXPECT_TRUE(approx_eq((data.m * data.v), data.res));
         }
     }
+}
 
-    // linear algebra - transpose
+TEST(mth_vector_matrix2, linear_algebra)
+{
+    // transpose
     {
         struct data_t {
             matrix2 m, res;
         };
         const data_t data_set[] = {
-            { { 1, 2, 3, 4 }, {1, 3, 2, 4} },
+            { { 1, 2, 3, 4 }, { 1, 3, 2, 4 } },
         };
 
         for (const data_t &data : data_set) {
@@ -130,7 +134,7 @@ TEST(gea_math, matrix2)
         }
     }
 
-    // linear algebra - trace
+    // trace
     {
         struct data_t {
             matrix2 m;
@@ -145,7 +149,7 @@ TEST(gea_math, matrix2)
         }
     }
 
-    // linear algebra - determinant
+    // determinant
     {
         struct data_t {
             matrix2 m;
@@ -160,13 +164,13 @@ TEST(gea_math, matrix2)
         }
     }
 
-    // linear algebra - inverse
+    // inverse
     {
         struct data_t {
             matrix2 m, res;
         };
         const data_t data_set[] = {
-            { { 1, 2, 3, 4 }, { -2, 1, 3/2.f, -1/2.f } },
+            { { 1, 2, 3, 4 }, { -2, 1, 3 / 2.f, -1 / 2.f } },
         };
 
         for (const data_t &data : data_set) {
@@ -174,8 +178,11 @@ TEST(gea_math, matrix2)
             EXPECT_TRUE(approx_eq(m_inv, data.res));
         }
     }
+}
 
-    // conversion - from_angle / to angle
+TEST(mth_vector_matrix2, conversion)
+{
+    // from_angle / to angle
     {
         struct data_t {
             float angle;
@@ -193,9 +200,9 @@ TEST(gea_math, matrix2)
         }
 
         for (const data_t &data : data_set) {
-            float m_angle;
-            data.m.to_angle(m_angle);
-            EXPECT_TRUE(approx_angle_eq(m_angle, data.angle));
+            float angle;
+            data.m.to_angle(angle);
+            EXPECT_TRUE(approx_angle_eq(angle, data.angle));
         }
     }
 }

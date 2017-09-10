@@ -71,8 +71,8 @@ public:
     // conversion
     void from_quaternion(const quaternion &q);
     void to_quaternion(quaternion &out_q) const;
-    void from_euler(const float heading, const float attitude, const float bank);
-    void to_euler(float &out_heading, float &out_attitude, float &out_bank);
+    void from_euler(const float heading, const float attitude, const float bank); // yzx
+    void to_euler(float &out_heading, float &out_attitude, float &out_bank) const;
 
     // static constants
     static const matrix3 IDENTITY;
