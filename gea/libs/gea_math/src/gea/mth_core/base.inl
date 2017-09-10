@@ -6,18 +6,6 @@ namespace gea {
 namespace mth {
 
 // ------------------------------------------------------------------------- //
-// trigonometry functions                                                    //
-// ------------------------------------------------------------------------- //
-// conversion functions
-inline const float degrees_to_radians(const float deg) { return deg * PI / 180.0f; }
-inline const float radians_to_degrees(const float rad) { return rad * 180.0f / PI; }
-
-// optimized sin & cos method
-inline void fsincos(const float angle, float &out_sin, float &out_cos) {
-    return i_fsincos(angle, out_sin, out_cos);
-}
-
-// ------------------------------------------------------------------------- //
 // arithmetic functions                                                      //
 // ------------------------------------------------------------------------- //
 // modulo

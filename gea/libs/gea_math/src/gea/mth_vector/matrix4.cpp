@@ -17,10 +17,10 @@ const matrix4 matrix4::ZERO     = matrix4(mth::ZERO_INITIALIZATION);
 // linear algebra
 //TODO: tidy up
 const matrix4 matrix4::inverse() const {
-    float det = determinant();
-    l_assert_msg(det > 0.0f, "singular matrix!");
+    const float det = determinant();
+    l_assert_msg(approx_ne(det, 0.0f), "singular matrix!");
 
-    float det_inv = 1.0f / det;
+    const float det_inv = 1.0f / det;
     matrix4 inv(SKIP_INITIALIZATION);
     inv.m[0][0] = ( m[1][1] * m[2][2] * m[3][3] - m[1][1] * m[2][3] * m[3][2] - m[2][1] * m[1][2] * m[3][3] + m[2][1] * m[1][3] * m[3][2] + m[3][1] * m[1][2] * m[2][3] - m[3][1] * m[1][3] * m[2][2]) * det_inv;
     inv.m[1][0] = (-m[1][0] * m[2][2] * m[3][3] + m[1][0] * m[2][3] * m[3][2] + m[2][0] * m[1][2] * m[3][3] - m[2][0] * m[1][3] * m[3][2] - m[3][0] * m[1][2] * m[2][3] + m[3][0] * m[1][3] * m[2][2]) * det_inv;

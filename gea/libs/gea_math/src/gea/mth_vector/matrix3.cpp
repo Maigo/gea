@@ -2,6 +2,7 @@
 #include "matrix3.h"
 
 // gea includes 
+#include <gea/mth_core/trigonometry.h>
 #include <gea/mth_vector/quaternion.h>
 #include <gea/utility/assert.h>
 
@@ -18,10 +19,10 @@ const matrix3 matrix3::ZERO     = matrix3(mth::ZERO_INITIALIZATION);
 // linear algebra
 //TODO: tidy up
 const matrix3 matrix3::inverse() const {
-    float det = determinant();
-    l_assert_msg(det > 0.0f, "singular matrix!");
+    const float det = determinant();
+    l_assert_msg(approx_ne(det, 0.0f), "singular matrix!");
 
-    float det_inv = 1.0f / det;
+    const float det_inv = 1.0f / det;
     matrix3 inv(SKIP_INITIALIZATION);
     inv.m[0][0] = (m[1][1] * m[2][2] - m[1][2] * m[2][1]) * det_inv;
     inv.m[0][1] = (m[0][2] * m[2][1] - m[0][1] * m[2][2]) * det_inv;

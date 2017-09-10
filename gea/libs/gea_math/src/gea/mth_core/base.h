@@ -68,15 +68,6 @@ enum identity_initialization { IDENTITY_INITIALIZATION };
 enum zero_initialization     { ZERO_INITIALIZATION };
 
 // ------------------------------------------------------------------------- //
-// trigonometry functions                                                    //
-// ------------------------------------------------------------------------- //
-// conversion functions
-inline const float degrees_to_radians(const float deg);
-inline const float radians_to_degrees(const float rad);
-// optimized sin & cos method
-inline void fsincos(const float angle, float &out_sin, float &out_cos);
-
-// ------------------------------------------------------------------------- //
 // arithmetic functions                                                      //
 // ------------------------------------------------------------------------- //
 // modulo

@@ -2,6 +2,7 @@
 #include "vector3.h"
 
 // gea includes
+#include <gea/mth_core/trigonometry.h>
 #include <gea/mth_vector/polar3.h>
 
 namespace gea {

@@ -27,6 +27,7 @@ list(APPEND INC_${LIB}
     src/gea/mth_core/endian_swap.h
     src/gea/mth_core/intrinsic.h
     src/gea/mth_core/limits.h
+    src/gea/mth_core/trigonometry.h
 )
 list(APPEND INL_${LIB}
     src/gea/mth_core/error/err_base.inl
@@ -37,6 +38,7 @@ list(APPEND INL_${LIB}
     src/gea/mth_core/endian_swap.inl
     src/gea/mth_core/intrinsic.inl
     src/gea/mth_core/limits.inl
+    src/gea/mth_core/trigonometry.inl
 )
 list(APPEND SRC_${LIB}
     src/gea/mth_core/type/half.cpp
@@ -177,13 +179,16 @@ set(DEP_${LIB_TEST}
 )
 
 # source build variables
-set(SRC_${LIB_TEST} ) # source
+set(INC_${LIB_TEST}) # include
+set(INL_${LIB_TEST}) # inline
+set(SRC_${LIB_TEST}) # source
 
 # core math
 list(APPEND SRC_${LIB_TEST}
     test/gea/mth_core/sort/test_binary_search.cpp
     test/gea/mth_core/test_base.cpp
     test/gea/mth_core/test_bits.cpp
+    test/gea/mth_core/test_trigonometry.cpp
 )
 
 # geometry math
@@ -216,4 +221,6 @@ project_group(${LIB_TEST} "tests")
 
 # clean-up
 unset(DEP_${LIB_TEST})
+unset(INC_${LIB_TEST})
+unset(INL_${LIB_TEST})
 unset(SRC_${LIB_TEST})

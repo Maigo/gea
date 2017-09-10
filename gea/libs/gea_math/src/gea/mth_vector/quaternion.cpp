@@ -2,6 +2,7 @@
 #include "quaternion.h"
 
 // gea includes
+#include <gea/mth_core/trigonometry.h>
 #include <gea/mth_vector/matrix3.h>
 #include <gea/utility/assert.h>
 

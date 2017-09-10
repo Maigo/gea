@@ -8,52 +8,10 @@ namespace gea {
 namespace mth {
 
 // ------------------------------------------------------------------------- //
-// trigonometry functions                                                    //
-// ------------------------------------------------------------------------- //
-
-TEST(gea_math, trigonometry_functions)
-{
-    // conversion functions
-    {
-        struct data_type { float rad, deg; };
-        const data_type data_set[] = {
-            { PI / 4.0f, 45 },
-            { PI / 2.0f, 90 },
-            { PI / 1.0f, 180 }
-        };
-
-        for (const data_type &data : data_set) {
-            EXPECT_FLOAT_EQ(degrees_to_radians(data.deg), data.rad);
-        }
-
-        for (const data_type &data : data_set) {
-            EXPECT_FLOAT_EQ(radians_to_degrees(data.rad), data.deg);
-        }
-    }
-
-//    // optimized sin & cos method
-//    {
-//        struct data_type { float rad, sin, cos; };
-//        const data_type data_set[] = {
-//            { PI / 4.0f, SQRT_2 / 2.0f, SQRT_2 / 2.0f },
-//            { PI / 2.0f, 1.0f, 0.0f },
-//            { PI / 1.0f, 0.0f, -1.0f }
-//        };
-//
-//        float sin, cos;
-//        for (const data_type &data : data_set) {
-//            fsincos(data.rad, sin, cos);
-//            EXPECT_FLOAT_EQ(sin, data.sin);
-//            EXPECT_FLOAT_EQ(cos, data.cos);
-//        }
-//    }
-}
-
-// ------------------------------------------------------------------------- //
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
 
-TEST(gea_math, helper_functions)
+TEST(mth_core_base, helper_functions)
 {
     // approximative comparison
     {
@@ -82,7 +40,7 @@ TEST(gea_math, helper_functions)
 // template functions                                                        //
 // ------------------------------------------------------------------------- //
 
-TEST(gea_math, template_functions)
+TEST(mth_core_base, template_functions)
 {
     // max / min
 

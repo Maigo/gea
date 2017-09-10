@@ -64,7 +64,7 @@ public:
 
     // conversion
     void from_angle(const float angle);
-    void to_angle(float &out_angle);
+    void to_angle(float &out_angle) const;
 
     // static constants
     static const matrix2 IDENTITY;
