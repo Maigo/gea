@@ -9,9 +9,18 @@ namespace gea {
 // core_application                                                          //
 // ------------------------------------------------------------------------- //
 
+struct window_info
+{
+    float width, height, ratio;
+};
+
 class render_context {
 public:
+    inline const window_info& get_window_info() const { return m_window_info; }
+    inline void set_window_info(const window_info& window_info) { m_window_info = window_info; }
 
+private:
+    window_info m_window_info;
 };
 
 // ------------------------------------------------------------------------- //

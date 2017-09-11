@@ -40,6 +40,16 @@ void glfw_callback_handler::callback_focus(const GLFWwindow* const window, const
 
 // ------------------------------------------------------------------------- //
 
+void glfw_callback_handler::callback_resize(const GLFWwindow* const window, const int width, const int height)
+{
+    system_event event = { system_event_type__window_resize };
+    event.window_resize.width = width;
+    event.window_resize.height = height;
+    m_listener->event(event);
+}
+
+// ------------------------------------------------------------------------- //
+
 void glfw_callback_handler::callback_key(const GLFWwindow* const window, const int key, const int scancode, const int action, const int mods) {
     system_event event = { system_event_type__invalid };
     switch (action)

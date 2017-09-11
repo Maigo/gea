@@ -12,6 +12,7 @@ enum system_event_type {
     system_event_type__key_repeat,
     system_event_type__key_down,
     system_event_type__window_focus,
+    system_event_type__window_resize,
     system_event_type__window_quit,
 
     system_event_type__invalid
@@ -24,9 +25,12 @@ struct system_event_key_input {
     uint32_t scancode;
     uint16_t modifiers;
 };
-
 struct system_event_window_focus {
     bool has_focus;
+};
+struct system_event_window_resize {
+    int32_t width;
+    int32_t height;
 };
 struct system_event_window_quit {};
 
@@ -37,6 +41,7 @@ struct system_event {
     union {
         system_event_key_input      key_input;
         system_event_window_focus   window_focus;
+        system_event_window_resize  window_resize;
         system_event_window_quit    window_quit;
     };
 };

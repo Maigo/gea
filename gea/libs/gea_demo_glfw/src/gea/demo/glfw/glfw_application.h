@@ -36,6 +36,12 @@ protected:
     void destroy_window();
 
 private:
+    void onKeyInput(const system_event_key_input& event);
+    void onWindowFocus(const system_event_window_focus& event);
+    void onWindowResize(const system_event_window_resize& event);
+    void onWindowQuit(const system_event_window_quit& event);
+
+
     glfw_callback_handler   m_callbacks;
 
     GLFWwindow*             m_window;

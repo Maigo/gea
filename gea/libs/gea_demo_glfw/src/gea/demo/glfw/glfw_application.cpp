@@ -2,6 +2,8 @@
 #include "glfw_application.h"
 
 // glfw includes
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
 
@@ -40,9 +42,16 @@ void glfw_application::initialize() {
 void glfw_application::main_loop() {
     render_context context;
 
+    int width, height;
+    glfwGetWindowSize(m_window, &width, &height);
+    context.set_window_info({ float(width), float(height), float(width) / float(height) });
+
     while (!m_quit) {
         update();
         render(context);
+
+        // swap buffers
+        glfwSwapBuffers(m_window);
 
         // handle events
         glfwPollEvents();
@@ -71,15 +80,46 @@ void glfw_application::event(const system_event &event) {
     case system_event_type__key_up:
     case system_event_type__key_repeat:
     case system_event_type__key_down:
-        // do something maybe
+        onKeyInput(event.key_input);
         break;
     case system_event_type__window_focus:
-        // do something maybe
+        onWindowFocus(event.window_focus);
+        break;
+    case system_event_type__window_resize:
+        onWindowResize(event.window_resize);
         break;
     case system_event_type__window_quit:
-        m_quit = true;
+        onWindowQuit(event.window_quit);
         break;
     }
+}
+
+// ------------------------------------------------------------------------- //
+
+void glfw_application::onKeyInput(const system_event_key_input& event)
+{
+    // do something maybe
+}
+
+// ------------------------------------------------------------------------- //
+
+void glfw_application::onWindowFocus(const system_event_window_focus& event)
+{
+    // do something maybe
+}
+
+// ------------------------------------------------------------------------- //
+
+void glfw_application::onWindowResize(const system_event_window_resize& event)
+{
+    glViewport(0, 0, event.width, event.height);
+}
+
+// ------------------------------------------------------------------------- //
+
+void glfw_application::onWindowQuit(const system_event_window_quit& event)
+{
+    m_quit = true;
 }
 
 // ------------------------------------------------------------------------- //
@@ -99,6 +139,7 @@ void glfw_application::create_window(int width, int height, const char *title) {
     glfwSetWindowUserPointer(m_window, &m_callbacks);
     glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window)->void { if (glfw_callback_handler* self = (glfw_callback_handler*)glfwGetWindowUserPointer(window)) { self->callback_close(window); }});
     glfwSetWindowFocusCallback(m_window, [](GLFWwindow* window, int focused)->void { if (glfw_callback_handler* self = (glfw_callback_handler*)glfwGetWindowUserPointer(window)) { self->callback_focus(window, focused); }});
+    glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)->void { if (glfw_callback_handler* self = (glfw_callback_handler*)glfwGetWindowUserPointer(window)) { self->callback_resize(window, width, height); }});
     glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)->void { if (glfw_callback_handler* self = (glfw_callback_handler*)glfwGetWindowUserPointer(window)) { self->callback_key(window, key, scancode, action, mods); }});
 
     // initialize extentions

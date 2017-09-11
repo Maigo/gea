@@ -20,6 +20,7 @@ public:
     void callback_error(const int error, const char* const description);
     void callback_close(const GLFWwindow* const window);
     void callback_focus(const GLFWwindow* const window, const int focused);
+    void callback_resize(const GLFWwindow* const window, const int width, const int height);
     void callback_key(const GLFWwindow* window, const int key, const int scancode, const int action, const int mods);
 
 private:
