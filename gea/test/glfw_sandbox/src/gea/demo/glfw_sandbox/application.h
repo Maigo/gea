@@ -24,7 +24,7 @@ public:
     typedef glfw_application super_t;
 
     application();
-    virtual ~application();
+    virtual ~application() = default;
 
 protected:
     virtual void initialize() override;
@@ -32,6 +32,9 @@ protected:
 
     virtual void update() override;
     virtual void render(const render_context &context) override;
+
+private:
+    unsigned int m_program;
 };
 
 // ------------------------------------------------------------------------- //
