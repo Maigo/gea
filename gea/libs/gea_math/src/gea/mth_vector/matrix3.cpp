@@ -76,6 +76,31 @@ void matrix3::to_euler(float &out_heading, float &out_attitude, float &out_bank)
         out_bank = 0;
     }
 }
+void matrix3::from_rotation(const float angle, const vector3& axis) {
+    float sin_angle, cos_angle;
+    fsincos(angle, sin_angle, cos_angle);
+
+    const vector3 axis2 = axis * axis;
+    const float l2 = (axis2.x * axis2.x) + (axis2.y * axis2.y) + (axis2.z * axis2.z);
+    const float l2_sqrt = sqrtf(l2);
+
+    if (approx_ne(l2, 0.f)) {
+        m[0][0] = (axis2.x + (axis2.y + axis2.z) * cos_angle) / l2;
+        m[0][1] = (axis.x * axis.y * (1 - cos_angle) - axis.z * l2_sqrt * sin_angle) / l2;
+        m[0][2] = (axis.x * axis.z * (1 - cos_angle) + axis.y * l2_sqrt * sin_angle) / l2;
+
+        m[1][0] = (axis.x * axis.y * (1 - cos_angle) + axis.z * l2_sqrt * sin_angle) / l2;
+        m[1][1] = (axis2.y + (axis2.x + axis2.z) * cos_angle) / l2;
+        m[1][2] = (axis.y * axis.z * (1 - cos_angle) - axis.x * l2_sqrt * sin_angle) / l2;
+
+        m[2][0] = (axis.x * axis.z * (1 - cos_angle) - axis.y * l2_sqrt * sin_angle) / l2;
+        m[2][1] = (axis.y * axis.z * (1 - cos_angle) + axis.x * l2_sqrt * sin_angle) / l2;
+        m[2][2] = (axis2.z + (axis2.x + axis2.y) * cos_angle) / l2;
+    }
+    else {
+        (*this) = matrix3(mth::IDENTITY_INITIALIZATION);
+    }
+}
 
 } // namespace mth //
 } // namespace gea //

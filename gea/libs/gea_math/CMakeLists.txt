@@ -131,9 +131,11 @@ list(APPEND SRC_${LIB}
 # visual math
 list(APPEND INC_${LIB}
     src/gea/mth_visual/color.h
+    src/gea/mth_visual/linear_transforms.h
 )
 list(APPEND INL_${LIB}
     src/gea/mth_visual/color.inl
+    src/gea/mth_visual/linear_transforms.inl
 )
 list(APPEND SRC_${LIB}
     src/gea/mth_visual/color.cpp
@@ -202,6 +204,7 @@ list(APPEND SRC_${LIB_TEST}
     test/gea/mth_vector/test_algorithm2.cpp
     test/gea/mth_vector/test_matrix2.cpp
     test/gea/mth_vector/test_matrix3.cpp
+    test/gea/mth_vector/test_matrix4.cpp
     test/gea/mth_vector/test_point2.cpp
 )
 
