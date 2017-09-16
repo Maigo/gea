@@ -30,6 +30,8 @@ protected:
     inline string_builder_impl(T *buffer, const size_t size);
 
 private:
+    inline void null_terminate();
+
     T *m_pos;
     T *m_end;
     T *m_buffer;

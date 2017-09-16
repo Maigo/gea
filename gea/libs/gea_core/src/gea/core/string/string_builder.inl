@@ -30,9 +30,7 @@ inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s, const 
     for (const char_t *it = s; m_pos < end; ++m_pos, ++it) {
         (*m_pos) = (*it);
     }
-    if (gea_likely(m_pos < m_end)) {
-        (*m_pos) = '\0';
-    }
+    null_terminate();
     return (*this);
 }
 
@@ -55,23 +53,24 @@ inline T *const string_builder_impl<T>::data() { return m_buffer; }
 
 template <typename T>
 inline const bool string_builder_impl<T>::reserve(const size_t size) {
-    return size() >= size;
+    return size_t(m_end - m_buffer) >= size;
 }
 
 template <typename T>
-inline const bool string_builder_impl<T>::resize(const size_t new_size, const T t) {
-    const char_t *end = min(m_buffer + new_size, m_end - 1);
-    for (; m_pos < end; ++it) {
+inline const bool string_builder_impl<T>::resize(const size_t size, const T t) {
+    const char_t *end = min(m_buffer + size, m_end - 1);
+    for (; m_pos < end; ++m_pos) {
         (*m_pos) = t;
     }
-    if (gea_likely(m_pos < m_end)) {
-        (*it) = '\0';
-    }
+    null_terminate();
     return (m_buffer + size) <= (m_end - 1);
 }
 
 template <typename T>
-inline void string_builder_impl<T>::reset() { m_pos = m_buffer; }
+inline void string_builder_impl<T>::reset() {
+    m_pos = m_buffer;
+    null_terminate();
+}
 
 template <typename T>
 inline const bool string_builder_impl<T>::empty() const { return (m_pos == m_buffer); }
@@ -90,6 +89,13 @@ inline string_builder_impl<T>::string_builder_impl(T *buffer, const size_t size)
     }
 }
 
+template <typename T>
+inline void string_builder_impl<T>::null_terminate() {
+    if (gea_likely(m_pos < m_end)) {
+        (*m_pos) = '\0';
+    }
+}
+
 // ------------------------------------------------------------------------- //
 
 inline string_builder::string_builder(char_t *buffer, const size_t size)
@@ -99,7 +105,7 @@ inline string_builder::string_builder(char_t *buffer, const size_t size)
 
 template <int N>
 inline static_string_builder<N>::static_string_builder()
-    : super_t(m_buffer, size_t(N)) {}
+    : super_t(m_buffer, sizeof(m_buffer)) {}
 
 // ------------------------------------------------------------------------- //
 

@@ -50,7 +50,7 @@ static void variable_format(const char *format, const variable &var, string_buil
 // string_builder                                                            //
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_string_builder, append) {
+TEST(mth_core_static_string_builder, append) {
     // append
     {
         struct data_type { const char *a, *b, *c; const char *string; };
@@ -68,7 +68,7 @@ TEST(mth_core_string_builder, append) {
     }
 }
 
-TEST(mth_core_string_builder, append_format) {
+TEST(mth_core_static_string_builder, append_format) {
     // append_format
     {
         struct data_type { const char *format; variable var; const char *string; };
@@ -83,6 +83,86 @@ TEST(mth_core_string_builder, append_format) {
             variable_format(data.format, data.var, builder);
             EXPECT_STREQ(builder.data(), data.string);
         }
+    }
+}
+
+TEST(mth_core_static_string_builder, reserve) {
+    // reserve
+    {
+        struct data_type { const size_t size; const bool result; };
+        const data_type data_set[] = {
+            { 4, true },
+            { 8, true },
+            { 9, false },
+        };
+
+        for (const data_type &data : data_set) {
+            static_string_builder<8> builder;
+            EXPECT_EQ(builder.reserve(data.size), data.result);
+        }
+    }
+}
+
+TEST(mth_core_static_string_builder, resize) {
+    // resize
+    {
+        struct data_type { const size_t size; const char c; const bool result; const char *string; };
+        const data_type data_set[] = {
+            { 5, 'a', true, "aaaaa" },
+            { 0, '~', true, "" },
+            { 7, 'X', true, "XXXXXXX" },
+            { 8, 'X', false, "XXXXXXX" },
+        };
+
+        for (const data_type &data : data_set) {
+            static_string_builder<8> builder;
+            EXPECT_EQ(builder.resize(data.size, data.c), data.result);
+            EXPECT_STREQ(builder.data(), data.string);
+        }
+    }
+}
+
+TEST(mth_core_static_string_builder, reset) {
+    // reset
+    {
+        static_string_builder<8> builder;
+        builder.append("string").reset();
+        EXPECT_EQ(builder.size(), 0);
+        EXPECT_STREQ(builder.data(), "");
+    }
+}
+
+TEST(mth_core_static_string_builder, empty) {
+    // empty
+    {
+        static_string_builder<8> builder;
+        EXPECT_TRUE(builder.empty());
+        EXPECT_FALSE(builder.append("string").empty());
+    }
+}
+
+TEST(mth_core_static_string_builder, size) {
+    // size
+    {
+        struct data_type { const char *string; const size_t size; };
+        const data_type data_set[] = {
+            { "string", 6 },
+            { "", 0 },
+            { "12345678", 7 },
+        };
+
+        for (const data_type &data : data_set) {
+            static_string_builder<8> builder;
+            EXPECT_EQ(builder.append(data.string).size(), data.size);
+        }
+    }
+}
+
+TEST(mth_core_static_string_builder, capacity) {
+    // capacity
+    {
+        static_string_builder<8> builder;
+        EXPECT_EQ(builder.capacity(), 8);
     }
 }
 

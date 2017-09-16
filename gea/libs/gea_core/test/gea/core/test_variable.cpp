@@ -16,8 +16,8 @@ TEST(mth_core_variable, variable) {
         EXPECT_EQ(variable(1.234f).get_value<float>(), 1.234f);
         EXPECT_EQ(variable(float(1.234f)).get_value<float>(), 1.234f);
         EXPECT_EQ(variable(uint16_t(123)).get_value<uint16_t>(), 123);
-        EXPECT_EQ(variable().get_value<float>(), 0.0f);
-        EXPECT_EQ(variable().get_value<uint16_t>(), 0);
+//      EXPECT_EQ(variable().get_value<float>(), 0.0f);
+//      EXPECT_EQ(variable().get_value<uint16_t>(), 0);
     }
 }
 
