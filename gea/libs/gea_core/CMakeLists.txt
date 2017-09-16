@@ -16,13 +16,20 @@ set(SRC_${LIB}) # source
 
 # list source
 list(APPEND INC_${LIB}
+    src/gea/core/string/string_builder.h
+    src/gea/core/string/string_util.h
     src/gea/core/endian_base.h
+    src/gea/core/type_traits.h
+    src/gea/core/variable.h
     src/gea/system/platform.h
     src/gea/system/platform_win32.h
     src/gea/system/platform_intrinsic.h
     src/gea/utility/assert.h
 )
 list(APPEND INL_${LIB}
+    src/gea/core/string/string_builder.inl
+    src/gea/core/string/string_util.inl
+    src/gea/core/variable.inl
     src/gea/system/platform_intrinsic.inl
     src/gea/system/platform_win32.inl
     src/gea/utility/assert.inl
@@ -54,3 +61,49 @@ unset(INC_${LIB})
 unset(INL_${LIB})
 unset(SRC_${LIB})
 unset(DEP_${LIB})
+
+#################################################
+# TEST: GEA CORE                                #
+#################################################
+
+set(LIB_TEST test_${LIB})
+
+message(STATUS "Building ${LIB_TEST}")
+
+# list dependencies
+set(DEP_${LIB_TEST}
+    ${LIB}
+    ext_gtest
+    ext_gtest_main
+)
+
+# source build variables
+set(SRC_${LIB_TEST} ) # source
+
+# core data
+list(APPEND SRC_${LIB_TEST}
+    test/gea/core/string/test_string_builder.cpp
+    test/gea/core/string/test_string_util.cpp
+    test/gea/core/test_variable.cpp
+    test/gea/core/test_endian_base.cpp
+)
+
+# force include of global header
+force_include_header(global.h)
+
+# organize source folders
+source_group_ext(PREFIX "source" UNPREFIX "test" FILES ${SRC_${LIB_TEST}})
+
+# add target and test
+add_executable(${LIB_TEST} ${SRC_${LIB_TEST}})
+add_test(NAME ${LIB_TEST} COMMAND ${LIB_TEST})
+
+# add dependencies
+target_link_libraries(${LIB_TEST} ${DEP_${LIB_TEST}})
+
+# organize lib into solution folder
+project_group(${LIB_TEST} "tests")
+
+# clean-up
+unset(DEP_${LIB_TEST})
+unset(SRC_${LIB_TEST})
