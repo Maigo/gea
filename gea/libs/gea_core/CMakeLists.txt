@@ -17,6 +17,7 @@ set(SRC_${LIB}) # source
 # list source
 list(APPEND INC_${LIB}
     src/gea/core/bits/bsa.h
+    src/gea/core/bits/bcl.h
     src/gea/core/string/string_builder.h
     src/gea/core/string/string_util.h
     src/gea/core/endian_base.h
@@ -29,6 +30,7 @@ list(APPEND INC_${LIB}
 )
 list(APPEND INL_${LIB}
     src/gea/core/bits/bsa.inl
+    src/gea/core/bits/bcl.inl
     src/gea/core/string/string_builder.inl
     src/gea/core/string/string_util.inl
     src/gea/core/variable.inl
