@@ -84,9 +84,7 @@ inline const size_t string_builder_impl<T>::capacity() const { return size_t(m_e
 template <typename T>
 inline string_builder_impl<T>::string_builder_impl(T *buffer, const size_t size) : m_pos(buffer), m_end(buffer + size), m_buffer(buffer) {
     l_assert_msg(buffer != nullptr && (size > 0), "Invalid buffer or buffer size!");
-    if (gea_likely(m_pos < m_end)) {
-        (*m_pos) = '\0';
-    }
+    null_terminate();
 }
 
 template <typename T>
