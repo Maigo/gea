@@ -51,13 +51,27 @@ static void variable_format(const char *format, const variable &var, string_buil
 // ------------------------------------------------------------------------- //
 
 TEST(mth_core_static_string_builder, append) {
-    // append
+    // append - string
     {
         struct data_type { const char *a, *b, *c; const char *string; };
         const data_type data_set[] = {
             { "a", "b", "c", "abc" },           // normal
             { "", "", "", "" },                 // empty
             { "abc", "def", "ghf", "abcdefg" }, // overflow
+        };
+
+        for (const data_type &data : data_set) {
+            static_string_builder<8> builder;
+            builder.append(data.a).append(data.b).append(data.c);
+            EXPECT_STREQ(builder.data(), data.string);
+        }
+    }
+
+    // append - character
+    {
+        struct data_type { const char a, b, c; const char *string; };
+        const data_type data_set[] = {
+            { 'a', 'b', 'c', "abc" },           // normal
         };
 
         for (const data_type &data : data_set) {

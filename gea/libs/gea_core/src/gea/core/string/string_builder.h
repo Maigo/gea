@@ -13,6 +13,7 @@ public:
 
     inline string_builder_impl &append(const T *s);
     inline string_builder_impl &append(const T *s, const size_t size);
+    inline string_builder_impl &append(const T c);
     inline string_builder_impl &append_format(const T *format, ...);
 
     inline const T *const data() const;

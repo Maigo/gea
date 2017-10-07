@@ -35,6 +35,16 @@ inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s, const 
 }
 
 template <typename T>
+inline string_builder_impl<T> &string_builder_impl<T>::append(const T c) {
+    const char_t *end = min(m_pos + 1, m_end - 1);
+    if (m_pos < end) {
+        (*m_pos++) = c;
+    }
+    null_terminate();
+    return (*this);
+}
+
+template <typename T>
 inline string_builder_impl<T> &string_builder_impl<T>::append_format(const T *format, ...) {
     const size_t remaining = max(m_end - m_pos, 0);
 
