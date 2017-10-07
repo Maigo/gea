@@ -1,8 +1,26 @@
 #ifndef __GEA_COMPILER_MSVC_H__
 #define __GEA_COMPILER_MSVC_H__
 
+// global includes
 #include <intrin.h>
+#include <stdint.h>
+
 #include "intrinsics.h"
+
+// ------------------------------------------------------------------------- //
+// Compiler specific Precompiler Definitions                                 //
+// ------------------------------------------------------------------------- //
+#define GEA_MSVC
+
+#if defined(WIN64)
+#   define GEA_WINXX
+#   define GEA_WIN64
+#elseif defined(WIN32)
+#   define GEA_WINXX
+#   define GEA_WIN32
+#else
+#   error "Unsupported platform!"
+#endif
 
 // ------------------------------------------------------------------------- //
 // Define private compiler specific helper functions                         //
@@ -15,12 +33,15 @@
 
 #define gea_force_inline    __forceinline
 
+#define gea_sizeof(x)       sizeof(x)
 #define gea_alignof(x)      __alignof(x)
 
 #define gea_alignment(x)    __declspec(align(x))
 
 #define gea_likely(c)       (c)
 #define gea_unlikely(c)     (c)
+
+#define gea_unused
 
 //#define __LINE__ __LINE__
 //#define __FILE__ __FILE__

@@ -13,10 +13,10 @@
 // compiler switch                                                           //
 // ------------------------------------------------------------------------- //
 #ifndef MSVC_VER
-    #define MSVC_VER(maj,min) FALSE
+#   define MSVC_VER(major, minor, patch) FALSE
 #endif
 #ifndef GCC_VER
-    #define GCC_VER(maj,min)  FALSE
+#   define GCC_VER(major, minor, patch)  FALSE
 #endif
 
 // ------------------------------------------------------------------------- //

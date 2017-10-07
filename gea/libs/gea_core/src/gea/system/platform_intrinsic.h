@@ -14,6 +14,12 @@ inline void i_system_break();
 
 } // namespace gea //
 
-#include "platform_intrinsic.inl"
+#if defined(GEA_MSVC)
+#   include "platform_intrinsic_msvc.inl"
+#elif defined(GEA_GCC)
+#   include "platform_intrinsic_gcc.inl"
+#else
+#   error Unsupported compiler!
+#endif
 
 #endif // __GEA_PLATFORM_INTRINSIC_H__ //

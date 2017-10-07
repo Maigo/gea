@@ -25,12 +25,12 @@ private:
         uint32_t m_size;
     };
 
+    // linear ptr
+    uint8_t *m_head, *m_tail;
+
     // allocator stats
     size_t   m_alloc_size;
     uint32_t m_alloc_cnt;
-
-    // linear ptr
-    uint8_t *m_head, *m_tail;
 
     // back end allocator
     allocator *m_allocator;

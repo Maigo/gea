@@ -3,8 +3,8 @@
 
 #if   defined _MSC_VER
     #include "intrinsics_msvc.h"
-//#elif defined __GNUC__
-//    #include "intrinsics_gcc.h"
+#elif defined __GNUC__
+    #include "intrinsics_gcc.h"
 #else
     #error Unsupported compiler!
 #endif

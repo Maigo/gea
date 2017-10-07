@@ -1,8 +1,13 @@
 #ifndef __GEA_PLATFORM_H__
 #define __GEA_PLATFORM_H__
 
-#if defined(WIN32)
+// gea includes
+#include <gea/system/platform_intrinsic.h>
+
+#if defined(GEA_WINXX)
     #include "platform_win32.h"
+#elif defined(GEA_OSX)
+    #include "platform_osx.h"
 #else
     #error Unsupported platform!
 #endif

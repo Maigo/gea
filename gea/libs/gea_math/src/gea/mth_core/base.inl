@@ -33,8 +33,8 @@ inline const float upb(const float f, const float e) { return (f + e); }
 inline const float lwb(const float f, const float e) { return (f - e); }
 
 // attributes
-inline const bool nice(const float number) { return _finite(number) && !_isnan(number); }
-inline const bool finite(const float number) { return _finite(number) != 0; }
+inline const bool nice(const float number) { return i_ffinite(number) && !i_fisnan(number); }
+inline const bool finite(const float number) { return i_ffinite(number) != 0; }
 
 // round
 template <> inline const double round(const double v) { return ::round(v); }

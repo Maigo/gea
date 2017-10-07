@@ -36,7 +36,8 @@ list(APPEND INL_${LIB}
     src/gea/mth_core/base.inl
     src/gea/mth_core/bits.inl
     src/gea/mth_core/endian_swap.inl
-    src/gea/mth_core/intrinsic.inl
+    src/gea/mth_core/intrinsic_msvc.inl
+    src/gea/mth_core/intrinsic_gcc.inl
     src/gea/mth_core/limits.inl
     src/gea/mth_core/trigonometry.inl
 )

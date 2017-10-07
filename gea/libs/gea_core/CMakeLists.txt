@@ -25,6 +25,7 @@ list(APPEND INC_${LIB}
     src/gea/core/variable.h
     src/gea/system/platform.h
     src/gea/system/platform_win32.h
+    src/gea/system/platform_osx.h
     src/gea/system/platform_intrinsic.h
     src/gea/utility/assert.h
 )
@@ -34,8 +35,10 @@ list(APPEND INL_${LIB}
     src/gea/core/string/string_builder.inl
     src/gea/core/string/string_util.inl
     src/gea/core/variable.inl
-    src/gea/system/platform_intrinsic.inl
+    src/gea/system/platform_intrinsic_msvc.inl
+    src/gea/system/platform_intrinsic_gcc.inl
     src/gea/system/platform_win32.inl
+    src/gea/system/platform_osx.inl
     src/gea/utility/assert.inl
 )
 list(APPEND SRC_${LIB}

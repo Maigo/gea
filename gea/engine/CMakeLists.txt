@@ -30,6 +30,9 @@ list(APPEND INC_${LIB}
     src/gea/core/memory/allocator_pool.h
     src/gea/core/memory/allocator_proxy.h
     src/gea/core/memory/memory.h
+    src/gea/core/memory/memory_virtual.h
+    src/gea/core/memory/memory_virtual_win32.h
+    src/gea/core/memory/memory_virtual_osx.h
 #   src/gea/core/parallel/task.h
 #   src/gea/core/parallel/task_manager.h
     src/gea/core/pattern/singleton.h

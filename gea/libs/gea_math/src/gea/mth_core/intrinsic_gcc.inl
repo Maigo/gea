@@ -1,3 +1,6 @@
+#pragma once
+#include "intrinsic.h"
+
 namespace gea {
 namespace mth {
 
@@ -6,7 +9,7 @@ namespace mth {
 // ------------------------------------------------------------------------- //
 // trigonometry
 inline void i_fsincos(float angle, float &out_sin, float &out_cos) {
-    _asm {
+    __asm {
         fld dword ptr [angle]
         fsincos
         mov ebx, [out_cos]      ; get the pointer into ebx
@@ -18,11 +21,10 @@ inline void i_fsincos(float angle, float &out_sin, float &out_cos) {
     
 // attributes
 inline const bool i_fisnan(const float number) {
-    return _isnan(number);
+    return isnan(number);
 }
 inline const bool i_ffinite(const float number) {
-    return _finite(number);
+    return isfinite(number);
 }
-
 } // namespace mth //
 } // namespace gea //
