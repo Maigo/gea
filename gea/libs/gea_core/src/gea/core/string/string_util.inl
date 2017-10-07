@@ -20,6 +20,24 @@ namespace gea {
 inline const int vsnprintf(char *buffer, const size_t size, const char *format, va_list args) {
     return vsnprintf_s(buffer, size, _TRUNCATE, format, args);
 }
+inline const int snprintf(char *buffer, const size_t size, const char *format, ...) {
+    va_list args;
+    va_start(args, format);
+    const int ret = vsnprintf(buffer, size, format, args);
+    va_end(args);
+    return ret;
+}
+
+inline const int vsscanf(const char *s, const char *format, va_list args) {
+    return vsscanf_s(s, format, args);
+}
+inline const int sscanf(const char *s, const char *format, ...) {
+    va_list args;
+    va_start(args, format);
+    const int ret = vsscanf(s, format, args);
+    va_end(args);
+    return ret;
+}
 
 // ------------------------------------------------------------------------- //
 // conversion functions                                                      //

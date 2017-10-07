@@ -7,6 +7,10 @@ namespace gea {
 // ------------------------------------------------------------------------- //
 
 inline const int vsnprintf(char *buffer, const size_t size, const char *format, va_list args);
+inline const int snprintf(char *buffer, const size_t size, const char *format, ...);
+
+inline const int vsscanf(const char *s, const char *format, va_list args);
+inline const int sscanf(const char *s, const char *format, ...);
 
 // ------------------------------------------------------------------------- //
 // conversion functions                                                      //
