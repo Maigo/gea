@@ -58,6 +58,8 @@
 #   define gea_unused
 #endif // gcc 4.7 or above
 
+#define gea_compound
+
 //#define __LINE__ __LINE__
 //#define __FILE__ __FILE__
 #define __FUNC__ __PRETTY_FUNCTION__
