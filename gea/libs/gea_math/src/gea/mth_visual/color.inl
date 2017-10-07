@@ -13,7 +13,7 @@ inline color::color(skip_initialization) {}
 inline color::color(const color &o) : data(o.data) {}
 
 // arithmetic
-inline color &color::operator= (const color &o) { data = o.data; }
+inline color &color::operator= (const color &o) { data = o.data; return (*this); }
 
 // comparative
 inline bool color::operator== (const color &o) const { return (data == o.data); }

@@ -85,19 +85,19 @@ const size_t split_bin_ga::split_bin(const rectangle2 &bin, const rectangle2 &re
     const size_t size = out_bins.size();
     if (split_width && split_height) {
         if (delta_width > delta_height) {
-            out_bins.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, bin.height });
-            out_bins.push_back({ bin.x, bin.y + rect.height, rect.width, bin.height - rect.height });
+            out_bins.push_back(rectangle2(bin.x + rect.width, bin.y, bin.width - rect.width, bin.height));
+            out_bins.push_back(rectangle2(bin.x, bin.y + rect.height, rect.width, bin.height - rect.height));
         }
         else {
-            out_bins.push_back({ bin.x, bin.y + rect.height, bin.width, bin.height - rect.height });
-            out_bins.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, rect.height });
+            out_bins.push_back(rectangle2(bin.x, bin.y + rect.height, bin.width, bin.height - rect.height));
+            out_bins.push_back(rectangle2(bin.x + rect.width, bin.y, bin.width - rect.width, rect.height));
         }
     }
     else if (split_width) {
-        out_bins.push_back({ bin.x + rect.width, bin.y, bin.width - rect.width, bin.height });
+        out_bins.push_back(rectangle2(bin.x + rect.width, bin.y, bin.width - rect.width, bin.height));
     }
     else if (split_height) {
-        out_bins.push_back({ bin.x, bin.y + rect.height, bin.width, bin.height - rect.height });
+        out_bins.push_back(rectangle2(bin.x, bin.y + rect.height, bin.width, bin.height - rect.height));
     }
 
     return (out_bins.size() - size);

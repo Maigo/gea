@@ -29,7 +29,6 @@ void encode_s3(const quaternion &q, quaternion_c32 &out_cq) {
     case 1: c1 = q.x; cX = q.y; c2 = q.z; c3 = q.w; break; // y
     case 2: c1 = q.x; c2 = q.y; cX = q.z; c3 = q.w; break; // z
     case 3: c1 = q.x; c2 = q.y; c3 = q.z; cX = q.w; break; // w
-    default:                                        break;
     }
 
     // ensure omitted component is positive

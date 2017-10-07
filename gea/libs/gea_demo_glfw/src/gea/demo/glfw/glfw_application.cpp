@@ -44,7 +44,7 @@ void glfw_application::main_loop() {
 
     int width, height;
     glfwGetWindowSize(m_window, &width, &height);
-    context.set_window_info({ float(width), float(height), float(width) / float(height) });
+    context.set_window_info((window_info){ float(width), float(height), float(width) / float(height) });
 
     while (!m_quit) {
         update();
@@ -90,6 +90,8 @@ void glfw_application::event(const system_event &event) {
         break;
     case system_event_type__window_quit:
         onWindowQuit(event.window_quit);
+        break;
+    default:
         break;
     }
 }
