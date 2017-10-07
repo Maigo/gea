@@ -50,8 +50,8 @@ add_subdirectory(external/gtest)
 
 # gea libraries
 add_subdirectory(libs/gea_core)
-add_subdirectory(libs/gea_data)
-add_subdirectory(libs/gea_eastl)
+#add_subdirectory(libs/gea_data)
+#add_subdirectory(libs/gea_eastl)
 add_subdirectory(libs/gea_hash)
 add_subdirectory(libs/gea_math)
 add_subdirectory(libs/gea_math_cg)
