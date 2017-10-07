@@ -21,6 +21,7 @@ list(APPEND INC_${LIB}
     src/gea/core/string/string_builder.h
     src/gea/core/string/string_util.h
     src/gea/core/endian_base.h
+    src/gea/core/limits.h
     src/gea/core/type_traits.h
     src/gea/core/variable.h
     src/gea/system/platform.h
