@@ -78,12 +78,12 @@ template<int N> struct static_assert_test {};
 
 } // namespace internal //
 
-#define c_assert_msg( expr, msg )                                               \
+#define c_assert( expr )                                                        \
     typedef ::gea::internal::static_assert_test<                                \
         sizeof(::gea::internal::STATIC_ASSERTION_FAILURE<(expr)==0?false:true>)>\
-            msg
+    gea_static_assert_typedef
 
-#define c_assert( expr ) c_assert_msg( expr, static_assert_typedef_##__LINE__ )
+#define c_assert_msg( expr, msg ) c_assert( expr )
 
 } // namespace gea //
 
