@@ -40,8 +40,8 @@ inline const uint8_t ones(uint32_t x)  {
     return static_cast<uint8_t>(x & 0x0000003F);
 }
 inline const uint8_t ones(uint64_t x)  {
-    static const uint32_t S[] = {1, 2, 4, 8, 16, 32};
-    static const uint32_t B[] = {0x5555555555555555, 0x3333333333333333, 0x0F0F0F0F0F0F0F0F,
+    static const uint64_t S[] = {1, 2, 4, 8, 16, 32};
+    static const uint64_t B[] = {0x5555555555555555, 0x3333333333333333, 0x0F0F0F0F0F0F0F0F,
                                  0x00FF00FF00FF00FF, 0x0000FFFF0000FFFF, 0x00000000FFFFFFFF};
 
     x = x - ((x >> 1) & B[0]);
