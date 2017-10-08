@@ -9,8 +9,8 @@ namespace gea {
 // ------------------------------------------------------------------------- //
 // linear_allocator                                                          //
 // ------------------------------------------------------------------------- //
-linear_allocator::linear_allocator(allocator *a, size_t size)
-    : m_head(NULL), m_tail(NULL), m_alloc_size(0), m_alloc_cnt(0), m_allocator(a)
+linear_allocator::linear_allocator(allocator *allocator, size_t size)
+    : m_head(nullptr), m_tail(nullptr), m_alloc_size(0), m_alloc_cnt(0), m_allocator(allocator)
 {
     m_head = (uint8_t *) m_allocator->allocate(size, 1);
     m_tail = m_head + size;
@@ -51,12 +51,14 @@ void linear_allocator::deallocate(void *p) {
     m_alloc_size -= h->m_size;
     m_alloc_cnt  -= 1;
 }
-size_t linear_allocator::allocated_size(void *p) {
-    header *h = (((header *) p) - 1);
+size_t linear_allocator::allocated_size(const void *p) {
+    const header *h = (((const header *) p) - 1);
     // this assert may detect invalid deallocations
     l_assert_msg(0 < h->m_size && h->m_size <= m_alloc_size, "Invalid memory tag detected!");
 
     return h->m_size;
 }
+
+// ------------------------------------------------------------------------- //
 
 } // namespace gea //

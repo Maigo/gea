@@ -1,11 +1,13 @@
-#ifndef __H_ALLOCATOR_VIRTUAL_H__
-#define __H_ALLOCATOR_VIRTUAL_H__
+#pragma once
 
-// local gea include
-#include "allocator.h"
+// gea includes
+#include <gea/system/memory/allocator/allocator.h>
 
 namespace gea {
 
+// ------------------------------------------------------------------------- //
+// page_allocator                                                            //
+// ------------------------------------------------------------------------- //
 class page_allocator : public allocator {
 public:
     static const char *const DEFAULT_NAME;
@@ -15,7 +17,7 @@ public:
 
     virtual void *allocate(size_t size, size_t align);
     virtual void deallocate(void *p);
-    virtual size_t allocated_size(void *p);
+    virtual size_t allocated_size(const void *p);
 
     // virtual memory specific functions
 //    void reserve(const size_t &size);
@@ -30,13 +32,13 @@ private:
         size_t m_pages;
     };
 
-    const char *mp_name;
+    const char *m_name;
     size_t      m_page_size;
     size_t      m_alloc_size, m_alloc_cnt;
 };
 
+// ------------------------------------------------------------------------- //
+
 } // namespace gea //
 
 #include "allocator_page.inl"
-
-#endif // __H_ALLOCATOR_VIRTUAL_H__ //

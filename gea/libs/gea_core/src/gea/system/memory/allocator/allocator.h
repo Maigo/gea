@@ -1,5 +1,4 @@
-#ifndef __GEA_ALLOCATOR_H__
-#define __GEA_ALLOCATOR_H__
+#pragma once
 
 namespace gea {
 
@@ -10,7 +9,7 @@ class allocator {
 public:
     virtual void *allocate(size_t size, size_t align) = 0;
     virtual void deallocate(void *p) = 0;
-    virtual size_t allocated_size(void *p) = 0;
+    virtual size_t allocated_size(const void *p) = 0;
 
     template <class T> inline T *make_new();
     template <class T, class Arg0> inline T *make_new(const Arg0 &arg0);
@@ -27,17 +26,17 @@ public:
 // ------------------------------------------------------------------------- //
 //                                                                           //
 // ------------------------------------------------------------------------- //
-inline void *allocate_memory(allocator *a, const size_t &size, const size_t &align);
-inline void deallocate_memory(allocator *a, void *p, const size_t &size);
+inline void *allocate_memory(allocator *allocator, const size_t &size, const size_t &align);
+inline void deallocate_memory(allocator *allocator, void *p, const size_t &size);
 
 template <class T>
-inline void *allocate_object(allocator *a, const size_t &n = 1);
+inline void *allocate_object(allocator *allocator, const size_t &n = 1);
 
 template <class T>
-inline void deallocate_object(allocator *a, void *p, const size_t &n = 1);
+inline void deallocate_object(allocator *allocator, void *p, const size_t &n = 1);
+
+// ------------------------------------------------------------------------- //
 
 } // namespace gea //
 
 #include "allocator.inl"
-
-#endif // __GEA_ALLOCATOR_H__ //

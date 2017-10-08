@@ -18,12 +18,24 @@ set(SRC_${LIB}) # source
 list(APPEND INC_${LIB}
     src/gea/core/bits/bsa.h
     src/gea/core/bits/bcl.h
+    src/gea/core/pattern/singleton.h
     src/gea/core/string/string_builder.h
     src/gea/core/string/string_util.h
     src/gea/core/endian_base.h
     src/gea/core/limits.h
     src/gea/core/type_traits.h
     src/gea/core/variable.h
+    src/gea/system/memory/allocator/allocator.h
+    src/gea/system/memory/allocator/allocator_chunk.h
+    src/gea/system/memory/allocator/allocator_heap.h
+    src/gea/system/memory/allocator/allocator_linear.h
+    src/gea/system/memory/allocator/allocator_linked.h
+    src/gea/system/memory/allocator/allocator_manager.h
+    src/gea/system/memory/allocator/allocator_page.h
+    src/gea/system/memory/allocator/allocator_pool.h
+    src/gea/system/memory/allocator/allocator_proxy.h
+    src/gea/system/memory/memory_virtual.h
+    src/gea/system/memory/memory_virtual_win32.h
     src/gea/system/platform.h
     src/gea/system/platform_win32.h
     src/gea/system/platform_intrinsic.h
@@ -32,14 +44,28 @@ list(APPEND INC_${LIB}
 list(APPEND INL_${LIB}
     src/gea/core/bits/bsa.inl
     src/gea/core/bits/bcl.inl
+    src/gea/core/pattern/singleton.inl
     src/gea/core/string/string_builder.inl
     src/gea/core/string/string_util.inl
     src/gea/core/variable.inl
+    src/gea/system/memory/allocator/allocator.inl
+    src/gea/system/memory/allocator/allocator_heap.inl
+    src/gea/system/memory/allocator/allocator_linear.inl
+    src/gea/system/memory/allocator/allocator_linked.inl
+    src/gea/system/memory/allocator/allocator_manager.inl
+    src/gea/system/memory/allocator/allocator_page.inl
     src/gea/system/platform_intrinsic.inl
     src/gea/system/platform_win32.inl
     src/gea/utility/assert.inl
 )
 list(APPEND SRC_${LIB}
+    src/gea/system/memory/allocator/allocator_chunk.cpp
+    src/gea/system/memory/allocator/allocator_heap.cpp
+    src/gea/system/memory/allocator/allocator_linear.cpp
+    src/gea/system/memory/allocator/allocator_linked.cpp
+    src/gea/system/memory/allocator/allocator_page.cpp
+    src/gea/system/memory/allocator/allocator_pool.cpp
+    src/gea/system/memory/allocator/allocator_proxy.cpp
     src/module.cpp
 )
 

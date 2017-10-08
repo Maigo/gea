@@ -1,9 +1,8 @@
-#ifndef __GEA_ALLOCATOR_MANAGER_H__
-#define __GEA_ALLOCATOR_MANAGER_H__
+#pragma once
 
 // gea includes
-#include <core/pattern/singleton.h>
-#include <core/memory/allocator.h>
+#include <gea/core/pattern/singleton.h>
+#include <gea/system/memory/allocator/allocator.h>
 
 namespace gea {
 
@@ -20,13 +19,13 @@ public:
 private:
     uint8_t    m_buffer[BUFFER_SIZE];
 
-    allocator *mp_static_heap;
-    allocator *mp_page_allocator;
-    allocator *mp_heap_allocator;
+    allocator *m_static_heap;
+    allocator *m_page_allocator;
+    allocator *m_heap_allocator;
 };
+
+// ------------------------------------------------------------------------- //
 
 } // namespace gea //
 
 #include "allocator_manager.inl"
-
-#endif // __GEA_ALLOCATOR_MANAGER_H__ //

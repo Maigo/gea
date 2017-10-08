@@ -2,18 +2,20 @@
 #include "allocator_page.h"
 
 // gea includes
-#include <gea/system/memory_virtual.h>
+#include <gea/system/memory/memory_virtual.h>
 #include <gea/utility/assert.h>
 
 namespace gea {
 
+// ------------------------------------------------------------------------- //
+// allocator_page                                                            //
+// ------------------------------------------------------------------------- //
 const char *const page_allocator::DEFAULT_NAME = "default_page_allocator";
 
-page_allocator::page_allocator(const char *name) : mp_name(name), m_page_size(0),  m_alloc_size(0), m_alloc_cnt(0) {
+page_allocator::page_allocator(const char *name) : m_name(name), m_page_size(0),  m_alloc_size(0), m_alloc_cnt(0) {
     // determine page file size
     m_page_size = mem::get_page_size();
 }
-
 page_allocator::~page_allocator() {
     l_assert_msg(m_alloc_size == 0 && m_alloc_cnt == 0, "Memory leak!");
 }
@@ -45,11 +47,13 @@ void page_allocator::deallocate(void *p) {
 
     mem::virtual_deallocate(h);
 }
-size_t page_allocator::allocated_size(void *p) {
-    header *h = ((header *) p) - 1;
+size_t page_allocator::allocated_size(const void *p) {
+    const header *h = ((const header *) p) - 1;
     return pn_to_size(h->m_pages) - sizeof(header);
 }
 
 //void vm_allocator::reserve(const size_t &size) {}
+
+// ------------------------------------------------------------------------- //
 
 } // namespace gea //

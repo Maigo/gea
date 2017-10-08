@@ -1,8 +1,7 @@
-#ifndef __GEA_ALLOCATOR_POOL_H__
-#define __GEA_ALLOCATOR_POOL_H__
+#pragma once
 
-// local gea includes
-#include "allocator.h"
+// gea includes
+#include <gea/system/memory/allocator/allocator.h>
 
 namespace gea {
 
@@ -18,14 +17,14 @@ public:
 
     virtual void *allocate(size_t size, size_t align);
     virtual void dealocate(void *p);
-    virtual size_t allocated_size(void *p);
+    virtual size_t allocated_size(const void *p);
 
 private:
 
-    const char *mp_name;
+    const char *m_name;
     size_t      m_alloc_size, m_alloc_cnt;
 };
 
-} // namespace gea //
+// ------------------------------------------------------------------------- //
 
-#endif // __GEA_ALLOCATOR_POOL_H__ //
+} // namespace gea //

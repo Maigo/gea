@@ -1,7 +1,12 @@
+#pragma once
+#include "allocator_linked.h"
 
 namespace gea {
 
-inline linked_allocator::header::header() : next(NULL), prev(NULL) {}
+// ------------------------------------------------------------------------- //
+// allocator_linked                                                          //
+// ------------------------------------------------------------------------- //
+inline linked_allocator::header::header() : next(nullptr), prev(nullptr) {}
 inline void linked_allocator::header::link_after(header *h) {
     this->prev = h;
     h->next = this;
@@ -31,5 +36,7 @@ inline void linked_allocator::header::remove() const {
     this->prev->next = this->next;
     this->next->prev = this->prev;
 }
+
+// ------------------------------------------------------------------------- //
 
 } // namespace gea //

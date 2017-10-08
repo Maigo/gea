@@ -1,8 +1,7 @@
-#ifndef __GEA_ALLOCATOR_LINEAR_H__
-#define __GEA_ALLOCATOR_LINEAR_H__
+#pragma once
 
-// local gea includes
-#include "allocator.h"
+// gea includes
+#include <gea/system/memory/allocator/allocator.h>
 
 namespace gea {
 
@@ -11,12 +10,12 @@ namespace gea {
 // ------------------------------------------------------------------------- //
 class linear_allocator : public allocator {
 public:
-    linear_allocator(allocator *a, size_t size);
+    linear_allocator(allocator *allocator, size_t size);
     virtual ~linear_allocator();
 
     virtual void *allocate(size_t size, size_t align);
     virtual void deallocate(void *p);
-    virtual size_t allocated_size(void *p);
+    virtual size_t allocated_size(const void *p);
 
 private:
     inline void *align_ptr(const void *p, const size_t &align) const;
@@ -36,8 +35,8 @@ private:
     allocator *m_allocator;
 };
 
+// ------------------------------------------------------------------------- //
+
 } // namespace gea //
 
 #include "allocator_linear.inl"
-
-#endif // __GEA_ALLOCATOR_LINEAR_H__ //

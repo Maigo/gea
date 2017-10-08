@@ -1,11 +1,13 @@
-#ifndef __GEA_ALLOCATOR_LINKED_H__
-#define __GEA_ALLOCATOR_LINKED_H__
+#pragma once
 
-// local gea includes
-#include "allocator.h"
+// gea includes
+#include <gea/system/memory/allocator/allocator.h>
 
 namespace gea {
 
+// ------------------------------------------------------------------------- //
+// allocator_linked                                                          //
+// ------------------------------------------------------------------------- //
 class linked_allocator : public allocator {
 public:
     linked_allocator(allocator *allocator);
@@ -13,7 +15,7 @@ public:
 
     virtual void *allocate(size_t size, size_t align);
     virtual void deallocate(void *p);
-    virtual size_t allocated_size(void *p);
+    virtual size_t allocated_size(const void *p);
 
 private:
     struct header {
@@ -34,8 +36,8 @@ private:
     allocator *m_allocator;
 };
 
+// ------------------------------------------------------------------------- //
+
 } // namespace gea //
 
 #include "allocator_linked.inl"
-
-#endif // __GEA_ALLOCATOR_LINKED_H__ //

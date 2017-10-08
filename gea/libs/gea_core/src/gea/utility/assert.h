@@ -53,6 +53,11 @@ private:
         gea::system_break();                                            \
     }
 
+#define l_fatal_assert( expr )                                          \
+    l_assert( expr )
+#define l_fatal_assert_msg( expr, msg )                                 \
+    l_assert_msg( expr, msg )
+
 //TODO: allow for different types of assertion message handling systems!
 inline void capture_assertion_error(const char *expr, const context &cont) {
     printf("%s -- (%s:%i): %s\n", cont.file(), cont.func(), cont.line(), expr);
