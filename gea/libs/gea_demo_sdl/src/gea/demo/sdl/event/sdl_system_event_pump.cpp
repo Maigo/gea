@@ -5,7 +5,7 @@
 #include <SDL.h>
 
 // gea includes
-#include <gea\demo\core\event\system_event.h>
+#include <gea/demo/core/event/system_event.h>
 
 namespace gea {
 

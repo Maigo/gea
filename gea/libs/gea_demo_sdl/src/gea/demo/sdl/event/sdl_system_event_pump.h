@@ -1,7 +1,7 @@
 #ifndef __GEA_DEMO_SDL_SYSTEM_EVENT_PUMP_H__
 #define __GEA_DEMO_SDL_SYSTEM_EVENT_PUMP_H__
 
-#include <gea\demo\core\event\system_event_pump.h>
+#include <gea/demo/core/event/system_event_pump.h>
 
 namespace gea {
 

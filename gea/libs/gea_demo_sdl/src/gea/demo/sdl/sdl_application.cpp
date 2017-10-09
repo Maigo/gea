@@ -49,6 +49,8 @@ void sdl_application::event(const system_event &event) {
     case system_event_type__window_quit:
         m_quit = true;
         break;
+    default:
+        break;
     }
 }
 

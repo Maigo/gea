@@ -81,7 +81,7 @@ inline void sdl_immediate_renderer::draw_line(const std::vector<mth::line2> &lin
 // ------------------------------------------------------------------------- //
 
 inline void sdl_immediate_renderer::draw_rectangle(const mth::rectangle2 &rectangle) {
-    const mth::linear_transform2 &transform = peek_transform();
+//    const mth::linear_transform2 &transform = peek_transform();
 
     const SDL_Rect rect = { int(rectangle.x), int(rectangle.y), int(rectangle.width), int(rectangle.height) };
     SDL_RenderDrawRect(m_renderer, &rect);
@@ -138,7 +138,7 @@ inline void sdl_immediate_renderer::fill_point(const std::vector<mth::point2> &p
 // ------------------------------------------------------------------------- //
 
 inline void sdl_immediate_renderer::fill_rectangle(const mth::rectangle2 &rectangle) {
-    const mth::linear_transform2 &transform = peek_transform();
+//    const mth::linear_transform2 &transform = peek_transform();
 
     const SDL_Rect rect = { int(rectangle.x), int(rectangle.y), int(rectangle.width), int(rectangle.height) };
     SDL_RenderFillRect(m_renderer, &rect);
