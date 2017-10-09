@@ -43,11 +43,12 @@
      ((major) << 16) + ((minor) << 8) + (patch))
 // ------------------------------------------------------------------------- //
 
-#define gea_force_inline    __forceinline
+#define gea_inline          inline
+#define gea_force_inline    __attribute__((always_inline))
 
 #define gea_sizeof(x)       sizeof(x)
 #define gea_alignof(x)      __alignof(x)
-#define gea_alignment(x)    __attribute__ ((aligned (x)))
+#define gea_alignment(x)    __attribute__((aligned (x)))
 
 #define gea_likely(c)   __builtin_expect(c,1)
 #define gea_unlikely(c) __builtin_expect(c,0)
@@ -87,19 +88,6 @@ inline void byte_swap64(uint64_t &x) { x = (((x & 0xFF00000000000000) >> 56) |
                                             ((x & 0x000000000000FF00) << 40) |
                                             ((x & 0x00000000000000FF) << 56)); }
 #endif // gcc 4.3 or above //
-
-// nullptr
-#if not GCC_VER(4,6,1)
-const class nullptr {
-public:
-    template<class T>
-    operator T*() const { return 0; }
-    template<class C, class T>
-    operator T C::*() const { return 0; }
-private:
-    void operator&() const;
-} nullptr = {};
-#endif // gcc not 4.6.1 or above
 
 // ------------------------------------------------------------------------- //
 // Undefine private compiler specific helper functions                        //

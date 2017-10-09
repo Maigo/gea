@@ -47,3 +47,8 @@ inline const bool dec_to_bin(const uint8_t *dec, const size_t n, char *buffer, c
 } // namespace gea //
 
 #include "string_util.inl"
+#if defined(GEA_MSVC)
+#   include "string_util_win32.inl"
+#else
+#   include "string_util_osx.inl"
+#endif

@@ -43,6 +43,9 @@ static void variable_format(const char *format, const variable &var, string_buil
     case variable_type__double64:
         builder.append_format(format, var.get_value<double>());
         break;
+    default:
+        l_error_msg("invalid variable type!");
+        break;
     }
 }
 

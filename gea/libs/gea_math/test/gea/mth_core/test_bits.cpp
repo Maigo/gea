@@ -360,7 +360,6 @@ TEST(mth_core_bits, bits_rpow2)
         };
 
         for (const data_type &data : data_set) {
-            const uint8_t rpow2 = bit::rpow2(data.bits);
             EXPECT_EQ(bit::rpow2(data.bits), data.rpow2);
         }
     }
@@ -409,7 +408,6 @@ TEST(mth_core_bits, bits_mask)
         };
 
         for (const data_type &data : data_set) {
-            const uint8_t rpow2 = bit::rpow2(data.bits);
             EXPECT_EQ(bit::mask(data.bits), data.mask);
         }
     }

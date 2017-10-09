@@ -31,6 +31,11 @@ inline const uint64_t add(const uint64_t a, const uint64_t b) {
     res |= -(res < a);
     return res;
 }
+inline const size_t add(const size_t a, const size_t b) {
+    size_t res = a + b;
+    res |= -(res < a);
+    return res;
+}
 
 // subtraction
 inline const uint8_t sub(const uint8_t a, const uint8_t b) {
@@ -50,6 +55,11 @@ inline const uint32_t sub(const uint32_t a, const uint32_t b) {
 }
 inline const uint64_t sub(const uint64_t a, const uint64_t b) {
     uint64_t res = a - b;
+    res &= -(res <= a);
+    return res;
+}
+inline const size_t sub(const size_t a, const size_t b) {
+    size_t res = a - b;
     res &= -(res <= a);
     return res;
 }

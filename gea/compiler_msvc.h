@@ -31,6 +31,7 @@
     ( (MSVC_MAJOR << 16) + MSVC_MINOR >= ((maj) << 16) + (min) )
 // ------------------------------------------------------------------------- //
 
+#define gea_inline          inline
 #define gea_force_inline    __forceinline
 
 #define gea_sizeof(x)       sizeof(x)

@@ -34,6 +34,7 @@ list(APPEND INL_${LIB}
     src/gea/core/bits/bcl.inl
     src/gea/core/string/string_builder.inl
     src/gea/core/string/string_util.inl
+    src/gea/core/string/string_util_win32.inl
     src/gea/core/variable.inl
     src/gea/system/platform_intrinsic_msvc.inl
     src/gea/system/platform_intrinsic_gcc.inl

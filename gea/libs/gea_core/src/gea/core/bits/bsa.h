@@ -14,12 +14,14 @@ inline const uint8_t  add(const uint8_t  a, const uint8_t  b);
 inline const uint16_t add(const uint16_t a, const uint16_t b);
 inline const uint32_t add(const uint32_t a, const uint32_t b);
 inline const uint64_t add(const uint64_t a, const uint64_t b);
+inline const size_t   add(const size_t   a, const size_t   b);
 
 // subtraction
 inline const uint8_t  sub(const uint8_t  a, const uint8_t  b);
 inline const uint16_t sub(const uint16_t a, const uint16_t b);
 inline const uint32_t sub(const uint32_t a, const uint32_t b);
 inline const uint64_t sub(const uint64_t a, const uint64_t b);
+inline const size_t   sub(const size_t   a, const size_t   b);
 
 // division
 inline const uint8_t  div(const uint8_t  a, const uint8_t  b);

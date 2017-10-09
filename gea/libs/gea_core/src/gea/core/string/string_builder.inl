@@ -36,7 +36,7 @@ inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s, const 
 
 template <typename T>
 inline string_builder_impl<T> &string_builder_impl<T>::append_format(const T *format, ...) {
-    const size_t remaining = max(m_end - m_pos, 0);
+    const size_t remaining = max(size_t(m_end - m_pos), size_t(0));
 
     va_list args;
     va_start(args, format);

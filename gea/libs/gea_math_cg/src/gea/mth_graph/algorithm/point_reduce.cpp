@@ -17,7 +17,7 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
     l_assert_msg((points.size() > 2) && (epsilon > 0), "invalid parameters!");
 
     stack stack;
-    stack.push_back((stack_item){ 0u, points.size() - 1u });
+    stack.push_back((stack_item){ 0u, uint32_t(points.size()) - 1u });
 
     // iterative recursion
     while (!stack.empty()) {
