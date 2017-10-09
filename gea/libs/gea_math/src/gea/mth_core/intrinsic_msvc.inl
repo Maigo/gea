@@ -1,6 +1,9 @@
 #pragma once
 #include "intrinsic.h"
 
+// std includes
+#include <float.h>
+
 namespace gea {
 namespace mth {
 
@@ -21,10 +24,10 @@ inline void i_fsincos(float angle, float &out_sin, float &out_cos) {
 
 // attributes
 inline const bool i_fisnan(const float number) {
-    return _isnan(number);
+    return _isnan(number) != 0;
 }
 inline const bool i_ffinite(const float number) {
-    return _finite(number);
+    return _finite(number) != 0;
 }
 
 // ------------------------------------------------------------------------- //

@@ -56,15 +56,15 @@ void glfw_callback_handler::callback_key(const GLFWwindow* const window, const i
     {
     case GLFW_PRESS:
         event.type = system_event_type__key_down;
-        event.key_input = (system_event_key_input){ uint32_t(key), uint32_t(scancode), uint16_t(mods) };
+        event.key_input = { uint32_t(key), uint32_t(scancode), uint16_t(mods) };
         break;
     case GLFW_RELEASE:
         event.type = system_event_type__key_up;
-        event.key_input = (system_event_key_input){ uint32_t(key), uint32_t(scancode), uint16_t(mods) };
+        event.key_input = { uint32_t(key), uint32_t(scancode), uint16_t(mods) };
         break;
     case GLFW_REPEAT:
         event.type = system_event_type__key_repeat;
-        event.key_input = (system_event_key_input){ uint32_t(key), uint32_t(scancode), uint16_t(mods) };
+        event.key_input = { uint32_t(key), uint32_t(scancode), uint16_t(mods) };
         break;
     default:
         l_assert_msg(false, "invalid keyboard input action!");

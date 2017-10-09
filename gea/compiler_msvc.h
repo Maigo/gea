@@ -12,10 +12,10 @@
 // ------------------------------------------------------------------------- //
 #define GEA_MSVC
 
-#if defined(WIN64)
+#if defined(_WIN64)
 #   define GEA_WINXX
 #   define GEA_WIN64
-#elseif defined(WIN32)
+#elif defined(_WIN32)
 #   define GEA_WINXX
 #   define GEA_WIN32
 #else

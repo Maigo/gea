@@ -17,7 +17,7 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
     l_assert_msg((points.size() > 2) && (epsilon > 0), "invalid parameters!");
 
     stack stack;
-    stack.push_back((stack_item){ 0u, uint32_t(points.size()) - 1u });
+    stack.push_back({ 0u, uint32_t(points.size()) - 1u });
 
     // iterative recursion
     while (!stack.empty()) {
@@ -29,8 +29,8 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
         find_furthest_point(points, args.from, args.to, distance, index);
 
         if (distance > epsilon) {
-            stack.push_back((stack_item){ index, args.to });
-            stack.push_back((stack_item){ args.from, index });
+            stack.push_back({ index, args.to });
+            stack.push_back({ args.from, index });
         } else {
             // include start point
             out_points.push_back(points[args.from]);
