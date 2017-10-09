@@ -20,6 +20,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 # Organize projects into folders
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 ## ######################################## ##
 ## PROJECT DEPENDENCIES                     ##
 
@@ -39,7 +42,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # external libraries
 #add_subdirectory(external/box2d)
 add_subdirectory(external/sdl)
-add_subdirectory(external/freetype)
+# add_subdirectory(external/freetype)
 add_subdirectory(external/glfw)
 add_subdirectory(external/glad)
 
@@ -50,8 +53,8 @@ add_subdirectory(external/gtest)
 
 # gea libraries
 add_subdirectory(libs/gea_core)
-add_subdirectory(libs/gea_data)
-add_subdirectory(libs/gea_eastl)
+# add_subdirectory(libs/gea_data)
+# add_subdirectory(libs/gea_eastl)
 add_subdirectory(libs/gea_hash)
 add_subdirectory(libs/gea_math)
 add_subdirectory(libs/gea_math_cg)
