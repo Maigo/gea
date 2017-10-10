@@ -1,5 +1,5 @@
 // gea includes
-#include <gea\demo\glfw_sandbox\application.h>
+#include <gea/demo/glfw_sandbox/application.h>
 
 int main (int argc, char *argv[])
 {

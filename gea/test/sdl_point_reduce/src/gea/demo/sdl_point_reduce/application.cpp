@@ -8,9 +8,9 @@
 #include <SDL.h>
 
 // gea includes
-#include <gea\mth_vector\linear_transform2.h>
-#include <gea\mth_graph\algorithm\point_reduce.h>
-#include <gea\mth_graph\algorithm\sampler.h>
+#include <gea/mth_vector/linear_transform2.h>
+#include <gea/mth_graph/algorithm/point_reduce.h>
+#include <gea/mth_graph/algorithm/sampler.h>
 
 #include <gea/demo/sdl/render/sdl_immediate_renderer.h>
 

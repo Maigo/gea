@@ -1,5 +1,5 @@
 // gea includes
-#include <gea\demo\sdl_convex_hull\application.h>
+#include <gea/demo/sdl_convex_hull/application.h>
 
 int main (int argc, char *argv[])
 {

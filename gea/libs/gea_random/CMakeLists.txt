@@ -10,6 +10,11 @@ set(DEP_${LIB}
     ext_sfmt
 )
 
+# list precompiled defines
+set(DEF_${LIB}
+    SFMT_MEXP=19937
+)
+
 # source build variables
 set(INC_${LIB})
 set(INL_${LIB})
@@ -38,6 +43,9 @@ source_group_ext(PREFIX "source"  UNPREFIX "src" FILES ${SRC_${LIB}} ${INL_${LIB
 add_library(${LIB} STATIC ${SRC_${LIB}} ${INL_${LIB}} ${INC_${LIB}})
 include_directories(${PROJECT_SOURCE_DIR} src)
 target_include_directories(${LIB} PUBLIC src)
+
+# set precompiled defines
+target_compile_definitions(${LIB} PRIVATE ${DEF_${LIB}})
 
 # add dependencies
 target_link_libraries(${LIB} ${DEP_${LIB}})

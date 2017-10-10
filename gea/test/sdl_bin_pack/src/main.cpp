@@ -1,5 +1,5 @@
 // gea includes
-#include <gea\demo\sdl_bin_pack\application.h>
+#include <gea/demo/sdl_bin_pack/application.h>
 
 int main (int argc, char *argv[])
 {
