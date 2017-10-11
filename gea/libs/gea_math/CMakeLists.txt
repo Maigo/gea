@@ -23,7 +23,6 @@ list(APPEND INC_${LIB}
     src/gea/mth_core/type/half.h
     src/gea/mth_core/sort/binary_search.h
     src/gea/mth_core/base.h
-    src/gea/mth_core/bits.h
     src/gea/mth_core/endian_swap.h
     src/gea/mth_core/intrinsic.h
     src/gea/mth_core/limits.h
@@ -34,7 +33,6 @@ list(APPEND INL_${LIB}
     src/gea/mth_core/type/half.inl
     src/gea/mth_core/sort/binary_search.inl
     src/gea/mth_core/base.inl
-    src/gea/mth_core/bits.inl
     src/gea/mth_core/endian_swap.inl
     src/gea/mth_core/intrinsic.inl
     src/gea/mth_core/limits.inl
@@ -189,7 +187,6 @@ set(SRC_${LIB_TEST}) # source
 list(APPEND SRC_${LIB_TEST}
     test/gea/mth_core/sort/test_binary_search.cpp
     test/gea/mth_core/test_base.cpp
-    test/gea/mth_core/test_bits.cpp
     test/gea/mth_core/test_trigonometry.cpp
 )
 

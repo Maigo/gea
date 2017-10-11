@@ -1,8 +1,6 @@
-#ifndef __GEA_MTH_CORE_BITS_H__
-#define __GEA_MTH_CORE_BITS_H__
+#pragma once
 
 namespace gea {
-namespace mth {
 namespace bit {
 
 // ------------------------------------------------------------------------- //
@@ -73,9 +71,6 @@ inline const uint64_t mask(uint64_t x);
 // ------------------------------------------------------------------------- //
 
 } // namespace bit //
-} // namespace mth //
 } // namespace gea //
 
 #include "bits.inl"
-
-#endif // __GEA_MTH_CORE_BITS_H__ //

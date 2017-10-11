@@ -2,16 +2,14 @@
 #include <gtest/gtest.h>
 
 // gea includes
-#include <gea/mth_core/bits.h>
+#include <gea/core/bits/bits.h>
 
 namespace gea {
-namespace mth {
 
 // ------------------------------------------------------------------------- //
 // bit hacks                                                                 //
 // ------------------------------------------------------------------------- //
-
-TEST(mth_core_bits, bits_ones)
+TEST(gea_core_bits_bits, ones)
 {
     // count # of ones (uint8_t)
     {
@@ -59,7 +57,7 @@ TEST(mth_core_bits, bits_ones)
 
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits, bits_zeros)
+TEST(gea_core_bits_bits, zeros)
 {
     // count # of zeros (uint8_t)
     {
@@ -107,7 +105,7 @@ TEST(mth_core_bits, bits_zeros)
 
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits, bits_lzc)
+TEST(gea_core_bits_bits, lzc)
 {
     // count # of leading zeroes (uint8_t)
     {
@@ -155,7 +153,7 @@ TEST(mth_core_bits, bits_lzc)
 
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits, bits_tzc)
+TEST(gea_core_bits_bits, tzc)
 {
     // count # of trailing zeroes (uint8_t)
     {
@@ -203,7 +201,7 @@ TEST(mth_core_bits, bits_tzc)
 
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits, bits_loc)
+TEST(gea_core_bits_bits, loc)
 {
     // count # of leading ones (uint8_t)
     {
@@ -251,7 +249,7 @@ TEST(mth_core_bits, bits_loc)
 
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits, bits_toc)
+TEST(gea_core_bits_bits, toc)
 {
     // count # of trailing ones (uint8_t)
     {
@@ -299,7 +297,7 @@ TEST(mth_core_bits, bits_toc)
 
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits, bits_lbs)
+TEST(gea_core_bits_bits, lbs)
 {
     // lowest bit set (uint8_t)
     {
@@ -347,7 +345,7 @@ TEST(mth_core_bits, bits_lbs)
 
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits, bits_rpow2)
+TEST(gea_core_bits_bits, rpow2)
 {
     // round up to the next highest power of 2 (uint8_t)
     {
@@ -396,7 +394,7 @@ TEST(mth_core_bits, bits_rpow2)
 
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits, bits_mask)
+TEST(gea_core_bits_bits, mask)
 {
     // derive smallest mask to encompass number (uint8_t)
     {
@@ -445,5 +443,4 @@ TEST(mth_core_bits, bits_mask)
 
 // ------------------------------------------------------------------------- //
 
-} // namespace mth //
 } // namespace gea //

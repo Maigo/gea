@@ -2,7 +2,6 @@
 #include "bits.h"
 
 namespace gea {
-namespace mth {
 namespace bit {
 
 // ------------------------------------------------------------------------- //
@@ -264,5 +263,4 @@ inline const uint64_t mask(uint64_t x) {
 // ------------------------------------------------------------------------- //
 
 } // namespace bit //
-} // namespace mth //
 } // namespace gea //

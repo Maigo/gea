@@ -2,8 +2,8 @@
 #define __GEA_MTH_VECTOR_QUANTITIZER_H__
 
 // gea includes
+#include <gea/core/bits/bits.h>
 #include <gea/mth_core/base.h>
-#include <gea/mth_core/bits.h>
 
 namespace gea {
 namespace mth {

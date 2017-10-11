@@ -7,11 +7,11 @@
 namespace gea {
 
 // ------------------------------------------------------------------------- //
-// endian_swap                                                               //
+// bit-flag functions                                                        //
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_bits_flag, at_index) {
-    // bit_at
+TEST(gea_core_bits_flag, at_index) {
+    // at_index
     {
         struct data_type { uint8_t index; uint32_t bit; };
         const data_type data_set[] = {
@@ -28,7 +28,9 @@ TEST(mth_core_bits_flag, at_index) {
     }
 }
 
-TEST(mth_core_bits_flag, test) {
+// ------------------------------------------------------------------------- //
+
+TEST(gea_core_bits_flag, test) {
     // test
     {
         struct data_type { bit::flag32_t flag; uint8_t index; bool exp; };
@@ -46,7 +48,9 @@ TEST(mth_core_bits_flag, test) {
     }
 }
 
-TEST(mth_core_bits_flag, set) {
+// ------------------------------------------------------------------------- //
+
+TEST(gea_core_bits_flag, set) {
     // set
     {
         struct data_type { bit::flag8_t flag; uint8_t index; bool before, after; };
@@ -67,7 +71,9 @@ TEST(mth_core_bits_flag, set) {
     }
 }
 
-TEST(mth_core_bits_flag, clear) {
+// ------------------------------------------------------------------------- //
+
+TEST(gea_core_bits_flag, clear) {
     // clear
     {
         struct data_type { bit::flag8_t flag; uint8_t index; bool before, after; };
@@ -88,7 +94,9 @@ TEST(mth_core_bits_flag, clear) {
     }
 }
 
-TEST(mth_core_bits_flag, toggle) {
+// ------------------------------------------------------------------------- //
+
+TEST(gea_core_bits_flag, toggle) {
     // toggle
     {
         struct data_type { bit::flag8_t flag; uint8_t index; bool before, after; };
