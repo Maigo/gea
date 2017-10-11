@@ -18,6 +18,7 @@ set(SRC_${LIB}) # source
 list(APPEND INC_${LIB}
     src/gea/core/bits/bsa.h
     src/gea/core/bits/bcl.h
+    src/gea/core/bits/flag.h
     src/gea/core/pattern/singleton.h
     src/gea/core/string/string_builder.h
     src/gea/core/string/string_util.h
@@ -44,6 +45,7 @@ list(APPEND INC_${LIB}
 list(APPEND INL_${LIB}
     src/gea/core/bits/bsa.inl
     src/gea/core/bits/bcl.inl
+    src/gea/core/bits/flag.inl
     src/gea/core/pattern/singleton.inl
     src/gea/core/string/string_builder.inl
     src/gea/core/string/string_util.inl
@@ -113,6 +115,7 @@ set(SRC_${LIB_TEST} ) # source
 
 # core data
 list(APPEND SRC_${LIB_TEST}
+    test/gea/core/bits/test_flag.cpp
     test/gea/core/string/test_string_builder.cpp
     test/gea/core/string/test_string_util.cpp
     test/gea/core/test_variable.cpp
