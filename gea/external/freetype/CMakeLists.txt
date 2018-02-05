@@ -18,7 +18,7 @@ ExternalProject_Add(FREETYPE
     DOWNLOAD_DIR    ${FREETYPE_PREFIX}/download
 #   URL             http://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.gz
 #   URL_MD5         337139e5c7c5bd645fe130608e0fa8b5
-    GIT_REPOSITORY  http://git.savannah.gnu.org/cgit/freetype/freetype2.git
+    GIT_REPOSITORY  http://git.savannah.nongnu.org/r/freetype/freetype2.git/
     GIT_TAG         VER-2-7
     #--Update/Patch step----------
     UPDATE_COMMAND  ""
