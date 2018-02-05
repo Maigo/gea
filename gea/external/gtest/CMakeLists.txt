@@ -12,10 +12,14 @@ message(STATUS "Building ${LIB_GTEST}")
 message(STATUS "Building ${LIB_GTEST_MAIN}")
 message(STATUS "Building ${LIB_GMOCK}")
 message(STATUS "Building ${LIB_GMOCK_MAIN}")
+message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
 
 set(GTEST_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 
 set(gtest_force_shared_crt ON)
+
+# disable warnings
+set(CMAKE_CXX_FLAGS_EXTERNAL "${CMAKE_CXX_FLAGS} /wd4996")
 
 ExternalProject_Add(GTEST
 	# DEPENDS
@@ -33,6 +37,7 @@ ExternalProject_Add(GTEST
 	CMAKE_ARGS		-DCMAKE_INSTALL_PREFIX:PATH=${GTEST_PREFIX}/install
 					-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 					-DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS}
+					-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS_EXTERNAL}
 					-Dgtest_force_shared_crt=${gtest_force_shared_crt}
 	#--Build step-----------------
 	BINARY_DIR		${GTEST_PREFIX}/build
