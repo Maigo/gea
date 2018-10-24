@@ -21,6 +21,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 ## ######################################## ##
+## PROJECT BUILD CONFIGURATIONS             ##
+set(BUILD_SHARED_LIBS false)
+
+## ######################################## ##
 ## PROJECT DEPENDENCIES                     ##
 
 # OpenGL
@@ -56,6 +60,7 @@ add_subdirectory(libs/gea_hash)
 add_subdirectory(libs/gea_math)
 add_subdirectory(libs/gea_math_cg)
 add_subdirectory(libs/gea_random)
+add_subdirectory(libs/gea_string)
 
 # gea demo libraries
 add_subdirectory(libs/gea_demo_core)
@@ -64,7 +69,6 @@ add_subdirectory(libs/gea_demo_glfw)
 
 # gea engine
 add_subdirectory(engine)
-
 
 ## ######################################## ##
 ## BUILD                                    ##
