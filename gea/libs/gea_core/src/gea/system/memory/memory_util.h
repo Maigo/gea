@@ -1,12 +1,19 @@
 #pragma once
-#include "allocator_linear.h"
 
 namespace gea {
 
 // ------------------------------------------------------------------------- //
-// linear_allocator                                                          //
+// memory util                                                               //
 // ------------------------------------------------------------------------- //
+
+class memory_util {
+public:
+	template <typename T>
+	static inline T* align(T* const p, const size_t align);
+};
 
 // ------------------------------------------------------------------------- //
 
 } // namespace gea //
+
+#include "memory_util.inl"

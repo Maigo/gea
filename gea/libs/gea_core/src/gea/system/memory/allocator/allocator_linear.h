@@ -18,8 +18,6 @@ public:
     virtual size_t allocated_size(const void *p);
 
 private:
-    inline void *align_ptr(const void *p, const size_t &align) const;
-
     struct header {
         uint32_t m_size;
     };

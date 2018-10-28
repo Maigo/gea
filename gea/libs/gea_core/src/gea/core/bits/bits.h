@@ -69,6 +69,13 @@ inline const uint32_t mask(uint32_t x);
 inline const uint64_t mask(uint64_t x);
 
 // ------------------------------------------------------------------------- //
+// misc
+inline const bool is_pow2(const uint8_t x);
+inline const bool is_pow2(const uint16_t x);
+inline const bool is_pow2(const uint32_t x);
+inline const bool is_pow2(const uint64_t x);
+
+// ------------------------------------------------------------------------- //
 
 } // namespace bit //
 } // namespace gea //

@@ -261,6 +261,20 @@ inline const uint64_t mask(uint64_t x) {
 }
 
 // ------------------------------------------------------------------------- //
+inline const bool is_pow2(const uint8_t x) {
+    return x && !(x & (x - 1));
+}
+inline const bool is_pow2(const uint16_t x) {
+    return x && !(x & (x - 1));
+}
+inline const bool is_pow2(const uint32_t x) {
+    return x && !(x & (x - 1));
+}
+inline const bool is_pow2(const uint64_t x) {
+    return x && !(x & (x - 1));
+}
+
+// ------------------------------------------------------------------------- //
 
 } // namespace bit //
 } // namespace gea //

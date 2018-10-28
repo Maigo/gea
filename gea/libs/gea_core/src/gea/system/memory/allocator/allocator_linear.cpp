@@ -2,6 +2,7 @@
 #include "allocator_linear.h"
 
 // gea includes
+#include <gea/system/memory/memory_util.h>
 #include <gea/utility/assert.h>
 
 namespace gea {
@@ -26,7 +27,7 @@ void *linear_allocator::allocate(size_t size, size_t align) {
     // allocate memory tag
     p += sizeof(header);
     // align
-    p  = (uint8_t *) align_ptr(p, align);
+    p  = memory_util::align(p, align);
 
     l_assert_msg((p + size) < m_tail, "Out of memory!");
 
