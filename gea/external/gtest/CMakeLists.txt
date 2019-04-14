@@ -28,8 +28,8 @@ ExternalProject_Add(GTEST
 	STAMP_DIR		${GTEST_PREFIX}/stamp
 	#--Download step--------------
 	DOWNLOAD_DIR	${GTEST_PREFIX}/download
-	URL				https://github.com/google/googletest/archive/release-1.8.0.zip
-	URL_MD5			adfafc8512ab65fd3cf7955ef0100ff5
+	URL				https://github.com/google/googletest/archive/release-1.8.1.zip
+	URL_MD5			ad6868782b5952b7476a7c1c72d5a714
 	#--Update/Patch step----------
 	UPDATE_COMMAND	""
 	#--Configure step-------------
@@ -61,7 +61,7 @@ if (BUILD_SHARED_LIBS)
 	set_property(TARGET ${LIB_GTEST} PROPERTY IMPORTED_LOCATION						${GTEST_PREFIX}/install/lib/${CMAKE_SHARED_LIBRARY_PREFIX}gtest${CMAKE_SHARED_LIBRARY_SUFFIX})
 	set_property(TARGET ${LIB_GTEST} PROPERTY IMPORTED_IMPLIB						${GTEST_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}gtest${CMAKE_STATIC_LIBRARY_SUFFIX})
 	set_property(TARGET ${LIB_GTEST} PROPERTY INTERFACE_INCLUDE_DIRECTORIES			${GTEST_PREFIX}/install/include/)
-	
+
 	add_library(${LIB_GTEST_MAIN} SHARED IMPORTED GLOBAL)
 	set_property(TARGET ${LIB_GTEST_MAIN} PROPERTY IMPORTED_LOCATION				${GTEST_PREFIX}/install/lib/${CMAKE_SHARED_LIBRARY_PREFIX}gtest_main${CMAKE_SHARED_LIBRARY_SUFFIX})
 	set_property(TARGET ${LIB_GTEST_MAIN} PROPERTY IMPORTED_IMPLIB					${GTEST_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}gtest_main${CMAKE_STATIC_LIBRARY_SUFFIX})
