@@ -11,7 +11,7 @@ namespace mth {
 // modulo
 inline const float arithmetic_mod(const float value, const float mod)
 {
-    float value_mod = fmod(value, mod);
+    float value_mod = fmodf(value, mod);
     return (value_mod < 0.0) ? value_mod + mod : value_mod;
 }
 

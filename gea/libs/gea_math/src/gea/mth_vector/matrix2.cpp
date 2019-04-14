@@ -40,7 +40,7 @@ void matrix2::from_angle(const float angle) {
     m[1][0] = sin_angle;  m[1][1] =  cos_angle;
 }
 void matrix2::to_angle(float &out_angle) const {
-    out_angle = atan2(m[1][0], m[0][0]);
+    out_angle = atan2f(m[1][0], m[0][0]);
 }
 
 } // namespace mth //

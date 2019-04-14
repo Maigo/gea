@@ -26,8 +26,8 @@ void quaternion::from_axis(const float angle, const vector3 &axis) {
     w = cos;
 }
 void quaternion::to_axis(float &out_angle, vector3 &out_axis) const {
-    const float s = sqrt(1.0f - w*w);
-    out_angle = 2.0f * acos(w);
+    const float s = sqrtf(1.0f - w*w);
+    out_angle = 2.0f * acosf(w);
 
     if (!approx_eq(s, 0.0f)) {
         const float inv = 1.0f / s;
@@ -80,7 +80,7 @@ void quaternion::from_matrix(const matrix3 &m) {
     float tr_sqrt, tr_sqrt_inv;
     int32_t i1, i2, i3;
     if (tr >= 1.0f) { 
-        tr_sqrt = sqrt(tr) * 2.0f;     // tr_sqrt = 4 * q.w 
+        tr_sqrt = sqrtf(tr) * 2.0f;     // tr_sqrt = 4 * q.w 
         tr_sqrt_inv = 1.0f / tr_sqrt;
         x = (m(2,1) - m(1,2)) * tr_sqrt_inv;
         y = (m(0,2) - m(2,0)) * tr_sqrt_inv;
@@ -93,7 +93,7 @@ void quaternion::from_matrix(const matrix3 &m) {
         i2 = (i1 + 1) % 3;                          // i2 = |1|2|0|
         i3 = (i2 + 1) % 3;                          // i3   |2|0|1| 
 
-        tr_sqrt = sqrt(1.0f + m(i1, i1) - m(i2, i2) - m(i3, i3)) * 2.0f;
+        tr_sqrt = sqrtf(1.0f + m(i1, i1) - m(i2, i2) - m(i3, i3)) * 2.0f;
         tr_sqrt_inv = 1.0f / tr_sqrt;
 
         // construct quaternion

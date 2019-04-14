@@ -123,7 +123,7 @@ inline const float vector2::dot_product(const vector2 &o) const {
 inline const float vector2::angle(const vector2 &o) const {
     // theta = arccos( a dot b / |a||b| )
     const float len = length() * o.length();
-    return (len != 0.0f) ? acos(dot_product(o) / len) : 0.0f;
+    return (len != 0.0f) ? acosf(dot_product(o) / len) : 0.0f;
 }
 
 // attributes

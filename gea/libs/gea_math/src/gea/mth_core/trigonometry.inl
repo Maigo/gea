@@ -21,9 +21,9 @@ inline void fsincos(const float angle, float &out_sin, float &out_cos) {
 // ------------------------------------------------------------------------- //
 // approximative comparison
 inline const bool approx_angle_eq(const float a0, const float a1, const float e) {
-    const float f0 = fabs(a0 - a1);
-    const float f1 = fmod(f0 + float(M_PI), 2.0f * float(M_PI));
-    const float f2 = fabs(f1 - float(M_PI));
+    const float f0 = fabsf(a0 - a1);
+    const float f1 = fmodf(f0 + float(M_PI), 2.0f * float(M_PI));
+    const float f2 = fabsf(f1 - float(M_PI));
 
     return fabs(fmod(fabs(a0 - a1) + float(M_PI), 2.0f * float(M_PI)) - float(M_PI)) <= e;
 }
