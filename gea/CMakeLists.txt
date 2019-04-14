@@ -46,6 +46,7 @@ add_subdirectory(external/sdl)
 add_subdirectory(external/freetype)
 add_subdirectory(external/glfw)
 add_subdirectory(external/glad)
+add_subdirectory(external/rapidxml)
 
 add_subdirectory(external/murmur)
 add_subdirectory(external/sfmt)

@@ -7,7 +7,7 @@ function(SOURCE_GROUP_EXT)
     set(arg_lists     FILES UNPREFIX)   # n-length arguments (eg. FILES <file-list>, CONFIGURATION <configuration-list>)
     cmake_parse_arguments(SOURCE_GROUP_EXT "${arg_flags}" "${arg_tuples}" "${arg_lists}" ${ARGN})
 
-    foreach(var_file ${SOURCE_GROUP_EXT_FILES}) 
+    foreach(var_file ${SOURCE_GROUP_EXT_FILES})
         get_filename_component(var_group "${var_file}" PATH)
 
         # strip UNPREFIX (optional)
@@ -16,7 +16,7 @@ function(SOURCE_GROUP_EXT)
         endforeach(unprefix)
         # ... and changes /'s to \\'s
         string(REPLACE "/" "\\" var_group "${var_group}")
-        
+
         # prepend PREFIX (optional)
         if (NOT "${SOURCE_GROUP_EXT_PREFIX}" STREQUAL "")
           set(var_group "${SOURCE_GROUP_EXT_PREFIX}\\${var_group}")
@@ -26,3 +26,26 @@ function(SOURCE_GROUP_EXT)
         source_group("${var_group}" FILES "${var_file}")
     endforeach(var_file)
 endfunction(SOURCE_GROUP_EXT)
+
+# --------------------------------------------------------------------------- #
+# copy_imported_targets                                                       #
+# eg.                                                                         #
+#   copy_imported_targets(<target_name> [<imported target name> ...])         #
+#   install_imported_target(<imported target name> <arguments to pass to install(FILES)) #
+# --------------------------------------------------------------------------- #
+
+function(copy_imported_targets _target)
+    foreach(_dep ${ARGN})
+        if(WIN32 AND $<TARGET_FILE:${_dep}>)
+            add_custom_command(TARGET ${_target} POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${_dep}> $<TARGET_FILE_DIR:${_target}>
+                COMMENT "Copying required DLL for dependency ${_dep}"
+                VERBATIM)
+        endif()
+    endforeach()
+endfunction()
+
+
+function(install_imported_target _dep)
+    install(FILES $<TARGET_FILE:${_dep}> ${ARGN})
+endfunction()
