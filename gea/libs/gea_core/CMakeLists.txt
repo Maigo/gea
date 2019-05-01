@@ -20,6 +20,8 @@ list(APPEND INC_${LIB}
     src/gea/core/bits/bcl.h
     src/gea/core/bits/bits.h
     src/gea/core/bits/flag.h
+    src/gea/core/pattern/delegate.h
+    src/gea/core/pattern/delegate_base.h
     src/gea/core/pattern/singleton.h
     src/gea/core/string/string_builder.h
     src/gea/core/string/string_util.h
@@ -48,6 +50,8 @@ list(APPEND INL_${LIB}
     src/gea/core/bits/bcl.inl
     src/gea/core/bits/bits.inl
     src/gea/core/bits/flag.inl
+    src/gea/core/pattern/delegate.inl
+    src/gea/core/pattern/delegate_base.inl
     src/gea/core/pattern/singleton.inl
     src/gea/core/string/string_builder.inl
     src/gea/core/string/string_util.inl
@@ -89,7 +93,7 @@ target_include_directories(${LIB} PUBLIC src)
 target_link_libraries(${LIB} ${DEP_${LIB}})
 
 # organize lib into solution folder
-project_group(${LIB} "libs")
+project_group(${LIB} "libs//core")
 
 # clean-up
 unset(INC_${LIB})
@@ -119,6 +123,7 @@ set(SRC_${LIB_TEST} ) # source
 list(APPEND SRC_${LIB_TEST}
     test/gea/core/bits/test_bits.cpp
     test/gea/core/bits/test_flag.cpp
+    test/gea/core/pattern/test_delegate.cpp
     test/gea/core/string/test_string_builder.cpp
     test/gea/core/string/test_string_util.cpp
     test/gea/core/test_variable.cpp
