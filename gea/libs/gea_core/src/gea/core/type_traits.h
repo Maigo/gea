@@ -51,4 +51,16 @@ using add_pointer = typename std::add_pointer<T>::type;
 
 // ------------------------------------------------------------------------- //
 
+template <bool Test, typename T = void>
+struct enable_if {};
+
+template <typename T>
+struct enable_if<true, T>
+{
+    using type = T;
+};
+
+template <bool Test, typename T = void>
+using enable_if_t = typename enable_if<Test, T>::type;
+
 } // namespace gea //

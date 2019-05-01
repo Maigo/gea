@@ -1,11 +1,11 @@
-#ifndef __GEA_SINGLETON_H__
-#define __GEA_SINGLETON_H__
+#pragma once
 
 namespace gea {
 
 // ------------------------------------------------------------------------- //
 // singleton                                                                 //
 // ------------------------------------------------------------------------- //
+
 template <class T>
 class singleton {
 public:
@@ -21,8 +21,8 @@ private:
     static T* s_instance;
 };
 
+// ------------------------------------------------------------------------- //
+
 } // namespace gea //
 
 #include "singleton.inl"
-
-#endif // __GEA_SINGLETON_H__ //

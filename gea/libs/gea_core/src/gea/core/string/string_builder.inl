@@ -24,6 +24,12 @@ inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s) {
 }
 
 template <typename T>
+inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s, const T *e) {
+    const size_t len = (e - s);
+    return append(s, len);
+}
+
+template <typename T>
 inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s, const size_t size) {
     const char_t *end = min(m_pos + size, m_end - 1);
 

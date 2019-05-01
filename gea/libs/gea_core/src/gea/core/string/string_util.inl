@@ -46,9 +46,9 @@ inline const int sscanf(const char *s, const char *format, ...) {
 // hexadecimal to decimal
 inline const uint8_t hex_to_dec(const char hex) {
     return
-        bit::bcl::iif('0' <= hex && hex <= '9', (hex - '0') + 0x0, uint8_t(0)) +
-        bit::bcl::iif('a' <= hex && hex <= 'f', (hex - 'a') + 0xA, uint8_t(0)) +
-        bit::bcl::iif('A' <= hex && hex <= 'F', (hex - 'A') + 0xA, uint8_t(0));
+        bit::bcl::iif('0' <= hex && hex <= '9', uint8_t((hex - '0') + 0x0), uint8_t(0)) +
+        bit::bcl::iif('a' <= hex && hex <= 'f', uint8_t((hex - 'a') + 0xA), uint8_t(0)) +
+        bit::bcl::iif('A' <= hex && hex <= 'F', uint8_t((hex - 'A') + 0xA), uint8_t(0));
 }
 
 inline const size_t hex_to_dec(const char *hex, const size_t hex_size, uint8_t &out_dec) {

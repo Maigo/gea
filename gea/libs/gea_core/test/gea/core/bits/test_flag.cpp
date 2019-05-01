@@ -15,10 +15,10 @@ TEST(gea_core_bits_flag, at_index) {
     {
         struct data_type { uint8_t index; uint32_t bit; };
         const data_type data_set[] = {
-            {  0, (1 <<  0) },
-            {  7, (1 <<  7) },
-            { 14, (1 << 14) },
-            { 31, (1 << 31) },
+            {  0u, (1u <<  0) },
+            {  7u, (1u <<  7) },
+            { 14u, (1u << 14) },
+            { 31u, (1u << 31) },
         };
 
         for (const data_type &data : data_set) {
@@ -35,10 +35,10 @@ TEST(gea_core_bits_flag, test) {
     {
         struct data_type { bit::flag32_t flag; uint8_t index; bool exp; };
         const data_type data_set[] = {
-            { bit::flag32_t(0xAAAAAAAA), 0, false },
-            { bit::flag32_t(0xAAAAAAAA), 7, true },
-            { bit::flag32_t(0xAAAAAAAA), 14, false },
-            { bit::flag32_t(0xAAAAAAAA), 31, true },
+            { bit::flag32_t(0xAAAAAAAA),  0u, false },
+            { bit::flag32_t(0xAAAAAAAA),  7u, true },
+            { bit::flag32_t(0xAAAAAAAA), 14u, false },
+            { bit::flag32_t(0xAAAAAAAA), 31u, true },
         };
 
         for (const data_type &data : data_set) {
@@ -55,10 +55,10 @@ TEST(gea_core_bits_flag, set) {
     {
         struct data_type { bit::flag8_t flag; uint8_t index; bool before, after; };
         const data_type data_set[] = {
-            { bit::flag8_t(0x00), 0, false, true },
-            { bit::flag8_t(0x00), 7, false, true },
-            { bit::flag8_t(0xFF), 0, true, true },
-            { bit::flag8_t(0xFF), 7, true, true },
+            { bit::flag8_t(0x00), 0u, false, true },
+            { bit::flag8_t(0x00), 7u, false, true },
+            { bit::flag8_t(0xFF), 0u, true, true },
+            { bit::flag8_t(0xFF), 7u, true, true },
         };
 
         for (const data_type &data : data_set) {
@@ -78,10 +78,10 @@ TEST(gea_core_bits_flag, clear) {
     {
         struct data_type { bit::flag8_t flag; uint8_t index; bool before, after; };
         const data_type data_set[] = {
-            { bit::flag8_t(0x00), 0, false, false },
-            { bit::flag8_t(0x00), 7, false, false },
-            { bit::flag8_t(0xFF), 0, true, false },
-            { bit::flag8_t(0xFF), 7, true, false },
+            { bit::flag8_t(0x00), 0u, false, false },
+            { bit::flag8_t(0x00), 7u, false, false },
+            { bit::flag8_t(0xFF), 0u, true, false },
+            { bit::flag8_t(0xFF), 7u, true, false },
         };
 
         for (const data_type &data : data_set) {
@@ -101,10 +101,10 @@ TEST(gea_core_bits_flag, toggle) {
     {
         struct data_type { bit::flag8_t flag; uint8_t index; bool before, after; };
         const data_type data_set[] = {
-            { bit::flag8_t(0x00), 0, false, true },
-            { bit::flag8_t(0x00), 7, false, true },
-            { bit::flag8_t(0xFF), 0, true, false },
-            { bit::flag8_t(0xFF), 7, true, false },
+            { bit::flag8_t(0x00), 0u, false, true },
+            { bit::flag8_t(0x00), 7u, false, true },
+            { bit::flag8_t(0xFF), 0u, true, false },
+            { bit::flag8_t(0xFF), 7u, true, false },
         };
 
         for (const data_type &data : data_set) {
