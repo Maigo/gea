@@ -10,7 +10,10 @@
 
 #define gea_force_inline    __forceinline
 
+#define gea_sizeof(x)       sizeof(x)
+#define gea_sizeof_array(x) (sizeof(x) / sizeof((x)[0])
 #define gea_alignof(x)      __alignof(x)
+
 #define gea_alignment(x)    //TODO: alignment?
 #error alignment is not implemented yet!
 
