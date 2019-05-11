@@ -18,8 +18,8 @@ ExternalProject_Add(GLAD
     DOWNLOAD_DIR    ${GLAD_PREFIX}/download
 #   URL             https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip
 #   URL_MD5         824c99eea073bdd6d2fec76b538f79af
-    GIT_REPOSITORY  https://github.com/Dav1dde/glad.git #https://github.com/Maigo/glad.git
-    GIT_TAG         "v0.1.14a0" #"cmake-install"
+    GIT_REPOSITORY  https://github.com/Dav1dde/glad.git
+    GIT_TAG         "v0.1.29"
     #--Update/Patch step----------
     UPDATE_COMMAND  ""
     #--Configure step-------------
