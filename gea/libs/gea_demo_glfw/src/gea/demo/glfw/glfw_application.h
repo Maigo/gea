@@ -22,9 +22,9 @@ public:
     virtual ~glfw_application();
 
 protected:
-    virtual void initialize() override;
+    virtual void initialize(const init_info& info) override;
     virtual void main_loop() override;
-    virtual void deinitialize() override;
+    virtual void deinitialize(const deinit_info& info) override;
 
     virtual void event(const system_event &event) override;
 

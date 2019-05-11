@@ -9,6 +9,13 @@ namespace gea {
 // core_application                                                          //
 // ------------------------------------------------------------------------- //
 
+struct init_info {
+    int argc;
+    const char** argv;
+};
+struct deinit_info {
+};
+
 struct window_info
 {
     float width, height, ratio;
@@ -27,19 +34,19 @@ private:
 
 class core_application : public system_event_listener {
 public:
-    int app_main(int argc, char *argv[]);
+    int app_main(const int argc, const char** argv);
 
     core_application();
     virtual ~core_application();
 
 protected:
-    virtual void initialize();
+    virtual void initialize(const init_info& info);
     virtual void main_loop();
-    virtual void deinitialize();
+    virtual void deinitialize(const deinit_info& info);
 
-    virtual void event(const system_event &event) override;
+    virtual void event(const system_event& event) override;
 
-    virtual void render(const render_context &context) = 0;
+    virtual void render(const render_context& context) = 0;
 };
 
 // ------------------------------------------------------------------------- //

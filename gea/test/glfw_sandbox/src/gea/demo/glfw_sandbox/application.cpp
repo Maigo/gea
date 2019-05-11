@@ -1,4 +1,4 @@
-// header include 
+// header include
 #include "application.h"
 
 // glfw includes
@@ -54,8 +54,8 @@ application::application() : super_t(), m_program(0) {}
 
 // ------------------------------------------------------------------------- //
 
-void application::initialize() {
-    super_t::initialize();
+void application::initialize(const init_info& info) {
+    super_t::initialize(info);
 
     create_window(SCREEN_WIDTH, SCREEN_HEIGHT, "demo: glfw_sandbox");
 
@@ -84,10 +84,10 @@ void application::initialize() {
 
 // ------------------------------------------------------------------------- //
 
-void application::deinitialize() {
+void application::deinitialize(const deinit_info& info) {
     destroy_window();
 
-    super_t::deinitialize();
+    super_t::deinitialize(info);
 };
 
 // ------------------------------------------------------------------------- //

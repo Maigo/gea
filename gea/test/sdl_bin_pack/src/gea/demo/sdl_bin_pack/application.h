@@ -30,8 +30,8 @@ public:
     virtual ~application();
 
 protected:
-    virtual void initialize() override;
-    virtual void deinitialize() override;
+    virtual void initialize(const init_info& info) override;
+    virtual void deinitialize(const deinit_info& info) override;
 
     virtual void render(const render_context &context) override;
 

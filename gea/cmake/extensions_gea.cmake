@@ -45,7 +45,20 @@ function(copy_imported_targets _target)
     endforeach()
 endfunction()
 
-
 function(install_imported_target _dep)
     install(FILES $<TARGET_FILE:${_dep}> ${ARGN})
 endfunction()
+
+# --------------------------------------------------------------------------- #
+#                                                                             #
+# --------------------------------------------------------------------------- #
+
+function(SET_COMMAND_ARGUMENTS _target _args)
+    if (MSVC AND MSVC_VERSION GREATER_EQUAL 1600)
+        set_target_properties(${_target} PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS ${_args})
+    else()
+        message(WARNING "${_target}: Unable to set command arguments ('${_args}')!")
+    endif()
+endfunction()
+
+# --------------------------------------------------------------------------- #

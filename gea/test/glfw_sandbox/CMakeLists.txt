@@ -11,14 +11,14 @@ message(STATUS "Building ${DEMO}")
 
 # list dependencies
 set(DEP_${DEMO}
-    gea_demo_sdl
     gea_math
     gea_math_cg
     gea_demo_glfw
 )
 
+set(DEP_EXT_${DEMO})
 if (WIN32)
-    list(APPEND DEP_${DEMO}
+    list(APPEND DEP_EXT_${DEMO}
         winmm.lib
         version.lib
         imm32.lib
@@ -49,11 +49,15 @@ source_group_ext(PREFIX "include" UNPREFIX "src" FILES ${INC_${DEMO}})
 source_group_ext(PREFIX "source"  UNPREFIX "src" FILES ${SRC_${DEMO}} ${INL_${DEMO}})
 
 # add target
-add_executable(${DEMO} ${SRC_${DEMO}})
+add_executable(${DEMO} ${SRC_${DEMO}} ${INL_${DEMO}} ${INC_${DEMO}})
 include_directories(${PROJECT_SOURCE_DIR} src ${ext_sdl_INCLUDE_DIR})
 
 # add dependencies
-target_link_libraries(${DEMO} ${DEP_${DEMO}} ${DEP_WIN_${DEMO}})
+target_link_libraries(${DEMO} ${DEP_${DEMO}} ${DEP_EXT_${DEMO}} )
+copy_imported_targets(${DEMO} ${DEP_${DEMO}})
+
+# add runtime arguments
+set_command_arguments(${DEMO} "test -a arg0 arg1 -b -c")
 
 # organize test into solution folder
 project_group(${DEMO} "demos")

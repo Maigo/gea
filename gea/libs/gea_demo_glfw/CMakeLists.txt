@@ -10,6 +10,7 @@ message(STATUS "Building ${LIB}")
 set(DEP_${LIB}
     gea_core
     gea_math
+	gea_data_core
     gea_demo_core
     ext_glfw
     ext_glad
@@ -54,6 +55,7 @@ target_include_directories(${LIB} PUBLIC src)
 
 # add dependencies
 target_link_libraries(${LIB} ${DEP_${LIB}})
+copy_imported_targets(${LIB} ${DEP_${LIB}})
 
 # organize lib into solution folder
 project_group(${LIB} "libs//demo")

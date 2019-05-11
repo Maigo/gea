@@ -1,4 +1,4 @@
-// header include 
+// header include
 #include "glfw_application.h"
 
 // glfw includes
@@ -9,6 +9,7 @@
 
 // gea includes
 #include <gea/utility/assert.h>
+#include <gea/data/cli/cli_manager.h>
 
 namespace gea {
 
@@ -24,8 +25,31 @@ glfw_application::~glfw_application() {}
 
 // ------------------------------------------------------------------------- //
 
-void glfw_application::initialize() {
-    super_t::initialize();
+class cli_op {};
+
+class cli_command : public cli_op {
+public:
+    cli_manager::callback_resolution set(const cli_reader& reader) { m_is_set = true; return cli_manager::callback_resolution__success; }
+private:
+    bool m_is_set;
+};
+class cli_option : public cli_op {
+public:
+    cli_manager::callback_resolution set(const cli_reader& reader) { m_is_set = true; return cli_manager::callback_resolution__success; }
+private:
+    bool m_is_set;
+};
+
+cli_manager::callback_t make_command_callback(cli_command& op) {
+    return cli_manager::callback_t::create<cli_command, &cli_command::set>(&op);
+}
+
+cli_manager::callback_t make_option_callback(cli_option& op) {
+    return cli_manager::callback_t::create<cli_option, &cli_option::set>(&op);
+}
+
+void glfw_application::initialize(const init_info& info) {
+    super_t::initialize(info);
 
     // set global error callback
 //    glfwSetErrorCallback((GLFWerrorfun)[this](int error, const char* description) { this->callback_error(error, description); });
@@ -35,6 +59,18 @@ void glfw_application::initialize() {
         printf("GLFW could not initialize!");
         return;
     }
+
+    cli_command command_test;
+    cli_option option_a;
+    cli_option option_b;
+    cli_option option_c;
+
+    cli_manager cli_manager(info.argc, info.argv);
+    cli_manager.add_command("test", "renders a test shape.", make_command_callback(command_test));
+    cli_manager.add_option("-a", "test argument a", make_option_callback(option_a));
+    cli_manager.add_option("-b", "test argument b", make_option_callback(option_b));
+    cli_manager.add_option("-c", "test argument c", make_option_callback(option_c));
+    cli_manager.parse();
 }
 
 // ------------------------------------------------------------------------- //
@@ -65,12 +101,12 @@ void glfw_application::main_loop() {
 
 // ------------------------------------------------------------------------- //
 
-void glfw_application::deinitialize() {
+void glfw_application::deinitialize(const deinit_info& info) {
     l_assert_msg(!m_window, "window must be destroyed!");
 
     glfwTerminate();
 
-    super_t::deinitialize();
+    super_t::deinitialize(info);
 }
 
 // ------------------------------------------------------------------------- //

@@ -1,4 +1,4 @@
-// header include 
+// header include
 #include "application.h"
 
 // std includes
@@ -37,8 +37,8 @@ static void random_points(const mth::point2 &nw_corner, const mth::point2 &se_co
 
 // ------------------------------------------------------------------------- //
 
-void application::initialize() {
-    super_t::initialize();
+void application::initialize(const init_info& info) {
+    super_t::initialize(info);
 
     // initialize sdl
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -47,7 +47,7 @@ void application::initialize() {
     }
 
     // create window
-    m_window = SDL_CreateWindow("demo: sdl_simple", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    m_window = SDL_CreateWindow("demo: sdl_convex_hull", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (m_window == nullptr) {
         printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
         return;
@@ -67,12 +67,12 @@ void application::initialize() {
 
 // ------------------------------------------------------------------------- //
 
-void application::deinitialize() {
+void application::deinitialize(const deinit_info& info) {
     if (m_renderer != nullptr) {
         SDL_DestroyRenderer(m_renderer);
         m_renderer = nullptr;
     }
-    
+
     if (m_window != nullptr) {
         SDL_DestroyWindow(m_window);
         m_window = nullptr;
@@ -81,7 +81,7 @@ void application::deinitialize() {
     // quit sdl subsystems
     SDL_Quit();
 
-    super_t::deinitialize();
+    super_t::deinitialize(info);
 };
 
 // ------------------------------------------------------------------------- //
