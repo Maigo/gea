@@ -7,8 +7,8 @@ set(LIB ext_murmur)
 
 message(STATUS "Building ${LIB}")
 
-set(PATCH_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/patch")
-set(MURMUR_PREFIX  "${CMAKE_CURRENT_SOURCE_DIR}/generated")
+set(PATCH_PREFIX  "${CMAKE_CURRENT_SOURCE_DIR}/patch")
+set(MURMUR_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 
 ExternalProject_Add(MURMUR
     # DEPENDS
@@ -32,11 +32,11 @@ ExternalProject_Add(MURMUR
     #--Build step-----------------
     BINARY_DIR      ${MURMUR_PREFIX}/build
     BUILD_COMMAND
-                    ${CMAKE_COMMAND} --build <BINARY_DIR> --config ${Configuration}
+                    ${CMAKE_COMMAND} --build <BINARY_DIR> --config ${CMAKE_CFG_INTDIR}
     #--Install step---------------
     INSTALL_DIR     ${MURMUR_PREFIX}/install
     INSTALL_COMMAND
-                    ${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${Configuration}
+                    ${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${CMAKE_CFG_INTDIR}
 )
 
 # Organize lib into solution folder

@@ -9,8 +9,6 @@ message(STATUS "Building ${LIB}")
 
 set(SDL2_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 
-set(SDL_BUILDING_LIBRARY ON)
-
 ExternalProject_Add(SDL2
 	# DEPENDS
 	PREFIX			${SDL2_PREFIX}
@@ -27,14 +25,15 @@ ExternalProject_Add(SDL2
 	CMAKE_ARGS		-DCMAKE_INSTALL_PREFIX:PATH=${SDL2_PREFIX}/install
 					-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 					-DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS}
+					-DSDL_BUILDING_LIBRARY=ON
 	#--Build step-----------------
 	BINARY_DIR		${SDL2_PREFIX}/build
 	BUILD_COMMAND
-					${CMAKE_COMMAND} --build <BINARY_DIR> --config ${Configuration}
+					${CMAKE_COMMAND} --build <BINARY_DIR> --config ${CMAKE_CFG_INTDIR}
 	#--Install step---------------
 	INSTALL_DIR		${SDL2_PREFIX}/install
 	INSTALL_COMMAND
-					${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${Configuration}
+					${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${CMAKE_CFG_INTDIR}
 )
 
 # Organize lib into solution folder

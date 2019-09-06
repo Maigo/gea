@@ -30,11 +30,11 @@ ExternalProject_Add(SFMT
     #--Build step-----------------
     BINARY_DIR      ${SFMT_PREFIX}/build
     BUILD_COMMAND
-                    ${CMAKE_COMMAND} --build <BINARY_DIR> --config ${Configuration}
+                    ${CMAKE_COMMAND} --build <BINARY_DIR> --config ${CMAKE_CFG_INTDIR}
     #--Install step---------------
     INSTALL_DIR     ${SFMT_PREFIX}/install
     INSTALL_COMMAND
-                    ${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${Configuration}
+                    ${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${CMAKE_CFG_INTDIR}
 )
 
 # Organize lib into solution folder

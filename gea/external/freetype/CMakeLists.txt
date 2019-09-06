@@ -9,6 +9,8 @@ message(STATUS "Building ${LIB}")
 
 set(FREETYPE_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 
+option(BUILD_SHARED_LIBS "Build static libs by default." OFF)
+
 ExternalProject_Add(FREETYPE
     # DEPENDS
     PREFIX          ${FREETYPE_PREFIX}
@@ -30,11 +32,11 @@ ExternalProject_Add(FREETYPE
     #--Build step-----------------
     BINARY_DIR      ${FREETYPE_PREFIX}/build
     BUILD_COMMAND
-                    ${CMAKE_COMMAND} --build <BINARY_DIR> --config ${Configuration}
+                    ${CMAKE_COMMAND} --build <BINARY_DIR> --config ${CMAKE_CFG_INTDIR}
     #--Install step---------------
     INSTALL_DIR     ${FREETYPE_PREFIX}/install
     INSTALL_COMMAND
-                    ${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${Configuration}
+                    ${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${CMAKE_CFG_INTDIR}
     )
 
 # Organize lib into solution folder
@@ -44,10 +46,16 @@ project_group(FREETYPE "__external")
 file(MAKE_DIRECTORY ${FREETYPE_PREFIX}/install/include/freetype2/)
 
 # Add library and include directory
-add_library(${LIB} STATIC IMPORTED GLOBAL)
-set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION_DEBUG   ${FREETYPE_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}freetyped${CMAKE_STATIC_LIBRARY_SUFFIX})
-set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION_RELEASE ${FREETYPE_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}freetype${CMAKE_STATIC_LIBRARY_SUFFIX})
-set_property(TARGET ${LIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${FREETYPE_PREFIX}/install/include/freetype2/)
+if (BUILD_SHARED_LIBS)
+	add_library(${LIB} SHARED IMPORTED GLOBAL)
+    message(FATAL_ERROR "Not Implemented!")
+	set_property(TARGET ${LIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${FREETYPE_PREFIX}/install/include/freetype2/)
+else()
+	add_library(${LIB} STATIC IMPORTED GLOBAL)
+	set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION_DEBUG   ${FREETYPE_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}freetyped${CMAKE_STATIC_LIBRARY_SUFFIX})
+	set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION_RELEASE ${FREETYPE_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}freetype${CMAKE_STATIC_LIBRARY_SUFFIX})
+	set_property(TARGET ${LIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${FREETYPE_PREFIX}/install/include/freetype2/)
+endif (BUILD_SHARED_LIBS)
 
 add_dependencies(${LIB} FREETYPE)
 

@@ -21,20 +21,23 @@ ExternalProject_Add(GLFW
 #	GIT_REPOSITORY	https://github.com/glfw/glfw.git
 #	GIT_TAG			3.2.1
 	#--Update/Patch step----------
-	UPDATE_COMMAND ""
+	UPDATE_COMMAND	""
 	#--Configure step-------------
 	SOURCE_DIR		${GLFW_PREFIX}/source
 	CMAKE_ARGS		-DCMAKE_INSTALL_PREFIX:PATH=${GLFW_PREFIX}/install
 					-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 					-DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS}
+					-DGLFW_BUILD_EXAMPLES=OFF
+					-DGLFW_BUILD_TESTS=OFF
+					-DGLFW_BUILD_DOCS=OFF
 	#--Build step-----------------
 	BINARY_DIR		${GLFW_PREFIX}/build
 	BUILD_COMMAND
-					${CMAKE_COMMAND} --build <BINARY_DIR> --config ${Configuration}
+					${CMAKE_COMMAND} --build <BINARY_DIR> --config ${CMAKE_CFG_INTDIR}
 	#--Install step---------------
 	INSTALL_DIR		${GLFW_PREFIX}/install
 	INSTALL_COMMAND
-					${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${Configuration}
+					${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${CMAKE_CFG_INTDIR}
 )
 
 # Organize lib into solution folder
@@ -44,11 +47,16 @@ project_group(GLFW "__external")
 file(MAKE_DIRECTORY ${GLFW_PREFIX}/install/include/GLFW/)
 
 # Add library and include directory
-add_library(${LIB} SHARED IMPORTED GLOBAL)
-set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION				${GLFW_PREFIX}/install/bin/${CMAKE_SHARED_LIBRARY_PREFIX}glfw3${CMAKE_SHARED_LIBRARY_SUFFIX})
-set_property(TARGET ${LIB} PROPERTY IMPORTED_IMPLIB					${GLFW_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}glfw3${CMAKE_STATIC_LIBRARY_SUFFIX})
-set_property(TARGET ${LIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES	${GLFW_PREFIX}/install/include/)
-set_property(TARGET ${LIB} PROPERTY INTERFACE_LINK_LIBRARIES		${GLFW_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}glfw3dll${CMAKE_STATIC_LIBRARY_SUFFIX})
+if (BUILD_SHARED_LIBS)
+	add_library(${LIB} SHARED IMPORTED GLOBAL)
+	set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION				${GLFW_PREFIX}/install/lib/${CMAKE_SHARED_LIBRARY_PREFIX}glfw3${CMAKE_SHARED_LIBRARY_SUFFIX})
+	set_property(TARGET ${LIB} PROPERTY IMPORTED_IMPLIB					${GLFW_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}glfw3dll${CMAKE_STATIC_LIBRARY_SUFFIX})
+	set_property(TARGET ${LIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES	${GLFW_PREFIX}/install/include/)
+else()
+	add_library(${LIB} STATIC IMPORTED GLOBAL)
+	set_property(TARGET ${LIB} PROPERTY IMPORTED_LOCATION				${GLFW_PREFIX}/install/lib/${CMAKE_STATIC_LIBRARY_PREFIX}glfw3${CMAKE_STATIC_LIBRARY_SUFFIX})
+	set_property(TARGET ${LIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES	${GLFW_PREFIX}/install/include/)
+endif (BUILD_SHARED_LIBS)
 
 add_dependencies(${LIB} GLFW)
 

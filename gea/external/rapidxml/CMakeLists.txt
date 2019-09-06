@@ -7,7 +7,7 @@ set(LIB ext_rapidxml)
 
 message(STATUS "Building ${LIB}")
 
-set(PATCH_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/patch")
+set(PATCH_PREFIX    "${CMAKE_CURRENT_SOURCE_DIR}/patch")
 set(RAPIDXML_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 
 ExternalProject_Add(RAPIDXML
@@ -30,11 +30,11 @@ ExternalProject_Add(RAPIDXML
 	#--Build step-----------------
 	BINARY_DIR		${RAPIDXML_PREFIX}/build
 	BUILD_COMMAND
-					${CMAKE_COMMAND} --build <BINARY_DIR> --config ${Configuration}
+					${CMAKE_COMMAND} --build <BINARY_DIR> --config ${CMAKE_CFG_INTDIR}
 	#--Install step---------------
 	INSTALL_DIR		${RAPIDXML_PREFIX}/install
 	INSTALL_COMMAND
-					${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${Configuration}
+					${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config ${CMAKE_CFG_INTDIR}
 )
 
 # Organize lib into solution folder
