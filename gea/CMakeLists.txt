@@ -10,6 +10,7 @@ set(README_FILE "README.md")
 # add cmake extensions
 include(${CMAKE_SOURCE_DIR}/cmake/extensions.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/extensions_gea.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/gea_platform.cmake)
 
 # add cmake module path
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
@@ -39,6 +40,9 @@ find_package_check(OPENGL REQUIRED)
 
 # set up include-directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+# configure platform, bitness and architecture
+get_platform_info()
 
 # external libraries
 #add_subdirectory(external/box2d)

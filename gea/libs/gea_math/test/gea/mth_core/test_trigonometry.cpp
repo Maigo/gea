@@ -59,8 +59,8 @@ TEST(mth_core_trigonometry, helper_functions)
     {
         struct data_type { float f0, f1; bool eq, ne; };
         const data_type data_set[] = {
-            { float(M_PI), -1.0f * float(M_PI), true, false },
-            { float(M_PI) / 2.0f, -(3.0f / 2.0f) * float(M_PI), true, false },
+            { PI, -1.0f * PI, true, false },
+            { PI / 2.0f, -(3.0f / 2.0f) * PI, true, false },
         };
 
         for (const data_type &data : data_set) {

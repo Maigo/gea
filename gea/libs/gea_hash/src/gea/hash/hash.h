@@ -37,8 +37,8 @@ private:
 // ------------------------------------------------------------------------- //
 // global functions                                                          //
 // ------------------------------------------------------------------------- //
-extern void hash32(const void *data, int len, uint32_t seed, void *out);
-extern void hash64(const void *data, int len, uint32_t seed, void *out);
+extern void hash32(const void *data, size_t length, uint32_t seed, void *out);
+extern void hash64(const void *data, size_t length, uint32_t seed, void *out);
 
 // ------------------------------------------------------------------------- //
 // global instance                                                           //

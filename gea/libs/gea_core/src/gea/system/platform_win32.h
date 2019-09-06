@@ -4,7 +4,9 @@
 // std includes
 //#define WIN32_LEAN_AND_MEAN
 //#define WIN32_EXTRA_LEAN
-#define NOMINMAX 
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 #include <windows.h>
 #include <timeapi.h>
 

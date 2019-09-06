@@ -62,7 +62,7 @@ inline void sdl_immediate_renderer::draw_line(const mth::line2 &line) {
     const mth::linear_transform2 &transform = peek_transform();
 
     const mth::line2::pointset_type &points = line.points();
-    for (int i = 1, e = points.size(); i < e; ++i) {
+    for (size_t i = 1, e = points.size(); i < e; ++i) {
         const mth::point2 a = transform * points[i - 1];
         const mth::point2 b = transform * points[i];
 
@@ -101,7 +101,7 @@ inline void sdl_immediate_renderer::draw_polygon(const mth::polygon2 &polygon) {
     const mth::linear_transform2 &transform = peek_transform();
 
     const mth::polygon2::pointset_type &points = polygon.points();
-    for (int i = 0, e = points.size(); i < e; ++i) {
+    for (size_t i = 0, e = points.size(); i < e; ++i) {
         const mth::point2 &a = transform * points[i];
         const mth::point2 &b = transform * points[(i + 1) % e];
 

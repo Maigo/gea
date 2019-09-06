@@ -23,7 +23,7 @@ public:
     static        void convex_hull(const pointset_type &points, pointset_type &out_points);
 
 private:
-    static inline void find_start_point(const pointset_type &points, uint32_t &out_index);
+    static inline void find_start_point(const pointset_type &points, size_t &out_index);
 };
 
 // ------------------------------------------------------------------------- //
@@ -37,7 +37,7 @@ public:
     static        void convex_hull(const pointset_type &points, pointset_type &out_points);
 
 private:
-    static inline void find_start_point(const pointset_type &points, uint32_t &out_index);
+    static inline void find_start_point(const pointset_type &points, size_t &out_index);
 };
 
 // ------------------------------------------------------------------------- //

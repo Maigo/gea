@@ -19,7 +19,7 @@ public:
 
 private:
     struct header {
-        uint32_t m_size;
+        size_t m_size;
     };
 
     // allocator stats

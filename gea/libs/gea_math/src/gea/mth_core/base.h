@@ -6,7 +6,7 @@
 #include <math.h>
 
 // gea includes
-#include <gea/mth_core/intrinsic.h>
+#include <gea/system/platform_intrinsic.h>
 
 // ------------------------------------------------------------------------- //
 // global precompiler defines                                                //

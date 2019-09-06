@@ -1,0 +1,26 @@
+macro(get_platform_info)
+	set(options)
+	set(oneValueArgs)
+	set(multiValueArgs)
+	cmake_parse_arguments(GET_PLATFORM_INFO "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
+
+	# default to 32 bit i386
+	set(GEA_PLATFORM_ARCHITECTURE i386)
+	set(GEA_PLATFORM_BITNESS 32)
+	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+		set(GEA_PLATFORM_ARCHITECTURE amd64)
+		set(GEA_PLATFORM_BITNESS 64)
+	endif()
+
+	#set platform
+	if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+		set(GEA_PLATFORM_OS win)
+	elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+		set(GEA_PLATFORM_OS linux)
+	elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+		set(GEA_PLATFORM_OS macosx)
+		if(CMAKE_SYSTEM_PROCESSOR MATCHES "powerpc")
+			set(GEA_PLATFORM_ARCHITECTURE ppc)
+		endif()
+	endif()
+endmacro()

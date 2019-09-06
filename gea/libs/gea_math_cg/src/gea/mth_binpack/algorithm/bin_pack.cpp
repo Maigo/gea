@@ -15,10 +15,10 @@ namespace mth {
 const size_t find_bin_baf::find_bin(const rectangle2 &rect, const std::vector<rectangle2> &bins) {
     l_assert_msg(!bins.empty(), "invalid parameters!");
 
-    int   min_i = -1;
+    int min_i = -1;
     float min_area = FLT_MAX;
 
-    for (int i = 0, e = bins.size(); i < e; ++i) {
+    for (size_t i = 0, e = bins.size(); i < e; ++i) {
         const rectangle2& bin = bins[i];
 
         const float area = bin.area();
@@ -39,7 +39,7 @@ const size_t find_bin_bssf::find_bin(const rectangle2 &rect, const std::vector<r
     int   min_i = -1;
     float min_short_side = FLT_MAX;
 
-    for (int i = 0, e = bins.size(); i < e; ++i) {
+    for (size_t i = 0, e = bins.size(); i < e; ++i) {
         const rectangle2& bin = bins[i];
 
         const float short_side = min(bin.width - rect.width, bin.height - rect.height);
@@ -60,7 +60,7 @@ const size_t find_bin_blsf::find_bin(const rectangle2 &rect, const std::vector<r
     int   min_i = -1;
     float min_long_side = FLT_MAX;
 
-    for (int i = 0, e = bins.size(); i < e; ++i) {
+    for (size_t i = 0, e = bins.size(); i < e; ++i) {
         const rectangle2& bin = bins[i];
 
         const float long_side = max(bin.width - rect.width, bin.height - rect.height);

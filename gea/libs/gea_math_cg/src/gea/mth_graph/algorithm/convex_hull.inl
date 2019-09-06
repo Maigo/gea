@@ -15,12 +15,12 @@ inline void convex_hull_jm::convex_hull(const pointset_type &points, polygon2 &o
 
 // ------------------------------------------------------------------------- //
 
-inline void convex_hull_jm::find_start_point(const pointset_type &points, uint32_t &out_index)
+inline void convex_hull_jm::find_start_point(const pointset_type &points, size_t &out_index)
 {
     l_assert_msg(points.size() > 0,"invalid parameters!");
 
-    uint32_t index = 0;
-    for (uint32_t i = 1, e = points.size(); i < e; ++i) {
+    size_t index = 0;
+    for (size_t i = 1, e = points.size(); i < e; ++i) {
         if ((points[i].y < points[index].y) || ((points[i].y == points[index].y) && (points[i].x < points[index].x))) {
             index = i;
         }
@@ -39,12 +39,12 @@ inline void convex_hull_gs::convex_hull(const pointset_type &points, polygon2 &o
 
 // ------------------------------------------------------------------------- //
 
-inline void convex_hull_gs::find_start_point(const pointset_type &points, uint32_t &out_index)
+inline void convex_hull_gs::find_start_point(const pointset_type &points, size_t &out_index)
 {
     l_assert_msg(points.size() > 0, "invalid parameters!");
 
-    uint32_t index = 0;
-    for (uint32_t i = 1, e = points.size(); i < e; ++i) {
+    size_t index = 0;
+    for (size_t i = 1, e = points.size(); i < e; ++i) {
         if ((points[i].y < points[index].y) || ((points[i].y == points[index].y) && (points[i].x < points[index].x))) {
             index = i;
         }

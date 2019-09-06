@@ -24,7 +24,6 @@ list(APPEND INC_${LIB}
     src/gea/mth_core/sort/binary_search.h
     src/gea/mth_core/base.h
     src/gea/mth_core/endian_swap.h
-    src/gea/mth_core/intrinsic.h
     src/gea/mth_core/limits.h
     src/gea/mth_core/trigonometry.h
 )
@@ -34,7 +33,6 @@ list(APPEND INL_${LIB}
     src/gea/mth_core/sort/binary_search.inl
     src/gea/mth_core/base.inl
     src/gea/mth_core/endian_swap.inl
-    src/gea/mth_core/intrinsic.inl
     src/gea/mth_core/limits.inl
     src/gea/mth_core/trigonometry.inl
 )
@@ -153,15 +151,16 @@ target_include_directories(${LIB} PUBLIC src)
 
 # add dependencies
 target_link_libraries(${LIB} ${DEP_${LIB}})
+copy_imported_targets(${LIB} ${DEP_${LIB}})
 
 # organize lib into solution folder
 project_group(${LIB} "libs")
 
 # clean-up
-unset(DEP_${LIB})
 unset(INC_${LIB})
 unset(INL_${LIB})
 unset(SRC_${LIB})
+unset(DEP_${LIB})
 
 #################################################
 # TEST: GEA MATH                                #
@@ -217,6 +216,7 @@ add_test(NAME ${LIB_TEST} COMMAND ${LIB_TEST})
 
 # add dependencies
 target_link_libraries(${LIB_TEST} ${DEP_${LIB_TEST}})
+copy_imported_targets(${LIB_TEST} ${DEP_${LIB_TEST}})
 
 # organize lib into solution folder
 project_group(${LIB_TEST} "tests")

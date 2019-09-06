@@ -24,11 +24,11 @@ void convex_hull_jm::convex_hull(const pointset_type &points, pointset_type &out
     }
 
     // find a start point on the hull
-    uint32_t index_start = 0;
+    size_t index_start = 0;
     find_start_point(points, index_start);
 
-    uint32_t index = index_start, index_next;
-    uint32_t size = points.size();
+    size_t index = index_start, index_next;
+    size_t size = points.size();
     do {
         // add current point
         out_points.push_back(points[index]);
@@ -37,7 +37,7 @@ void convex_hull_jm::convex_hull(const pointset_type &points, pointset_type &out
         // segment defined by the current point and the last selected point
         // (starting with any point but the current)
         index_next = (index + 1) % size;
-        for (uint32_t i = 0; i < size; ++i) {
+        for (size_t i = 0; i < size; ++i) {
             const point2 &p0 = points[index];
             const point2 &p1 = points[index_next];
             const point2 &p2 = points[i];
@@ -68,7 +68,7 @@ void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out
     }
 
     // find a start point on the hull
-    uint32_t index_start = 0;
+    size_t index_start = 0;
     find_start_point(points, index_start);
 
     // allocate array for sorting, move start point to the end (avoid degenerate end point edge case)
@@ -85,7 +85,7 @@ void convex_hull_gs::convex_hull(const pointset_type &points, pointset_type &out
     out_points.push_back(sort_points.back()); // start point
     out_points.push_back(sort_points.front());
 
-    for (uint32_t i = 1, e = sort_points.size(); i < e; ++i) {
+    for (size_t i = 1, e = sort_points.size(); i < e; ++i) {
         while ((out_points.size() > 1u) && winding(*(out_points.rbegin() + 1), *(out_points.rbegin()), sort_points[i]) != winding_type__counter_clockwise) {
             out_points.pop_back();
         }

@@ -1,3 +1,8 @@
+#pragma once
+
+// header include
+#include "linear_transforms.h"
+
 // gea includes
 #include <gea/mth_core/base.h>
 #include <gea/mth_core/trigonometry.h>
@@ -66,9 +71,9 @@ void orthogonal_matrix(const float left, const float right, const float bottom, 
     out_m.m[3][2] = -(f + n) / (f - n);
 }
 
-void perspective_matrix(float y_fov, float aspect, float n, float f, matrix4& out_m)
+void perspective_matrix(const float y_fov, const float aspect, const float n, const float f, matrix4& out_m)
 {
-    const float y_cot = 1.0f / tan(y_fov * float(M_PI) / 360.0f);
+    const float y_cot = 1.0f / tanf(y_fov * float(M_PI) / 360.0f);
 
     out_m = matrix4(mth::IDENTITY_INITIALIZATION);
     out_m.m[0][0] = y_cot / aspect;

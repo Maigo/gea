@@ -23,11 +23,11 @@ public:
     static        void point_reduce(const pointset_type &points, const float epsilon, pointset_type &out_points);
 
 private:
-    static void find_furthest_point(const pointset_type &points, const uint32_t from, const uint32_t to, float &out_distance, uint32_t &out_index);
+    static void find_furthest_point(const pointset_type &points, const size_t from, const size_t to, float &out_distance, size_t &out_index);
 
     struct stack_item {
-        uint32_t from;
-        uint32_t to;
+        size_t from;
+        size_t to;
     };
     typedef std::vector<stack_item> stack;
 };

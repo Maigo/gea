@@ -25,7 +25,7 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
         stack.pop_back();
 
         float distance = 0.0f;
-        uint32_t index = 0;
+        size_t index = 0;
         find_furthest_point(points, args.from, args.to, distance, index);
 
         if (distance > epsilon) {
@@ -43,14 +43,14 @@ void point_reduce_rdp::point_reduce(const std::vector<point2> &points, const flo
 
 // ------------------------------------------------------------------------- //
 
-void point_reduce_rdp::find_furthest_point(const std::vector<point2> &points, const uint32_t from, const uint32_t to, float &out_distance, uint32_t &out_index)
+void point_reduce_rdp::find_furthest_point(const std::vector<point2> &points, const size_t from, const size_t to, float &out_distance, size_t &out_index)
 {
     l_assert_msg((0 <= from && to < points.size()), "invalid parameters");
 
     float find_distance = 0.0f;
-    uint32_t find_index = 0;
+    size_t find_index = 0;
 
-    for (uint32_t index = from + 1, end = to - 1; index < end; ++index) {
+    for (size_t index = from + 1, end = to - 1; index < end; ++index) {
         const float distance = distance_to_line(points[from], points[to], points[index]);
         if (distance > find_distance) {
             find_distance = distance;

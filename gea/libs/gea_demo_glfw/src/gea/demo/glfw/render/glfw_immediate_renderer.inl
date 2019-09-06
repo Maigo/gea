@@ -43,7 +43,7 @@ inline void glfw_immediate_renderer::draw_point(const mth::point2 &point) {
     ren::vertex2_color v[6];
     ren::primitive_square(4, m_color.data, v);
 
-    const uint32_t index = m_vertices.size();
+    const size_t index = m_vertices.size();
     push_vertices(v, m_vertices);
 
     m_render_ops.push_back(create_draw_vertices_op(index, index + 6));
