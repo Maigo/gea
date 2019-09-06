@@ -11,6 +11,9 @@
 
 typedef uint8_t byte;
 
+typedef char char8_t;
+typedef unsigned char uchar8_t;
+
 // ------------------------------------------------------------------------- //
 // Compiler specific globals                                                 //
 // ------------------------------------------------------------------------- //
