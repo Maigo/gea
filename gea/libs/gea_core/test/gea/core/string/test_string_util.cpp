@@ -2,28 +2,24 @@
 #include <gtest/gtest.h>
 
 // gea includes
+#include <gea/core/math.h>
 #include <gea/core/string/string_util.h>
 
-#include <gea/core/bits/bcl.h>
-
-template <typename T>
-inline const T min(const T lhs, const T rhs) { return (lhs < rhs) ? lhs : rhs; }
-
-template <typename T0, size_t S0, typename T1, size_t S1>
-::testing::AssertionResult CmpHelperARREQ(
-    const char* a0_expression, const char* s0_expression, const char* a1_expression, const char* s1_expression,
-    const T0(&a0)[S0], const size_t s0, const T1(&a1)[S1], const size_t s1){
-    for (size_t i = 0, e = min(s0, s1); i < e; ++i) {
-        if ((i >= S0) || (i >= S1) || (a0[i] != a1[i])) {
-            return ::testing::AssertionFailure();// << "array[" << i << "] (" << (i >= S1) ? -1 : a1[i] << ") != expected[" << i << "] (" << (i >= S0) ? -1 : a0[i] << ")";
-        }
-    }
-
-    return ::testing::AssertionSuccess();
-}
-
-#define EXPECT_ARREQ(a1, s1, a2, s2) \
-  EXPECT_PRED_FORMAT4(CmpHelperARREQ, a1, s1, a2, s2)
+//template <typename T0, size_t S0, typename T1, size_t S1>
+//::testing::AssertionResult CmpHelperARREQ(
+//    const char* a0_expression, const char* s0_expression, const char* a1_expression, const char* s1_expression,
+//    const T0(&a0)[S0], const size_t s0, const T1(&a1)[S1], const size_t s1){
+//    for (size_t i = 0, e = gea::mth::min(s0, s1); i < e; ++i) {
+//        if ((i >= S0) || (i >= S1) || (a0[i] != a1[i])) {
+//            return ::testing::AssertionFailure();// << "array[" << i << "] (" << (i >= S1) ? -1 : a1[i] << ") != expected[" << i << "] (" << (i >= S0) ? -1 : a0[i] << ")";
+//        }
+//    }
+//
+//    return ::testing::AssertionSuccess();
+//}
+//
+//#define EXPECT_ARREQ(a1, s1, a2, s2) \
+//  EXPECT_PRED_FORMAT4(CmpHelperARREQ, a1, s1, a2, s2)
 
 namespace gea {
 
@@ -46,7 +42,7 @@ TEST(mth_core_string_util, hex_to_dec) {
         };
 
         for (const data_type &data : data_set) {
-            EXPECT_EQ(hex_to_dec(data.hex), data.dec);
+            EXPECT_EQ(string_util::hex_to_dec(data.hex), data.dec);
         }
     }
 
@@ -62,7 +58,7 @@ TEST(mth_core_string_util, hex_to_dec) {
 
         for (const data_type &data : data_set) {
             uint8_t dec = 0;
-            EXPECT_EQ(hex_to_dec(data.hex, data.size, dec), data.size);
+            EXPECT_EQ(string_util::hex_to_dec(data.hex, data.size, dec), data.size);
             EXPECT_EQ(data.dec, dec);
         }
     }
@@ -79,7 +75,7 @@ TEST(mth_core_string_util, hex_to_dec) {
 
         for (const data_type &data : data_set) {
             uint16_t dec = 0;
-            EXPECT_EQ(hex_to_dec(data.hex, data.size, dec), data.size);
+            EXPECT_EQ(string_util::hex_to_dec(data.hex, data.size, dec), data.size);
             EXPECT_EQ(data.dec, dec);
         }
     }
@@ -96,7 +92,7 @@ TEST(mth_core_string_util, hex_to_dec) {
 
         for (const data_type &data : data_set) {
             uint32_t dec = 0;
-            EXPECT_EQ(hex_to_dec(data.hex, data.size, dec), data.size);
+            EXPECT_EQ(string_util::hex_to_dec(data.hex, data.size, dec), data.size);
             EXPECT_EQ(data.dec, dec);
         }
     }
@@ -113,7 +109,7 @@ TEST(mth_core_string_util, hex_to_dec) {
 
         for (const data_type &data : data_set) {
             uint64_t dec = 0;
-            EXPECT_EQ(hex_to_dec(data.hex, data.size, dec), data.size);
+            EXPECT_EQ(string_util::hex_to_dec(data.hex, data.size, dec), data.size);
             EXPECT_EQ(data.dec, dec);
         }
     }
@@ -130,7 +126,7 @@ TEST(mth_core_string_util, hex_to_dec) {
 //
 //        for (const data_type &data : data_set) {
 //            uint8_t dec[8] = { 0x00 };
-//            EXPECT_EQ(hex_to_dec(data.hex, data.hex_size, dec, data.dec_size), data.dec_size);
+//            EXPECT_EQ(string_util::hex_to_dec(data.hex, data.hex_size, dec, data.dec_size), data.dec_size);
 //            EXPECT_ARREQ(dec, sizeof(dec), data.dec, data.dec_size);
 //        }
         FAIL();
@@ -149,7 +145,7 @@ TEST(mth_core_string_util, dec_to_hex) {
         };
 
         for (const data_type &data : data_set) {
-            EXPECT_EQ(dec_to_hex(data.dec), data.hex);
+            EXPECT_EQ(string_util::dec_to_hex(data.dec), data.hex);
         }
     }
 
@@ -165,7 +161,7 @@ TEST(mth_core_string_util, dec_to_hex) {
 
         for (const data_type &data : data_set) {
             char buffer[3] = { 0 };
-            EXPECT_TRUE(dec_to_hex(data.dec, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_hex(data.dec, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.hex);
         }
     }
@@ -182,7 +178,7 @@ TEST(mth_core_string_util, dec_to_hex) {
 
         for (const data_type &data : data_set) {
             char buffer[5] = { 0 };
-            EXPECT_TRUE(dec_to_hex(data.dec, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_hex(data.dec, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.hex);
         }
     }
@@ -199,7 +195,7 @@ TEST(mth_core_string_util, dec_to_hex) {
 
         for (const data_type &data : data_set) {
             char buffer[9] = { 0 };
-            EXPECT_TRUE(dec_to_hex(data.dec, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_hex(data.dec, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.hex);
         }
     }
@@ -216,7 +212,7 @@ TEST(mth_core_string_util, dec_to_hex) {
 
         for (const data_type &data : data_set) {
             char buffer[17] = { 0 };
-            EXPECT_TRUE(dec_to_hex(data.dec, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_hex(data.dec, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.hex);
         }
     }
@@ -233,7 +229,7 @@ TEST(mth_core_string_util, dec_to_hex) {
 
         for (const data_type &data : data_set) {
             char buffer[17] = { 0 };
-            EXPECT_TRUE(dec_to_hex(data.dec, data.n, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_hex(data.dec, data.n, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.hex);
         }
     }
@@ -250,7 +246,7 @@ TEST(mth_core_string_util, bin_to_dec) {
         };
 
         for (const data_type &data : data_set) {
-            EXPECT_EQ(bin_to_dec(data.bin), data.dec);
+            EXPECT_EQ(string_util::bin_to_dec(data.bin), data.dec);
         }
     }
 }
@@ -267,7 +263,7 @@ TEST(mth_core_string_util, dec_to_bin) {
         };
 
         for (const data_type &data : data_set) {
-            EXPECT_EQ(dec_to_bin(data.dec), data.bin);
+            EXPECT_EQ(string_util::dec_to_bin(data.dec), data.bin);
         }
     }
 
@@ -283,7 +279,7 @@ TEST(mth_core_string_util, dec_to_bin) {
 
         for (const data_type &data : data_set) {
             char buffer[9] = { 0 };
-            EXPECT_TRUE(dec_to_bin(data.dec, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_bin(data.dec, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.bin);
         }
     }
@@ -300,7 +296,7 @@ TEST(mth_core_string_util, dec_to_bin) {
 
         for (const data_type &data : data_set) {
             char buffer[17] = { 0 };
-            EXPECT_TRUE(dec_to_bin(data.dec, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_bin(data.dec, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.bin);
         }
     }
@@ -317,7 +313,7 @@ TEST(mth_core_string_util, dec_to_bin) {
 
         for (const data_type &data : data_set) {
             char buffer[33] = { 0 };
-            EXPECT_TRUE(dec_to_bin(data.dec, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_bin(data.dec, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.bin);
         }
     }
@@ -334,7 +330,7 @@ TEST(mth_core_string_util, dec_to_bin) {
 
         for (const data_type &data : data_set) {
             char buffer[65] = { 0 };
-            EXPECT_TRUE(dec_to_bin(data.dec, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_bin(data.dec, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.bin);
         }
     }
@@ -351,7 +347,7 @@ TEST(mth_core_string_util, dec_to_bin) {
 
         for (const data_type &data : data_set) {
             char buffer[65] = { 0 };
-            EXPECT_TRUE(dec_to_bin(data.dec, data.n, buffer, sizeof(buffer) - 1));
+            EXPECT_TRUE(string_util::dec_to_bin(data.dec, data.n, buffer, sizeof(buffer) - 1));
             EXPECT_STREQ(buffer, data.bin);
         }
     }

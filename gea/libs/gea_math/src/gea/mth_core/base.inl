@@ -1,6 +1,15 @@
+#pragma once
+
+// header include
+#include "base.h"
+
 // std includes
+#include <float.h>
 #include <math.h>
-#include <type_traits>
+
+// gea includes
+#include <gea/core/math.h>
+#include <gea/core/type_traits.h>
 
 namespace gea {
 namespace mth {
@@ -45,16 +54,8 @@ template <> inline const float ceil(const float v) { return ::ceilf(v); }
 template <> inline const float floor(const float v) { return ::floorf(v); }
 
 // ------------------------------------------------------------------------- //
-// Template Functions                                                        //
+// template functions                                                        //
 // ------------------------------------------------------------------------- //
-// max / min
-template <typename T> inline const T min(const T &a, const T &b) { return (a > b ? b : a); }
-template <typename T> inline const T min(const T &a, const T &b, const T &c) { return (a > b ? (b > c ? c : b) : a); }
-template <typename T> inline const T min(const T &a, const T &b, const T &c, const T &d) { return (a > b ? (b > c ? (c > d ? d : c) : b) : a); }
-template <typename T> inline const T max(const T &a, const T &b) { return (a < b ? b : a); }
-template <typename T> inline const T max(const T &a, const T &b, const T &c) { return (a < b ? (b < c ? c : b) : a); }
-template <typename T> inline const T max(const T &a, const T &b, const T &c, const T &d) { return (a < b ? (b < c ? (c < d ? d : c) : b) : a); }
-
 // smallest / largest
 template <typename T>
 inline const uint32_t smlst(const T &a, const T &b) { return (a > b ? 1 : 0); }
@@ -78,11 +79,11 @@ template <typename T> inline const bool range(const T &t, const T &min, const T 
 
 // sign
 namespace internal {
-template <typename T> inline const int sign(T x, const std::false_type is_unsigned) { return T(0) < x; }
-template <typename T> inline const int sign(T x, const std::true_type  is_signed) { return (T(0) < x) - (x < T(0)); }
+template <typename T> inline const int sign(T x, const gea::false_type is_unsigned) { return T(0) < x; }
+template <typename T> inline const int sign(T x, const gea::true_type  is_signed) { return (T(0) < x) - (x < T(0)); }
 } // namespace internal //
 
-template <typename T> inline const int sign(const T x) { return internal::sign(x, std::is_signed<T>()); }
+template <typename T> inline const int sign(const T x) { return internal::sign(x, gea::is_signed<T>()); }
 
 } // namespace mth //
 } // namespace gea //

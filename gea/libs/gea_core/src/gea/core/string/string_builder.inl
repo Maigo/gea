@@ -56,7 +56,7 @@ inline string_builder_impl<T> &string_builder_impl<T>::append_format(const T *fo
 
     va_list args;
     va_start(args, format);
-    gea::vsnprintf(m_pos, remaining, format, args);
+    string_util::vsnprintf(m_pos, remaining, format, args);
     va_end(args);
     return (*this);
 }

@@ -1,12 +1,7 @@
-#ifndef __GEA_MTH_CORE_BASE_H__
-#define __GEA_MTH_CORE_BASE_H__
-
-// std includes
-#include <float.h>
-#include <math.h>
+#pragma once
 
 // gea includes
-#include <gea/system/platform_intrinsic.h>
+#include <gea/core/math.h>
 
 // ------------------------------------------------------------------------- //
 // global precompiler defines                                                //
@@ -103,14 +98,6 @@ template <typename T> inline const T floor(const T v);
 // ------------------------------------------------------------------------- //
 // template functions                                                        //
 // ------------------------------------------------------------------------- //
-// min / max
-template <typename T> inline const T min(const T &a, const T &b);
-template <typename T> inline const T min(const T &a, const T &b, const T &c);
-template <typename T> inline const T min(const T &a, const T &b, const T &c, const T &d);
-template <typename T> inline const T max(const T &a, const T &b);
-template <typename T> inline const T max(const T &a, const T &b, const T &c);
-template <typename T> inline const T max(const T &a, const T &b, const T &c, const T &d);
-
 // smallest / largest
 template <typename T> inline const uint32_t smlst(const T &a, const T &b);
 template <typename T> inline const uint32_t smlst(const T &a, const T &b, const T &c);
@@ -130,5 +117,3 @@ template <typename T> inline const int sign(const T x);
 } // namespace gea //
 
 #include "base.inl"
-
-#endif // __GEA_MTH_CORE_BASE_H__ //

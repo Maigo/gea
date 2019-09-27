@@ -3,6 +3,19 @@
 namespace gea {
 
 // ------------------------------------------------------------------------- //
+// subb_string                                                               //
+// ------------------------------------------------------------------------- //
+template <typename T>
+struct sub_string_impl
+{
+    const T* begin;
+    const T* end;
+};
+
+typedef sub_string_impl<char> sub_string;
+typedef sub_string_impl<wchar_t> sub_wstring;
+
+// ------------------------------------------------------------------------- //
 // string_builder                                                            //
 // ------------------------------------------------------------------------- //
 
@@ -10,6 +23,7 @@ template <class T>
 class string_builder_impl {
 public:
     typedef T char_t;
+    typedef sub_string_impl<T> sub_string_t;
 
     inline string_builder_impl &append(const T *s);
     inline string_builder_impl &append(const T *s, const T *e);

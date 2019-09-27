@@ -42,8 +42,6 @@ TEST(mth_core_base, helper_functions)
 
 TEST(mth_core_base, template_functions)
 {
-    // max / min
-
     // smallest / largest
 
     // clamp

@@ -13,7 +13,7 @@
 #include "platform_intrinsic.h"
 
 // ------------------------------------------------------------------------- //
-// Platform global type definitions                                          //
+// platform global type definitions                                          //
 // ------------------------------------------------------------------------- //
 typedef LONGLONG timestamp64_t;
 typedef LONGLONG frequency_t;
@@ -22,12 +22,13 @@ typedef double  time64_t;
 
 namespace gea {
 
-//
-//inline void *malloc_alligned(
-//#define memalign(a,s) _aligned_malloc(s,a)
+// ------------------------------------------------------------------------- //
+// platform variables                                                        //
+// ------------------------------------------------------------------------- //
+static const char path_separator = '\\';
 
 // ------------------------------------------------------------------------- //
-// Platform time functions                                                   //
+// platform time functions                                                   //
 // ------------------------------------------------------------------------- //
 // resolution scope
 struct time_res_scope {
@@ -43,7 +44,7 @@ inline timestamp64_t get_system_frequency();
 inline void system_sleep_seconds(const time32_t& t, bool interupt = false);
 
 // ------------------------------------------------------------------------- //
-// Platform system functions                                                 //
+// platform system functions                                                 //
 // ------------------------------------------------------------------------- //
 inline void system_break();
 

@@ -1,5 +1,10 @@
-// std includes
-#include <math.h>
+#pragma once
+
+// header include
+#include "trigonometry.h"
+
+// gea includes
+#include <gea/system/platform_intrinsic.h>
 
 namespace gea {
 namespace mth {

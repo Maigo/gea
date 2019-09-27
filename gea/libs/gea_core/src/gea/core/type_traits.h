@@ -10,6 +10,12 @@ namespace gea {
 // ------------------------------------------------------------------------- //
 
 // alias templates
+using false_type = std::false_type;
+using true_type = std::true_type;
+
+template <typename T>
+using is_signed = std::is_signed<T>;
+
 template <typename T>
 using remove_const = std::remove_const<T>;
 

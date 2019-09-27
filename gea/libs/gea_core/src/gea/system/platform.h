@@ -8,21 +8,29 @@
 #endif
 
 // ------------------------------------------------------------------------- //
-// Platform Interface                                                        //
+// platform global type definitions                                          //
 /* ------------------------------------------------------------------------- //
-
-// defines
 typedef ? timestamp64_t;
 typedef ? frequency_t;
 typedef ? time32_t;
 typedef ? time64_t;
 
-// functions
+// ------------------------------------------------------------------------- //
+// platform variables                                                        //
+// ------------------------------------------------------------------------- //
+static const char path_separator = ?;
+
+// ------------------------------------------------------------------------- //
+// platform time functions                                                   //
+// ------------------------------------------------------------------------- //
 inline timestamp64_t get_system_timestamp();
 inline timestamp64_t get_system_frequency();
 inline void system_sleep_seconds(const time32_t& t, bool interupt = false);
 
-inline void break();
+// ------------------------------------------------------------------------- //
+// platform system functions                                                 //
+// ------------------------------------------------------------------------- //
+inline void system_break();
 
 // ------------------------------------------------------------------------- */
 

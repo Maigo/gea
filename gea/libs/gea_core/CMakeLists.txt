@@ -31,6 +31,7 @@ list(APPEND INC_${LIB}
 	src/gea/core/string/string_util.h
 	src/gea/core/endian_base.h
 	src/gea/core/limits.h
+	src/gea/core/math.h
 	src/gea/core/type_traits.h
 	src/gea/core/variable.h
 	src/gea/system/memory/allocator/allocator.h
@@ -59,6 +60,7 @@ list(APPEND INL_${LIB}
 	src/gea/core/pattern/singleton.inl
 	src/gea/core/string/string_builder.inl
 	src/gea/core/string/string_util.inl
+	src/gea/core/math.inl
 	src/gea/core/variable.inl
 	src/gea/system/memory/allocator/allocator.inl
 	src/gea/system/memory/allocator/allocator_heap.inl
@@ -142,6 +144,7 @@ list(APPEND SRC_${LIB_TEST}
 	test/gea/core/string/test_string_builder.cpp
 	test/gea/core/string/test_string_util.cpp
 	test/gea/core/test_endian_base.cpp
+	test/gea/core/test_math.cpp
 	test/gea/core/test_variable.cpp
 	test/gea/system/test_platform_intrinsic.cpp
 )
