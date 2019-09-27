@@ -7,12 +7,10 @@ namespace mth {
 // template functions                                                        //
 // ------------------------------------------------------------------------- //
 // min / max
-template <typename T> inline const T min(const T& a, const T& b);
-template <typename T> inline const T min(const T& a, const T& b, const T& c);
-template <typename T> inline const T min(const T& a, const T& b, const T& c, const T& d);
-template <typename T> inline const T max(const T& a, const T& b);
-template <typename T> inline const T max(const T& a, const T& b, const T& c);
-template <typename T> inline const T max(const T& a, const T& b, const T& c, const T& d);
+template <typename T> inline const T min(const T& t0, const T& t1);
+template <typename T, typename... Ts> inline const T min(const T& t0, const T& t1, const Ts& ... ts);
+template <typename T> inline const T max(const T& t0, const T& t1);
+template <typename T, typename... Ts> inline const T max(const T& t0, const T& t1, const Ts& ... ts);
 
 } // namespace mth //
 } // namespace gea //
