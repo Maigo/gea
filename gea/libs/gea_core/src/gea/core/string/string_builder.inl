@@ -1,15 +1,12 @@
 #pragma once
+
+// header include
 #include "string_builder.h"
 
 // gea includes
 #include <gea/core/string/string_util.h>
+#include <gea/core/math.h>
 #include <gea/utility/assert.h>
-
-// TODO: added here to avoid dependency, remove?
-template <typename T>
-static const T min(const T lhs, const T rhs) { return lhs <= rhs ? lhs : rhs; }
-template <typename T>
-static const T max(const T lhs, const T rhs) { return lhs >= rhs ? lhs : rhs; }
 
 namespace gea {
 
@@ -18,22 +15,22 @@ namespace gea {
 // ------------------------------------------------------------------------- //
 
 template <typename T>
-inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s) {
+inline string_builder_impl<T>& string_builder_impl<T>::append(const T* s) {
     const size_t len = strlen(s);
     return append(s, len);
 }
 
 template <typename T>
-inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s, const T *e) {
+inline string_builder_impl<T>& string_builder_impl<T>::append(const T* s, const T* e) {
     const size_t len = (e - s);
     return append(s, len);
 }
 
 template <typename T>
-inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s, const size_t size) {
-    const char_t *end = min(m_pos + size, m_end - 1);
+inline string_builder_impl<T>& string_builder_impl<T>::append(const T* s, const size_t size) {
+    const char_t* end = mth::min(m_pos + size, m_end - 1);
 
-    for (const char_t *it = s; m_pos < end; ++m_pos, ++it) {
+    for (const char_t* it = s; m_pos < end; ++m_pos, ++it) {
         (*m_pos) = (*it);
     }
     null_terminate();
@@ -41,8 +38,8 @@ inline string_builder_impl<T> &string_builder_impl<T>::append(const T *s, const 
 }
 
 template <typename T>
-inline string_builder_impl<T> &string_builder_impl<T>::append(const T c) {
-    const char_t *end = min(m_pos + 1, m_end - 1);
+inline string_builder_impl<T>& string_builder_impl<T>::append(const T c) {
+    const char_t* end = mth::min(m_pos + 1, m_end - 1);
     if (m_pos < end) {
         (*m_pos++) = c;
     }
@@ -51,8 +48,14 @@ inline string_builder_impl<T> &string_builder_impl<T>::append(const T c) {
 }
 
 template <typename T>
-inline string_builder_impl<T> &string_builder_impl<T>::append_format(const T *format, ...) {
-    const size_t remaining = max(m_end - m_pos, ptrdiff_t(0));
+inline string_builder_impl<T>& string_builder_impl<T>::append(const sub_string_t& s) {
+    const size_t len = (s.end - s.begin);
+    return append(s, len);
+}
+
+template <typename T>
+inline string_builder_impl<T>& string_builder_impl<T>::append_format(const T* format, ...) {
+    const size_t remaining = mth::max(m_end - m_pos, ptrdiff_t(0));
 
     va_list args;
     va_start(args, format);
@@ -62,10 +65,10 @@ inline string_builder_impl<T> &string_builder_impl<T>::append_format(const T *fo
 }
 
 template <typename T>
-inline const T *const string_builder_impl<T>::data() const { return m_buffer; }
+inline const T* const string_builder_impl<T>::data() const { return m_buffer; }
 
 template <typename T>
-inline T *const string_builder_impl<T>::data() { return m_buffer; }
+inline T* const string_builder_impl<T>::data() { return m_buffer; }
 
 template <typename T>
 inline const bool string_builder_impl<T>::reserve(const size_t size) {
@@ -74,7 +77,7 @@ inline const bool string_builder_impl<T>::reserve(const size_t size) {
 
 template <typename T>
 inline const bool string_builder_impl<T>::resize(const size_t size, const T t) {
-    const char_t *end = min(m_buffer + size, m_end - 1);
+    const char_t* end = mth::min(m_buffer + size, m_end - 1);
     for (; m_pos < end; ++m_pos) {
         (*m_pos) = t;
     }
@@ -98,7 +101,7 @@ template <typename T>
 inline const size_t string_builder_impl<T>::capacity() const { return size_t(m_end - m_buffer); }
 
 template <typename T>
-inline string_builder_impl<T>::string_builder_impl(T *buffer, const size_t size) : m_pos(buffer), m_end(buffer + size), m_buffer(buffer) {
+inline string_builder_impl<T>::string_builder_impl(T* buffer, const size_t size) : m_pos(buffer), m_end(buffer + size), m_buffer(buffer) {
     l_assert_msg(buffer != nullptr && (size > 0), "Invalid buffer or buffer size!");
     null_terminate();
 }
@@ -112,7 +115,7 @@ inline void string_builder_impl<T>::null_terminate() {
 
 // ------------------------------------------------------------------------- //
 
-inline string_builder::string_builder(char_t *buffer, const size_t size)
+inline string_builder::string_builder(char_t* buffer, const size_t size)
     : super_t(buffer, size) { }
 
 // ------------------------------------------------------------------------- //
@@ -123,7 +126,7 @@ inline static_string_builder<N>::static_string_builder()
 
 // ------------------------------------------------------------------------- //
 
-inline wstring_builder::wstring_builder(char_t *buffer, const size_t size)
+inline wstring_builder::wstring_builder(char_t* buffer, const size_t size)
     : super_t(buffer, size) { }
 
 // ------------------------------------------------------------------------- //

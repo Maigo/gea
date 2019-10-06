@@ -41,6 +41,17 @@ inline const int string_util::sscanf(const char* s, const char* format, ...) {
     return ret;
 }
 
+// compare
+inline const bool string_util::equals(const char* s0, const char* e0, const char* s1, const char* e1) {
+    return strncmp(s0, s1, mth::min(e0 - s0, e1 - s1)) == 0;
+}
+inline const bool string_util::equals(const char* s0, const char* e0, const char* s1) {
+    return strncmp(s0, s1, e0 - s0) == 0;
+}
+inline const bool string_util::equals(const char* s0, const char* s1) {
+    return strcmp(s0, s1) == 0;
+}
+
 // search
 inline const char* string_util::first_index_of(const char* s, const char c) {
     return first_index_of(s, s + strlen(s), c);
@@ -233,6 +244,12 @@ inline const bool string_util::dec_to_bin(const uint8_t* dec, const size_t n, ch
     }
     return (size >= 8 * n);
 }
+
+// ------------------------------------------------------------------------- //
+// helper functions                                                          //
+// ------------------------------------------------------------------------- //
+
+inline const char* const to_string(const bool value) { return value ? "true" : "false"; }
 
 // ------------------------------------------------------------------------- //
 

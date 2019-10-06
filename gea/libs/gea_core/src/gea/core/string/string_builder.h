@@ -1,19 +1,9 @@
 #pragma once
 
+// gea includes
+#include <gea/core/string/string.h>
+
 namespace gea {
-
-// ------------------------------------------------------------------------- //
-// subb_string                                                               //
-// ------------------------------------------------------------------------- //
-template <typename T>
-struct sub_string_impl
-{
-    const T* begin;
-    const T* end;
-};
-
-typedef sub_string_impl<char> sub_string;
-typedef sub_string_impl<wchar_t> sub_wstring;
 
 // ------------------------------------------------------------------------- //
 // string_builder                                                            //
@@ -29,6 +19,7 @@ public:
     inline string_builder_impl &append(const T *s, const T *e);
     inline string_builder_impl &append(const T *s, const size_t size);
     inline string_builder_impl &append(const T c);
+    inline string_builder_impl &append(const sub_string_t& s);
     inline string_builder_impl &append_format(const T *format, ...);
 
     inline const T *const data() const;

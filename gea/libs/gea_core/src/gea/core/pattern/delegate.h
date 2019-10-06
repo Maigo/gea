@@ -38,7 +38,7 @@ public:
     inline const bool operator== (const delegate& other) const { return m_function_data == other.m_function_data; }
     inline const bool operator!= (const delegate& other) const { return m_function_data != other.m_function_data; }
 
-    RET operator() (ARGS... args) {
+    RET operator() (ARGS... args) const {
         return (*m_function_data.function)(m_function_data.self, args...);
     }
 

@@ -28,6 +28,7 @@ list(APPEND INC_${LIB}
 	src/gea/core/pattern/delegate_base.h
 	src/gea/core/pattern/singleton.h
 	src/gea/core/string/string_builder.h
+	src/gea/core/string/string_parser.h
 	src/gea/core/string/string_util.h
 	src/gea/core/endian_base.h
 	src/gea/core/limits.h
@@ -59,6 +60,7 @@ list(APPEND INL_${LIB}
 	src/gea/core/pattern/delegate_base.inl
 	src/gea/core/pattern/singleton.inl
 	src/gea/core/string/string_builder.inl
+	src/gea/core/string/string_parser.inl
 	src/gea/core/string/string_util.inl
 	src/gea/core/math.inl
 	src/gea/core/variable.inl

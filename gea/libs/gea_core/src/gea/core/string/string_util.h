@@ -15,6 +15,11 @@ public:
     inline static const int vsscanf(const char* s, const char* format, va_list args);
     inline static const int sscanf(const char* s, const char* format, ...);
 
+    // compare
+    inline static const bool equals(const char* s0, const char* e0, const char* s1, const char* e1);
+    inline static const bool equals(const char* s0, const char* e0, const char* s1);
+    inline static const bool equals(const char* s0, const char* s1);
+
     // search
     inline static const char* first_index_of(const char* s, const char c);
     inline static const char* first_index_of(const char* s, const char* end, const char c);
@@ -51,6 +56,12 @@ public:
     inline static const bool dec_to_bin(const uint64_t dec, char* buffer, const size_t size);
     inline static const bool dec_to_bin(const uint8_t* dec, const size_t n, char* buffer, const size_t size);
 };
+
+// ------------------------------------------------------------------------- //
+// helper functions                                                          //
+// ------------------------------------------------------------------------- //
+
+inline const char* const to_string(const bool value);
 
 // ------------------------------------------------------------------------- //
 
