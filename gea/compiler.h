@@ -23,6 +23,10 @@
 // compiler independent functionality                                        //
 // ------------------------------------------------------------------------- //
 
+// Macro variable concatenation (with proper macro expansion)
+#define __concatenate(s1, s2)   s1##s2
+#define gea_concatenate(s1, s2) __concatenate(s1, s2)
+
 // A macro to disallow the copy constructor and operator= functions
 // This should be used in the private: declarations for a class
 #define DISALLOW_COPY_AND_ASSIGN(type_name)         \

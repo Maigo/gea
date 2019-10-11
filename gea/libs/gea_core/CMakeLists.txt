@@ -27,6 +27,7 @@ list(APPEND INC_${LIB}
 	src/gea/core/pattern/delegate.h
 	src/gea/core/pattern/delegate_base.h
 	src/gea/core/pattern/singleton.h
+	src/gea/core/pattern/static_block.h
 	src/gea/core/string/string_builder.h
 	src/gea/core/string/string_parser.h
 	src/gea/core/string/string_util.h

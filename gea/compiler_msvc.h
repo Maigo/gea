@@ -28,6 +28,8 @@
 //#define __FILE__ __FILE__
 #define __FUNC__ __FUNCSIG__
 
+#define gea_make_unique(prefix) gea_concatenate(prefix, __COUNTER__)
+
 // ------------------------------------------------------------------------- //
 // Compiler Intrinsics                                                       //
 // ------------------------------------------------------------------------- //
