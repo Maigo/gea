@@ -48,9 +48,9 @@ inline string_builder_impl<T>& string_builder_impl<T>::append(const T c) {
 }
 
 template <typename T>
-inline string_builder_impl<T>& string_builder_impl<T>::append(const sub_string_t& s) {
+inline string_builder_impl<T>& string_builder_impl<T>::append(const sub_string_impl<T>& s) {
     const size_t len = (s.end - s.begin);
-    return append(s, len);
+    return append(s.begin, len);
 }
 
 template <typename T>
@@ -69,6 +69,12 @@ inline const T* const string_builder_impl<T>::data() const { return m_buffer; }
 
 template <typename T>
 inline T* const string_builder_impl<T>::data() { return m_buffer; }
+
+template <typename T>
+inline const T* const string_builder_impl<T>::end() const { return m_pos; }
+
+template <typename T>
+inline       T* const string_builder_impl<T>::end() { return m_pos; }
 
 template <typename T>
 inline const bool string_builder_impl<T>::reserve(const size_t size) {

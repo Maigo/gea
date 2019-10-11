@@ -8,6 +8,8 @@ namespace gea {
 class string_util
 {
 public:
+    inline static const bool is_empty(const char* s);
+
     // variadic arguments
     inline static const int vsnprintf(char* buffer, const size_t size, const char* format, va_list args);
     inline static const int snprintf(char* buffer, const size_t size, const char* format, ...);
@@ -20,11 +22,21 @@ public:
     inline static const bool equals(const char* s0, const char* e0, const char* s1);
     inline static const bool equals(const char* s0, const char* s1);
 
+    inline static const bool starts_with(const char* s0, const char* e0, const char c);
+    inline static const bool starts_with(const char* s0, const char* e0, const char* s1, const char* e1);
+    inline static const bool starts_with(const char* s0, const char* e0, const char* s1);
+    inline static const bool starts_with(const char* s0, const char* s1);
+
+    inline static const bool ends_with(const char* s0, const char* e0, const char c);
+    inline static const bool ends_with(const char* s0, const char* e0, const char* s1, const char* e1);
+    inline static const bool ends_with(const char* s0, const char* e0, const char* s1);
+    inline static const bool ends_with(const char* s0, const char* s1);
+
     // search
     inline static const char* first_index_of(const char* s, const char c);
-    inline static const char* first_index_of(const char* s, const char* end, const char c);
+    inline static const char* first_index_of(const char* s, const char* e, const char c);
     inline static const char* last_index_of(const char* s, const char c);
-    inline static const char* last_index_of(const char* s, const char* end, const char c);
+    inline static const char* last_index_of(const char* s, const char* e, const char c);
 
     // conversion - hexadecimal to decimal
     inline static const uint8_t hex_to_dec(const char hex);

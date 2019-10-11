@@ -20,12 +20,14 @@ set(SRC_${LIB}) # source
 list(APPEND INC_${LIB}
     src/gea/demo/core/event/system_event_pump.h
     src/gea/demo/core/event/system_event.h
+    src/gea/demo/core/cli_application.h
     src/gea/demo/core/core_application.h
 )
 list(APPEND INL_${LIB}
 )
 list(APPEND SRC_${LIB}
     src/gea/demo/core/event/system_event_pump.cpp
+    src/gea/demo/core/cli_application.cpp
     src/gea/demo/core/core_application.cpp
 )
 

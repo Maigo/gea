@@ -9,7 +9,6 @@
 
 // gea includes
 #include <gea/utility/assert.h>
-#include <gea/data/cli/cli_manager.h>
 
 namespace gea {
 
@@ -25,29 +24,6 @@ glfw_application::~glfw_application() {}
 
 // ------------------------------------------------------------------------- //
 
-class cli_op {};
-
-class cli_command : public cli_op {
-public:
-    cli_manager::callback_resolution set(const cli_reader& reader) { m_is_set = true; return cli_manager::callback_resolution__success; }
-private:
-    bool m_is_set;
-};
-class cli_option : public cli_op {
-public:
-    cli_manager::callback_resolution set(const cli_reader& reader) { m_is_set = true; return cli_manager::callback_resolution__success; }
-private:
-    bool m_is_set;
-};
-
-cli_manager::callback_t make_command_callback(cli_command& op) {
-    return cli_manager::callback_t::create<cli_command, &cli_command::set>(&op);
-}
-
-cli_manager::callback_t make_option_callback(cli_option& op) {
-    return cli_manager::callback_t::create<cli_option, &cli_option::set>(&op);
-}
-
 void glfw_application::initialize(const init_info& info) {
     super_t::initialize(info);
 
@@ -59,18 +35,6 @@ void glfw_application::initialize(const init_info& info) {
         printf("GLFW could not initialize!");
         return;
     }
-
-    cli_command command_test;
-    cli_option option_a;
-    cli_option option_b;
-    cli_option option_c;
-
-    cli_manager cli_manager(info.argc, info.argv);
-    cli_manager.add_command("test", "renders a test shape.", make_command_callback(command_test));
-    cli_manager.add_option("-a", "test argument a", make_option_callback(option_a));
-    cli_manager.add_option("-b", "test argument b", make_option_callback(option_b));
-    cli_manager.add_option("-c", "test argument c", make_option_callback(option_c));
-    cli_manager.parse();
 }
 
 // ------------------------------------------------------------------------- //

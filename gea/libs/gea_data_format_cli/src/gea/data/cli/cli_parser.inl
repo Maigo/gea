@@ -5,6 +5,7 @@
 
 // gea includes
 #include <gea/core/string/string_parser.h>
+#include <gea/utility/assert.h>
 
 namespace gea {
 
@@ -108,10 +109,12 @@ inline void cli_parser::add_option(const char* op, const char* hint, cli_option<
 }
 
 inline void cli_parser::add_command(const char* op, const char* hint, const callback_t callback) {
+    l_assert_msg(!string_util::is_empty(op), "op must be a valid string!");
     const command command = { command_type__command, op, hint, callback };
     m_commands.push_back(command);
 }
 inline void cli_parser::add_option(const char* op, const char* hint, const callback_t callback) {
+    l_assert_msg(!string_util::is_empty(op), "op must be a valid string!");
     const command command = { command_type__option, op, hint, callback };
     m_commands.push_back(command);
 }

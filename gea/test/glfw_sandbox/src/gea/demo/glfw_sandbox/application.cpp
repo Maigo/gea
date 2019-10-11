@@ -61,6 +61,13 @@ void application::initialize(const init_info& info) {
 
     // get window renderer
 
+    initialize_shader();
+}
+
+// ------------------------------------------------------------------------- //
+
+void application::initialize_shader()
+{
     GLuint vertex_buffer;
     glGenBuffers(1, &vertex_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);

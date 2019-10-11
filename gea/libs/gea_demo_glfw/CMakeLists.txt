@@ -11,6 +11,7 @@ set(DEP_${LIB}
     gea_core
     gea_math
 	gea_data_core
+	gea_data_format_cli
     gea_demo_core
     ext_glfw
     ext_glad

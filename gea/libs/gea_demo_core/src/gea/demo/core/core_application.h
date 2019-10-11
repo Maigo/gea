@@ -1,6 +1,6 @@
-#ifndef __GEA_DEMO_CORE_APPLICATION_H__
-#define __GEA_DEMO_CORE_APPLICATION_H__
+#pragma once
 
+// gea includes
 #include <gea/demo/core/event/system_event.h>
 
 namespace gea {
@@ -52,5 +52,3 @@ protected:
 // ------------------------------------------------------------------------- //
 
 } // namespace gea //
-
-#endif // __GEA_DEMO_CORE_APPLICATION_H__ //

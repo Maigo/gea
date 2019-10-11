@@ -13,17 +13,18 @@ template <class T>
 class string_builder_impl {
 public:
     typedef T char_t;
-    typedef sub_string_impl<T> sub_string_t;
 
     inline string_builder_impl &append(const T *s);
     inline string_builder_impl &append(const T *s, const T *e);
     inline string_builder_impl &append(const T *s, const size_t size);
     inline string_builder_impl &append(const T c);
-    inline string_builder_impl &append(const sub_string_t& s);
+    inline string_builder_impl &append(const sub_string_impl<T>& s);
     inline string_builder_impl &append_format(const T *format, ...);
 
     inline const T *const data() const;
     inline       T *const data();
+    inline const T *const end() const;
+    inline       T *const end();
 
     inline const bool reserve(const size_t size); // check
     inline const bool resize(const size_t size, const T t);

@@ -11,6 +11,7 @@ set(README_FILE "README.md")
 include(${CMAKE_SOURCE_DIR}/cmake/extensions.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/extensions_gea.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/gea_platform.cmake)
+include(${CMAKE_SOURCE_DIR}/tools/gdb_compiler/cmake/gdb_compiler.cmake)
 
 # add cmake module path
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
@@ -59,9 +60,12 @@ add_subdirectory(external/gtest)
 
 # gea libraries
 add_subdirectory(libs/gea_core)
+add_subdirectory(libs/gea_core_inline)
 
 add_subdirectory(libs/gea_data_core)
 add_subdirectory(libs/gea_data_format_cli)
+add_subdirectory(libs/gea_data_format_gdb)
+add_subdirectory(libs/gea_data_format_obj)
 
 #add_subdirectory(libs/gea_eastl)
 add_subdirectory(libs/gea_hash)
@@ -69,6 +73,9 @@ add_subdirectory(libs/gea_math)
 add_subdirectory(libs/gea_math_cg)
 add_subdirectory(libs/gea_random)
 add_subdirectory(libs/gea_string)
+
+# gea render libraries
+add_subdirectory(libs/gea_render_obj)
 
 # gea demo libraries
 add_subdirectory(libs/gea_demo_core)
@@ -82,11 +89,16 @@ add_subdirectory(engine)
 ## BUILD                                    ##
 
 # test
-add_subdirectory(test/sdl_sandbox)
 add_subdirectory(test/glfw_sandbox)
+add_subdirectory(test/glfw_data)
 
+add_subdirectory(test/sdl_sandbox)
 add_subdirectory(test/sdl_bin_pack)
 add_subdirectory(test/sdl_convex_hull)
 add_subdirectory(test/sdl_point_reduce)
 
-#add_subdirectory(test/glfw_simple)
+add_subdirectory(test/data_sandbox)
+
+## ######################################## ##
+## TOOLS                                    ##
+add_subdirectory(tools/gdb_compiler)

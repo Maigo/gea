@@ -18,12 +18,22 @@ set(SRC_${LIB}) # source
 
 # list source
 list(APPEND INC_${LIB}
+    src/gea/data/file/file_util.h
+    src/gea/data/parser/lexer.h
     src/gea/data/parser/predicates.h
+    src/gea/data/stream/istream.h
+    src/gea/data/stream/istream_string.h
+    src/gea/data/stream/ostream.h
 )
 list(APPEND INL_${LIB}
+    src/gea/data/file/file_util.inl
+    src/gea/data/parser/lexer.inl
     src/gea/data/parser/predicates.inl
+    src/gea/data/stream/istream_string.inl
 )
 list(APPEND SRC_${LIB}
+    src/gea/data/parser/lexer.cpp
+    src/gea/data/stream/istream_string.cpp
     src/module.cpp
 )
 
@@ -73,6 +83,7 @@ set(SRC_${LIB_TEST} ) # source
 # source tests
 list(APPEND SRC_${LIB_TEST}
     test/gea/data/parser/test_predicates.cpp
+    test/gea/data/stream/test_istream_string.cpp
 )
 
 # force include of global header

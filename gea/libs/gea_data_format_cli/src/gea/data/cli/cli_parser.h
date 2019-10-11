@@ -3,6 +3,7 @@
 // std  includes
 #include <tuple>
 #include <vector>
+#include <iostream>
 
 // gea includes
 #include <gea/core/pattern/delegate.h>

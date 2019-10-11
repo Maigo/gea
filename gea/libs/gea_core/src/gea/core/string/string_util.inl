@@ -17,6 +17,10 @@ namespace gea {
 // string_util                                                               //
 // ------------------------------------------------------------------------- //
 
+inline const bool string_util::is_empty(const char* s) {
+    return (s == nullptr) || (*s == '\0');
+}
+
 // variadic arguments
 // TODO: move to platform spacific code
 inline const int string_util::vsnprintf(char* buffer, const size_t size, const char* format, va_list args) {
@@ -43,40 +47,82 @@ inline const int string_util::sscanf(const char* s, const char* format, ...) {
 
 // compare
 inline const bool string_util::equals(const char* s0, const char* e0, const char* s1, const char* e1) {
-    return strncmp(s0, s1, mth::min(e0 - s0, e1 - s1)) == 0;
+    const char* safe_e0 = mth::max(s0, e0);
+    const char* safe_e1 = mth::max(s1, e1);
+    const ptrdiff_t s0_length = (safe_e0 - s0);
+    const ptrdiff_t s1_length = (safe_e1 - s1);
+    return (s0_length == s1_length) && strncmp(s0, s1, s0_length) == 0;
 }
 inline const bool string_util::equals(const char* s0, const char* e0, const char* s1) {
-    return strncmp(s0, s1, e0 - s0) == 0;
+    return equals(s0, e0, s1, s1 + strlen(s1));
 }
 inline const bool string_util::equals(const char* s0, const char* s1) {
     return strcmp(s0, s1) == 0;
+}
+
+inline const bool string_util::starts_with(const char* s0, const char* e0, const char c) {
+    const char* safe_e0 = mth::max(s0, e0);
+    const ptrdiff_t s0_length = (safe_e0 - s0);
+    return (s0_length > 0) && (*s0 == c);
+}
+inline const bool string_util::starts_with(const char* s0, const char* e0, const char* s1, const char* e1) {
+    const char* safe_e0 = mth::max(s0, e0);
+    const char* safe_e1 = mth::max(s1, e1);
+    const ptrdiff_t s0_length = (safe_e0 - s0);
+    const ptrdiff_t s1_length = (safe_e1 - s1);
+    return (s0_length >= s1_length) && strncmp(s0, s1, s1_length) == 0;
+}
+inline const bool string_util::starts_with(const char* s0, const char* e0, const char* s1) {
+    return starts_with(s0, e0, s1, s1 + strlen(s1));
+}
+inline const bool string_util::starts_with(const char* s0, const char* s1) {
+    return starts_with(s0, s0 + strlen(s0), s1, s1 + strlen(s1));
+}
+
+inline const bool string_util::ends_with(const char* s0, const char* e0, const char c) {
+    const char* safe_e0 = mth::max(s0, e0);
+    const ptrdiff_t s0_length = (safe_e0 - s0);
+    return (s0_length > 0) && (*(safe_e0 - 1) == c);
+}
+inline const bool string_util::ends_with(const char* s0, const char* e0, const char* s1, const char* e1) {
+    const char* safe_e0 = mth::max(s0, e0);
+    const char* safe_e1 = mth::max(s1, e1);
+    const ptrdiff_t s0_length = (safe_e0 - s0);
+    const ptrdiff_t s1_length = (safe_e1 - s1);
+    return (s0_length >= s1_length) && strncmp(safe_e0 - s1_length, s1, s1_length) == 0;
+}
+inline const bool string_util::ends_with(const char* s0, const char* e0, const char* s1) {
+    return ends_with(s0, e0, s1, s1 + strlen(s1));
+}
+inline const bool string_util::ends_with(const char* s0, const char* s1) {
+    return ends_with(s0, s0 + strlen(s0), s1, s1 + strlen(s1));
 }
 
 // search
 inline const char* string_util::first_index_of(const char* s, const char c) {
     return first_index_of(s, s + strlen(s), c);
 }
-inline const char* string_util::first_index_of(const char* s, const char* end, const char c) {
-    const char* safe_end = mth::max(s, end);
-    for (const char* it = s, *it_end = safe_end; it != it_end; ++it) {
+inline const char* string_util::first_index_of(const char* s, const char* e, const char c) {
+    const char* safe_e = mth::max(s, e);
+    for (const char* it = s, *it_end = safe_e; it != it_end; ++it) {
         if (*it == c) {
             return it;
         }
     }
-    return safe_end;
+    return safe_e;
 }
 
 inline const char* string_util::last_index_of(const char* s, const char c) {
     return last_index_of(s, s + strlen(s), c);
 }
-inline const char* string_util::last_index_of(const char* s, const char* end, const char c) {
-    const char* safe_end = mth::max(s, end);
-    for (const char* it = (safe_end - 1), *it_end = (s - 1); it != it_end; --it) {
+inline const char* string_util::last_index_of(const char* s, const char* e, const char c) {
+    const char* safe_e = mth::max(s, e);
+    for (const char* it = (safe_e - 1), *it_end = (s - 1); it != it_end; --it) {
         if (*it == c) {
             return it;
         }
     }
-    return safe_end;
+    return safe_e;
 }
 
 // conversion - hexadecimal to decimal
@@ -166,10 +212,10 @@ inline const bool string_util::dec_to_hex(const uint64_t dec, char* buffer, cons
 inline const bool string_util::dec_to_hex(const uint8_t* dec, const size_t n, char* buffer, const size_t size) {
     if (gea_unlikely(!buffer)) return false;
 
-    const uint8_t* it = dec, *end = dec + n;
+    const uint8_t* it = dec, *e = dec + n;
     char* carot = buffer;
     size_t remain = size;
-    while (it && (it < end) && dec_to_hex(*it, carot, remain)) {
+    while (it && (it < e) && dec_to_hex(*it, carot, remain)) {
         ++it; carot += 2; remain -= 2;
     }
     return (size >= 2 * n);
@@ -236,10 +282,10 @@ inline const bool string_util::dec_to_bin(const uint64_t dec, char* buffer, cons
 inline const bool string_util::dec_to_bin(const uint8_t* dec, const size_t n, char* buffer, const size_t size) {
     if (gea_unlikely(!buffer)) return false;
 
-    const uint8_t* it = dec, *end = dec + n;
+    const uint8_t* it = dec, *e = dec + n;
     char* carot = buffer;
     size_t remain = size;
-    while (it && (it < end) && dec_to_bin(*it, carot, remain)) {
+    while (it && (it < e) && dec_to_bin(*it, carot, remain)) {
         ++it; carot += 8; remain -= 8;
     }
     return (size >= 8 * n);

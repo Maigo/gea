@@ -28,6 +28,7 @@ public:
 
 protected:
     virtual void initialize(const init_info& info) override;
+            void initialize_shader();
     virtual void deinitialize(const deinit_info& info) override;
 
     virtual void update() override;

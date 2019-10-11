@@ -28,6 +28,128 @@ namespace gea {
 // ------------------------------------------------------------------------- //
 
 // ------------------------------------------------------------------------- //
+// variadic arguments                                                        //
+// ------------------------------------------------------------------------- //
+
+// ------------------------------------------------------------------------- //
+// compare                                                                   //
+// ------------------------------------------------------------------------- //
+TEST(gea_core_string_util, equals) {
+    // equals
+    {
+        struct data_type { const char* s0, * s1; const bool expected; };
+        const data_type data_set[] = {
+            { "some text", "some text", true },
+            { "some text", "some other text", false },
+            { "prefix", "prefix but more", false },
+        };
+
+        for (const data_type& data : data_set) {
+            EXPECT_EQ(string_util::equals(data.s0, data.s1), data.expected);
+            EXPECT_EQ(string_util::equals(data.s0, data.s0 + strlen(data.s0), data.s1), data.expected);
+            EXPECT_EQ(string_util::equals(data.s0, data.s0 + strlen(data.s0), data.s1, data.s1 + strlen(data.s1)), data.expected);
+
+            // also, if s0 == s1 then s1 == s0 (symmetric)
+            EXPECT_EQ(string_util::equals(data.s1, data.s0), data.expected);
+            EXPECT_EQ(string_util::equals(data.s1, data.s1 + strlen(data.s1), data.s0), data.expected);
+            EXPECT_EQ(string_util::equals(data.s1, data.s1 + strlen(data.s1), data.s0, data.s0 + strlen(data.s0)), data.expected);
+        }
+    }
+}
+
+TEST(gea_core_string_util, starts_with) {
+    // starts_with
+    {
+        struct data_type { const char* s0, * s1; const bool expected, reverse; };
+        const data_type data_set[] = {
+            { "some text", "some", true, false },
+            { "some text", "some other text", false, false },
+            { "same text", "same text", true, true },
+            { "prefix", "prefix but more", false, true },
+        };
+
+        for (const data_type& data : data_set) {
+            EXPECT_EQ(string_util::starts_with(data.s0, data.s1), data.expected);
+            EXPECT_EQ(string_util::starts_with(data.s0, data.s0 + strlen(data.s0), data.s1), data.expected);
+            EXPECT_EQ(string_util::starts_with(data.s0, data.s0 + strlen(data.s0), data.s1, data.s1 + strlen(data.s1)), data.expected);
+
+            EXPECT_EQ(string_util::starts_with(data.s1, data.s0), data.reverse);
+            EXPECT_EQ(string_util::starts_with(data.s1, data.s1 + strlen(data.s1), data.s0), data.reverse);
+            EXPECT_EQ(string_util::starts_with(data.s1, data.s1 + strlen(data.s1), data.s0, data.s0 + strlen(data.s0)), data.reverse);
+        }
+    }
+}
+
+TEST(gea_core_string_util, ends_with) {
+    // ends_with
+    {
+        struct data_type { const char* s0, * s1; const bool expected, reverse; };
+        const data_type data_set[] = {
+            { "some text", "text", true, false },
+            { "some text", "some other text", false, false },
+            { "same text", "same text", true, true },
+            { "suffix", "but more suffix", false, true },
+        };
+
+        for (const data_type& data : data_set) {
+            EXPECT_EQ(string_util::ends_with(data.s0, data.s1), data.expected);
+            EXPECT_EQ(string_util::ends_with(data.s0, data.s0 + strlen(data.s0), data.s1), data.expected);
+            EXPECT_EQ(string_util::ends_with(data.s0, data.s0 + strlen(data.s0), data.s1, data.s1 + strlen(data.s1)), data.expected);
+
+            EXPECT_EQ(string_util::ends_with(data.s1, data.s0), data.reverse);
+            EXPECT_EQ(string_util::ends_with(data.s1, data.s1 + strlen(data.s1), data.s0), data.reverse);
+            EXPECT_EQ(string_util::ends_with(data.s1, data.s1 + strlen(data.s1), data.s0, data.s0 + strlen(data.s0)), data.reverse);
+        }
+    }
+}
+
+// ------------------------------------------------------------------------- //
+// search                                                                    //
+// ------------------------------------------------------------------------- //
+
+TEST(gea_core_string_util, first_index_of) {
+    // first_index_of
+    {
+        static const char* alphabet = "abcdefghijklmnopqrstuvwxyz";
+        static const char* repeat = "abcdef abcdef abcdef";
+
+        struct data_type { const char* s; const char c; const char* expected; };
+        const data_type data_set[] = {
+            { alphabet, 'g', alphabet + 6 },
+            { alphabet, 'x', alphabet + 23 },
+            { alphabet, 'X', alphabet + 26 },
+            { repeat,   'd', repeat + 3 },
+        };
+
+        for (const data_type& data : data_set) {
+            EXPECT_EQ(string_util::first_index_of(data.s, data.c), data.expected);
+            EXPECT_EQ(string_util::first_index_of(data.s, data.s + strlen(data.s), data.c), data.expected);
+        }
+    }
+}
+
+TEST(gea_core_string_util, last_index_of) {
+    // last_index_of
+    {
+        static const char* alphabet = "abcdefghijklmnopqrstuvwxyz";
+        static const char* repeat = "abcdef abcdef abcdef";
+
+        struct data_type { const char* s; const char c; const char* expected; };
+        const data_type data_set[] = {
+            { alphabet, 'g', alphabet + 6 },
+            { alphabet, 'x', alphabet + 23 },
+            { alphabet, 'X', alphabet + 26 },
+            { repeat,   'd', repeat + 17 },
+        };
+
+        for (const data_type& data : data_set) {
+            EXPECT_EQ(string_util::last_index_of(data.s, data.c), data.expected);
+            EXPECT_EQ(string_util::last_index_of(data.s, data.s + strlen(data.s), data.c), data.expected);
+        }
+    }
+}
+
+// ------------------------------------------------------------------------- //
 // conversion functions                                                      //
 // ------------------------------------------------------------------------- //
 
