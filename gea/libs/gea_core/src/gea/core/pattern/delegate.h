@@ -15,89 +15,62 @@ class delegate;
 template <typename RET, typename... ARGS>
 class delegate<RET(ARGS...)> : private delegate_base<RET(ARGS...)> {
 public:
-    inline delegate() : m_function_data() {}
-    inline delegate(const delegate& other) : m_function_data(other.m_function_data) { }
+    inline delegate();
+    inline delegate(const delegate& other);
     template <typename LAMBDA>
-    delegate(const LAMBDA& lambda) : m_function_data(reinterpret_cast<uintptr_t>(&lambda), lambda_call<LAMBDA>) {}
+    inline delegate(const LAMBDA& lambda);
 
     // assign delegate - member function
-    inline delegate& operator= (const delegate& other) {
-        m_function_data.assign(other.m_function_data);
-        return (*this);
-    }
+    inline delegate& operator= (const delegate& other);
 
     // assign delegate - lambda
     template <typename LAMBDA>
-    inline delegate& operator= (const LAMBDA& lambda) {
-        m_function_data.assign(reinterpret_cast<uintptr_t>(&lambda), lambda_call<LAMBDA>);
-        return *this;
-    }
+    inline delegate& operator= (const LAMBDA& lambda);
 
-    inline const bool is_empty() const { return m_function_data.is_empty(); }
+    inline const bool is_empty() const;
 
-    inline const bool operator== (const delegate& other) const { return m_function_data == other.m_function_data; }
-    inline const bool operator!= (const delegate& other) const { return m_function_data != other.m_function_data; }
+    inline const bool operator== (const delegate& other) const;
+    inline const bool operator!= (const delegate& other) const;
 
-    RET operator() (ARGS... args) const {
-        return (*m_function_data.function)(m_function_data.self, args...);
-    }
+    RET operator() (ARGS... args) const;
 
     // create delegate - member function
     template <class T, RET(T::*TFunction)(ARGS...)>
-    static inline delegate create(T* instance) {
-        return delegate(reinterpret_cast<uintptr_t>(instance), member_function_call<T, TFunction>);
-    }
+    static inline delegate create(T* instance);
 
     // create delegate - const member function
     template <class T, RET(T::*TFunction)(ARGS...) const>
-    static inline delegate create(const T* instance) {
-        return delegate(reinterpret_cast<uintptr_t>(instance), const_member_function_call<T, TFunction>);
-    }
+    static inline delegate create(const T* instance);
 
     // create delegate - function
     template <RET(*Function)(ARGS...)>
-    static inline delegate create() {
-        return delegate(reinterpret_cast<uintptr_t>(nullptr), function_call<Function>);
-    }
+    static inline delegate create();
 
     // create delegate - lambda
     template <typename LAMBDA>
-    static inline delegate create(const LAMBDA& lambda) {
-        return delegate(reinterpret_cast<uintptr_t>(&lambda), lambda_call<LAMBDA>);
-    }
+    static inline delegate create(const LAMBDA& lambda);
 
 private:
     typedef typename delegate_base<RET(ARGS...)>::function_t function_t;
     typedef typename delegate_base<RET(ARGS...)>::function_data function_data;
 
-    inline delegate(const uintptr_t self, function_t function) : m_function_data(self, function) {}
+    inline delegate(const uintptr_t self, function_t function);
 
     // call wrapper - member function
     template <class T, RET(T::*TFunction)(ARGS...)>
-    static RET member_function_call(uintptr_t self, ARGS... args) {
-        T* t = reinterpret_cast<T*>(self);
-        return (t->*TFunction)(args...);
-    }
+    static RET member_function_call(uintptr_t self, ARGS... args);
 
     // call wrapper - const member function
     template <class T, RET(T::*TFunction)(ARGS...) const>
-    static RET const_member_function_call(uintptr_t self, ARGS... args) {
-        const T* t = reinterpret_cast<T*>(self);
-        return (t->*TFunction)(args...);
-    }
+    static RET const_member_function_call(uintptr_t self, ARGS... args);
 
     // call wrapper - function
     template <RET(*Function)(ARGS...)>
-    static RET function_call(uintptr_t self, ARGS... args) {
-        return (*Function)(args...);
-    }
+    static RET function_call(uintptr_t self, ARGS... args);
 
     // call wrapper - lambda
     template <typename LAMBDA>
-    static RET lambda_call(uintptr_t self, ARGS... args) {
-        LAMBDA* l = reinterpret_cast<LAMBDA*>(self);
-        return (l->operator())(args...);
-    }
+    static RET lambda_call(uintptr_t self, ARGS... args);
 
     function_data m_function_data;
 };

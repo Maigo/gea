@@ -26,6 +26,8 @@ list(APPEND INC_${LIB}
 	src/gea/core/bits/flag.h
 	src/gea/core/pattern/delegate.h
 	src/gea/core/pattern/delegate_base.h
+	src/gea/core/pattern/delegate_multicast.h
+	src/gea/core/pattern/member_delegate.h
 	src/gea/core/pattern/singleton.h
 	src/gea/core/pattern/static_block.h
 	src/gea/core/string/string_builder.h
@@ -59,6 +61,8 @@ list(APPEND INL_${LIB}
 	src/gea/core/bits/flag.inl
 	src/gea/core/pattern/delegate.inl
 	src/gea/core/pattern/delegate_base.inl
+	src/gea/core/pattern/delegate_multicast.inl
+	src/gea/core/pattern/member_delegate.inl
 	src/gea/core/pattern/singleton.inl
 	src/gea/core/string/string_builder.inl
 	src/gea/core/string/string_parser.inl
@@ -144,6 +148,8 @@ list(APPEND SRC_${LIB_TEST}
 	test/gea/core/bits/test_bits.cpp
 	test/gea/core/bits/test_flag.cpp
 	test/gea/core/pattern/test_delegate.cpp
+	test/gea/core/pattern/test_delegate_multicast.cpp
+	test/gea/core/pattern/test_member_delegate.cpp
 	test/gea/core/string/test_string_builder.cpp
 	test/gea/core/string/test_string_util.cpp
 	test/gea/core/test_endian_base.cpp
