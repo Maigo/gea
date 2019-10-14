@@ -34,6 +34,18 @@ inline const int string_util::snprintf(char* buffer, const size_t size, const ch
     return ret;
 }
 
+// TODO: move to platform spacific code
+inline const int string_util::vscprintf(const char* format, va_list args) {
+    return _vscprintf(format, args);
+}
+inline const int string_util::scprintf(const char* format, ...) {
+    va_list args;
+    va_start(args, format);
+    const int ret = vscprintf(format, args);
+    va_end(args);
+    return ret;
+}
+
 inline const int string_util::vsscanf(const char* s, const char* format, va_list args) {
     return vsscanf_s(s, format, args);
 }

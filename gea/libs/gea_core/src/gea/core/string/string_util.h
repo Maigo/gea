@@ -14,6 +14,9 @@ public:
     inline static const int vsnprintf(char* buffer, const size_t size, const char* format, va_list args);
     inline static const int snprintf(char* buffer, const size_t size, const char* format, ...);
 
+    inline static const int vscprintf(const char* format, va_list args);
+    inline static const int scprintf(const char* format, ...);
+
     inline static const int vsscanf(const char* s, const char* format, va_list args);
     inline static const int sscanf(const char* s, const char* format, ...);
 

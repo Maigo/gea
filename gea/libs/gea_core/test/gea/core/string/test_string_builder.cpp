@@ -11,7 +11,7 @@ namespace gea {
 // helper functions                                                          //
 // ------------------------------------------------------------------------- //
 
-static void variable_format(const char *format, const variable &var, string_builder &builder) {
+static void variable_format(const char* format, const variable& var, string_builder& builder) {
     switch (var.type) {
     case variable_type__int8:
         builder.append_format(format, var.get_value<int8_t>());
@@ -50,17 +50,17 @@ static void variable_format(const char *format, const variable &var, string_buil
 // string_builder                                                            //
 // ------------------------------------------------------------------------- //
 
-TEST(mth_core_static_string_builder, append) {
+TEST(gea_core_static_string_builder, append) {
     // append - string
     {
-        struct data_type { const char *a, *b, *c; const char *string; };
+        struct data_type { const char* a, *b, *c; const char* string; };
         const data_type data_set[] = {
             { "a", "b", "c", "abc" },           // normal
+            { "abc", "def", "g", "abcdefg" },
             { "", "", "", "" },                 // empty
-            { "abc", "def", "ghf", "abcdefg" }, // overflow
         };
 
-        for (const data_type &data : data_set) {
+        for (const data_type& data : data_set) {
             static_string_builder<8> builder;
             builder.append(data.a).append(data.b).append(data.c);
             EXPECT_STREQ(builder.data(), data.string);
@@ -69,12 +69,12 @@ TEST(mth_core_static_string_builder, append) {
 
     // append - character
     {
-        struct data_type { const char a, b, c; const char *string; };
+        struct data_type { const char a, b, c; const char* string; };
         const data_type data_set[] = {
             { 'a', 'b', 'c', "abc" },           // normal
         };
 
-        for (const data_type &data : data_set) {
+        for (const data_type& data : data_set) {
             static_string_builder<8> builder;
             builder.append(data.a).append(data.b).append(data.c);
             EXPECT_STREQ(builder.data(), data.string);
@@ -82,17 +82,17 @@ TEST(mth_core_static_string_builder, append) {
     }
 }
 
-TEST(mth_core_static_string_builder, append_format) {
+TEST(gea_core_static_string_builder, append_format) {
     // append_format
     {
-        struct data_type { const char *format; variable var; const char *string; };
+        struct data_type { const char* format; variable var; const char* string; };
         const data_type data_set[] = {
             { "%i",   variable(int32_t(1234567)), "1234567" },
             { "%.3f", variable(float(1.234f)),    "1.234" },
             { "%04X", variable(uint16_t(0xF00D)), "F00D" },
         };
 
-        for (const data_type &data : data_set) {
+        for (const data_type& data : data_set) {
             static_string_builder<8> builder;
             variable_format(data.format, data.var, builder);
             EXPECT_STREQ(builder.data(), data.string);
@@ -100,35 +100,35 @@ TEST(mth_core_static_string_builder, append_format) {
     }
 }
 
-TEST(mth_core_static_string_builder, reserve) {
+TEST(gea_core_static_string_builder, reserve) {
     // reserve
     {
         struct data_type { const size_t size; const bool result; };
         const data_type data_set[] = {
+            { 0, true },
             { 4, true },
-            { 8, true },
-            { 9, false },
+            { 7, true },
+            { 8, false },
         };
 
-        for (const data_type &data : data_set) {
+        for (const data_type& data : data_set) {
             static_string_builder<8> builder;
             EXPECT_EQ(builder.reserve(data.size), data.result);
         }
     }
 }
 
-TEST(mth_core_static_string_builder, resize) {
+TEST(gea_core_static_string_builder, resize) {
     // resize
     {
-        struct data_type { const size_t size; const char c; const bool result; const char *string; };
+        struct data_type { const size_t size; const char c; const bool result; const char* string; };
         const data_type data_set[] = {
             { 5, 'a', true, "aaaaa" },
             { 0, '~', true, "" },
             { 7, 'X', true, "XXXXXXX" },
-            { 8, 'X', false, "XXXXXXX" },
         };
 
-        for (const data_type &data : data_set) {
+        for (const data_type& data : data_set) {
             static_string_builder<8> builder;
             EXPECT_EQ(builder.resize(data.size, data.c), data.result);
             EXPECT_STREQ(builder.data(), data.string);
@@ -136,7 +136,7 @@ TEST(mth_core_static_string_builder, resize) {
     }
 }
 
-TEST(mth_core_static_string_builder, reset) {
+TEST(gea_core_static_string_builder, reset) {
     // reset
     {
         static_string_builder<8> builder;
@@ -146,7 +146,7 @@ TEST(mth_core_static_string_builder, reset) {
     }
 }
 
-TEST(mth_core_static_string_builder, empty) {
+TEST(gea_core_static_string_builder, empty) {
     // empty
     {
         static_string_builder<8> builder;
@@ -155,28 +155,28 @@ TEST(mth_core_static_string_builder, empty) {
     }
 }
 
-TEST(mth_core_static_string_builder, size) {
+TEST(gea_core_static_string_builder, size) {
     // size
     {
-        struct data_type { const char *string; const size_t size; };
+        struct data_type { const char* string; const size_t size; };
         const data_type data_set[] = {
             { "string", 6 },
             { "", 0 },
-            { "12345678", 7 },
+            { "1234567", 7 },
         };
 
-        for (const data_type &data : data_set) {
+        for (const data_type& data : data_set) {
             static_string_builder<8> builder;
             EXPECT_EQ(builder.append(data.string).size(), data.size);
         }
     }
 }
 
-TEST(mth_core_static_string_builder, capacity) {
+TEST(gea_core_static_string_builder, capacity) {
     // capacity
     {
         static_string_builder<8> builder;
-        EXPECT_EQ(builder.capacity(), 8);
+        EXPECT_EQ(builder.capacity(), 7);
     }
 }
 
