@@ -27,6 +27,8 @@ list(APPEND INC_${LIB}
 	src/gea/core/pattern/delegate.h
 	src/gea/core/pattern/delegate_base.h
 	src/gea/core/pattern/delegate_multicast.h
+	src/gea/core/pattern/either.h
+	src/gea/core/pattern/maybe.h
 	src/gea/core/pattern/member_delegate.h
 	src/gea/core/pattern/singleton.h
 	src/gea/core/pattern/static_block.h
@@ -62,6 +64,8 @@ list(APPEND INL_${LIB}
 	src/gea/core/pattern/delegate.inl
 	src/gea/core/pattern/delegate_base.inl
 	src/gea/core/pattern/delegate_multicast.inl
+	src/gea/core/pattern/either.inl
+	src/gea/core/pattern/maybe.inl
 	src/gea/core/pattern/member_delegate.inl
 	src/gea/core/pattern/singleton.inl
 	src/gea/core/string/string_builder.inl
@@ -149,6 +153,8 @@ list(APPEND SRC_${LIB_TEST}
 	test/gea/core/bits/test_flag.cpp
 	test/gea/core/pattern/test_delegate.cpp
 	test/gea/core/pattern/test_delegate_multicast.cpp
+	test/gea/core/pattern/test_maybe.cpp
+	test/gea/core/pattern/test_either.cpp
 	test/gea/core/pattern/test_member_delegate.cpp
 	test/gea/core/string/test_string_builder.cpp
 	test/gea/core/string/test_string_util.cpp
